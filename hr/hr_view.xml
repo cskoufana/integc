@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+         <!-- Contract View -->
+        <record id="hr_contract_form_inherit1" model="ir.ui.view">
+            <field name="name">hr.contract.view.form.inherit1</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_payroll.hr_contract_form_inherit"/>
+            <field name="arch" type="xml">
+            <data>
+                <!--<xpath expr="//page[@name='']" position="replace" />-->
+                <!--<xpath expr="/form/sheet/notebook/page/group/group[1]/label" position="replace" />-->
+                <!--<xpath expr="/form/sheet/notebook/page/group/group[1]/div" position="replace" />-->
+                <xpath expr="//field[@name='wage']" position="before">
+                    <!--<field name="salary_grid_id" on_change="onchange_salary_grid(salary_grid_id)" required="1"/>-->
+                    <field name="category_id" on_change="onchange_category_grade(category_id, grade_id)" required="1"/>
+                    <field name="grade_id" required="1" on_change="onchange_category_grade(category_id, grade_id)"/>
+                    <field name="wage_min" />
+                </xpath>
+                <xpath expr="//field[@name='wage']" position="after">
+                    <field name="wage_max" />
+                </xpath>
+                <xpath expr="//field[@name='struct_id']" position="replace">
+                    <field name="struct_id" readonly="1" />
+                </xpath>
+                <xpath expr="//field[@name='working_hours']" position="before">
+                    <field name="seniority" readonly="1" />
+                </xpath>
+            </data>
+            </field>
+        </record>
+
+        <!-- End Contract View-->
+
+
+        <!-- hr contract view -->
+        <!--<record id="view_integc_hr_contract_form" model="ir.ui.view">-->
+            <!--<field name="name">integc.hr.contract.form</field>-->
+            <!--<field name="model">hr.contract</field>-->
+            <!--<field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>-->
+            <!--<field name="arch" type="xml">-->
+                    <!--<xpath expr="/form/sheet/notebook/page[1]" position="replace" />-->
+                    <!--&lt;!&ndash;<xpath expr="//field[@name='struct_id']" position="replace">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<field name="struct_id" readonly="1" />&ndash;&gt;-->
+                    <!--&lt;!&ndash;</xpath>&ndash;&gt;-->
+                    <!--<field name="wage" position="before">-->
+                    <!--&lt;!&ndash;<xpath expr="//field[@name='wage']" position="before">&ndash;&gt;-->
+                        <!--<field name="salary_grid_id" on_change="onchange_salary_grid(salary_grid_id)" required="1"/>-->
+                        <!--<field name="wage_min" />-->
+                        <!--<field name="wage_max" />-->
+                    <!--&lt;!&ndash;</xpath>&ndash;&gt;-->
+                    <!--</field>-->
+
+                    <!--<xpath expr="/form/sheet/notebook/page/group/group[1]/label" position="replace" />-->
+                    <!--<xpath expr="/form/sheet/notebook/page/group/group[1]/div" position="replace" />-->
+            <!--</field>-->
+        <!--</record>-->
+
+        <!-- Category view -->
+        <record id="view_integc_hr_category_form" model="ir.ui.view">
+            <field name="name">integc.hr.category.form</field>
+            <field name="model">integc.hr.category</field>
+            <field name="arch" type="xml">
+                <form string="Category" version="7.0">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <separator string="Notes"/>
+                                <field name="note" colspan="2" placeholder="Notes ..." nolabel="1"/>
+                            </group>
+                            <group>
+                                <field name="structure_id" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_integc_hr_category_tree" model="ir.ui.view">
+            <field name="name">integc.hr.category.tree</field>
+            <field name="model">integc.hr.category</field>
+            <field name="arch" type="xml">
+                <tree string="Category">
+                    <field name="name" />
+                    <field name="note" />
+                    <field name="structure_id" />
+                </tree>
+            </field>
+        </record>
+        <record id="integc_hr_category_act" model="ir.actions.act_window">
+            <field name="name">Category</field>
+            <field name="res_model">integc.hr.category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="menu_integc_hr_category_view"
+            action="integc_hr_category_act"
+            parent="hr_payroll.payroll_configure"
+            sequence="4"
+        />
+
+        <!--Grade-->
+        <record id="view_integc_hr_grade_form" model="ir.ui.view">
+            <field name="name">integc.hr.grade.form</field>
+            <field name="model">integc.hr.grade</field>
+            <field name="arch" type="xml">
+                <form string="Grade" version="7.0">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <separator string="Notes"/>
+                                <field name="note" colspan="2" placeholder="Notes ..." nolabel="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_integc_hr_grade_tree" model="ir.ui.view">
+            <field name="name">integc.hr.grade.tree</field>
+            <field name="model">integc.hr.grade</field>
+            <field name="arch" type="xml">
+                <tree string="Grade">
+                    <field name="name" />
+                    <field name="note" />
+                </tree>
+            </field>
+        </record>
+        <record id="integc_hr_grade_act" model="ir.actions.act_window">
+            <field name="name">Grade</field>
+            <field name="res_model">integc.hr.grade</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="menu_integc_hr_grade_view"
+            action="integc_hr_grade_act"
+            parent="hr_payroll.payroll_configure"
+            sequence="4"
+        />
+
+        <!-- Salary grid-->
+        <record id="view_integc_hr_salary_grid_form" model="ir.ui.view">
+            <field name="name">integc.hr.salary.grid.form</field>
+            <field name="model">integc.hr.salary.grid</field>
+            <field name="arch" type="xml">
+                <form string="Salary Grid" version="7.0">
+                    <sheet>
+                        <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name"/></h1>
+                    </div>
+                        <group>
+                            <group string="Grid">
+                                <field name="category_id" required="1"/>
+                                <field name="grade_id" required="1"/>
+                            </group>
+                            <group string="Wage Range">
+                                <field name="wage_min" required="1"/>
+                                <field name="wage_max" required="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_integc_hr_salary_grid_tree" model="ir.ui.view">
+            <field name="name">integc.hr.salary.grid.tree</field>
+            <field name="model">integc.hr.salary.grid</field>
+            <field name="arch" type="xml">
+                <tree string="Salary Grid">
+                    <field name="name" />
+                    <field name="category_id" />
+                    <field name="grade_id" />
+                    <field name="wage_min" />
+                    <field name="wage_max" />
+                </tree>
+            </field>
+        </record>
+        <record id="integc_hr_salary_grid_act" model="ir.actions.act_window">
+            <field name="name">Salary Grid</field>
+            <field name="res_model">integc.hr.salary.grid</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_integc_hr_salary_grid"
+                  action="integc_hr_salary_grid_act"
+                  parent="hr_payroll.payroll_configure"
+                  sequence="5"
+        />
+
+        <!-- HR Employee-->
+        <record id="view_employee_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.inherit.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form" />
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='passport_id']" position="replace">
+                     <field name="ssnid" />
+                 </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

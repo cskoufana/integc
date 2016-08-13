@@ -1,0 +1,454 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* integc
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20140804-231303\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-08-13 07:15+0000\n"
+"PO-Revision-Date: 2016-08-13 07:15+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: integc
+#: field:hr.contract,category_id:0
+#: view:integc.hr.category:0
+#: field:integc.hr.salary.grid,category_id:0
+#: model:ir.actions.act_window,name:integc.integc_hr_category_act
+#: model:ir.ui.menu,name:integc.menu_integc_hr_category_view
+msgid "Category"
+msgstr "Catégorie"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "REGIME CNPS"
+msgstr "REGIME CNPS"
+
+#. module: integc
+#: model:ir.model,name:integc.model_integc_hr_category
+msgid "Salary Category"
+msgstr "Catégorie"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Salaire brut cotisable"
+msgstr "Salaire brut cotisable"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "RAISON"
+msgstr "RAISON"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Salaire brut"
+msgstr "Salaire brut"
+
+#. module: integc
+#: report:integc.payslip:0
+#: report:integc.payslip.journal:0
+msgid "N° CNPS"
+msgstr "N° CNPS"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "TEL:"
+msgstr "TEL:"
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:69
+#: constraint:integc.hr.salary.grid:0
+#, python-format
+msgid "'Wage Minimal' must be lower than 'Wage Maximal'."
+msgstr "La 'Base minimale' doit être inféreieur à la 'Base maximale'."
+
+#. module: integc
+#: field:integc.hr.category,note:0
+#: field:integc.hr.grade,note:0
+msgid "Note"
+msgstr "Note"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Noms"
+msgstr "Noms"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "NAP"
+msgstr "NAP"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Montant -"
+msgstr "Montant -"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "ANCIENNETE"
+msgstr "ANCIENNETE"
+
+#. module: integc
+#: field:hr.payslip.journal,date_from:0
+msgid "Date From"
+msgstr "Date début"
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:27
+#: sql_constraint:integc.hr.category:0
+#, python-format
+msgid "Category name already exists"
+msgstr "Ce nom de catégorie existe déjà"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "CAC"
+msgstr "CAC"
+
+#. module: integc
+#: model:ir.actions.act_window,name:integc.action_hr_payslip_journal
+#: model:ir.ui.menu,name:integc.menu_hr_payslip_journal
+msgid "PaySlip Journal"
+msgstr "Journal des bulettins"
+
+#. module: integc
+#: field:integc.hr.category,structure_id:0
+#: field:integc.hr.salary.grid,structure_id:0
+msgid "Salary Structure"
+msgstr "Structure salariale"
+
+#. module: integc
+#: field:hr.contract,wage_min:0
+#: field:integc.hr.salary.grid,wage_min:0
+msgid "Wage Minimal"
+msgstr "Base minimale"
+
+#. module: integc
+#: field:hr.contract,seniority:0
+msgid "Seniority"
+msgstr "Ancienneté"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "CATEGORIE"
+msgstr "CATEGORIE"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "NOMS ET PRENONS DE L'EMPLOYE"
+msgstr "NOMS ET PRENONS DE L'EMPLOYE"
+
+#. module: integc
+#: field:hr.contract,wage_max:0
+#: field:integc.hr.salary.grid,wage_max:0
+msgid "Wage Maximal"
+msgstr "Base maximale"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "RAISON SOCIALE"
+msgstr "RAISON SOCIALE"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "PERIODE DU"
+msgstr "PERIODE DU"
+
+#. module: integc
+#: view:hr.payslip.journal:0
+msgid "Print"
+msgstr "Imprimer"
+
+#. module: integc
+#: report:integc.payslip:0
+#: report:integc.payslip.journal:0
+msgid "ADRESSE"
+msgstr "ADRESSE"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "BULLETIN DE PAIE"
+msgstr "BULLETIN DE PAIE"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "RAV"
+msgstr "RAV"
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:70
+#: sql_constraint:integc.hr.salary.grid:0
+#, python-format
+msgid "Salary grid name already exists"
+msgstr "Cette grille salariale existe déjà"
+
+#. module: integc
+#: view:integc.hr.salary.grid:0
+msgid "Grid"
+msgstr "Grille"
+
+#. module: integc
+#: view:hr.payslip.journal:0
+msgid "PaySlip journal"
+msgstr "Journal des bulletins"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "TOTAL"
+msgstr "TOTAL"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "ELTS EXCEP."
+msgstr "ELTS EXCEP."
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:41
+#: sql_constraint:integc.hr.grade:0
+#, python-format
+msgid "Grade name already exists"
+msgstr "L'echelon existe déjà"
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:189
+#, python-format
+msgid "Operation not allowed"
+msgstr "Opération non permise"
+
+#. module: integc
+#: view:hr.payslip.journal:0
+msgid "or"
+msgstr "ou"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "TDL"
+msgstr "TDL"
+
+#. module: integc
+#: field:integc.hr.category,name:0
+#: field:integc.hr.grade,name:0
+#: field:integc.hr.salary.grid,name:0
+msgid "Name"
+msgstr "Nom"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "SALAIRE BRUT"
+msgstr "SALAIRE BRUT"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "SAL. TAX"
+msgstr "SAL. TAX"
+
+#. module: integc
+#: view:integc.hr.category:0
+#: view:integc.hr.grade:0
+msgid "Notes"
+msgstr "Notes"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Taux(%)"
+msgstr "Taux(%)"
+
+#. module: integc
+#: model:ir.model,name:integc.model_hr_contract
+msgid "Contract"
+msgstr "Contrat"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "IRPP"
+msgstr "IRPP"
+
+#. module: integc
+#: field:hr.payslip.journal,date_to:0
+msgid "Date To"
+msgstr "Date fin"
+
+#. module: integc
+#: view:integc.hr.category:0
+#: view:integc.hr.grade:0
+msgid "Notes ..."
+msgstr "Notes ..."
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "SAL. COTISA"
+msgstr "SAL. COTISA"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "QUALIFICATION"
+msgstr "QUALIFICATION"
+
+#. module: integc
+#: model:ir.model,name:integc.model_res_partner
+msgid "Partner"
+msgstr "Partenaire"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "CNPS"
+msgstr "CNPS"
+
+#. module: integc
+#: model:ir.actions.report.xml,name:integc.payslip
+msgid "Buletin de paie"
+msgstr "Buletin de paie"
+
+#. module: integc
+#: model:ir.model,name:integc.model_hr_payslip_journal
+msgid "Payslip journal"
+msgstr "Journal de bulletin"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "CFC"
+msgstr "CFC"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "REGIME"
+msgstr "REGIME"
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:189
+#, python-format
+msgid "There is not salary grid defined for this category and grade"
+msgstr "Aucune grille salariale n'est définie pour cette catégorie et cet échelon"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "NOM"
+msgstr "NOM"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "PERIODE"
+msgstr "PERIODE"
+
+#. module: integc
+#: help:integc.hr.salary.grid,wage_min:0
+msgid "Basic Minimal Salary for this grid"
+msgstr "Salaire de base minimal pour cette grille"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Total retenues"
+msgstr "Total retenues"
+
+#. module: integc
+#: field:hr.contract,salary_grid_id:0
+#: view:integc.hr.salary.grid:0
+#: model:ir.actions.act_window,name:integc.integc_hr_salary_grid_act
+#: model:ir.model,name:integc.model_integc_hr_salary_grid
+#: model:ir.ui.menu,name:integc.menu_integc_hr_salary_grid
+msgid "Salary Grid"
+msgstr "Grille salariale"
+
+#. module: integc
+#: field:hr.contract,grade_id:0
+#: view:integc.hr.grade:0
+#: field:integc.hr.salary.grid,grade_id:0
+#: model:ir.actions.act_window,name:integc.integc_hr_grade_act
+#: model:ir.ui.menu,name:integc.menu_integc_hr_grade_view
+msgid "Grade"
+msgstr "Echelon"
+
+#. module: integc
+#: model:ir.actions.report.xml,name:integc.payslip_journal
+msgid "Journal de paie"
+msgstr "Journal de paie"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Montant +"
+msgstr "Montant +"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "RET. FISCALES"
+msgstr "RET. FISCALES"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Cachet de l'employeur"
+msgstr "Cachet de l'employeur"
+
+#. module: integc
+#: model:ir.model,name:integc.model_integc_hr_grade
+msgid "Salary Grade"
+msgstr "Echelon"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "NET A PAYER"
+msgstr "NET A PAYER"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Signature de l'employé"
+msgstr "Signature de l'employé"
+
+#. module: integc
+#: view:integc.hr.salary.grid:0
+msgid "Wage Range"
+msgstr "Plage de salaire"
+
+#. module: integc
+#: help:integc.hr.salary.grid,wage_max:0
+msgid "Basic Maximal Salary for this grid"
+msgstr "Salaire de base maximal pour cette grille"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "TEL"
+msgstr "TEL"
+
+#. module: integc
+#: view:hr.payslip.journal:0
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: integc
+#: report:integc.payslip.journal:0
+msgid "BP"
+msgstr "BP"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "PAIEMENT LE"
+msgstr "PAIEMENT LE"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "EMPLOI OCCUPE"
+msgstr "EMPLOI OCCUPE"
+
+#. module: integc
+#: report:integc.payslip:0
+#: report:integc.payslip.journal:0
+msgid "MATRICULE"
+msgstr "MATRICULE"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Salaire brut taxable"
+msgstr "Salaire brut taxable"
+
+#. module: integc
+#: report:integc.payslip:0
+#: report:integc.payslip.journal:0
+#: view:res.partner:0
+#: field:res.partner,niu:0
+msgid "NIU"
+msgstr "NIU"
+

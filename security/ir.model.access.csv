@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_integc_hr_category,integc.hr.category,model_integc_hr_category,base.group_hr_manager,1,1,1,0
+access_integc_hr_category_user,integc.hr.category,model_integc_hr_category,base.group_hr_user,1,1,0,0
+access_integc_hr_grade,integc.hr.grade,model_integc_hr_grade,base.group_hr_manager,1,1,1,0
+access_integc_hr_grade_user,integc.hr.grade,model_integc_hr_grade,base.group_hr_user,1,1,0,0
+access_integc_hr_salary_grid,integc.hr.salary.grid,model_integc_hr_salary_grid,base.group_hr_manager,1,1,1,0
+access_integc_hr_salary_grid_user,integc.hr.salary.grid,model_integc_hr_salary_grid,base.group_hr_user,1,1,0,0

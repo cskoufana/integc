@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_hr_payslip_journal" model="ir.ui.view">
+            <field name="name">hr.payslip.journal</field>
+            <field name="model">hr.payslip.journal</field>
+            <field name="arch" type="xml">
+            <form string="PaySlip journal" version="7.0">
+                <group col="4" colspan="6">
+                    <field name="date_from"/>
+                    <newline/>
+                    <field name="date_to"/>
+                </group>
+                <footer>
+                    <button name="print_report" string="Print" type="object" icon="gtk-print" class="oe_highlight"/>
+                        or
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_hr_payslip_journal" model="ir.actions.act_window">
+            <field name="name">PaySlip Journal</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.payslip.journal</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem action="action_hr_payslip_journal" id="menu_hr_payslip_journal" parent="hr_payroll.menu_hr_root_payroll"/>
+
+    </data>
+</openerp>

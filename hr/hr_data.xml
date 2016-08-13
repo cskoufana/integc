@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <!-- HR SALARY RULE CATEGORIES-->
+        <record id="hr_payroll.NET" model="hr.salary.rule.category">
+            <field name="name">Salaire Net</field>
+            <field name="code">NET</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+
+        <record id="hr_payroll.GROSS" model="hr.salary.rule.category">
+            <field name="name">Salaire Brut</field>
+            <field name="code">BRUT</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+
+         <record id="BRUT_TAXABLE" model="hr.salary.rule.category">
+            <field name="name">Salaire Brut Taxable</field>
+            <field name="code">BRUT_TAXABLE</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+
+        <record id="BRUT_COTISABLE" model="hr.salary.rule.category">
+            <field name="name">Salaire Brut Cotisable</field>
+            <field name="code">BRUT_COTISABLE</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+
+        <record id="hr_payroll.BASIC" model="hr.salary.rule.category">
+            <field name="name">Salaire de base</field>
+            <field name="code">BASE</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+
+        <record id="hr_payroll.ALW" model="hr.salary.rule.category">
+            <field name="name">Indemnite</field>
+            <field name="code">INDM</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+
+        <record id="hr_payroll.DED" model="hr.salary.rule.category">
+            <field name="name">Deduction</field>
+            <field name="code">DED</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+
+         <record id="CHARGES_TOTALES" model="hr.salary.rule.category">
+            <field name="name">Total retenues</field>
+            <field name="code">CHARGES_TOTALES</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+
+        <record id="IMPOT" model="hr.salary.rule.category">
+            <field name="name">Impôt</field>
+            <field name="code">IMPOT</field>
+            <field name="parent_id" eval="CHARGES_TOTALES"/>
+        </record>
+
+        <record id="RETENUES" model="hr.salary.rule.category">
+            <field name="name">Retenues</field>
+            <field name="code">RETENUES</field>
+            <field name="parent_id" eval="CHARGES_TOTALES"/>
+        </record>
+
+        <record id="TRET" model="hr.salary.rule.category">
+            <field name="name">Calcul Total Retenues</field>
+            <field name="code">TRET</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+
+        <record id="CHARGES" model="hr.salary.rule.category">
+            <field name="name">Charges</field>
+            <field name="code">CHARGES</field>
+            <field name="parent_id" eval="CHARGES_TOTALES"/>
+        </record>
+
+        <record id="PRIME" model="hr.salary.rule.category">
+            <field name="name">Prime</field>
+            <field name="code">PRIME</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+
+        <record id="FRAIS" model="hr.salary.rule.category">
+            <field name="name">Frais</field>
+            <field name="code">FRAIS</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+
+        <!--<record id="IRPP" model="hr.salary.rule.category">-->
+            <!--<field name="name">IRPP</field>-->
+            <!--<field name="code">IRPP</field>-->
+            <!--<field name="parent_id" ref="False"/>-->
+        <!--</record>-->
+
+        <!--<record id="TDL" model="hr.salary.rule.category">-->
+            <!--<field name="name">TDL</field>-->
+            <!--<field name="code">TDL</field>-->
+            <!--<field name="parent_id" ref="False"/>-->
+        <!--</record>-->
+
+        <!--<record id="RAV" model="hr.salary.rule.category">-->
+            <!--<field name="name">RAV</field>-->
+            <!--<field name="code">RAV</field>-->
+            <!--<field name="parent_id" ref="False"/>-->
+        <!--</record>-->
+
+        <!--<record id="CFC" model="hr.salary.rule.category">-->
+            <!--<field name="name">CFC</field>-->
+            <!--<field name="code">CFC</field>-->
+            <!--<field name="parent_id" ref="False"/>-->
+        <!--</record>-->
+
+        <record id="hr_payroll.TRANCHEIRPP" model="hr.salary.rule.category">
+            <field name="name">Tranche d'impôt sur le revenu des personnes physiques IRPP</field>
+            <field name="code">TRANCHEIRPP</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+
+
+        <record id="hr_payroll.TRANCHETDL" model="hr.salary.rule.category">
+            <field name="name">Tranche TDL</field>
+            <field name="code">TRANCHETDL</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+
+        <record id="hr_payroll.TRANCHERAV" model="hr.salary.rule.category">
+            <field name="name">Tranche RAV</field>
+            <field name="code">TRANCHERAV</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+
+        <record id="hr_payroll.TRANCHECFC" model="hr.salary.rule.category">
+            <field name="name">Tranche CFC</field>
+            <field name="code">TRANCHECFC</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+
+        <record id="hr_payroll.TRANCHEPENV" model="hr.salary.rule.category">
+            <field name="name">Tranche Pension vieillesse</field>
+            <field name="code">TRANCHEPENV</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+
+        <record id="hr_payroll.TRANCHEPANC" model="hr.salary.rule.category">
+            <field name="name">Tranche Prime ancienneté</field>
+            <field name="code">TRANCHEPANC</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+
+        <!-- HR SALARY RULES-->
+
+        <record id="hr_payroll.hr_rule_basic" model="hr.salary.rule">
+            <field name="name">Salaire de base</field>
+            <field name="code">BASE</field>
+            <field name="sequence">1</field>
+            <field name="note">Salaire de base </field>
+        </record>
+
+        <record id="hr_payroll.hr_rule_brut" model="hr.salary.rule">
+            <field name="name">Salaire Brut</field>
+            <field name="code">BRUT</field>
+            <field name="sequence">1000</field>
+            <field name="category_id" ref="hr_payroll.GROSS"/>
+             <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.BASE + categories.INDM + categories.PRIME + categories.FRAIS</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="note">la valeur du salaire Brut se base sur la somme du salaire de base, des frais, des indemnités et primes.</field>
+        </record>
+
+        <record id="hr_payroll.hr_rule_taxable" model="hr.salary.rule">
+            <field name="name">Salaire Brut taxable</field>
+            <field name="code">BRUT_TAXABLE</field>
+            <field name="sequence">1001</field>
+            <field name="category_id" ref="BRUT_TAXABLE"/>
+             <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.BASE + categories.INDM + categories.PRIME</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">la valeur du salaire Brut taxable se base sur la somme du salaire de base et des indemnités et primes.</field>
+        </record>
+
+        <record id="hr_rule_cotisable" model="hr.salary.rule">
+            <field name="name">Salaire brut cotisable</field>
+            <field name="code">BRUT_COTISABLE</field>
+            <field name="sequence">1002</field>
+            <field name="category_id" ref="BRUT_COTISABLE"/>
+             <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.BASE + categories.PRIME</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">la valeur du salaire Brut cotisable se base sur la somme du salaire de base et les primes.</field>
+        </record>
+
+        <record id="hr_rule_total_retenues" model="hr.salary.rule">
+            <field name="name">Total retenues</field>
+            <field name="sequence">3000</field>
+            <field name="category_id" ref="TRET"/>
+            <field name="code">RET</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="amount_python_compute">result = categories.CHARGES_TOTALES</field>
+            <field name="note">les retenues somment toutes les charges et les impots</field>
+        </record>
+
+        <!--<record id="hr_rule_total_impot" model="hr.salary.rule">-->
+            <!--<field name="name">Impôts</field>-->
+            <!--<field name="sequence">2000</field>-->
+            <!--<field name="category_id" ref="IMPOT"/>-->
+            <!--<field name="code">IMPOT</field>-->
+            <!--<field name="condition_select">none</field>-->
+            <!--<field name="amount_select">code</field>-->
+            <!--<field name="appears_on_payslip" eval="False"/>-->
+            <!--<field name="amount_python_compute">result = categories.IMPOT</field>-->
+            <!--<field name="note">Somme des impots</field>-->
+        <!--</record>-->
+
+        <record id="hr_payroll_rules_IRPP0" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHEIRPP"/>
+            <field name="name">IRPP0</field>
+            <field name="code">IRPP0</field>
+            <field name="sequence">1997</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (62000.00 - BRUT_TAXABLE) > 0 </field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">0</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">[0..62000[.</field>
+        </record>
+
+        <record id="hr_payroll_rules_IRPP1" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHEIRPP"/>
+            <field name="name">IRPP1</field>
+            <field name="code">IRPP1</field>
+            <field name="sequence">1997</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (310000.00 - BRUT_TAXABLE)  > 0 and  (BRUT_TAXABLE - 62000.00) >= 0 </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = round(((BRUT_TAXABLE * 0.7) - (BRUT_COTISABLE * 0.028) - 41667.00) * 0.1)</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">[62000..310000[.</field>
+        </record>
+
+        <record id="hr_payroll_rules_IRPP2" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHEIRPP"/>
+            <field name="name">IRPP2</field>
+            <field name="code">IRPP2</field>
+            <field name="sequence">1997</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (429000.00 - BRUT_TAXABLE)  > 0 and (BRUT_TAXABLE - 310000.00) >= 0 </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = round(16693.00 +(BRUT_TAXABLE - 310000.00) * 0.7 * 0.15)</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">[310000..429000[.</field>
+        </record>
+
+        <record id="hr_payroll_rules_IRPP3" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHEIRPP"/>
+            <field name="name">IRPP3</field>
+            <field name="code">IRPP3</field>
+            <field name="sequence">1997</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (667000.00 - BRUT_TAXABLE)  > 0  and (BRUT_TAXABLE - 429000.00) >= 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = round(29188.00 +(BRUT_TAXABLE - 429000.00) * 0.7 * 0.25)</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">[429000..667000[.</field>
+        </record>
+
+        <record id="hr_payroll_rules_IRPP4" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHEIRPP"/>
+            <field name="name">IRPP4</field>
+            <field name="code">IRPP4</field>
+            <field name="sequence">1997</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (BRUT_TAXABLE - 667000.00)  >= 0 </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = round(29188.00 +(BRUT_TAXABLE - 667000.00) * 0.7 * 0.35)</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">[667000..->[.</field>
+        </record>
+
+        <record id="hr_rule_IRPP" model="hr.salary.rule">
+            <field name="name">Impôt sur le Revenu des Personnes Physiques IRPP  </field>
+            <field name="sequence">1998</field>
+            <field name="category_id" ref="IMPOT"/>
+            <field name="code">IRPP</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.TRANCHEIRPP</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <!--<field name="note"></field>-->
+            <field eval="[(6, 0, [ref('hr_payroll_rules_IRPP0'),ref('hr_payroll_rules_IRPP1'), ref('hr_payroll_rules_IRPP2'),ref('hr_payroll_rules_IRPP3'), ref('hr_payroll_rules_IRPP4') ])]" name="rule_ids"/>
+        </record>
+
+        <record id="hr_rule_CAC_10_per_cent_IRPP" model="hr.salary.rule">
+            <field name="name">C.A.C 10% IRPP  </field>
+            <field name="sequence">1999</field>
+            <field name="category_id" ref="IMPOT"/>
+            <field name="code">CAC</field>
+            <field name="condition_select">none</field>
+             <field name="amount_select">percentage</field>
+            <field name="amount_percentage">10</field>
+            <field name="amount_percentage_base">categories.TRANCHEIRPP</field>
+            <!--<field name="amount_select">code</field>-->
+            <!--<field name="amount_python_compute">result = round(categories.TRANCHEIRPP * 0.1)</field>-->
+            <field name="appears_on_payslip" eval="True"/>
+            <!--<field name="note"></field>-->
+        </record>
+
+        <record id="hr_payroll_rules_TDL0" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
+            <field name="name">TDL0</field>
+            <field name="code">TDL0</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (62000.00 - contract.wage) > 0 </field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">0</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">[0..62000[.</field>
+        </record>
+
+        <record id="hr_payroll_rules_TDL1" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
+            <field name="name">TDL1</field>
+            <field name="code">TDL1</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (75000.00 - contract.wage) > 0  and (contract.wage - 62000.00) >= 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">250</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">[62000..75000[.</field>
+        </record>
+        <record id="hr_payroll_rules_TDL2" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
+            <field name="name">TDL2</field>
+            <field name="code">TDL2</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (100000.00 - contract.wage) >= 0 and (contract.wage - 75000) >= 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">500</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">[75000..100000].</field>
+        </record>
+        <record id="hr_payroll_rules_TDL3" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
+            <field name="name">TDL3</field>
+            <field name="code">TDL3</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (125000.00 - contract.wage) >= 0 and (contract.wage - 100000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">750</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]100000..125000]</field>
+        </record>
+        <record id="hr_payroll_rules_TDL4" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
+            <field name="name">TDL4</field>
+            <field name="code">TDL4</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (150000.00 - contract.wage) >= 0 and (contract.wage - 125000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">1000</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]125000..150000]</field>
+        </record>
+        <record id="hr_payroll_rules_TDL5" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
+            <field name="name">TDL5</field>
+            <field name="code">TDL5</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (200000.00 - contract.wage) >= 0 and (contract.wage - 150000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">1250</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]150000..200000]</field>
+        </record>
+        <record id="hr_payroll_rules_TDL6" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
+            <field name="name">TDL6</field>
+            <field name="code">TDL6</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (250000.00 - contract.wage) >= 0 and (contract.wage - 200000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">1500</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]200000..250000]</field>
+        </record>
+        <record id="hr_payroll_rules_TDL7" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
+            <field name="name">TDL7</field>
+            <field name="code">TDL7</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (300000.00 - contract.wage) >= 0 and (contract.wage - 250000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">2000</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]250000..300000]</field>
+        </record>
+        <record id="hr_payroll_rules_TDL8" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
+            <field name="name">TDL8</field>
+            <field name="code">TDL8</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (500000.00 - contract.wage) >= 0 and (contract.wage - 300000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">2250</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]300000..500000]</field>
+        </record>
+         <record id="hr_payroll_rules_TDL9" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
+            <field name="name">TDL9</field>
+            <field name="code">TDL9</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (contract.wage - 500000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">2500</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]500000..->]</field>
+        </record>
+
+        <record id="hr_rule_TDL" model="hr.salary.rule">
+            <field name="name">TDL </field>
+            <field name="sequence">1999</field>
+            <field name="category_id" ref="IMPOT"/>
+            <field name="code">TDL</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.TRANCHETDL</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field eval="[(6, 0, [ref('hr_payroll_rules_TDL0'),ref('hr_payroll_rules_TDL1'), ref('hr_payroll_rules_TDL2'),ref('hr_payroll_rules_TDL3'), ref('hr_payroll_rules_TDL4'), ref('hr_payroll_rules_TDL5'), ref('hr_payroll_rules_TDL6'), ref('hr_payroll_rules_TDL7'), ref('hr_payroll_rules_TDL8'), ref('hr_payroll_rules_TDL9') ])]" name="rule_ids"/>
+            <field name="note">Somme toutes les tranches TDL</field>
+        </record>
+
+        <record id="hr_payroll_rules_RAV0" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
+            <field name="name">RAV0</field>
+            <field name="code">RAV0</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (50000.00 - BRUT_TAXABLE) >= 0 </field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">0</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">[0..50000].</field>
+        </record>
+        <record id="hr_payroll_rules_RAV1" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
+            <field name="name">RAV1</field>
+            <field name="code">RAV1</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (100000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 50000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">750</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]50000..100000].</field>
+        </record>
+        <record id="hr_payroll_rules_RAV2" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
+            <field name="name">RAV2</field>
+            <field name="code">RAV2</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (200000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 100000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">1950</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]100000..200000].</field>
+        </record>
+        <record id="hr_payroll_rules_RAV3" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
+            <field name="name">RAV3</field>
+            <field name="code">RAV3</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (300000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 200000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">3250</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]200000..300000].</field>
+        </record>
+        <record id="hr_payroll_rules_RAV4" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
+            <field name="name">RAV4</field>
+            <field name="code">RAV4</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (400000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 300000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">4550</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]300000..400000].</field>
+        </record>
+        <record id="hr_payroll_rules_RAV5" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
+            <field name="name">RAV5</field>
+            <field name="code">RAV5</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (500000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 400000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">5850</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]400000..500000].</field>
+        </record>
+        <record id="hr_payroll_rules_RAV6" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
+            <field name="name">RAV6</field>
+            <field name="code">RAV6</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (600000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 500000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">7150</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]500000..600000].</field>
+        </record>
+        <record id="hr_payroll_rules_RAV7" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
+            <field name="name">RAV7</field>
+            <field name="code">RAV7</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (700000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 600000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">8450</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]600000..700000].</field>
+        </record>
+        <record id="hr_payroll_rules_RAV8" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
+            <field name="name">RAV8</field>
+            <field name="code">RAV8</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (800000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 700000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">9750</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]700000..800000].</field>
+        </record>
+        <record id="hr_payroll_rules_RAV9" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
+            <field name="name">RAV9</field>
+            <field name="code">RAV9</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (900000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 800000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">11050</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]800000..900000].</field>
+        </record>
+        <record id="hr_payroll_rules_RAV10" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
+            <field name="name">RAV10</field>
+            <field name="code">RAV10</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (1000000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 900000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">12350</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]900000..1000000].</field>
+        </record>
+        <record id="hr_payroll_rules_RAV11" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
+            <field name="name">RAV11</field>
+            <field name="code">RAV11</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (BRUT_TAXABLE - 1000000.00) > 0</field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">13000</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]1000000..->[.</field>
+        </record>
+
+        <record id="hr_rule_RAV" model="hr.salary.rule">
+            <field name="name">RAV</field>
+            <field name="sequence">1999</field>
+            <field name="category_id" ref="IMPOT"/>
+            <field name="code">RAV</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = round(categories.TRANCHERAV)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field eval="[(6, 0, [ref('hr_payroll_rules_RAV0'),ref('hr_payroll_rules_RAV1'), ref('hr_payroll_rules_RAV2'),ref('hr_payroll_rules_RAV3'), ref('hr_payroll_rules_RAV4'), ref('hr_payroll_rules_RAV5'), ref('hr_payroll_rules_RAV6'), ref('hr_payroll_rules_RAV7'), ref('hr_payroll_rules_RAV8'), ref('hr_payroll_rules_RAV9'), ref('hr_payroll_rules_RAV10'), ref('hr_payroll_rules_RAV11') ])]" name="rule_ids"/>
+            <field name="note">Somme toutes les tranches RAV</field>
+        </record>
+
+        <record id="hr_payroll_rules_CFC0" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHECFC"/>
+            <field name="name">CFC0</field>
+            <field name="code">CFC0</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (62000.00 - BRUT_TAXABLE) > 0 </field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">0</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">[0..62000[.</field>
+        </record>
+        <record id="hr_payroll_rules_CFC1" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHECFC"/>
+            <field name="name">CFC1</field>
+            <field name="code">CFC1</field>
+            <field name="sequence">1998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (BRUT_TAXABLE - 62000.00) >= 0 </field>
+            <field name="amount_select">code</field>
+             <field name="amount_python_compute">result=BRUT_TAXABLE</field>
+            <!--<field name="amount_select">percentage</field>-->
+            <!--<field name="amount_percentage">1</field>-->
+            <!--<field name="amount_percentage_base">BRUT_TAXABLE</field>-->
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">[62000..->[.</field>
+        </record>
+
+        <record id="hr_rule_CFC" model="hr.salary.rule">
+            <field name="name">CFC</field>
+            <field name="sequence">1999</field>
+            <field name="category_id" ref="IMPOT"/>
+            <field name="code">CFC</field>
+            <field name="condition_select">none</field>
+            <!--<field name="amount_select">code</field>-->
+            <!--<field name="amount_python_compute">result = round(categories.TRANCHECFC)</field>-->
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage">1</field>
+            <field name="amount_percentage_base">categories.TRANCHECFC</field>
+
+            <field name="appears_on_payslip" eval="True"/>
+            <field eval="[(6, 0, [ref('hr_payroll_rules_CFC0'),ref('hr_payroll_rules_CFC1')])]" name="rule_ids"/>
+            <field name="note">Somme toutes les tranches CFC</field>
+        </record>
+
+        <record id="hr_payroll_rules_PENV0" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHEPENV"/>
+            <field name="name">PENV0</field>
+            <field name="code">PENV0</field>
+            <field name="sequence">2998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (750000.00 - BRUT_COTISABLE) >= 0 </field>
+            <!--<field name="amount_select">percentage</field>-->
+            <!--<field name="amount_percentage">4.2</field>-->
+            <!--<field name="amount_percentage_base">BRUT_COTISABLE</field>-->
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = BRUT_COTISABLE</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">[0..750000].</field>
+        </record>
+        <record id="hr_payroll_rules_PENV1" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHEPENV"/>
+            <field name="name">PENV1</field>
+            <field name="code">PENV1</field>
+            <field name="sequence">2998</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (BRUT_TAXABLE - 750000.00) > 0 </field>
+            <!--<field name="amount_select">percentage</field>-->
+            <!--<field name="amount_percentage">4.2</field>-->
+            <!--<field name="amount_percentage_base">750000.00</field>-->
+            <field name="amount_select">fix</field>
+            <field name="amount_fix">750000.00</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]750000..->[.</field>
+        </record>
+
+        <record id="hr_rule_PENV" model="hr.salary.rule">
+            <field name="name">Pension Vieillesse</field>
+            <field name="sequence">2999</field>
+            <field name="category_id" ref="CHARGES"/>
+            <field name="code">PENV</field>
+            <field name="condition_select">none</field>
+            <!--<field name="amount_select">code</field>-->
+            <!--<field name="amount_python_compute">result = categories.TRANCHEPENV</field>-->
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage">4.2</field>
+            <field name="amount_percentage_base">categories.TRANCHEPENV</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="note">Somme toutes les tranches PENV</field>
+            <field eval="[(6, 0, [ref('hr_payroll_rules_PENV0'),ref('hr_payroll_rules_PENV1') ])]" name="rule_ids"/>
+        </record>
+
+        <record id="hr_rule_AVANSAL" model="hr.salary.rule">
+            <field name="name">Avance sur salaire</field>
+            <field name="sequence">2999</field>
+            <field name="category_id" ref="CHARGES"/>
+            <field name="code">AVANSAL</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">fix</field>
+            <field name="amount_fix">0.0</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="note">Avance sur salaire</field>
+        </record>
+
+        <record id="hr_rule_REMBC" model="hr.salary.rule">
+            <field name="name">Remboursement crédit</field>
+            <field name="sequence">2999</field>
+            <field name="category_id" ref="CHARGES"/>
+            <field name="code">REMBC</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">fix</field>
+            <field name="amount_fix">0.0</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="note">Remboursement crédit</field>
+        </record>
+
+        <record id="hr_payroll.hr_rule_net" model="hr.salary.rule">
+            <field name="name">Net</field>
+            <field name="sequence">100000</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="amount_python_compute">result = round(BRUT - categories.CHARGES_TOTALES)</field>
+            <field name="note">Salaire Net qui est le salaire Brut - toutes les retenues et impots </field>
+        </record>
+
+        <record id="hr_payroll_rules_PANC0" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHEPANC"/>
+            <field name="name">PANC0</field>
+            <field name="code">PANC0</field>
+            <field name="sequence">6</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = (2 - contract.seniority) > 0 </field>
+            <field name="amount_select">fix</field>
+             <field name="amount_fix">0</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">[0..2[.</field>
+        </record>
+
+        <record id="hr_payroll_rules_PANC1" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHEPANC"/>
+            <field name="name">PANC1</field>
+            <field name="code">PANC1</field>
+            <field name="sequence">6</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.seniority == 2 </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = round(contract.wage * 0.04) </field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">{2}.</field>
+        </record>
+        <record id="hr_payroll_rules_PANC2" model="hr.salary.rule">
+            <field name="category_id" ref="hr_payroll.TRANCHEPANC"/>
+            <field name="name">PANC2</field>
+            <field name="code">PANC2</field>
+            <field name="sequence">6</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.seniority > 2 </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = round(contract.wage * 0.04 * contract.seniority)</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">]2..->].</field>
+        </record>
+
+        <record id="hr_rule_PANC" model="hr.salary.rule">
+            <field name="name">Prime d'ancienneté</field>
+            <field name="sequence">6</field>
+            <field name="category_id" ref="PRIME"/>
+            <field name="code">PANC</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.TRANCHEPANC</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field eval="[(6, 0, [ref('hr_payroll_rules_PANC0'),ref('hr_payroll_rules_PANC1'), ref('hr_payroll_rules_PANC2')])]" name="rule_ids"/>
+            <field name="note">Prime d'ancienneté</field>
+        </record>
+
+        <record id="hr_rule_PRIMRESP" model="hr.salary.rule">
+            <field name="name">Prime de responsabilité</field>
+            <field name="sequence">6</field>
+            <field name="category_id" ref="PRIME"/>
+            <field name="code">PRIMRESP</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">fix</field>
+            <field name="amount_fix">0.0</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="note">Prime de responsabilité</field>
+        </record>
+        <record id="hr_rule_PRIMRISQ" model="hr.salary.rule">
+            <field name="name">Prime de risque</field>
+            <field name="sequence">6</field>
+            <field name="category_id" ref="PRIME"/>
+            <field name="code">PRIMRISQ</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">fix</field>
+            <field name="amount_fix">0.0</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="note">Prime de risque</field>
+        </record>
+        <record id="hr_rule_PRIMREND" model="hr.salary.rule">
+            <field name="name">Prime de rendement</field>
+            <field name="sequence">6</field>
+            <field name="category_id" ref="PRIME"/>
+            <field name="code">PRIMREND</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">fix</field>
+            <field name="amount_fix">0.0</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="note">Prime de rendement</field>
+        </record>
+        <record id="hr_rule_PRIMPROJ" model="hr.salary.rule">
+            <field name="name">Prime de projet</field>
+            <field name="sequence">6</field>
+            <field name="category_id" ref="PRIME"/>
+            <field name="code">PRIMPROJ</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">fix</field>
+            <field name="amount_fix">0.0</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="note">Prime de projet</field>
+        </record>
+
+        <record id="hr_rule_FRAISREP" model="hr.salary.rule">
+            <field name="name">Frais de représentation</field>
+            <field name="sequence">7</field>
+            <field name="category_id" ref="FRAIS"/>
+            <field name="code">FRAISREP</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">fix</field>
+            <field name="amount_fix">0.0</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="note">Frais de représentation</field>
+        </record>
+
+        <record id="hr_rule_INDMTANSP" model="hr.salary.rule">
+            <field name="name">Indemnite de transport</field>
+            <field name="sequence">5</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="code">INDMTANSP</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">fix</field>
+            <field name="amount_fix">20000.00</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="note">Indemnité de transport</field>
+        </record>
+
+        <!-- Salary Structure -->
+
+
+	 <record id="hr_payroll_salary_structure_base" model="hr.payroll.structure">
+        <field name="code">integc-base-structure</field>
+        <field name="name">Structure des employés de INTEGC</field>
+        <field eval="[(6, 0, [ref('hr_payroll.hr_rule_brut'),ref('hr_rule_INDMTANSP'), ref('hr_rule_FRAISREP'), ref('hr_payroll.hr_rule_basic'), ref('hr_payroll.hr_rule_taxable'), ref('hr_rule_cotisable'), ref('hr_rule_total_retenues'), ref('hr_payroll_rules_IRPP0'), ref('hr_payroll_rules_IRPP1'), ref('hr_payroll_rules_IRPP2'), ref('hr_payroll_rules_IRPP3'), ref('hr_payroll_rules_IRPP4'), ref('hr_rule_IRPP') , ref('hr_rule_CAC_10_per_cent_IRPP'), ref('hr_payroll_rules_TDL0'), ref('hr_payroll_rules_TDL1'), ref('hr_payroll_rules_TDL2'), ref('hr_payroll_rules_TDL3'), ref('hr_payroll_rules_TDL4'), ref('hr_payroll_rules_TDL5'), ref('hr_payroll_rules_TDL6'), ref('hr_payroll_rules_TDL7'), ref('hr_payroll_rules_TDL8'), ref('hr_rule_TDL'), ref('hr_payroll_rules_RAV0'), ref('hr_payroll_rules_RAV1'), ref('hr_payroll_rules_RAV2'), ref('hr_payroll_rules_RAV3'), ref('hr_payroll_rules_RAV4'),ref('hr_payroll_rules_RAV5'), ref('hr_payroll_rules_RAV6'), ref('hr_payroll_rules_RAV7'), ref('hr_payroll_rules_RAV8'), ref('hr_payroll_rules_RAV9'), ref('hr_payroll_rules_RAV10'), ref('hr_payroll_rules_RAV11'), ref('hr_rule_RAV'), ref('hr_payroll_rules_CFC0'), ref('hr_payroll_rules_CFC1'), ref('hr_rule_CFC'), ref('hr_payroll_rules_PENV0'), ref('hr_payroll_rules_PENV1'), ref('hr_rule_PENV'), ref('hr_rule_AVANSAL'), ref('hr_rule_REMBC'), ref('hr_payroll.hr_rule_net'), ref('hr_payroll_rules_PANC0'), ref('hr_payroll_rules_PANC1'), ref('hr_payroll_rules_PANC2'), ref('hr_rule_PANC'), ref('hr_rule_PRIMRESP'), ref('hr_rule_PRIMRISQ'), ref('hr_rule_PRIMREND'), ref('hr_rule_PRIMPROJ')])]" name="rule_ids"/>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="parent_id" ref="hr_payroll.structure_base"/>
+		<field name="note">Structure salariale des employés integc.</field>
+    </record>
+
+        <!-- Category -->
+        <!--<record model="integc.hr.category" id="category_val1" forcecreate="True">-->
+            <!--<field name="name">1</field>-->
+            <!--<field name="note">Categorie 1</field>-->
+            <!--<field name="structure_id" ref="hr_payroll_salary_structure_base" />-->
+        <!--</record>-->
+        <!--<record model="integc.hr.category" id="category_val2" forcecreate="True">-->
+            <!--<field name="name">2</field>-->
+            <!--<field name="note">Categorie 2</field>-->
+            <!--<field name="structure_id" ref="hr_payroll_salary_structure_base" />-->
+        <!--</record>-->
+        <!--<record model="integc.hr.category" id="category_val3" forcecreate="True">-->
+            <!--<field name="name">3</field>-->
+            <!--<field name="note">Categorie 3</field>-->
+            <!--<field name="structure_id" ref="hr_payroll_salary_structure_base" />-->
+        <!--</record>-->
+        <!--<record model="integc.hr.category" id="category_val4" forcecreate="True">-->
+            <!--<field name="name">4</field>-->
+            <!--<field name="note">Categorie 4</field>-->
+            <!--<field name="structure_id" ref="hr_payroll_salary_structure_base" />-->
+        <!--</record>-->
+        <!--<record model="integc.hr.category" id="category_val5" forcecreate="True">-->
+            <!--<field name="name">5</field>-->
+            <!--<field name="note">Categorie 5</field>-->
+            <!--<field name="structure_id" ref="hr_payroll_salary_structure_base" />-->
+        <!--</record>-->
+        <!--<record model="integc.hr.category" id="category_val6" forcecreate="True">-->
+            <!--<field name="name">6</field>-->
+            <!--<field name="note">Categorie 6</field>-->
+            <!--<field name="structure_id" ref="hr_payroll_salary_structure_base" />-->
+        <!--</record>-->
+        <!--<record model="integc.hr.category" id="category_val7" forcecreate="True">-->
+            <!--<field name="name">7</field>-->
+            <!--<field name="note">Categorie 7</field>-->
+            <!--<field name="structure_id" ref="hr_payroll_salary_structure_base" />-->
+        <!--</record>-->
+        <!--<record model="integc.hr.category" id="category_val8" forcecreate="True">-->
+            <!--<field name="name">8</field>-->
+            <!--<field name="note">Categorie 8</field>-->
+            <!--<field name="structure_id" ref="hr_payroll_salary_structure_base" />-->
+        <!--</record>-->
+        <!--<record model="integc.hr.category" id="category_val9" forcecreate="True">-->
+            <!--<field name="name">9</field>-->
+            <!--<field name="note">Categorie 9</field>-->
+            <!--<field name="structure_id" ref="hr_payroll_salary_structure_base" />-->
+        <!--</record>-->
+        <!--<record model="integc.hr.category" id="category_val10" forcecreate="True">-->
+            <!--<field name="name">10</field>-->
+            <!--<field name="note">Categorie 10</field>-->
+            <!--<field name="structure_id" ref="hr_payroll_salary_structure_base" />-->
+        <!--</record>-->
+        <!--<record model="integc.hr.category" id="category_val11" forcecreate="True">-->
+            <!--<field name="name">11</field>-->
+            <!--<field name="note">Categorie 11</field>-->
+            <!--<field name="structure_id" ref="hr_payroll_salary_structure_base" />-->
+        <!--</record>-->
+        <!--<record model="integc.hr.category" id="category_val12" forcecreate="True">-->
+            <!--<field name="name">12</field>-->
+            <!--<field name="note">Categorie 12</field>-->
+            <!--<field name="structure_id" ref="hr_payroll_salary_structure_base" />-->
+        <!--</record>-->
+
+        <!--&lt;!&ndash; Grade &ndash;&gt;-->
+        <!--<record model="integc.hr.grade" id="grade_val1" forcecreate="True">-->
+            <!--<field name="name">A</field>-->
+        <!--</record>-->
+        <!--<record model="integc.hr.grade" id="grade_val2" forcecreate="True">-->
+            <!--<field name="name">B</field>-->
+        <!--</record>-->
+        <!--<record model="integc.hr.grade" id="grade_val3" forcecreate="True">-->
+            <!--<field name="name">C</field>-->
+        <!--</record>-->
+        <!--<record model="integc.hr.grade" id="grade_val4" forcecreate="True">-->
+            <!--<field name="name">D</field>-->
+        <!--</record>-->
+        <!--<record model="integc.hr.grade" id="grade_val5" forcecreate="True">-->
+            <!--<field name="name">E</field>-->
+        <!--</record>-->
+        <!--<record model="integc.hr.grade" id="grade_val6" forcecreate="True">-->
+            <!--<field name="name">F</field>-->
+        <!--</record>-->
+    </data>
+</openerp>
