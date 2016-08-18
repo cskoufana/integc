@@ -143,23 +143,162 @@
       <lineStyle kind="LINEABOVE" colorName="#000000" start="12,0" stop="12,0"/>
       <lineStyle kind="LINEBELOW" colorName="#000000" start="12,-1" stop="12,-1"/>
     </blockTableStyle>
+    <blockTableStyle id="Tableau7">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Tableau8">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,1" stop="1,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="1,1" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,2" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,2" stop="1,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="1,2" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,3" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,3" stop="1,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="1,3" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,4" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,4" stop="1,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="1,4" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Tableau5">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Tableau9">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="3,0" stop="3,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,1" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,1" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,1" stop="3,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="3,1" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,2" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,2" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,2" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,2" stop="3,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="3,2" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,3" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,3" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,3" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,3" stop="3,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="3,3" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,4" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,4" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,4" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,4" stop="3,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="3,4" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,5" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,5" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,5" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,5" stop="3,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="3,5" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,6" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,6" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,6" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,6" stop="3,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="3,6" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,7" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,7" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,7" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,7" stop="3,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="3,7" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+    </blockTableStyle>
     <initialize>
       <paraStyle name="all" alignment="justify"/>
     </initialize>
     <paraStyle name="P1" fontName="Helvetica" fontSize="6.0" leading="8" alignment="CENTER"/>
     <paraStyle name="P2" fontName="Helvetica" fontSize="6.0" leading="8" alignment="LEFT"/>
-    <paraStyle name="P3" fontName="Helvetica" fontSize="7.0" leading="9" alignment="LEFT"/>
-    <paraStyle name="P4" fontName="Helvetica" fontSize="6.0" leading="8" alignment="RIGHT"/>
-    <paraStyle name="P5" fontName="Helvetica" fontSize="6.0" leading="8" alignment="CENTER"/>
-    <paraStyle name="P6" rightIndent="-56.0" leftIndent="0.0" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
-    <paraStyle name="P7" rightIndent="0.0" leftIndent="0.0" fontName="Helvetica" fontSize="6.0" leading="8" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
-    <paraStyle name="P8" rightIndent="0.0" leftIndent="0.0" fontName="Helvetica" fontSize="6.0" leading="8" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
-    <paraStyle name="P9" rightIndent="0.0" leftIndent="0.0" fontName="Helvetica-Bold" fontSize="6.0" leading="8" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
-    <paraStyle name="P10" rightIndent="0.0" leftIndent="0.0" fontName="Helvetica-Bold" fontSize="6.0" leading="8" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
-    <paraStyle name="P11" rightIndent="-56.0" leftIndent="0.0" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
-    <paraStyle name="P12" fontName="Helvetica" fontSize="6.0" leading="8" alignment="LEFT"/>
-    <paraStyle name="P13" fontName="Helvetica-Bold" fontSize="6.0" leading="8" alignment="LEFT"/>
-    <paraStyle name="P14" fontName="Helvetica" fontSize="6.0" leading="8" alignment="LEFT"/>
+    <paraStyle name="P3" fontName="Helvetica" fontSize="6.0" leading="8" alignment="RIGHT"/>
+    <paraStyle name="P4" fontName="Helvetica-Bold" fontSize="6.0" leading="8" alignment="LEFT"/>
+    <paraStyle name="P5" fontName="Helvetica-Bold" fontSize="6.0" leading="8"/>
+    <paraStyle name="P6" fontName="Helvetica-Bold" fontSize="6.0" leading="8" alignment="CENTER"/>
+    <paraStyle name="P7" fontName="Helvetica" fontSize="6.0" leading="8" alignment="LEFT"/>
+    <paraStyle name="P8" fontName="Helvetica" fontSize="6.0" leading="8"/>
+    <paraStyle name="P9" fontName="Helvetica" fontSize="6.0" leading="8"/>
+    <paraStyle name="P10" fontName="Helvetica" fontSize="6.0" leading="8" alignment="RIGHT"/>
+    <paraStyle name="P11" fontName="Helvetica" fontSize="6.0" leading="8" alignment="LEFT"/>
+    <paraStyle name="P12" fontName="Helvetica" fontSize="7.0" leading="9" alignment="LEFT"/>
+    <paraStyle name="P13" fontName="Helvetica" fontSize="6.0" leading="8" alignment="RIGHT"/>
+    <paraStyle name="P14" fontName="Helvetica" fontSize="6.0" leading="8" alignment="CENTER"/>
+    <paraStyle name="P15" rightIndent="-56.0" leftIndent="0.0" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P16" rightIndent="0.0" leftIndent="0.0" fontName="Helvetica" fontSize="6.0" leading="8" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P17" rightIndent="0.0" leftIndent="0.0" fontName="Helvetica" fontSize="6.0" leading="8" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P18" rightIndent="0.0" leftIndent="0.0" fontName="Helvetica-Bold" fontSize="6.0" leading="8" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P19" fontName="Helvetica-Bold" fontSize="6.0" leading="8" alignment="LEFT"/>
+    <paraStyle name="P20" fontName="Helvetica-Bold" fontSize="6.0" leading="8" alignment="CENTER"/>
+    <paraStyle name="P21" fontName="Helvetica-Bold" fontSize="6.0" leading="8" alignment="RIGHT"/>
+    <paraStyle name="P22" fontName="Helvetica-Bold" fontSize="6.0" leading="8"/>
+    <paraStyle name="P23" fontName="Helvetica" fontSize="6.0" leading="8"/>
+    <paraStyle name="P24" fontName="Helvetica" fontSize="6.0" leading="8" alignment="LEFT"/>
+    <paraStyle name="P25" fontName="Helvetica" fontSize="6.0" leading="8" alignment="RIGHT"/>
+    <paraStyle name="P26" fontName="Helvetica" fontSize="6.0" leading="8" alignment="RIGHT"/>
+    <paraStyle name="P27" fontName="Helvetica" fontSize="6.0" leading="8"/>
+    <paraStyle name="P28" fontName="Helvetica" fontSize="6.0" leading="8" alignment="RIGHT"/>
+    <paraStyle name="P29" fontName="Helvetica-Bold" fontSize="6.0" leading="8" alignment="RIGHT"/>
+    <paraStyle name="P30" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT"/>
     <paraStyle name="Standard" fontName="Helvetica"/>
     <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
     <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
@@ -443,7 +582,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
       </tr>
     </blockTable>
    <spacer length="6" />
-    <blockTable colWidths="87.0,49.0,54.0,50.0,49.0,50.0,53.0,50.0,51.0,53.0,50.0,49.0,50.0,47.0,44.0" style="Tableau1">
+    <blockTable colWidths="87.0,49.0,54.0,50.0,49.0,50.0,53.0,51.0,51.0,54.0,49.0,49.0,50.0,46.0,44.0" style="Tableau1">
       <tr>
         <td>
           <para style="P1">NOM</para>
@@ -493,8 +632,8 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
       </tr>
     </blockTable>
     <blockTable colWidths="87.0,49.0,54.0,50.0,49.0,50.0,53.0,51.0,51.0,54.0,49.0,49.0,50.0,46.0,44.0" style="Tableau2">
-      <tr>
       [[repeatIn(objects,'o','blockTable')]]
+      <tr>
         <td>
           <para style="P3">[[o.employee_id.name or '']]</para>
         </td>
@@ -585,6 +724,203 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
         </td>
         <td>
           <para style="P5">[[ formatLang (get_total_amount_by_category(objects, 'NET'),digits=0) ]]</para>
+        </td>
+      </tr>
+    </blockTable>
+        <para style="Standard">
+      <font color="white"> </font>
+    </para>
+
+    <spacer length="6" />
+    <blockTable colWidths="288.0,497.0" style="Tableau7">
+      <tr>
+        <td>
+          <blockTable colWidths="189.0,77.0" style="Tableau8">
+            <tr>
+              <td>
+                <para style="P4">PRESTATIONS SOCIALES</para>
+              </td>
+              <td>
+                <para style="P20">MONTANTS</para>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <para style="P9">PRESTATIONS FAMILIALES</para>
+              </td>
+              <td>
+                <para style="P13">[[ formatLang (round(get_total_amount_by_category(objects, 'BRUT_COTISABLE') * 0.07), digits=0) ]]</para>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <para style="P9">PENSION VIELLESSE</para>
+              </td>
+              <td>
+                <para style="P13">[[ formatLang (round(get_total_amount_by_category(objects, 'BRUT_COTISABLE') * 0.084), digits=0) ]]</para>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <para style="P9">ACCIDENT DE TRAVAIL</para>
+              </td>
+              <td>
+                <para style="P13">[[ formatLang (round(get_total_amount_by_category(objects, 'BRUT_COTISABLE') * 0.0175), digits=0) ]]</para>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <para style="P5">TOTAL</para>
+              </td>
+              <td>
+                <para style="P29">[[ formatLang (round(get_total_amount_by_category(objects, 'BRUT_COTISABLE') * 0.07) + round(get_total_amount_by_category(objects, 'BRUT_COTISABLE') * 0.084) + round(get_total_amount_by_category(objects, 'BRUT_COTISABLE') * 0.0175), digits=0) ]]</para>
+              </td>
+            </tr>
+          </blockTable>
+          <para style="terp_default_8">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <blockTable colWidths="492.0" style="Tableau5">
+            <tr>
+              <td>
+                <para style="P20">CHARGES ET RETENUES SALARIALE</para>
+              </td>
+            </tr>
+          </blockTable>
+          <para style="terp_default_8">
+            <font color="white"> </font>
+          </para>
+          <blockTable colWidths="123.0,123.0,123.0,123.0" style="Tableau9">
+            <tr>
+              <td>
+                <para style="P9">
+                  <font color="white"> </font>
+                </para>
+              </td>
+              <td>
+                <para style="P11">PPAL</para>
+              </td>
+              <td>
+                <para style="P11">CAC</para>
+              </td>
+              <td>
+                <para style="P11">MONTANT</para>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <para style="P9">IRPP</para>
+              </td>
+              <td>
+                <para style="P3">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'IRPP'), digits=0)]]</para>
+              </td>
+              <td>
+                <para style="P3">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'CAC'), digits=0)]]</para>
+              </td>
+              <td>
+                <para style="P3">[[formatLang(round(get_total_payslip_amount_by_rule_code(objects,'CAC') + get_total_payslip_amount_by_rule_code(objects,'IRPP')), digits=0)]]</para>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <para style="P9">CFC PATRONALE</para>
+              </td>
+              <td>
+                <para style="P13">[[ formatLang (round(get_total_amount_by_category(objects, 'BRUT') * 0.015), digits=0) ]]</para>
+              </td>
+              <td>
+                <para style="P10">
+                  <font color="white"> </font>
+                </para>
+              </td>
+              <td>
+                <para style="P13">[[ formatLang (round(get_total_amount_by_category(objects, 'BRUT') * 0.015), digits=0) ]]</para>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <para style="P8">CFC SALARIAL</para>
+              </td>
+              <td>
+                <para style="P3">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'CFC'), digits=0)]]</para>
+              </td>
+              <td>
+                <para style="P10">
+                  <font color="white"> </font>
+                </para>
+              </td>
+              <td>
+                <para style="P3">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'CFC'), digits=0)]]</para>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <para style="P8">FNE</para>
+              </td>
+              <td>
+                <para style="P13">[[ formatLang (round(get_total_amount_by_category(objects, 'BRUT') * 0.01), digits=0) ]]</para>
+              </td>
+              <td>
+                <para style="P10">
+                  <font color="white"> </font>
+                </para>
+              </td>
+              <td>
+                <para style="P13">[[ formatLang (round(get_total_amount_by_category(objects, 'BRUT') * 0.01), digits=0) ]]</para>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <para style="P8">TDL</para>
+              </td>
+              <td>
+                <para style="P3">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'TDL'), digits=0)]]</para>
+              </td>
+              <td>
+                <para style="P10">
+                  <font color="white"> </font>
+                </para>
+              </td>
+              <td>
+                <para style="P3">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'TDL'), digits=0)]]</para>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <para style="P8">RAV</para>
+              </td>
+              <td>
+                <para style="P3">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'RAV'), digits=0)]]</para>
+              </td>
+              <td>
+                <para style="P10">
+                  <font color="white"> </font>
+                </para>
+              </td>
+              <td>
+                <para style="P3">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'RAV'), digits=0)]]</para>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <para style="P8">TOTAL</para>
+              </td>
+              <td>
+                <para style="P21">[[formatLang(round(get_total_payslip_amount_by_rule_code(objects,'IRPP') + get_total_payslip_amount_by_rule_code(objects,'CFC') + round(get_total_amount_by_category(objects, 'BRUT') * 0.01) + get_total_payslip_amount_by_rule_code(objects,'TDL') + get_total_payslip_amount_by_rule_code(objects,'RAV')), digits=0)]]</para>
+              </td>
+              <td>
+                <para style="P21">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'CAC'), digits=0)]]</para>
+              </td>
+              <td>
+                <para style="P21">[[formatLang(round(get_total_payslip_amount_by_rule_code(objects,'IRPP') + get_total_payslip_amount_by_rule_code(objects,'IRPP') + get_total_payslip_amount_by_rule_code(objects,'CFC') + round(get_total_amount_by_category(objects, 'BRUT') * 0.01) + get_total_payslip_amount_by_rule_code(objects,'TDL') + get_total_payslip_amount_by_rule_code(objects,'RAV')), digits=0)]]</para>
+              </td>
+            </tr>
+          </blockTable>
+          <para style="terp_default_8">
+            <font color="white"> </font>
+          </para>
         </td>
       </tr>
     </blockTable>
