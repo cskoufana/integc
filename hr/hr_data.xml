@@ -57,6 +57,30 @@
             <field name="parent_id" eval="CHARGES_TOTALES"/>
         </record>
 
+        <record id="CHARGE_PATRONALE" model="hr.salary.rule.category">
+            <field name="name">Charge patronale</field>
+            <field name="code">CHARGE_PATRONALE</field>
+            <field name="parent_id" eval="False" />
+        </record>
+
+        <record id="TOTAL_CHARGE_PATRONALE" model="hr.salary.rule.category">
+            <field name="name">Total charge patronale</field>
+            <field name="code">TOTAL_CHARGE_PATRONALE</field>
+            <field name="parent_id" eval="False" />
+        </record>
+
+        <record id="PRESTATION_SOCIALE" model="hr.salary.rule.category">
+            <field name="name">Prestation sociale</field>
+            <field name="code">PRESTATION_SOCIALE</field>
+            <field name="parent_id" eval="False" />
+        </record>
+
+        <record id="TOTAL_PRESTATION_SOCIALE" model="hr.salary.rule.category">
+            <field name="name">Total prestation sociale</field>
+            <field name="code">TOTAL_PRESTATION_SOCIALE</field>
+            <field name="parent_id" eval="False" />
+        </record>
+
         <record id="RETENUES" model="hr.salary.rule.category">
             <field name="name">Retenues</field>
             <field name="code">RETENUES</field>
@@ -844,13 +868,97 @@
             <field name="note">Indemnité de transport</field>
         </record>
 
+        <record id="hr_rule_cfc_patronal" model="hr.salary.rule">
+            <field name="category_id" ref="CHARGE_PATRONALE"/>
+            <field name="name">CFC Patronal</field>
+            <field name="code">CFC_PATRONAL</field>
+            <field name="sequence">2000</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage">1.5</field>
+            <field name="amount_percentage_base">categories.BRUT</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">CFC Patronale : SAL. BRUT * 0.015</field>
+        </record>
+
+        <record id="hr_rule_fne" model="hr.salary.rule">
+            <field name="category_id" ref="CHARGE_PATRONALE"/>
+            <field name="name">FNE</field>
+            <field name="code">FNE</field>
+            <field name="sequence">2000</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage">1</field>
+            <field name="amount_percentage_base">categories.BRUT</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">FNE = SAL. BRUT * 0.01</field>
+        </record>
+
+        <record id="hr_rule_charges_patronales" model="hr.salary.rule">
+            <field name="category_id" ref="TOTAL_CHARGE_PATRONALE"/>
+            <field name="name">Charges patronales</field>
+            <field name="code">CHARGE_PATRONALE</field>
+            <field name="sequence">2001</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = round(categories.CHARGE_PATRONALE + IRPP + RAV + CFC + TDL)</field>
+            <field name="note">charges patronales totales : Somme(IRPP, RAV, CFC, TDL, CFC PATRONAL, FNE)  </field>
+            <field name="appears_on_payslip" eval="False"/>
+        </record>
+
+        <record id="hr_rule_prestation_familiale" model="hr.salary.rule">
+            <field name="category_id" ref="PRESTATION_SOCIALE"/>
+            <field name="name">Prestation familiale</field>
+            <field name="code">PREST_FAM</field>
+            <field name="sequence">2000</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage">7</field>
+            <field name="amount_percentage_base">categories.BRUT_COTISABLE</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">Prestation familiale : BRUT_COTISABLE * 0.07</field>
+        </record>
+
+        <record id="hr_rule_pension_viellesse" model="hr.salary.rule">
+            <field name="category_id" ref="PRESTATION_SOCIALE"/>
+            <field name="name">Pension viellesse</field>
+            <field name="code">PENS_VIEL</field>
+            <field name="sequence">2000</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage">8.4</field>
+            <field name="amount_percentage_base">categories.BRUT_COTISABLE</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">Pension viellesse : BRUT_COTISABLE * 0.084</field>
+        </record>
+
+        <record id="hr_rule_accident_travail" model="hr.salary.rule">
+            <field name="category_id" ref="PRESTATION_SOCIALE"/>
+            <field name="name">Accident de travail</field>
+            <field name="code">ACC_TRAV</field>
+            <field name="sequence">2000</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage">1.75</field>
+            <field name="amount_percentage_base">categories.BRUT_COTISABLE</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="note">Accident de travail : BRUT_COTISABLE * 0.0175</field>
+        </record>
+
+        <record id="hr_rule_prestation_sociale" model="hr.salary.rule">
+            <field name="category_id" ref="TOTAL_PRESTATION_SOCIALE"/>
+            <field name="name">Prestations sociales</field>
+            <field name="code">PRESTATION_SOCIALE</field>
+            <field name="sequence">2001</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = round(categories.PRESTATION_SOCIALE)</field>
+            <field name="note">Somme des prestations sociales  </field>
+            <field name="appears_on_payslip" eval="False"/>
+        </record>
+
+
+
         <!-- Salary Structure -->
 
 
 	 <record id="hr_payroll_salary_structure_base" model="hr.payroll.structure">
         <field name="code">integc-base-structure</field>
         <field name="name">Structure des employés de INTEGC</field>
-        <field eval="[(6, 0, [ref('hr_payroll.hr_rule_brut'),ref('hr_rule_INDMTANSP'), ref('hr_rule_FRAISREP'), ref('hr_payroll.hr_rule_basic'), ref('hr_payroll.hr_rule_taxable'), ref('hr_rule_cotisable'), ref('hr_rule_total_retenues'), ref('hr_payroll_rules_IRPP0'), ref('hr_payroll_rules_IRPP1'), ref('hr_payroll_rules_IRPP2'), ref('hr_payroll_rules_IRPP3'), ref('hr_payroll_rules_IRPP4'), ref('hr_rule_IRPP') , ref('hr_rule_CAC_10_per_cent_IRPP'), ref('hr_payroll_rules_TDL0'), ref('hr_payroll_rules_TDL1'), ref('hr_payroll_rules_TDL2'), ref('hr_payroll_rules_TDL3'), ref('hr_payroll_rules_TDL4'), ref('hr_payroll_rules_TDL5'), ref('hr_payroll_rules_TDL6'), ref('hr_payroll_rules_TDL7'), ref('hr_payroll_rules_TDL8'), ref('hr_rule_TDL'), ref('hr_payroll_rules_RAV0'), ref('hr_payroll_rules_RAV1'), ref('hr_payroll_rules_RAV2'), ref('hr_payroll_rules_RAV3'), ref('hr_payroll_rules_RAV4'),ref('hr_payroll_rules_RAV5'), ref('hr_payroll_rules_RAV6'), ref('hr_payroll_rules_RAV7'), ref('hr_payroll_rules_RAV8'), ref('hr_payroll_rules_RAV9'), ref('hr_payroll_rules_RAV10'), ref('hr_payroll_rules_RAV11'), ref('hr_rule_RAV'), ref('hr_payroll_rules_CFC0'), ref('hr_payroll_rules_CFC1'), ref('hr_rule_CFC'), ref('hr_payroll_rules_PENV0'), ref('hr_payroll_rules_PENV1'), ref('hr_rule_PENV'), ref('hr_rule_AVANSAL'), ref('hr_rule_REMBC'), ref('hr_payroll.hr_rule_net'), ref('hr_payroll_rules_PANC0'), ref('hr_payroll_rules_PANC1'), ref('hr_payroll_rules_PANC2'), ref('hr_rule_PANC'), ref('hr_rule_PRIMRESP'), ref('hr_rule_PRIMRISQ'), ref('hr_rule_PRIMREND'), ref('hr_rule_PRIMPROJ')])]" name="rule_ids"/>
+        <field eval="[(6, 0, [ref('hr_rule_prestation_familiale'),ref('hr_rule_cfc_patronal'),ref('hr_rule_fne'),ref('hr_rule_charges_patronales'),ref('hr_rule_pension_viellesse'),ref('hr_rule_accident_travail'),ref('hr_rule_prestation_sociale'),ref('hr_payroll.hr_rule_brut'),ref('hr_rule_INDMTANSP'), ref('hr_rule_FRAISREP'), ref('hr_payroll.hr_rule_basic'), ref('hr_payroll.hr_rule_taxable'), ref('hr_rule_cotisable'), ref('hr_rule_total_retenues'), ref('hr_payroll_rules_IRPP0'), ref('hr_payroll_rules_IRPP1'), ref('hr_payroll_rules_IRPP2'), ref('hr_payroll_rules_IRPP3'), ref('hr_payroll_rules_IRPP4'), ref('hr_rule_IRPP') , ref('hr_rule_CAC_10_per_cent_IRPP'), ref('hr_payroll_rules_TDL0'), ref('hr_payroll_rules_TDL1'), ref('hr_payroll_rules_TDL2'), ref('hr_payroll_rules_TDL3'), ref('hr_payroll_rules_TDL4'), ref('hr_payroll_rules_TDL5'), ref('hr_payroll_rules_TDL6'), ref('hr_payroll_rules_TDL7'), ref('hr_payroll_rules_TDL8'), ref('hr_rule_TDL'), ref('hr_payroll_rules_RAV0'), ref('hr_payroll_rules_RAV1'), ref('hr_payroll_rules_RAV2'), ref('hr_payroll_rules_RAV3'), ref('hr_payroll_rules_RAV4'),ref('hr_payroll_rules_RAV5'), ref('hr_payroll_rules_RAV6'), ref('hr_payroll_rules_RAV7'), ref('hr_payroll_rules_RAV8'), ref('hr_payroll_rules_RAV9'), ref('hr_payroll_rules_RAV10'), ref('hr_payroll_rules_RAV11'), ref('hr_rule_RAV'), ref('hr_payroll_rules_CFC0'), ref('hr_payroll_rules_CFC1'), ref('hr_rule_CFC'), ref('hr_payroll_rules_PENV0'), ref('hr_payroll_rules_PENV1'), ref('hr_rule_PENV'), ref('hr_rule_AVANSAL'), ref('hr_rule_REMBC'), ref('hr_payroll.hr_rule_net'), ref('hr_payroll_rules_PANC0'), ref('hr_payroll_rules_PANC1'), ref('hr_payroll_rules_PANC2'), ref('hr_rule_PANC'), ref('hr_rule_PRIMRESP'), ref('hr_rule_PRIMRISQ'), ref('hr_rule_PRIMREND'), ref('hr_rule_PRIMPROJ')])]" name="rule_ids"/>
         <field name="company_id" ref="base.main_company"/>
         <field name="parent_id" ref="hr_payroll.structure_base"/>
 		<field name="note">Structure salariale des employés integc.</field>

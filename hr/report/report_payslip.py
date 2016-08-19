@@ -34,6 +34,7 @@ class payslip_report(report_sxw.rml_parse):
             'get_total_by_rule_category': self.get_total_by_rule_category,
         })
 
+
     def get_payslip_lines(self, obj):
         payslip_line = self.pool.get('hr.payslip.line')
         res = []

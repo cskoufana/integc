@@ -209,3 +209,233 @@ class hr_contract(osv.osv):
 hr_contract()
 
 
+class hr_payslip_run(osv.osv):
+    _name='hr.payslip.run'
+    _inherit = 'hr.payslip.run'
+
+    def _get_irpp(self, cr, uid, ids, field_name, args, context=None):
+        res = {}
+        for record in self.browse(cr, uid, ids, context=context):
+            res[record.id] = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'IRPP')
+        return res
+
+    def _set_irpp(self, cr, uid, id, name, value, args=None, context=None):
+        if value:
+            for record in self.browse(cr, uid, id, context=context):
+                res = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'IRPP')
+                self.write(cr, uid, id, {'irpp': res})
+                return res
+
+    def _get_cac(self, cr, uid, ids, field_name, args, context=None):
+        res = {}
+        for record in self.browse(cr, uid, ids, context=context):
+            res[record.id] = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'CAC')
+        return res
+
+    def _set_cac(self, cr, uid, id, name, value, args=None, context=None):
+        if value:
+            for record in self.browse(cr, uid, id, context=context):
+                res = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'CAC')
+                self.write(cr, uid, id, {'cac': res})
+                return res
+
+    def _get_cfc_patronal(self, cr, uid, ids, field_name, args, context=None):
+        res = {}
+        for record in self.browse(cr, uid, ids, context=context):
+            res[record.id] = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'CFC_PATRONAL')
+        return res
+
+    def _set_cfc_patronal(self, cr, uid, id, name, value, args=None, context=None):
+        if value:
+            for record in self.browse(cr, uid, id, context=context):
+                res = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'CFC_PATRONAL')
+                self.write(cr, uid, id, {'cfc_patronal': res})
+                return res
+
+    def _get_cfc_salarial(self, cr, uid, ids, field_name, args, context=None):
+        res = {}
+        for record in self.browse(cr, uid, ids, context=context):
+            res[record.id] = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'CFC')
+        return res
+
+    def _set_cfc_salarial(self, cr, uid, id, name, value, args=None, context=None):
+        if value:
+            for record in self.browse(cr, uid, id, context=context):
+                res = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'CFC')
+                self.write(cr, uid, id, {'cfc_salarial': res})
+                return res
+
+    def _get_fne(self, cr, uid, ids, field_name, args, context=None):
+        res = {}
+        for record in self.browse(cr, uid, ids, context=context):
+            res[record.id] = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'FNE')
+        return res
+
+    def _set_fne(self, cr, uid, id, name, value, args=None, context=None):
+        if value:
+            for record in self.browse(cr, uid, id, context=context):
+                res = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'FNE')
+                self.write(cr, uid, id, {'fne': res})
+                return res
+
+    def _get_tdl(self, cr, uid, ids, field_name, args, context=None):
+        res = {}
+        for record in self.browse(cr, uid, ids, context=context):
+            res[record.id] = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'TDL')
+        return res
+
+    def _set_tdl(self, cr, uid, id, name, value, args=None, context=None):
+        if value:
+            for record in self.browse(cr, uid, id, context=context):
+                res = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'TDL')
+                self.write(cr, uid, id, {'tdl': res})
+                return res
+
+    def _get_rav(self, cr, uid, ids, field_name, args, context=None):
+        res = {}
+        for record in self.browse(cr, uid, ids, context=context):
+            res[record.id] = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'RAV')
+        return res
+
+    def _set_rav(self, cr, uid, id, name, value, args=None, context=None):
+        if value:
+            for record in self.browse(cr, uid, id, context=context):
+                res = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'RAV')
+                self.write(cr, uid, id, {'rav': res})
+                return res
+
+    def _get_prest_fam(self, cr, uid, ids, field_name, args, context=None):
+        res = {}
+        for record in self.browse(cr, uid, ids, context=context):
+            res[record.id] = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'PREST_FAM')
+        return res
+
+    def _set_prest_fam(self, cr, uid, id, name, value, args=None, context=None):
+        if value:
+            for record in self.browse(cr, uid, id, context=context):
+                res = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'PREST_FAM')
+                self.write(cr, uid, id, {'prest_fam': res})
+                return res
+
+    def _get_pens_viel(self, cr, uid, ids, field_name, args, context=None):
+        res = {}
+        for record in self.browse(cr, uid, ids, context=context):
+            res[record.id] = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'PENS_VIEL')
+        return res
+
+    def _set_pens_viel(self, cr, uid, id, name, value, args=None, context=None):
+        if value:
+            for record in self.browse(cr, uid, id, context=context):
+                res = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'PENS_VIEL')
+                self.write(cr, uid, id, {'pens_viel': res})
+                return res
+
+    def _get_acc_trav(self, cr, uid, ids, field_name, args, context=None):
+        res = {}
+        for record in self.browse(cr, uid, ids, context=context):
+            res[record.id] = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'ACC_TRAV')
+        return res
+
+    def _set_acc_trav(self, cr, uid, id, name, value, args=None, context=None):
+        if value:
+            for record in self.browse(cr, uid, id, context=context):
+                res = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'ACC_TRAV')
+                self.write(cr, uid, id, {'acc_trav': res})
+                return res
+
+    def _get_charge_patronale(self, cr, uid, ids, field_name, args, context=None):
+        res = {}
+        for record in self.browse(cr, uid, ids, context=context):
+            #res[record.id] = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'CHARGE_PATRONALE')
+            res[record.id] = record.irpp + record.cac + record.fne + record.tdl + record.rav + record.cfc_salarial + record.cfc_patronal
+        return res
+
+    def _set_charge_patronale(self, cr, uid, id, name, value, args=None, context=None):
+        if value:
+            for record in self.browse(cr, uid, id, context=context):
+                #res = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'CHARGE_PATRONALE')
+                res = record.irpp + record.cac + record.fne + record.tdl + record.rav + record.cfc_salarial + record.cfc_patronal
+                self.write(cr, uid, id, {'total_charge_patronale': res})
+                return res
+
+    def _get_charge_sociale(self, cr, uid, ids, field_name, args, context=None):
+        res = {}
+        for record in self.browse(cr, uid, ids, context=context):
+            res[record.id] = self.get_total_amount_by_category(cr, uid, record.slip_ids, 'PRESTATION_SOCIALE')
+        return res
+
+    def _set_charge_sociale(self, cr, uid, id, name, value, args=None, context=None):
+        if value:
+            for record in self.browse(cr, uid, id, context=context):
+                res = self.get_total_amount_by_category(cr, uid, record.slip_ids, 'PRESTATION_SOCIALE')
+                self.write(cr, uid, id, {'total_charge_sociale': res})
+                return res
+
+    def _default_company(self, cr, uid, context=None):
+        user = self.pool.get('res.users').browse(cr, uid, uid, context=context)
+        if user.company_id:
+            return user.company_id.id
+        return self.pool.get('res.company').search(cr, uid, [('parent_id', '=', False)])[0]
+
+    _columns = {
+        'company_id': fields.many2one('res.company', 'Company', required=True),
+        'irpp': fields.function(_get_irpp, fnct_inv=_set_irpp, string='IRPP', type='float'),
+        'cac': fields.function(_get_cac, fnct_inv=_set_cac, string='CAC', type='float'),
+        'cfc_patronal': fields.function(_get_cfc_patronal, fnct_inv=_set_cfc_patronal, string='CFC Patronal', type='float'),
+        'cfc_salarial': fields.function(_get_cfc_salarial, fnct_inv=_set_cfc_salarial, string='CFC Salarial', type='float'),
+        'fne': fields.function(_get_fne, fnct_inv=_set_fne, string='FNE', type='float'),
+        'tdl': fields.function(_get_tdl, fnct_inv=_set_tdl, string='TDL', type='float'),
+        'rav': fields.function(_get_rav, fnct_inv=_set_rav, string='RAV', type='float'),
+        'prest_fam': fields.function(_get_prest_fam, fnct_inv=_set_prest_fam, string='Prestations Familiales', type='float'),
+        'pens_viel': fields.function(_get_pens_viel, fnct_inv=_set_pens_viel, string='Pension Vieillesse', type='float'),
+        'acc_trav': fields.function(_get_acc_trav, fnct_inv=_set_acc_trav, string='Accident de travail', type='float'),
+        'total_charge_patronale': fields.function(_get_charge_patronale, fnct_inv=_set_charge_patronale, string='Total Charges Patronales', type='float'),
+        'total_charge_sociale': fields.function(_get_charge_sociale, fnct_inv=_set_charge_sociale, string='Total Charges Sociales', type='float'),
+    }
+
+    _defaults = {
+        'company_id': _default_company,
+    }
+
+    def get_payslip_amount_by_rule_code(self, cr, uid, obj, code):
+        res = 0
+        #logging.warning('%s - %s' % (obj, code))
+        payslip_line = self.pool.get('hr.payslip.line')
+        line_ids = payslip_line.search(cr, uid, [('slip_id', '=', obj.id),('code', '=', code )])
+        for line in payslip_line.browse(cr, uid, line_ids):
+            #logging.warning(line)
+            res += line.total
+        return res
+
+    def get_total_payslip_amount_by_rule_code(self, cr, uid, objects, code):
+        res = 0
+        for obj in objects:
+            res += self.get_payslip_amount_by_rule_code(cr, uid, obj, code)
+        #logging.warning('%s - %s' % (code, res))
+        return res
+
+    def get_total_by_rule_category(self, cr, uid, obj, code):
+        payslip_line = self.pool.get('hr.payslip.line')
+        rule_cate_obj = self.pool.get('hr.salary.rule.category')
+
+        cate_ids = rule_cate_obj.search(cr, uid, [('code', '=', code)])
+
+        category_total = 0
+        #logging.warning(code)
+        if cate_ids:
+            line_ids = payslip_line.search(cr, uid, [('slip_id', '=', obj.id),('category_id.id', '=', cate_ids[0] )])
+            for line in payslip_line.browse(cr, uid, line_ids):
+                #logging.warning('%s - %s' % (code, line.total))
+                category_total += line.total
+
+        return category_total
+
+    def get_total_amount_by_category(self, cr, uid, objects, code):
+        res = 0
+        for obj in objects:
+            res += self.get_total_by_rule_category(cr, uid, obj, code)
+        return res
+
+hr_payslip_run()
+
+

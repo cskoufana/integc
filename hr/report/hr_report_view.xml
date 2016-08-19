@@ -12,14 +12,23 @@
                 rml="integc/hr/report/report_payslip.rml"
                 string="Buletin de paie"/>
 
+        <!--<report-->
+                <!--auto="False"-->
+                <!--header="False"-->
+                <!--id="integc.payslip_journal"-->
+                <!--model="hr.payslip.journal"-->
+                <!--name="integc.payslip.journal"-->
+                <!--rml="integc/hr/report/report_journal.rml"-->
+                <!--string="Journal de paie"/>-->
+
         <report
                 auto="False"
                 header="False"
-                id="integc.payslip_journal"
-                model="hr.payslip.journal"
-                name="integc.payslip.journal"
-                rml="integc/hr/report/report_journal.rml"
-                string="Journal de paie"/>
+                id="payslip_run"
+                model="hr.payslip.run"
+                name="payslip.run"
+                rml="integc/hr/report/report_payslip_run.rml"
+                string="Lot de bulletin"/>
 
     </data>
 </openerp>

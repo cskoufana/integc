@@ -30,7 +30,7 @@
             <field name="target">new</field>
         </record>
 
-        <menuitem action="action_hr_payslip_journal" id="menu_hr_payslip_journal" parent="hr_payroll.menu_hr_root_payroll"/>
+        <!--<menuitem action="action_hr_payslip_journal" id="menu_hr_payslip_journal" parent="hr_payroll.menu_hr_root_payroll"/>-->
 
     </data>
 </openerp>

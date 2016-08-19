@@ -211,5 +211,37 @@
             </field>
         </record>
 
+        <!--hr payslip run-->
+        <record model="ir.ui.view" id="hr_payslip_run_form_inherit">
+            <field name="name">Payslip Run</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="/form/sheet/group" position="after">
+                    <!--<xpath expr="//field[@name='credit_note']" position="after">-->
+                        <group>
+                            <group string="Prestations sociales" col="2">
+                                <field name="prest_fam" readonly="1"/>
+                                <field name="pens_viel" readonly="1"/>
+                                <field name="acc_trav" readonly="1"/>
+                                <field name="total_charge_sociale" readonly="1"/>
+                            </group>
+                            <group string="Charges et retenues salariales" col="2">
+                                <field name="irpp" readonly="1" />
+                                <field name="cac" readonly="1" />
+                                <field name="cfc_patronal" readonly="1" />
+                                <field name="cfc_salarial" readonly="1" />
+                                <field name="fne" readonly="1" />
+                                <field name="tdl" readonly="1" />
+                                <field name="rav" readonly="1" />
+                                <field name="total_charge_patronale" readonly="1" />
+                            </group>
+                        </group>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
     </data>
 </openerp>
