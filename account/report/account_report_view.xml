@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <report
+                auto="False"
+                header="False"
+                id="integc.payslip"
+                model="hr.payslip"
+                name="integc.payslip"
+                rml="integc/hr/report/report_payslip.rml"
+                string="Buletin de paie"/>
+
+        <!--<report-->
+                <!--auto="False"-->
+                <!--header="False"-->
+                <!--id="integc.payslip_journal"-->
+                <!--model="hr.payslip.journal"-->
+                <!--name="integc.payslip.journal"-->
+                <!--rml="integc/hr/report/report_journal.rml"-->
+                <!--string="Journal de paie"/>-->
+
+        <report
+                auto="False"
+                header="False"
+                id="payslip_run"
+                model="hr.payslip.run"
+                name="payslip.run"
+                rml="integc/hr/report/report_payslip_run.rml"
+                string="Lot de bulletin"/>
+
+    </data>
+</openerp>
