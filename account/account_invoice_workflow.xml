@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--Activity-->
+        <record id="act_approval1" model="workflow.activity">
+            <field name="wkf_id" ref="account.wkf"/>
+            <field name="name">approval1</field>
+            <field name="action">write({'state':'approval1'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_approval3" model="workflow.activity">
+            <field name="wkf_id" ref="account.wkf"/>
+            <field name="name">approval3</field>
+            <field name="action">write({'state':'approval3'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_approval4" model="workflow.activity">
+            <field name="wkf_id" ref="account.wkf"/>
+            <field name="name">approval4</field>
+            <field name="action">write({'state':'approval4'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_approval5" model="workflow.activity">
+            <field name="wkf_id" ref="account.wkf"/>
+            <field name="name">approval5</field>
+            <field name="action">write({'state':'approval5'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_approval6" model="workflow.activity">
+            <field name="wkf_id" ref="account.wkf"/>
+            <field name="name">approval6</field>
+            <field name="action">write({'state':'approval6'})</field>
+            <field name="kind">function</field>
+        </record>
+
+        <!--Transition-->
+        <record id="nt1" model="workflow.transition">
+            <field name="act_from" ref="account.act_draft"/>
+            <field name="act_to" ref="act_approval1"/>
+            <field name="signal">confirm_approve</field>
+        </record>
+        <record id="nt2" model="workflow.transition">
+            <field name="act_from" ref="act_approval1"/>
+            <field name="act_to" ref="account.act_cancel"/>
+            <field name="signal">invoice_cancel</field>
+        </record>
+        <record id="nt3" model="workflow.transition">
+            <field name="act_from" ref="act_approval1"/>
+            <field name="act_to" ref="account.act_open"/>
+            <field name="signal">invoice_open</field>
+        </record>
+        <record id="nt4" model="workflow.transition">
+            <field name="act_from" ref="account.act_open"/>
+            <field name="act_to" ref="act_approval3"/>
+            <field name="signal">confirm_approve</field>
+        </record>
+        <record id="nt5" model="workflow.transition">
+            <field name="act_from" ref="act_approval3"/>
+            <field name="act_to" ref="account.act_cancel"/>
+            <field name="signal">invoice_cancel</field>
+        </record>
+        <record id="nt6" model="workflow.transition">
+            <field name="act_from" ref="act_approval3"/>
+            <field name="act_to" ref="act_approval4"/>
+            <field name="signal">confirm_approve</field>
+        </record>
+        <record id="nt7" model="workflow.transition">
+            <field name="act_from" ref="act_approval4"/>
+            <field name="act_to" ref="account.act_cancel"/>
+            <field name="signal">invoice_cancel</field>
+        </record>
+        <record id="nt8" model="workflow.transition">
+            <field name="act_from" ref="act_approval4"/>
+            <field name="act_to" ref="act_approval5"/>
+            <field name="signal">confirm_approve</field>
+        </record>
+        <record id="nt9" model="workflow.transition">
+            <field name="act_from" ref="act_approval5"/>
+            <field name="act_to" ref="account.act_cancel"/>
+            <field name="signal">invoice_cancel</field>
+        </record>
+        <record id="nt10" model="workflow.transition">
+            <field name="act_from" ref="act_approval5"/>
+            <field name="act_to" ref="act_approval6"/>
+            <field name="signal">confirm_approve</field>
+        </record>
+        <record id="nt11" model="workflow.transition">
+            <field name="act_from" ref="act_approval6"/>
+            <field name="act_to" ref="account.act_cancel"/>
+            <field name="signal">invoice_cancel</field>
+        </record>
+        <record id="nt12" model="workflow.transition">
+            <field name="act_from" ref="act_approval6"/>
+            <field name="act_to" ref="account.act_paid"/>
+            <field name="trigger_model">account.move.line</field>
+            <field name="trigger_expr_id">move_line_id_payment_get()</field>
+            <field name="condition">test_paid()</field>
+        </record>
+        <!--<record id="nt13" model="workflow.transition">
+            <field name="act_from" ref="account.act_open" />
+            <field name="act_to" ref="account.act_paid" />
+            <field name="signal">confirm_paid</field>
+        </record>-->
+
+
+    </data>
+</openerp>

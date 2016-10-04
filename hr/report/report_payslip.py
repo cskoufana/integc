@@ -25,6 +25,7 @@ from openerp.report import report_sxw
 from openerp.tools import amount_to_text_en
 import logging
 
+
 class payslip_report(report_sxw.rml_parse):
 
     def __init__(self, cr, uid, name, context):
@@ -33,7 +34,6 @@ class payslip_report(report_sxw.rml_parse):
             'get_payslip_lines': self.get_payslip_lines,
             'get_total_by_rule_category': self.get_total_by_rule_category,
         })
-
 
     def get_payslip_lines(self, obj):
         payslip_line = self.pool.get('hr.payslip.line')
@@ -51,7 +51,6 @@ class payslip_report(report_sxw.rml_parse):
         rule_cate_obj = self.pool.get('hr.salary.rule.category')
 
         cate_ids = rule_cate_obj.search(self.cr, self.uid, [('code', '=', code)])
-
         category_total = 0
         #logging.warning(code)
         if cate_ids:
@@ -59,7 +58,6 @@ class payslip_report(report_sxw.rml_parse):
             for line in payslip_line.browse(self.cr, self.uid, line_ids):
                 #logging.warning('%s - %s' % (code, line.total))
                 category_total += line.total
-
         return category_total
 
 report_sxw.report_sxw('report.integc.payslip', 'hr.payslip', 'integc/hr/report/report_payslip.rml', parser=payslip_report)

@@ -1,6 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data noupdate="0">
+           <record id="view_integc_hr_partner_contract_form" model="ir.ui.view">
+            <field name="name">integc.hr.partner.contract.form</field>
+            <field name="model">integc.hr.partner.contract</field>
+            <field name="arch" type="xml">
+                <form string="Partner contract" version="7.0">
+                    <header>
+                        <button name="btn_validate_contract" states="draft" string="Validate" class="oe_highlight" />
+                        <button name="btn_approve_contract" states="waiting_director" string="Approve" class="oe_highlight"  />
+                        <button name="btn_approve_contract" states="waiting_partner" string="Approve" class="oe_highlight"  />
+                        <button name="btn_complete_contract" states="progress" string="Complete"  />
+                        <button name="btn_cancel_contract" states="waiting_director,waiting_partner,progress" string="Cancel"  />
+                        <button name="create_invoice" states="progress" class="oe_highlight" string="Create Invoice" type="object"/>
+                        <!--<button name="create_invoice" states="progress"  attrs="{'invisible': [('invoice_exists', '=', False)]}" string="Create Invoice"/>-->
 
+                        <field name="state" widget="statusbar" statusbar_visible="draft,waiting_director,waiting_partner,progress,completed"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <label string="Contract Number "/>
+                            <field name="name" class="oe_inline" readonly="1"/>
+                        </h1>
+                    </div>
+
+                    <div class="oe_right oe_button_box">
+                          <button name="action_view_invoice" string="View Invoice" type="object" class="oe_highlight"
+                            attrs="{'invisible': [('invoice_exists', '=', False)]}" groups="base.group_user"/>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id" on_change="onchange_partner_id(partner_id, context)" domain="[('customer','=',True)]" context="{'search_default_customer':1, 'show_address': 1}" options='{"always_reload": True}'
+                                    attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                            <field name="type" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="partner_invoice_id" groups="sale.group_delivery_invoice_address" context="{'default_type':'invoice'}"/>
+                            <field name="partner_shipping_id" groups="sale.group_delivery_invoice_address" context="{'default_type':'delivery'}"/>
+                            <field name="analytic_account_id" context="{'partner_id':partner_invoice_id, 'default_pricelist_id':pricelist_id, 'default_name':name, 'default_type': 'contract'}" domain="[('type','in',['view','normal','contract'])]"
+                                    attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field domain="[('type','=','sale')]" name="pricelist_id" groups="product.group_sale_pricelist" on_change="onchange_pricelist_id(pricelist_id,contract_line)"/>
+                            <field name="project_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        </group>
+                        <group>
+                            <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <label for="date_start" string="Duration"/>
+                            <div>
+                                <field name="date_start" class="oe_inline" attrs="{'readonly': [('state', '!=', 'draft')]}"/> - <field name="date_end" class="oe_inline" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </div>
+                            <field name="company_id" groups="base.group_no_one" widget="selection" readonly="1" invisible="1"/>
+                            <field name="invoicing_mode" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="date_signature" readonly="1" />
+                            <field name="date_confirm" readonly="1" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Services">
+                            <field name="contract_line" attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                <tree string="Services Lines" editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="state" invisible="1"/>
+                                    <field name="th_weight" invisible="1"/>
+                                    <field name="product_id"
+                                        context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom}"
+                                        groups="base.group_user"
+                                        on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, False, product_uos_qty, False, name, parent.partner_id, False, True, parent.date, False, parent.fiscal_position, False, context)"/>
+                                    <field name="name"/>
+                                    <field name="product_uom_qty"
+                                        context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom}"
+                                        on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date, False, parent.fiscal_position, True, context)"/>
+                                    <field name="product_uom"
+                                        on_change="product_uom_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date, context)"
+                                        groups="product.group_uom" options='{"no_open": True}'/>
+                                    <field name="product_uos_qty" groups="product.group_uos" invisible="1"/>
+                                    <field name="product_uos" string="UoS" groups="product.group_uos" invisible="1"/>
+                                    <field name="tax_id" widget="many2many_tags" domain="[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]"/>
+                                    <field name="price_unit"/>
+                                    <field name="discount" groups="sale.group_discount_per_so_line"/>
+                                    <field name="price_subtotal"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                                <field name="amount_untaxed" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <field name="amount_tax" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <div class="oe_subtotal_footer_separator oe_inline">
+                                    <label for="amount_total" />
+                                    <button name="button_dummy"
+                                        states="draft,sent" string="(update)" type="object" class="oe_edit_only oe_link"/>
+                                </div>
+                                <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <field name="balance" readonly="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <!--<field name="balance" readonly="1" />-->
+                            </group>
+                            <div class="oe_clear"/>
+                            <field name="note" class="oe_inline" placeholder="Terms and conditions..."/>
+                        </page>
+                        <page string="Other Information" groups="base.group_user">
+                            <group>
+                                <group name="sales_person" groups="base.group_user">
+                                    <field name="user_id" readonly="1"/>
+                                </group>
+                                <group name="sale_pay">
+                                    <field name="fiscal_position" widget="selection" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                </group>
+                                <group>
+                                    <field name="invoiced"/>
+                                    <field name="invoice_exists" invisible="1"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_integc_hr_partner_contract_tree" model="ir.ui.view">
+            <field name="name">integc.hr.partner.contract.tree</field>
+            <field name="model">integc.hr.partner.contract</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="Partner Contract" colors="grey:state=='cancel';">
+                    <!--<field name="message_unread" invisible="1"/>-->
+                    <field name="name" string="Contract Number"/>
+                    <field name="date"/>
+                    <field name="partner_id"/>
+                    <field name="date_start" />
+                    <field name="date_end" />
+                    <field name="user_id"/>
+                    <field name="amount_total" sum="Total Tax Included"/>
+                    <!--<field name="balance"/>-->
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+    <record id="view_integc_hr_partner_contract_act" model="ir.actions.act_window">
+            <field name="name">Partner Contract</field>
+            <field name="res_model">integc.hr.partner.contract</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="menu_view_integc_hr_partner_contract_view"
+            action="view_integc_hr_partner_contract_act"
+            parent="hr.menu_hr_main"
+            sequence="10"
+        />
     </data>
 </openerp>

@@ -6,29 +6,11 @@
         <report
                 auto="False"
                 header="False"
-                id="integc.payslip"
-                model="hr.payslip"
-                name="integc.payslip"
-                rml="integc/hr/report/report_payslip.rml"
-                string="Buletin de paie"/>
-
-        <!--<report-->
-                <!--auto="False"-->
-                <!--header="False"-->
-                <!--id="integc.payslip_journal"-->
-                <!--model="hr.payslip.journal"-->
-                <!--name="integc.payslip.journal"-->
-                <!--rml="integc/hr/report/report_journal.rml"-->
-                <!--string="Journal de paie"/>-->
-
-        <report
-                auto="False"
-                header="False"
-                id="payslip_run"
-                model="hr.payslip.run"
-                name="payslip.run"
-                rml="integc/hr/report/report_payslip_run.rml"
-                string="Lot de bulletin"/>
+                id="transfer_order"
+                model="account.voucher"
+                name="transfer.order"
+                rml="integc/account/report/transfer_report.rml"
+                string="Ordre de virement"/>
 
     </data>
 </openerp>

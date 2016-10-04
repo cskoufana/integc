@@ -4,3 +4,4 @@
 import hr
 import wizard
 import report
+import partner_contract

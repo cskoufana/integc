@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data noupdate="0">
+        <record id="seq_type_integc_hr_partner_contract" model="ir.sequence.type">
+            <field name="name">Partner Contract</field>
+            <field name="code">integc.hr.partner.contract</field>
+        </record>
 
+        <record id="seq_integc_hr_partner_contract" model="ir.sequence">
+            <field name="name">Partner Contract</field>
+            <field name="code">integc.hr.partner.contract</field>
+            <field name="prefix">CP/%(year)s</field>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="seq_type_hr_contract" model="ir.sequence.type">
+            <field name="name">Contract</field>
+            <field name="code">hr.contract</field>
+        </record>
+
+        <record id="seq_hr_contract" model="ir.sequence">
+            <field name="name">Contract</field>
+            <field name="code">hr.contract</field>
+            <field name="prefix">CE/%(year)s</field>
+            <field name="padding">6</field>
+        </record>
     </data>
 </openerp>
