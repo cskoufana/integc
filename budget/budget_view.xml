@@ -52,6 +52,9 @@
 			<field name="arch" type="xml">
 				<xpath expr="//field[@name='analytic_account_id']" position="after">
 					<field name="frequency" />
+					<field name="allocation_id" />
+					<filter name="charges" string="Charges" domain="[('allocation_id','ilike','charges')]" help="Lignes representant les charges"/>
+					<filter name="produits" string="Produits" domain="[('allocation_id','ilike','produits')]" help="Lignes representant la production"/>
 				</xpath>
 			</field>
 		</record>

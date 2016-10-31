@@ -43,10 +43,9 @@ def strToDatetime(strdate):
     return datetime.strptime(strdate, DEFAULT_SERVER_DATE_FORMAT)
 
 
-class budget_line(orm.Model):
+class integc_budget_line(orm.Model):
 
     """ Budget line.
-
     A budget version line NOT linked to an analytic account """
 
     _inherit = "budget.line"
@@ -155,8 +154,8 @@ class budget_line(orm.Model):
             }
         return res
     _columns = {
-        'frequency': fields.integer(
-            'F',required=True,group_operator="min"),
+        'frequency': fields.integer('F',required=True,group_operator="min"),
+        'allocation_id': fields.related('budget_item_id', 'allocation_id', type='many2one', relation='budget.allocation.type', string='Allocation',store=True),
         'paid_date': fields.date('Date paiement'),
         'theorical_amount': fields.function(
             _get_analytic_amount,
@@ -199,6 +198,63 @@ class budget_line(orm.Model):
                                            'date'], 10),
             }
         ),
+        'analytic_amount': fields.function(
+            _get_analytic_amount,
+            type='float',
+            precision=dp.get_precision('Account'),
+            multi='analytic',
+            string="In Analytic Amount's Currency",
+            store={
+                'budget.line': (lambda self, cr, uid, ids, c: ids,
+                                ['amount',
+                                 'date_start',
+                                 'date_stop',
+                                 'analytic_account_id',
+                                 'currency_id'], 10),
+                'account.analytic.line': (_fetch_budget_line_from_aal,
+                                          ['amount',
+                                           'unit_amount',
+                                           'date'], 10),
+            }
+        ),
+        'analytic_real_amount': fields.function(
+            _get_analytic_amount,
+            type='float',
+            precision=dp.get_precision('Account'),
+            multi='analytic',
+            string="Analytic Real Amount",
+            store={
+                'budget.line': (lambda self, cr, uid, ids, c: ids,
+                                ['amount',
+                                 'date_start',
+                                 'date_stop',
+                                 'analytic_account_id',
+                                 'currency_id'], 10),
+                'account.analytic.line': (_fetch_budget_line_from_aal,
+                                          ['amount',
+                                           'unit_amount',
+                                           'date'], 10),
+            }
+        ),
+        'analytic_diff_amount': fields.function(
+            _get_analytic_amount,
+            type='float',
+            precision=dp.get_precision('Account'),
+            multi='analytic',
+            string="Analytic Difference Amount",
+            store={
+                'budget.line': (lambda self, cr, uid, ids, c: ids,
+                                ['amount',
+                                 'date_start',
+                                 'date_stop',
+                                 'analytic_account_id',
+                                 'currency_id'], 10),
+                'account.analytic.line': (_fetch_budget_line_from_aal,
+                                          ['amount',
+                                           'unit_amount',
+                                           'date'], 10),
+            }
+        ),
         }
     _defaults = {
         'frequency': 1
@@ -207,7 +263,7 @@ class budget_line(orm.Model):
         
         if 'frequency' in fields:
             fields.remove('frequency')
-        res = super(budget_line, self).read_group(cr, uid, domain, fields, groupby, offset, limit=limit, context=context, orderby=orderby, lazy=lazy)
+        res = super(integc_budget_line, self).read_group(cr, uid, domain, fields, groupby, offset, limit=limit, context=context, orderby=orderby, lazy=lazy)
         if 'analytic_amount' in fields:
             for line in res:
                 if '__domain' in line:
