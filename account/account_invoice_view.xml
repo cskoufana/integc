@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--Account invoice-->
+        <record id="view_invoice_form_inherit1" model="ir.ui.view">
+            <field name="name">view.account.invoice.form.inherit1</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <!--<xpath expr="//button[@name='invoice_cancel']" position="replace">
+                        <button name="invoice_cancel" states="draft" string="Cancel Invoice" groups="base.group_no_one"/>
+                    </xpath>-->
+                    <xpath expr="//button[@name='invoice_open']" position="after">
+                        <!--<button name="invoice_open" states="approval1" string="Validate" class="oe_highlight" groups="base.group_user"/>-->
+                        <button name="invoice_validate" states="open0,open1,open2,open3,open4" string="Validate" class="oe_highlight" groups="account.group_account_invoice"/>
+
+                    </xpath>
+                    <xpath expr="//button[@name='invoice_print']" position="replace">
+                        <button name="invoice_print" string="Print" type="object" states="open0,open1,open2,open3,open4" groups="base.group_user"/>
+                    </xpath>
+                    <xpath expr="//field[@name='state']" position="replace">
+                        <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open,open1,open2,open3,open4,open5,paid" statusbar_colors='{"proforma":"blue","proforma2":"blue"}'/>
+                    </xpath>
+                    <notebook position="inside">
+                        <page string="Stages">
+                            <field name="stage_ids" readonly="0" >
+                                <tree>
+                                    <field name="name" />
+                                    <field name="date_start" />
+                                    <field name="delay" />
+                                    <field name="date_end" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_invoice_customer_1" model="ir.ui.view">
+            <field name="name">account.invoice.customer.pay</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account_voucher.view_invoice_customer"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='invoice_pay_customer']" position="replace">
+                      <button name="invoice_pay_customer" type="object" string="Register Payment"
+                        attrs="{'invisible': ['|', ('state','!=','open5'), ('sent','=',True)]}"/>
+                </xpath>
+                <xpath expr="//button[@name='invoice_pay_customer'][last()]" position="replace">
+                      <button name="invoice_pay_customer" type="object" string="Register Payment"
+                        attrs="{'invisible': ['|', ('state','!=','open5'), ('sent','=',False)]}" class="oe_highlight"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>

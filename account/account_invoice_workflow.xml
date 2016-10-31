@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--Activity-->
+        <record id="act_open1" model="workflow.activity">
+            <field name="wkf_id" ref="account.wkf"/>
+            <field name="name">open1</field>
+            <field name="action">action_open1()</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_open2" model="workflow.activity">
+            <field name="wkf_id" ref="account.wkf"/>
+            <field name="name">open2</field>
+            <field name="action">action_open2()</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_open3" model="workflow.activity">
+            <field name="wkf_id" ref="account.wkf"/>
+            <field name="name">open3</field>
+            <field name="action">action_open3()</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_open4" model="workflow.activity">
+            <field name="wkf_id" ref="account.wkf"/>
+            <field name="name">open4</field>
+            <field name="action">action_open4()</field>
+            <field name="kind">function</field>
+        </record>
+         <record id="act_open5" model="workflow.activity">
+            <field name="wkf_id" ref="account.wkf"/>
+            <field name="name">open5</field>
+            <field name="action">action_open5()</field>
+            <field name="kind">function</field>
+        </record>
+
+        <record id="act_open0" model="workflow.activity">
+            <field name="wkf_id" ref="wkf"/>
+            <field name="name">open0</field>
+            <field name="action">action_date_assign()
+action_move_create()
+action_number()
+invoice_validate()</field>
+            <field name="kind">function</field>
+        </record>
+
+
+        <!--Transition-->
+        <record id="nt1" model="workflow.transition">
+            <field name="act_from" ref="account.act_draft"/>
+            <field name="act_to" ref="act_open0"/>
+            <field name="signal">invoice_validate</field>
+        </record>
+
+        <record id="nt1" model="workflow.transition">
+            <field name="act_from" ref="account.act_open"/>
+            <field name="act_to" ref="act_open1"/>
+            <field name="signal">invoice_validate</field>
+        </record>
+
+        <record id="nt2" model="workflow.transition">
+            <field name="act_from" ref="act_open1"/>
+            <field name="act_to" ref="act_open2"/>
+            <field name="signal">invoice_validate</field>
+        </record>
+
+        <record id="nt3" model="workflow.transition">
+            <field name="act_from" ref="act_open2"/>
+            <field name="act_to" ref="act_open3"/>
+            <field name="signal">invoice_validate</field>
+        </record>
+
+        <record id="nt4" model="workflow.transition">
+            <field name="act_from" ref="act_open3"/>
+            <field name="act_to" ref="act_open4"/>
+            <field name="signal">invoice_validate</field>
+        </record>
+
+        <record id="nt5" model="workflow.transition">
+            <field name="act_from" ref="act_open4"/>
+            <field name="act_to" ref="act_open5"/>
+            <field name="signal">invoice_validate</field>
+        </record>
+
+        <!--<record id="nt6" model="workflow.transition">
+            <field name="act_from" ref="act_open5"/>
+            <field name="act_to" ref="account.act_paid"/>
+            <field name="trigger_model">account.move.line</field>
+            <field name="trigger_expr_id">move_line_id_payment_get()</field>
+            <field name="condition">test_paid()</field>
+        </record>-->
+
+         <record id="nt7" model="workflow.transition">
+            <field name="act_from" ref="act_open5"/>
+            <field name="act_to" ref="account.act_paid"/>
+            <field name="trigger_model"/>
+            <field name="trigger_expr_id"/>
+            <field name="condition">reconciled</field>
+        </record>
+
+
+    </data>
+</openerp>

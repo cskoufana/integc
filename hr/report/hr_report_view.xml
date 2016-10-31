@@ -28,7 +28,7 @@
                 model="hr.payslip.run"
                 name="payslip.run"
                 rml="integc/hr/report/report_payslip_run.rml"
-                string="Lot de bulletin"/>
+                string="Livre de paie"/>
 
     </data>
 </openerp>

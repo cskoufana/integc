@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="partner_contract_form">
+            <field name="name">partner.contract.form</field>
+            <field name="model">partner.contract</field>
+            <field name="arch" type="xml">
+                <form string="Partner Contract" version="7.0">
+                    <sheet>
+                        <group col="2">
+                            <field name="decision" />
+                            <field name="date" />
+                        </group>
+                        <!--<separator colspan="4" string="Note" />-->
+                        <!--<field name="note" />-->
+                    </sheet>
+                    <footer>
+                        <button name="action_validate" string="Confirm" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="partner_contract_act">
+            <field name="name">Partner Contract</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">partner.contract</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_integc_hr_contract_form">
+            <field name="name">integc.hr.contract.form</field>
+            <field name="model">integc.hr.contract</field>
+            <field name="arch" type="xml">
+                <form string="Contract" version="7.0">
+                    <sheet>
+                        <group col="2">
+                            <field name="decision" />
+                            <field name="date" />
+                        </group>
+                        <separator colspan="4" string="Note" />
+                        <field name="note" />
+                    </sheet>
+                    <footer>
+                        <button name="action_validate" string="Confirm" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="integc_hr_contract_act">
+            <field name="name">Contract</field>
+            <field name="res_model">integc.hr.contract</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>

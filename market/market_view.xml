@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+        <!--Menu-->
+         <menuitem name="Market"
+            id="menu_market_root" sequence="89"/>
+        <menuitem id="menu_market" parent="menu_market_root" name="Markets" sequence="40" />
+        <!--Market-->
+        <record id="view_integc_market_form" model="ir.ui.view">
+            <field name="name">integc.market.form</field>
+            <field name="model">integc.market</field>
+            <field name="arch" type="xml">
+                <form string="Market" version="7.0">
+                    <header>
+                        <button name="action_open" states="draft" string="Validate" class="oe_highlight" type="object"/>
+                        <button name="create_avenant" states="open" string="Create Avenant" type="object" />
+                        <!--<button name="btn_approve_contract" states="waiting_director" string="Approve" class="oe_highlight"  />-->
+                        <!--<button name="btn_approve_contract" states="waiting_partner" string="Approve" class="oe_highlight"  />-->
+                        <!--<button name="create_invoice" states="progress" class="oe_highlight" string="Create Invoice" type="object"/>-->
+                        <!--<button name="%(partner_contract_act)d" string="Complete" states="progress"-->
+                            <!--class="oe_highlight" type="action"/>-->
+
+                        <field name="state" widget="statusbar" statusbar_visible="draft,open,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <label string="Name "/>
+                            <field name="name" class="oe_inline" readonly="0" required="1"/>
+                        </h1>
+                    </div>
+
+                    <!--<div class="oe_right oe_button_box">
+                          <button class="oe_inline oe_stat_button" type="action" attrs="{'invisible': [('invoice_exists', '=', False)]}" groups="base.group_user"
+                                name="action_view_invoice" icon="fa-files-o">
+                            <field string="Invoices" name="invoice_count" widget="statinfo"/>
+                        </button>
+                    </div>-->
+                    <group>
+                        <group>
+                            <field name="partner_id" on_change="onchange_partner_id(partner_id, context)" domain="[('customer','=',True)]" context="{'search_default_customer':1, 'show_address': 1}" options='{"always_reload": True}'
+                                    attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                           <field name="analytic_account_id" readonly="1"/>
+                            <field domain="[('type','=','sale')]" name="pricelist_id" groups="product.group_sale_pricelist" on_change="onchange_pricelist_id(pricelist_id,market_line)"/>
+                            <field name="project_id" readonly="1"/>
+
+                        </group>
+                        <group>
+                            <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <label for="date_start" string="Duration"/>
+                            <div>
+                                <field name="date_start" class="oe_inline" required="1"/> - <field name="date_end" class="oe_inline" required="1"/>
+                            </div>
+                            <label for="duration" string="Delay"/>
+                            <div>
+                                <field name="duration" readonly="1" class="oe_inline"/> days
+                            </div>
+                            <field name="contract_id" readonly="1" attrs="{'invisible': [('state', '=', 'draft')]}"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="has_contracts" invisible="1" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Services">
+                            <field name="market_line" attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                <tree string="Services Lines" editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="state" invisible="1"/>
+                                    <field name="th_weight" invisible="1"/>
+                                    <field name="product_id"
+                                        context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom}"
+                                        groups="base.group_user"
+                                        on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, False, product_uos_qty, False, name, parent.partner_id, False, True, parent.date, False, False, False, context)"/>
+                                    <field name="name"/>
+                                    <field name="product_uom_qty"
+                                        context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom}"
+                                        on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date, False, False, True, context)"/>
+                                    <field name="product_uom"
+                                        on_change="product_uom_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date, context)"
+                                        groups="product.group_uom" options='{"no_open": True}'/>
+                                    <field name="product_uos_qty" groups="product.group_uos" invisible="1"/>
+                                    <field name="product_uos" string="UoS" groups="product.group_uos" invisible="1"/>
+                                    <field name="tax_id" widget="many2many_tags" domain="[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]"/>
+                                    <field name="price_unit"/>
+                                    <field name="discount" groups="sale.group_discount_per_so_line"/>
+                                    <field name="price_subtotal"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                                <field name="amount_untaxed" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <field name="amount_tax" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <div class="oe_subtotal_footer_separator oe_inline">
+                                    <label for="amount_total" />
+                                    <button name="button_dummy"
+                                        states="draft" string="(update)" type="object" class="oe_edit_only oe_link"/>
+                                </div>
+                                <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                 <div class="oe_subtotal_footer_separator oe_inline">
+                                    <label for="amount_total_avenant" />
+                                </div>
+                                <field name="amount_total_avenant" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}" />
+                                <div class="oe_subtotal_footer_separator oe_inline">
+                                    <label for="amount_total_market" />
+                                </div>
+                                <field name="amount_total_market" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}" />
+                            </group>
+                            <div class="oe_clear"/>
+                            <field name="note" class="oe_inline" placeholder="Terms and conditions..."/>
+                        </page>
+                        <page string="Update Contracts" attrs="{'invisible': [('has_contracts', '!=', True)]}">
+                            <field name="contract_ids" readonly="1">
+                                <tree>
+                                    <field name="name" string="Contract Number"/>
+                                    <field name="date"/>
+                                    <field name="type"/>
+                                    <field name="amount_total" sum="Total Tax Included"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Attachments">
+                            <field name="attachment_ids" select="1" widget="many2many_binary" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_integc_market_tree" model="ir.ui.view">
+            <field name="name">integc.market.tree</field>
+            <field name="model">integc.market</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="Market" colors="grey:state=='cancel';">
+                    <field name="name" />
+                    <field name="date"/>
+                    <field name="partner_id"/>
+                    <field name="project_id" />
+                    <field name="amount_total" sum="Total Tax Included"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_integc_market_act" model="ir.actions.act_window">
+            <field name="name">Market</field>
+            <field name="res_model">integc.market</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_integc_market_contract_search" />-->
+        </record>
+
+        <menuitem
+            id="menu_view_integc_market_view"
+            action="view_integc_market_act"
+            parent="menu_market"
+            sequence="5"
+        />
+
+        <!--Market contract-->
+           <record id="view_integc_market_contract_form" model="ir.ui.view">
+            <field name="name">integc.market.contract.form</field>
+            <field name="model">integc.market.contract</field>
+            <field name="arch" type="xml">
+                <form string="Partner contract" version="7.0">
+                    <header>
+                        <button name="action_open" states="draft" string="Validate" class="oe_highlight" type="object"/>
+                        <button name="create_invoice" states="open" class="oe_highlight" string="Create Invoice" type="object"/>
+                        <!--<button name="%(partner_contract_act)d" string="Complete" states="progress"
+                            class="oe_highlight" type="action"/>-->
+
+                        <field name="state" widget="statusbar" statusbar_visible="draft,open,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <label string="Contract Number "/>
+                            <field name="name" class="oe_inline" readonly="1"/>
+                        </h1>
+                    </div>
+
+                    <div class="oe_right oe_button_box">
+                          <button class="oe_inline oe_stat_button" type="object" attrs="{'invisible': [('invoice_exists', '=', False)]}" groups="base.group_user"
+                                name="action_view_invoice" icon="fa-pencil-square-o">
+                            <field string="Invoices" name="invoice_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="market_id" readonly="1" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                            <field name="partner_id" on_change="onchange_partner_id(partner_id, context)" domain="[('customer','=',True)]" context="{'search_default_customer':1, 'show_address': 1}" options='{"always_reload": True}'
+                                    attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                            <field name="type" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="partner_invoice_id" groups="sale.group_delivery_invoice_address" context="{'default_type':'invoice'}"/>
+                            <field name="partner_shipping_id" groups="sale.group_delivery_invoice_address" context="{'default_type':'delivery'}"/>
+                            <field name="analytic_account_id" readonly="1"/>
+                            <field domain="[('type','=','sale')]" name="pricelist_id" groups="product.group_sale_pricelist" on_change="onchange_pricelist_id(pricelist_id,contract_line)"/>
+                            <field name="invoiced"/>
+                        </group>
+                        <group>
+                            <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <label for="date_start" string="Duration"/>
+                            <div>
+                                <field name="date_start" class="oe_inline" required="1"/> - <field name="date_end" class="oe_inline"  required="1"/>
+                            </div>
+                            <!--<field name="company_id" groups="base.group_no_one" widget="selection" readonly="1" invisible="1"/>-->
+
+                            <field name="currency_id" invisible="1"/>
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Services">
+                            <field name="contract_line" attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                <tree string="Services Lines" editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="state" invisible="1"/>
+                                    <field name="th_weight" invisible="1"/>
+                                    <field name="product_id"
+                                        context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom}"
+                                        groups="base.group_user"
+                                        on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, False, product_uos_qty, False, name, parent.partner_id, False, True, parent.date, False, parent.fiscal_position, False, context)"/>
+                                    <field name="name"/>
+                                    <field name="product_uom_qty"
+                                        context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom}"
+                                        on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date, False, parent.fiscal_position, True, context)"/>
+                                    <field name="product_uom"
+                                        on_change="product_uom_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date, context)"
+                                        groups="product.group_uom" options='{"no_open": True}'/>
+                                    <field name="product_uos_qty" groups="product.group_uos" invisible="1"/>
+                                    <field name="product_uos" string="UoS" groups="product.group_uos" invisible="1"/>
+                                    <field name="tax_id" widget="many2many_tags" domain="[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]"/>
+                                    <field name="price_unit"/>
+                                    <field name="discount" groups="sale.group_discount_per_so_line"/>
+                                    <field name="price_subtotal"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                                <field name="amount_untaxed" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <field name="amount_tax" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <div class="oe_subtotal_footer_separator oe_inline">
+                                    <label for="amount_total" />
+                                    <button name="button_dummy"
+                                        states="draft,sent" string="(update)" type="object" class="oe_edit_only oe_link"/>
+                                </div>
+                                <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <field name="balance" readonly="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}" />
+                            </group>
+                            <div class="oe_clear"/>
+                            <field name="note" class="oe_inline" placeholder="Terms and conditions..."/>
+                            <field name="invoice_exists" invisible="1"/>
+                        </page>
+                        <page string="Attachments">
+                            <field name="attachment_ids" select="1" widget="many2many_binary" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_integc_market_contract_tree" model="ir.ui.view">
+            <field name="name">integc.market.contract.tree</field>
+            <field name="model">integc.market.contract</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="Market Contract" colors="grey:state=='cancel';">
+                    <field name="name" string="Contract Number"/>
+                    <field name="date"/>
+                    <field name="partner_id"/>
+                    <field name="amount_total" sum="Total Tax Included"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_integc_market_contract_search" model="ir.ui.view">
+            <field name="name">integc.market.contract.search</field>
+            <field name="model">integc.market.contract</field>
+            <field name="arch" type="xml">
+                <search string="Market Contract">
+                    <field name="name" />
+                    <field name="market_id" />
+                    <field name="partner_id" />
+                    <!--<filter string="Brouillon" domain="[('state', '=', 'draft')]" />
+                    <filter string="En Attente signature DG" domain="[('state', '=', 'signature_director')]" />
+                    <filter string="En Attente signature employé" domain="[('state', '=', 'signature_employee')]" />
+                    <filter string="En Cours" domain="[('state', '=', 'progress')]" />
+                    <filter string="Terminé" domain="[('state', '=', 'done')]" />-->
+                    <filter string="Payé" domain="[('invoiced', '=', True)]" />
+                    <filter string="Facturé" domain="[('invoice_exists', '=', True), ('balance', '!=', 0.0)]" />
+                    <filter string="Totalement facturé" domain="[('invoice_exists', '=', True), ('balance', '=', 0.0)]" />
+                    <group expand="0" string="Group By">
+                        <filter string="Partner" domain="[]" context="{'group_by': 'partner_id'}" />
+                        <filter string="Type" domain="[]" context="{'group_by': 'type'}" />
+                        <filter string="Compte analytique" domain="[]" context="{'group_by': 'analytic_account_id'}" />
+                        <!--<filter string="Date signature" domain="[]" context="{'group_by': 'date_confirm'}" />
+                        <filter string="Date fin" domain="[]" context="{'group_by': 'date_end'}" />-->
+                    </group>
+                </search>
+            </field>
+        </record>
+
+    <record id="view_integc_market_contract_act" model="ir.actions.act_window">
+            <field name="name">Market Contracts</field>
+            <field name="res_model">integc.market.contract</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_integc_market_contract_search" />
+        </record>
+
+        <menuitem
+            id="menu_view_integc_market_contract_view"
+            action="view_integc_market_contract_act"
+            parent="menu_market"
+            sequence="10"
+        />
+    </data>
+</openerp>

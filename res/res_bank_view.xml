@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--Bank Account-->
+
+        <record id="view_partner_bank_form_inherit1" model="ir.ui.view">
+            <field name="name">res.partner.bank.form.inherit</field>
+            <field name="model">res.partner.bank</field>
+            <field name="inherit_id" ref="base.view_partner_bank_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="acc_number" position="replace">
+                        <group col="2">
+                            <field name="pos" required="1" />
+                            <field name="acc_number" required="1" />
+                            <field name="key" required="1" />
+                        </group>
+
+                    </field>
+
+                </data>
+            </field>
+        </record>
+
+      </data>
+</openerp>
+

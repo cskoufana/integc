@@ -2,6 +2,48 @@
 <openerp>
     <data noupdate="0">
 
+        <!--Employee View-->
+        <record id="view_employee_form_inherit1" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+             <field name="inherit_id" ref="hr_contract.hr_hr_employee_view_form2"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='medic_exam']" position="replace" />
+                    <xpath expr="//field[@name='vehicle']" position="replace" />
+                    <xpath expr="//field[@name='vehicle_distance']" position="replace" />
+                </data>
+            </field>
+        </record>
+
+        <record id="view_employee_kanban_inherit1" model="ir.ui.view">
+            <field name="name">hr.employee.kanban</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.hr_kanban_view_employees" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='work_email']" position="after">
+                        <li t-if="record.work_phone.raw_value"><field name="work_phone"/></li>
+                        <li t-if="record.mobile_phone.raw_value"><field name="mobile_phone"/></li>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <!--Department-->
+        <record id="view_department_form_inherit1" model="ir.ui.view">
+            <field name="name">hr.department.form</field>
+            <field name="model">hr.department</field>
+            <field name="inherit_id" ref="hr.view_department_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='parent_id']" position="after">
+                        <field name="analytic_account_id"  readonly="1"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
          <!-- Contract View -->
         <record id="hr_contract_form_inherit1" model="ir.ui.view">
             <field name="name">hr.contract.view.form.inherit1</field>
@@ -9,17 +51,70 @@
             <field name="inherit_id" ref="hr_payroll.hr_contract_form_inherit"/>
             <field name="arch" type="xml">
             <data>
-                <!--<xpath expr="//page[@name='']" position="replace" />-->
+                <xpath expr="/form/sheet" position="before">
+                    <header>
+                        <button name="btn_validate" class="oe_highlight" states="draft" string="Validate"/>
+                        <button name="btn_approve" class="oe_highlight" states="signature_director" string="Approve"/>
+                        <button name="btn_approve" class="oe_highlight" states="signature_employee" string="Sign"/>
+                        <!--<button name="btn_cancel"  states="progress" string="Cancel"/>-->
+                        <!--<button name="btn_complete"  class="oe_highlight" states="progress" string="Complete"/>-->
+                        <button name="%(integc_hr_contract_act)d" string="Complete" states="progress"
+                            class="oe_highlight" type="action"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,signature_director,signature_employee,progress,done"/>
+                         <!--<field name="state" widget="statusbar" statusbar_visible="cancel" states="cancel"/>-->
+                        <!--<field name="state" widget="statusbar" statusbar_visible="cancel" />-->
+                    </header>
+                </xpath>
+                <xpath expr="//form/sheet/notebook/page[2]" position="replace">
+                    <page string="Attachments">
+                        <field name="attachment_ids" select="1" widget="many2many_binary" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}"/>
+                    </page>
+                </xpath>
                 <!--<xpath expr="/form/sheet/notebook/page/group/group[1]/label" position="replace" />-->
                 <!--<xpath expr="/form/sheet/notebook/page/group/group[1]/div" position="replace" />-->
+                <field name="name" position="replace">
+                        <field name="name" readonly="1" />
+                    </field>
                 <xpath expr="//field[@name='wage']" position="before">
                     <!--<field name="salary_grid_id" on_change="onchange_salary_grid(salary_grid_id)" required="1"/>-->
-                    <field name="category_id" on_change="onchange_category_grade(category_id, grade_id)" required="1"/>
-                    <field name="grade_id" required="1" on_change="onchange_category_grade(category_id, grade_id)"/>
+                    <field name="category_id" on_change="onchange_category_grade(category_id, grade_id)" required="1"
+                           attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}"/>
+                    <field name="grade_id" required="1" on_change="onchange_category_grade(category_id, grade_id)"
+                            attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}"/>
                     <field name="wage_min" />
                 </xpath>
+                <field name="wage" position="replace">
+                    <field name="wage" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}" />
+                </field>
+                <field name="schedule_pay" position="replace">
+                    <field name="schedule_pay" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}" />
+                </field>
+                <field name="type_id" position="replace">
+                    <field name="type_id" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}" />
+                </field>
+                <field name="working_hours" position="replace">
+                    <field name="working_hours" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}" />
+                </field>
+                <field name="employee_id" position="replace">
+                    <field name="employee_id" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}" />
+                </field>
+                <field name="date_start" position="replace">
+                    <field name="date_start" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}" />
+                </field>
+                <field name="date_end" position="replace">
+                    <field name="date_end" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}" />
+                </field>
+                <field name="trial_date_start" position="replace">
+                    <field name="trial_date_start" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}" />
+                </field>
+                <field name="trial_date_end" position="replace">
+                    <field name="trial_date_end" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}" />
+                </field>
+                <field name="notes" position="replace">
+                    <field name="notes" nolabel="1" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}" />
+                </field>
                 <xpath expr="//field[@name='wage']" position="after">
-                    <field name="wage_max" />
+                    <field name="wage_max"/>
                 </xpath>
                 <xpath expr="//field[@name='struct_id']" position="replace">
                     <field name="struct_id" readonly="1" />
@@ -27,10 +122,63 @@
                 <xpath expr="//field[@name='working_hours']" position="before">
                     <field name="seniority" readonly="1" />
                 </xpath>
+                <xpath expr="//field[@name='type_id']" position="after">
+                    <field name="project_id" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}"/>
+                    <field name="date_signature_director" readonly="1"/>
+                    <field name="date_signature_employee" readonly="1" />
+                    <field name="date_cancel" readonly="1" attrs="{'invisible': [('state','!=','cancel')]}"/>
+                </xpath>
+                <xpath expr="//field[@name='job_id']" position="replace">
+                    <field name="job_id" readonly="1" />
+                </xpath>
+                <xpath expr="//field[@name='analytic_account_id']" position="replace">
+                    <field name="analytic_account_id" readonly="1" />
+                </xpath>
+                <xpath expr="//field[@name='advantages']" position="replace" />
+                <field name="journal_id" position="replace">
+                    <field name="journal_id" readonly="1" />
+                </field>
             </data>
             </field>
         </record>
 
+        <record model="ir.ui.view" id="hr_contract_view_search_inherit1">
+            <field name="name">hr.contract.view.search.inherit1</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_search" />
+            <field name="arch" type="xml">
+                   <data>
+                       <field name="employee_id" position="after">
+                           <field name="state"/>
+                           <field name="date_from" filter_domain="[('date_end','&gt;=',self)]" string="Date end: From"/>
+                           <field name="date_to" filter_domain="[('date_end','&lt;=',self)]" string="Date end: To"/>
+                           <filter string="Brouillon" domain="[('state', '=', 'draft')]" />
+                           <filter string="En Attente signature DG" domain="[('state', '=', 'signature_director')]" />
+                           <filter string="En Attente signature employé" domain="[('state', '=', 'signature_employee')]" />
+                           <filter string="En Cours" domain="[('state', '=', 'progress')]" />
+                           <filter string="Terminé" domain="[('state', '=', 'done')]" />
+                       </field>
+                       <xpath expr="//search/group/filter[3]" position="after">
+                           <filter string="State" icon="terp-personal" domain="[]" context="{'group_by':'state'}" />
+                           <filter string="Compte analytique" icon="terp-personal" domain="[]" context="{'group_by':'analytic_account_id'}" />
+                           <filter string="Catégorie" icon="terp-personal" domain="[]" context="{'group_by':'category_id'}" />
+                       </xpath>
+                   </data>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="hr_contract_view_tree_inherit1">
+            <field name="name">hr.contract.view.tree.inherit1</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_tree" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="date_end" position="after">
+                        <field name="state" />
+                    </field>
+                </data>
+            </field>
+        </record>
         <!-- End Contract View-->
 
 
@@ -40,20 +188,9 @@
             <!--<field name="model">hr.contract</field>-->
             <!--<field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>-->
             <!--<field name="arch" type="xml">-->
+                <!--<data>-->
                     <!--<xpath expr="/form/sheet/notebook/page[1]" position="replace" />-->
-                    <!--&lt;!&ndash;<xpath expr="//field[@name='struct_id']" position="replace">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<field name="struct_id" readonly="1" />&ndash;&gt;-->
-                    <!--&lt;!&ndash;</xpath>&ndash;&gt;-->
-                    <!--<field name="wage" position="before">-->
-                    <!--&lt;!&ndash;<xpath expr="//field[@name='wage']" position="before">&ndash;&gt;-->
-                        <!--<field name="salary_grid_id" on_change="onchange_salary_grid(salary_grid_id)" required="1"/>-->
-                        <!--<field name="wage_min" />-->
-                        <!--<field name="wage_max" />-->
-                    <!--&lt;!&ndash;</xpath>&ndash;&gt;-->
-                    <!--</field>-->
-
-                    <!--<xpath expr="/form/sheet/notebook/page/group/group[1]/label" position="replace" />-->
-                    <!--<xpath expr="/form/sheet/notebook/page/group/group[1]/div" position="replace" />-->
+                <!--</data>-->
             <!--</field>-->
         <!--</record>-->
 
@@ -67,12 +204,24 @@
                         <group>
                             <group>
                                 <field name="name" />
-                                <separator string="Notes"/>
-                                <field name="note" colspan="2" placeholder="Notes ..." nolabel="1"/>
-                            </group>
-                            <group>
+                                <!--<separator string="Notes"/>-->
+                                <!--<field name="note" colspan="2" placeholder="Notes ..." nolabel="1"/>-->
                                 <field name="structure_id" />
+                                <group>
+                                <group string="Prime">
+                                    <field name="responsibility_prime" />
+                                    <field name="risk_prime" />
+                                </group>
+                                <group string="Allowance">
+                                    <field name="transport_allowance" />
+                                    <field name="housing_allowance" />
+                                </group>
+                                <group string="Fees">
+                                    <field name="representation_fees" />
+                                </group>
                             </group>
+                            </group>
+
                         </group>
                     </sheet>
                 </form>
@@ -84,7 +233,7 @@
             <field name="arch" type="xml">
                 <tree string="Category">
                     <field name="name" />
-                    <field name="note" />
+                    <!--<field name="note" />-->
                     <field name="structure_id" />
                 </tree>
             </field>
@@ -200,7 +349,7 @@
         />
 
         <!-- HR Employee-->
-        <record id="view_employee_form_inherit" model="ir.ui.view">
+        <!--<record id="view_employee_form_inherit" model="ir.ui.view">
             <field name="name">hr.employee.inherit.form</field>
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_form" />
@@ -209,7 +358,7 @@
                      <field name="ssnid" />
                  </xpath>
             </field>
-        </record>
+        </record>-->
 
         <!--hr payslip run-->
         <record model="ir.ui.view" id="hr_payslip_run_form_inherit">
@@ -218,6 +367,10 @@
             <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
             <field name="arch" type="xml">
                 <data>
+                    <field name="state" position="before">
+                        <button string="Print Payslips" name="print_payslip" type="object" class="oe_highlight"/>
+                        <button string="Print Journal" name="print_journal" type="object" class="oe_highlight"/>
+                    </field>
                     <xpath expr="/form/sheet/group" position="after">
                     <!--<xpath expr="//field[@name='credit_note']" position="after">-->
                         <group>
@@ -242,6 +395,314 @@
                 </data>
             </field>
         </record>
+        <record model="ir.ui.view" id="hr_payslip_run_form_inherit2">
+            <field name="name">Payslip Run</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="inherit_id" ref="hr_payroll_account.hr_payslip_run_form_inherit"/>
+            <field name="arch" type="xml">
+                <data>
+                     <field name="journal_id" position="replace">
+                        <field name="journal_id" readonly="1" />
+                    </field>
+                </data>
+            </field>
+        </record>
 
+        <!--Payslip-->
+
+        <record model="ir.ui.view" id="view_hr_payslip_form_inherit">
+            <field name="name">hr.payslip.form</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <button name="refund_sheet" position="after">
+                        <button string="Print Payslip" name="print_payslip" type="object"/>
+                    </button>
+                    <field name="credit_note" position="after">
+                        <field name="is_paid" readonly="1" />
+                        <field name="date_payment" readonly="1" attrs="{'invisible': [('is_paid', '=', False)]}" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_hr_payslip_tree_inherit1">
+            <field name="name">hr.payslip.view.tree.inherit</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_tree" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="state" position="before">
+                        <field name="is_paid" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <!--Contribution register-->
+        <record id="hr_contribution_register_form_inherit" model="ir.ui.view">
+            <field name="name">hr.contribution.register.form</field>
+            <field name="model">hr.contribution.register</field>
+            <field name="inherit_id" ref="hr_payroll.hr_contribution_register_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='name']" position="after">
+                        <field name="partner_id" />
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_hr_payslip_form_inherit1" model="ir.ui.view">
+            <field name="name">hr.payslip.form.inherit1</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="input_line_ids" position="replace">
+                        <field name="input_line_ids" colspan="4" nolabel="1">
+                                <tree string="Input Data" editable="bottom">
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="amount"/>
+                                    <field name="contract_id" domain="[('employee_id','=',parent.employee_id)]"/>
+                                    <field name="sequence" invisible="True"/>
+                                </tree>
+                                <form string="Payslip Line">
+                                    <group col="4">
+                                        <field name="name"/>
+                                        <field name="code"/>
+                                        <field name="payslip_id"/>
+                                        <field name="sequence"/>
+                                        <field name="amount"/>
+                                        <field name="contract_id" domain="[('employee_id','=',parent.employee_id)]"/>
+                                    </group>
+                                </form>
+                            </field>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <!--Employee-->
+        <record id="view_employee_form_inherit2" model="ir.ui.view">
+            <field name="name">employee.form.inherit2</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="department_id" position="replace">
+                        <field name="department_id" on_change="hr.onchange_department_id(department_id)" required="1"/>
+                    </field>
+                    <field name="job_id" position="replace">
+                        <field name="job_id" required="1" />
+                    </field>
+                    <field name="country_id" position="replace">
+                        <field name="country_id" required="1" />
+                    </field>
+                    <field name="gender" position="replace">
+                        <field name="gender" required="1" />
+                    </field>
+                    <field name="marital" position="replace">
+                        <field name="marital" required="1" />
+                    </field>
+                    <field name="birthday" position="replace">
+                        <field name="birthday" required="1" />
+                    </field>
+                    <xpath expr="//field[@name='identification_id']" position="replace">
+                        <label for="identification_id" string="Identity Card Number" />
+                        <field name="identification_id" nolabel="1" />
+                    </xpath>
+                    <xpath expr="//field[@name='otherid']" position="replace">
+                        <label for="otherid" string="Registration N°" />
+                        <field name="otherid" nolabel="1"  required="1"/>
+                    </xpath>
+
+                    <xpath expr="//field[@name='passport_id']" position="replace">
+                         <field name="ssnid" />
+                     </xpath>
+                    <xpath expr="//field[@name='address_home_id']" position="replace">
+                        <field name="address_home_id" readonly="1" />
+                        <label for="street" string="Detail"/>
+                            <div>
+                                <field name="street" placeholder="Street..." />
+                                <field name="street2"/>
+                                <div class="address_format">
+                                    <field name="city" placeholder="City" style="width: 40%%" />
+                                    <field name="state_id" class="oe_no_button" placeholder="State" style="width: 37%%" options='{"no_open": True}'/>
+                                    <field name="zip" placeholder="ZIP" style="width: 20%%" />
+                                </div>
+                                <!--<field name="country_id" placeholder="Country" class="oe_no_button" options='{"no_open": True}' readonly="1"/>-->
+                            </div>
+                    </xpath>
+                    <xpath expr="//form/sheet/notebook/page[2]" position="after">
+                        <page string="Attachments">
+                            <field name="attachment_ids" select="1" widget="many2many_binary"/>
+                        </page>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        <record id="view_employee_form_inherit3" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit3</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_contract.hr_hr_employee_view_form2" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='bank_account_id']" position="replace">
+                        <field name="bank_account_id" readonly="1" />
+                        <label for="pos" string="Bank Account Number" />
+                        <div>
+                            <field name="bank" placeholder="Bank ..."/>
+                            <div class="address_format">
+                                <field name="pos" placeholder="Code Guichet" style="width: 30%%"/>
+                                <field name="acc_number" placeholder="N° Compte" style="width: 40%%"/>
+                                <field name="key" placeholder="Clé" style="width: 20%%"/>
+                            </div>
+                        </div>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        <record id="view_employee_tree_inherit1" model="ir.ui.view">
+            <field name="name">hr.employee.tree.inherit1</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='job_id']" position="after">
+                        <field name="is_registered" invisible="1" />
+                    </xpath>
+                </data>
+            </field>
+
+        </record>
+
+        <record id="view_employee_filter_inherit1" model="ir.ui.view">
+            <field name="name">hr.employee.search.inherit1</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="department_id" position="after">
+                        <field name="identification_id" string="Identity Card Number" />
+                        <field name="otherid" string="Registration N°"/>
+                        <field name="ssnid" />
+                        <field name="job_id" />
+                        <field name="is_registered" />
+                        <field name="manager" />
+                    </field>
+                    <field name="category_ids" position="after">
+                        <filter string="Immatriculés" domain="[('ssnid', '!=', False)]" />
+                        <filter string="Non Immatriculés" domain="[('ssnid', '=', False)]" />
+                        <filter string="Contractualisés" domain="[('has_contract', '!=', False)]" />
+                        <filter string="Non Contractualisés" domain="[('has_contract', '=', False)]" />
+                        <filter string="Responsable" domain="[('manager', '=', True)]" />
+                    </field>
+                    <xpath expr="//search/group/filter[3]" position="after">
+                        <filter string="Registered to CNPS" icon="terp-personal" domain="[]" context="{'group_by':'is_registered'}" />
+                        <filter string="Est un Responsable" icon="terp-personal" domain="[]" context="{'group_by':'manager'}" />
+                        <filter string="Location" icon="terp-personal" domain="[]" context="{'group_by':'work_location'}" />
+                        <filter string="Genre" icon="terp-personal" domain="[]" context="{'group_by':'gender'}" />
+                        <filter string="Etat Civil" icon="terp-personal" domain="[]" context="{'group_by':'marital'}" />
+                        <filter string="Banque" icon="terp-personal" domain="[]" context="{'group_by':'bank'}" />
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <!--Registration request-->
+        <record id="view_integc_registration_request_form" model="ir.ui.view">
+            <field name="name">integc.hr.registration.request.form</field>
+            <field name="model">integc.hr.registration.request</field>
+            <field name="arch" type="xml">
+                <form string="Registration request" version="7.0">
+                    <header>
+                        <button name="btn_approve" states="draft" string="Approve" class="oe_highlight" />
+                        <button name="btn_validate" string="Validate" states="waiting" class="oe_highlight"/>
+                        <button name="btn_cancel" string="Cancel" states="waiting"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,waiting,validate" />
+                        <!--<field name="state" widget="statusbar" statusbar_visible="waiting" states="cancel"/>-->
+                    </header>
+                    <sheet>
+                        <group col="4">
+                            <field name="date" />
+                            <field name="user_id" readonly="1" />
+                            <field name="external_reference"  attrs="{'readonly': [('state','!=','waiting')], 'required': [('state', '=', 'waiting')]}" />
+                            <field name="employee_count" readonly="1" />
+                            <field name="date_validation" readonly="1" />
+                        </group>
+                        <group col="2">
+                            <separator string="Employees" colspan="4"/>
+                            <field name="request_line_ids" widget="one2many_list" nolabel="1" required="0">
+                                <tree editable="top" string="Registration Line">
+                                    <field name="employee_id" required="1"/>
+                                    <field name="ssnid"/>
+                                    <field name="date_registration"/>
+                                    <!--<field name="date_from" />-->
+                                    <!--<field name="date_to" />-->
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_integc_hr_registration_request_tree" model="ir.ui.view">
+            <field name="name">integc.hr.registration.request.tree</field>
+            <field name="model">integc.hr.registration.request</field>
+            <field name="arch" type="xml">
+                <tree string="Registration Request">
+                    <field name="date" />
+                    <field name="user_id" />
+                    <field name="employee_count" sum="Total Employee"/>
+                    <field name="date_validation" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_integc_hr_registration_request_search" model="ir.ui.view">
+            <field name="name">integc.hr.registration.request.search</field>
+            <field name="model">integc.hr.registration.request</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="date"/>
+                    <field name="date_validation"/>
+                    <field name="user_id"/>
+                    <group col="8" colspan="4" expand="0" string="Group By...">
+                        <filter string="State" name="state" icon="terp-personal" context="{'group_by':'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_integc_hr_registration_request_graph">
+            <field name="name">integc.hr.registration.request.graph</field>
+            <field name="model">integc.hr.registration.request</field>
+            <field name="arch" type="xml">
+                <graph string="Invoices" type="bar">
+                    <field name="date"/>
+                    <field name="employee_count" operator="+"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="integc_hr_registration_request_act" model="ir.actions.act_window">
+            <field name="name">Registration request</field>
+            <field name="res_model">integc.hr.registration.request</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+        <menuitem
+            id="menu_integc_hr_registration_request_view"
+            action="integc_hr_registration_request_act"
+            parent="hr.menu_hr_main"
+            sequence="3"
+        />
     </data>
 </openerp>

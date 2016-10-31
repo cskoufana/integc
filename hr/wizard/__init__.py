@@ -2,3 +2,4 @@
 #__author__ = 'yenke'
 
 import hr_payroll_journal_report
+import hr_wizard

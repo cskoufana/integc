@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+        <!--Partner Contract workflow-->
+        <record id="wkfp" model="workflow">
+            <field name="name">hr.partner.contract.basic</field>
+            <field name="osv">integc.hr.partner.contract</field>
+            <field name="on_create">True</field>
+        </record>
+        <!--Activity-->
+        <record id="act_draft_p" model="workflow.activity">
+            <field name="wkf_id" ref="wkfp"/>
+            <field name="name">draft</field>
+            <field name="flow_start">True</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'draft'})</field>
+        </record>
+        <record id="act_waiting_director_p" model="workflow.activity">
+            <field name="wkf_id" ref="wkfp"/>
+            <field name="name">waiting_director</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'waiting_director'})</field>
+        </record>
+        <record id="act_waiting_partner_p" model="workflow.activity">
+            <field name="wkf_id" ref="wkfp"/>
+            <field name="name">waiting</field>
+            <field name="kind">function</field>
+            <field name="action">action_waiting_partner()</field>
+        </record>
+
+        <record id="act_progress_p" model="workflow.activity">
+            <field name="wkf_id" ref="wkfp"/>
+            <field name="name">progress</field>
+            <field name="kind">function</field>
+            <field name="action">action_progress()</field>
+        </record>
+        <record id="act_complete_p" model="workflow.activity">
+            <field name="wkf_id" ref="wkfp"/>
+            <field name="name">complete</field>
+            <field name="flow_stop">True</field>
+            <field name="kind">function</field>
+            <field name="action">action_complete()</field>
+        </record>
+        <record id="act_cancel_p" model="workflow.activity">
+            <field name="wkf_id" ref="wkfp"/>
+            <field name="name">cancel</field>
+            <field name="kind">function</field>
+            <field name="action">action_cancel()</field>
+        </record>
+
+        <!--Transition-->
+        <record id="tt1" model="workflow.transition">
+            <field name="act_from" ref="act_draft_p"/>
+            <field name="act_to" ref="act_waiting_director_p"/>
+            <field name="signal">btn_validate_contract</field>
+        </record>
+
+        <record id="tt6" model="workflow.transition">
+            <field name="act_from" ref="act_waiting_director_p"/>
+            <field name="act_to" ref="act_waiting_partner_p"/>
+            <field name="signal">btn_approve_contract</field>
+        </record>
+
+        <record id="tt2" model="workflow.transition">
+            <field name="act_from" ref="act_waiting_partner_p"/>
+            <field name="act_to" ref="act_progress_p"/>
+            <field name="signal">btn_approve_contract</field>
+        </record>
+        <record id="tt3" model="workflow.transition">
+            <field name="act_from" ref="act_progress_p"/>
+            <field name="act_to" ref="act_complete_p"/>
+            <!--<field name="condition">check_done()</field>-->
+            <field name="signal">btn_complete_contract</field>
+        </record>
+        <record id="tt4" model="workflow.transition">
+            <field name="act_from" ref="act_progress_p"/>
+            <field name="act_to" ref="act_cancel_p"/>
+            <field name="signal">btn_cancel_contract</field>
+        </record>
+        <record id="tt5" model="workflow.transition">
+            <field name="act_from" ref="act_waiting_partner_p"/>
+            <field name="act_to" ref="act_cancel_p"/>
+            <field name="signal">btn_cancel_contract</field>
+        </record>
+        <record id="tt5" model="workflow.transition">
+            <field name="act_from" ref="act_waiting_director_p"/>
+            <field name="act_to" ref="act_cancel_p"/>
+            <field name="signal">btn_cancel_contract</field>
+        </record>
+    </data>
+</openerp>

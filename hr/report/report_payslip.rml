@@ -675,7 +675,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           </para>
         </td>
         <td>
-          <para style="P18">[[ formatLang (get_total_by_rule_category(o, 'TRET'), digits=0)]]</para>
+          <para style="P18">[[ formatLang (round(get_total_by_rule_category(o, 'TOTAL_RETENUE')), digits=0)]]</para>
         </td>
       </tr>
     </blockTable>

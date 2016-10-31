@@ -671,7 +671,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           <para style="P2">[[formatLang(get_payslip_amount_by_rule_code(o,'RAV'), digits=0)]]</para>
         </td>
         <td>
-          <para style="P4">[[ formatLang (get_total_by_rule_category(o, 'TRET'), digits=0)]]</para>
+          <para style="P4">[[ formatLang (get_total_by_rule_category(o, 'IMPOT_EMPLOYE'), digits=0)]]</para>
         </td>
         <td>
           <para style="P2">[[formatLang(get_payslip_amount_by_rule_code(o,'PENV'), digits=0)]]</para>
@@ -717,7 +717,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           <para style="P2">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'RAV'), digits=0)]]</para>
         </td>
         <td>
-          <para style="P4">[[ formatLang (get_total_amount_by_category(objects, 'TRET'), digits=0)]]</para>
+          <para style="P4">[[ formatLang (get_total_amount_by_category(objects, 'IMPOT_EMPLOYE'), digits=0)]]</para>
         </td>
         <td>
           <para style="P2">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'PENV'), digits=0)]]</para>
@@ -749,7 +749,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P9">PRESTATIONS FAMILIALES</para>
               </td>
               <td>
-                <para style="P13">[[ formatLang (round(get_total_amount_by_category(objects, 'BRUT_COTISABLE') * 0.07), digits=0) ]]</para>
+                <para style="P13">[[ formatLang (objects.prest_fam, digits=0) ]]</para>
               </td>
             </tr>
             <tr>
@@ -757,7 +757,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P9">PENSION VIELLESSE</para>
               </td>
               <td>
-                <para style="P13">[[ formatLang (round(get_total_amount_by_category(objects, 'BRUT_COTISABLE') * 0.084), digits=0) ]]</para>
+                <para style="P13">[[ formatLang (objects.pens_viel, digits=0) ]]</para>
               </td>
             </tr>
             <tr>
@@ -765,7 +765,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P9">ACCIDENT DE TRAVAIL</para>
               </td>
               <td>
-                <para style="P13">[[ formatLang (round(get_total_amount_by_category(objects, 'BRUT_COTISABLE') * 0.0175), digits=0) ]]</para>
+                <para style="P13">[[ formatLang (objects.acc_trav, digits=0) ]]</para>
               </td>
             </tr>
             <tr>
@@ -773,7 +773,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P5">TOTAL</para>
               </td>
               <td>
-                <para style="P29">[[ formatLang (round(get_total_amount_by_category(objects, 'BRUT_COTISABLE') * 0.07) + round(get_total_amount_by_category(objects, 'BRUT_COTISABLE') * 0.084) + round(get_total_amount_by_category(objects, 'BRUT_COTISABLE') * 0.0175), digits=0) ]]</para>
+                <para style="P29">[[ formatLang (objects.total_charge_sociale, digits=0) ]]</para>
               </td>
             </tr>
           </blockTable>
@@ -814,13 +814,13 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P9">IRPP</para>
               </td>
               <td>
-                <para style="P3">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'IRPP'), digits=0)]]</para>
+                <para style="P3">[[formatLang(objects.irpp, digits=0)]]</para>
               </td>
               <td>
-                <para style="P3">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'CAC'), digits=0)]]</para>
+                <para style="P3">[[formatLang(objects.cac, digits=0)]]</para>
               </td>
               <td>
-                <para style="P3">[[formatLang(round(get_total_payslip_amount_by_rule_code(objects,'CAC') + get_total_payslip_amount_by_rule_code(objects,'IRPP')), digits=0)]]</para>
+                <para style="P3">[[formatLang((objects.cac + objects.irpp), digits=0)]]</para>
               </td>
             </tr>
             <tr>
@@ -828,7 +828,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P9">CFC PATRONALE</para>
               </td>
               <td>
-                <para style="P13">[[ formatLang (round(get_total_amount_by_category(objects, 'BRUT') * 0.015), digits=0) ]]</para>
+                <para style="P13">[[ formatLang (objects.cfc_patronal, digits=0) ]]</para>
               </td>
               <td>
                 <para style="P10">
@@ -836,7 +836,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 </para>
               </td>
               <td>
-                <para style="P13">[[ formatLang (round(get_total_amount_by_category(objects, 'BRUT') * 0.015), digits=0) ]]</para>
+                <para style="P13">[[ formatLang (objects.cfc_patronal, digits=0) ]]</para>
               </td>
             </tr>
             <tr>
@@ -844,7 +844,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P8">CFC SALARIAL</para>
               </td>
               <td>
-                <para style="P3">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'CFC'), digits=0)]]</para>
+                <para style="P3">[[formatLang(objects.cfc_salarial, digits=0)]]</para>
               </td>
               <td>
                 <para style="P10">
@@ -852,7 +852,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 </para>
               </td>
               <td>
-                <para style="P3">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'CFC'), digits=0)]]</para>
+                <para style="P3">[[formatLang(objects.cfc_salarial, digits=0)]]</para>
               </td>
             </tr>
             <tr>
@@ -860,7 +860,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P8">FNE</para>
               </td>
               <td>
-                <para style="P13">[[ formatLang (round(get_total_amount_by_category(objects, 'BRUT') * 0.01), digits=0) ]]</para>
+                <para style="P13">[[ formatLang (objects.fne, digits=0) ]]</para>
               </td>
               <td>
                 <para style="P10">
@@ -868,7 +868,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 </para>
               </td>
               <td>
-                <para style="P13">[[ formatLang (round(get_total_amount_by_category(objects, 'BRUT') * 0.01), digits=0) ]]</para>
+                <para style="P13">[[ formatLang (objects.fne, digits=0) ]]</para>
               </td>
             </tr>
             <tr>
@@ -876,7 +876,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P8">TDL</para>
               </td>
               <td>
-                <para style="P3">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'TDL'), digits=0)]]</para>
+                <para style="P3">[[formatLang(objects.tdl, digits=0)]]</para>
               </td>
               <td>
                 <para style="P10">
@@ -884,7 +884,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 </para>
               </td>
               <td>
-                <para style="P3">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'TDL'), digits=0)]]</para>
+                <para style="P3">[[formatLang(objects.tdl, digits=0)]]</para>
               </td>
             </tr>
             <tr>
@@ -892,7 +892,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P8">RAV</para>
               </td>
               <td>
-                <para style="P3">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'RAV'), digits=0)]]</para>
+                <para style="P3">[[formatLang(objects.rav, digits=0)]]</para>
               </td>
               <td>
                 <para style="P10">
@@ -900,7 +900,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 </para>
               </td>
               <td>
-                <para style="P3">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'RAV'), digits=0)]]</para>
+                <para style="P3">[[formatLang(objects.rav, digits=0)]]</para>
               </td>
             </tr>
             <tr>
@@ -908,13 +908,13 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P8">TOTAL</para>
               </td>
               <td>
-                <para style="P21">[[formatLang(round(get_total_payslip_amount_by_rule_code(objects,'IRPP') + get_total_payslip_amount_by_rule_code(objects,'CFC') + round(get_total_amount_by_category(objects, 'BRUT') * 0.01) + get_total_payslip_amount_by_rule_code(objects,'TDL') + get_total_payslip_amount_by_rule_code(objects,'RAV')), digits=0)]]</para>
+                <para style="P21">[[formatLang((objects.total_charge_patronale - objects.cac), digits=0)]]</para>
               </td>
               <td>
-                <para style="P21">[[formatLang(get_total_payslip_amount_by_rule_code(objects,'CAC'), digits=0)]]</para>
+                <para style="P21">[[formatLang(objects.cac, digits=0)]]</para>
               </td>
               <td>
-                <para style="P21">[[formatLang(round(get_total_payslip_amount_by_rule_code(objects,'IRPP') + get_total_payslip_amount_by_rule_code(objects,'IRPP') + get_total_payslip_amount_by_rule_code(objects,'CFC') + round(get_total_amount_by_category(objects, 'BRUT') * 0.01) + get_total_payslip_amount_by_rule_code(objects,'TDL') + get_total_payslip_amount_by_rule_code(objects,'RAV')), digits=0)]]</para>
+                <para style="P21">[[formatLang(objects.total_charge_patronale, digits=0)]]</para>
               </td>
             </tr>
           </blockTable>

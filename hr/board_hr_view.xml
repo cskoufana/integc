@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<template id="integc_assets_backend" name="no display entete in graph"
+			inherit_id="web.assets_backend">
+			<xpath expr="." position="inside">
+				<style>
+	.oe_dashboard .oe_searchview_drawer_container,.oe_dashboard
+	.graph_header{
+	display:none !important;
+	}
+	.openerp .oe_dashboard .oe-treeview-table span{
+	white-space: normal;
+	}
+	.oe_dashboard .graph_header .btn{
+	font-size:8px;
+
+	}
+	.oe_dashboard svg text {
+	font: normal 8px Arial;
+	}
+	.openerp .oe_dashboard.oe_dashboard_layout_1-1-1 .oe_action .oe_content {
+	height: 290px;
+	padding-top:5px;	
+	overflow: hidden;
+	}
+	.openerp .oe_dashboard.oe_dashboard_layout_1-1-1 .oe_action .oe_content:hover {
+	overflow-y:auto;
+	}
+	.openerp .oe_dashboard .oe_action .oe_header {
+	font-size: 12px;
+	background: black;
+	color: white;
+	}
+	.openerp .oe_dashboard .oe_action .oe_header .oe_header_text {
+	display: block;
+	position: absolute;
+	width: 25%;
+	}
+				</style>
+			</xpath>
+		</template>
+		<record model="ir.ui.view" id="view_integc_hr_registration_request_graph1">
+			<field name="name">integc.hr.registration.request.graph1</field>
+			<field name="model">integc.hr.registration.request</field>
+			<field name="arch" type="xml">
+				<graph string="Registration" type="bar">
+					<field name="date" />
+					<field name="employee_count" operator="+" />
+				</graph>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_integc_hr_employee_graph1">
+			<field name="name">integc.hr.employee.graph1</field>
+			<field name="model">hr.employee</field>
+			<field name="arch" type="xml">
+				<graph string="Employee" type="pie">
+					<field name="department_id" />
+				</graph>
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="view_integc_hr_employee_graph2">
+			<field name="name">integc.hr.employee.graph2</field>
+			<field name="model">hr.employee</field>
+			<field name="arch" type="xml">
+				<graph string="Employee" type="pie">
+					<field name="job_id" />
+				</graph>
+			</field>
+		</record>
+		
+		
+
+		<record model="ir.ui.view" id="view_integc_hr_registration_request_filter">
+			<field name="name">integc.hr.registration.request.filter</field>
+			<field name="model">integc.hr.registration.request</field>
+			<field name="arch" type="xml">
+				<search>
+					<filter string="4 Derniers mois" name="last_4_month"
+						domain="[('date', '&gt;=', (context_today() -relativedelta(day=1, month=4)).strftime('%%Y-%%m-%%d')), ('date', '&lt;=', context_today().strftime('%%Y-%%m-%%d'))]" />
+				</search>
+			</field>
+		</record>
+
+
+		<record id="board_integc_hr_registration_request_action" model="ir.actions.act_window">
+			<field name="name">Progression des immatriculations</field>
+			<field name="res_model">integc.hr.registration.request</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">graph</field>
+			<field name="domain">[('state','=','validate')]</field>
+			<field name="view_id" ref="view_integc_hr_registration_request_graph1" />
+			<field name="search_view_id" ref="view_integc_hr_registration_request_filter" />
+			<field name="context">{"search_default_last_4_month": True}</field>
+		</record>
+
+		<record id="board_integc_hr_employee_action4" model="ir.actions.act_window">
+			<field name="name">Employe</field>
+			<field name="res_model">hr.employee</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">graph</field>
+			<field name="view_id" ref="view_integc_hr_employee_graph1" />
+		</record>
+		<record id="board_integc_hr_employee_action_graph_job" model="ir.actions.act_window">
+			<field name="name">Employe</field>
+			<field name="res_model">hr.employee</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">graph</field>
+			<field name="view_id" ref="view_integc_hr_employee_graph2" />
+		</record>
+
+		<record model="ir.ui.view" id="view_integc_hr_registration_request_line_tree1">
+			<field name="name">integc.hr.registration.request.line.tree</field>
+			<field name="model">integc.hr.registration.request.line</field>
+			<field name="arch" type="xml">
+				<tree string="Registration Request Line">
+					<field name="employee_id" />
+					<field name="date" />
+					<field name="state" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_integc_hr_registration_request_line_tree2">
+			<field name="name">integc.hr.registration.request.line.tree</field>
+			<field name="model">integc.hr.registration.request.line</field>
+			<field name="arch" type="xml">
+				<tree string="Registration Request Line">
+					<field name="employee_id" />
+					<field name="ssnid" />
+					<field name="date_registration" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_integc_hr_registration_request_line_filter">
+			<field name="name">integc.hr.registration.request.line.filter</field>
+			<field name="model">integc.hr.registration.request.line</field>
+			<field name="arch" type="xml">
+				<search>
+					<filter string="Le mois en cours" name="current_month"
+						domain="[('date_registration', '&gt;=', context_today().strftime('%%Y-%%m-01')), ('date_registration', '&lt;=', (context_today() + relativedelta(months=+1, day=1, days=-1)).strftime('%%Y-%%m-%%d'))]" />
+				</search>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="board_integc_hr_registration_request_line_act1">
+			<field name="name">Demande d'immatriculation en attente</field>
+			<field name="res_model">integc.hr.registration.request.line</field>
+			<field name="view_type">tree</field>
+			<field name="view_mode">tree</field>
+			<field name="domain">[('state','=','waiting')]</field>
+			<field name="view_id" ref="view_integc_hr_registration_request_line_tree1" />
+		</record>
+
+		<record model="ir.actions.act_window" id="board_integc_hr_registration_request_line_act2">
+			<field name="name">Demande d'immatriculation validée</field>
+			<field name="res_model">integc.hr.registration.request.line</field>
+			<field name="view_type">tree</field>
+			<field name="view_mode">tree</field>
+			<field name="domain">[('state','=','validate')]</field>
+			<field name="view_id" ref="view_integc_hr_registration_request_line_tree2" />
+			<field name="search_view_id" ref="view_integc_hr_registration_request_line_filter" />
+			<field name="context">{"search_default_current_month": True}</field>
+		</record>
+
+		<record id="view_employee_tree1" model="ir.ui.view">
+			<field name="name">hr.employee.tree</field>
+			<field name="model">hr.employee</field>
+			<field name="arch" type="xml">
+				<tree string="Employees">
+					<field name="name" />
+					<field name="work_phone" invisible="1" />
+					<field name="work_email" invisible="1" />
+					<!--<field name="company_id" groups="base.group_multi_company"/> -->
+					<field name="department_id" invisible="1" />
+					<field name="job_id" />
+					<field name="parent_id" invisible="1" />
+					<field name="coach_id" invisible="1" />
+				</tree>
+			</field>
+		</record>
+		<record id="view_employee_filter1" model="ir.ui.view">
+			<field name="name">Employees</field>
+			<field name="model">hr.employee</field>
+			<field name="arch" type="xml">
+				<search string="Employees">
+					<group expand="0" string="Group By...">
+						<filter string="Job" icon="terp-gtk-select-all" context="{'group_by':'job_id'}"
+							name="job" />
+					</group>
+				</search>
+			</field>
+		</record>
+		<record id="open_view_employee_tree1" model="ir.actions.act_window">
+			<field name="name">Employees Structure</field>
+			<field name="res_model">hr.employee</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="view_employee_tree1" />
+			<!--<field name="domain">[('parent_id','=',False)]</field> -->
+			<field name="search_view_id" ref="view_employee_filter1" />
+			<field name="context">{"search_default_job": True}</field>
+		</record>
+		<record id="open_view_employee_tree2" model="ir.actions.act_window">
+			<field name="name">Employees Structure 2</field>
+			<field name="res_model">hr.employee</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="limit">8</field>
+			<field name="view_id" ref="view_employee_tree1" />
+			<field name="domain">[('ssnid','=',False)]</field>
+		</record>
+
+		<!--Contract -->
+		<record id="view_integc_hr_contract_tree1" model="ir.ui.view">
+			<field name="name">integc.hr.contract.tree1</field>
+			<field name="model">hr.contract</field>
+			<field name="arch" type="xml">
+				<tree string="Contract">
+					<field name="name" />
+					<field name="employee_id" />
+					<field name="job_id" />
+				</tree>
+			</field>
+		</record>
+		<record id="view_integc_hr_contract_tree2" model="ir.ui.view">
+			<field name="name">integc.hr.contract.tree2</field>
+			<field name="model">hr.contract</field>
+			<field name="arch" type="xml">
+				<tree string="Contract">
+					<field name="name" />
+					<field name="employee_id" />
+					<field name="job_id" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_integc_hr_contract_filter">
+			<field name="name">integc.hr.contract.filter</field>
+			<field name="model">hr.contract</field>
+			<field name="arch" type="xml">
+				<search>
+					<filter string="Date signature" name="current_month_signature"
+						domain="[('date_signature_employee', '&gt;=', context_today().strftime('%%Y-%%m-01')), ('date_signature_employee', '&lt;=', (context_today() + relativedelta(months=+1, day=1, days=-1)).strftime('%%Y-%%m-%%d'))]" />
+					<filter string="Date End" name="current_month_end"
+						domain="[('date_end', '&gt;=', context_today().strftime('%%Y-%%m-01')), ('date_end', '&lt;=', (context_today() + relativedelta(months=+1, day=1, days=-1)).strftime('%%Y-%%m-%%d'))]" />
+
+				</search>
+			</field>
+		</record>
+		<record id="open_view_contract_act" model="ir.actions.act_window">
+			<field name="name">Contracts</field>
+			<field name="res_model">hr.contract</field>
+			<field name="view_type">tree</field>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_integc_hr_contract_tree1" />
+			<field name="domain">[('state', '=', 'progress')]</field>
+			<field name="search_view_id" ref="view_integc_hr_contract_filter" />
+			<field name="context">{"search_default_current_month_signature": True}
+			</field>
+		</record>
+
+		<record id="open_view_contract_act1" model="ir.actions.act_window">
+			<field name="name">Contracts</field>
+			<field name="res_model">hr.contract</field>
+			<field name="view_type">tree</field>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_integc_hr_contract_tree2" />
+			<field name="domain">[('state', '=', 'done')]</field>
+			<field name="search_view_id" ref="view_integc_hr_contract_filter" />
+			<field name="context">{"search_default_current_month_end": True}</field>
+		</record>
+
+		<record id="view_integc_hr_partner_contract_tree1" model="ir.ui.view">
+			<field name="name">integc.hr.partner.contract.tree1</field>
+			<field name="model">integc.hr.partner.contract</field>
+			<field name="arch" type="xml">
+				<tree string="Contract">
+					<field name="name" />
+					<field name="partner_id" />
+					<field name="date" />
+					<field name="amount_total" sum="Total" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_integc_hr_partner_contract_tree2" model="ir.ui.view">
+			<field name="name">integc.hr.partner.contract.tree2</field>
+			<field name="model">integc.hr.partner.contract</field>
+			<field name="arch" type="xml">
+				<tree string="Contract">
+					<field name="name" />
+					<field name="partner_id" />
+					<field name="date_confirm" />
+					<field name="amount_total" sum="Total" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_integc_hr_partner_contract_tree3" model="ir.ui.view">
+			<field name="name">integc.hr.partner.contract.tree3</field>
+			<field name="model">integc.hr.partner.contract</field>
+			<field name="arch" type="xml">
+				<tree string="Contract">
+					<field name="name" />
+					<field name="partner_id" />
+					<field name="date_end" />
+					<field name="amount_total" sum="Total" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_integc_hr_partner_contract_filter">
+			<field name="name">integc.hr.partner.contract.filter</field>
+			<field name="model">integc.hr.partner.contract</field>
+			<field name="arch" type="xml">
+				<search>
+					<filter string="Date signature" name="current_month_confirm"
+						domain="[('date_confirm', '&gt;=', context_today().strftime('%%Y-%%m-01')), ('date_confirm', '&lt;=', (context_today() + relativedelta(months=+1, day=1, days=-1)).strftime('%%Y-%%m-%%d'))]" />
+					<filter string="Date End" name="current_month_end"
+						domain="[('date_end', '&gt;=', context_today().strftime('%%Y-%%m-01')), ('date_end', '&lt;=', (context_today() + relativedelta(months=+1, day=1, days=-1)).strftime('%%Y-%%m-%%d'))]" />
+
+				</search>
+			</field>
+		</record>
+
+		<record id="open_view_partner_contract_act1" model="ir.actions.act_window">
+			<field name="name">Contracts</field>
+			<field name="res_model">integc.hr.partner.contract</field>
+			<field name="view_type">tree</field>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_integc_hr_partner_contract_tree1" />
+            <field name="search_view_id" ref="view_integc_hr_partner_contract_filter" />
+			<field name="domain">[('state', '=', 'waiting_director')]</field>
+		</record>
+
+		<record id="open_view_partner_contract_act2" model="ir.actions.act_window">
+			<field name="name">Contracts</field>
+			<field name="res_model">integc.hr.partner.contract</field>
+			<field name="view_type">tree</field>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_integc_hr_partner_contract_tree2" />
+			<field name="domain">[('state', '=', 'progress')]</field>
+			<field name="search_view_id" ref="view_integc_hr_partner_contract_filter" />
+			<field name="context">{"search_default_current_month_confirm": True}
+			</field>
+			<!--<field name="domain">[('state', '=', 'progress'), ('date_confirm', 
+				'>=', 'first_date'), ('date_confirm', '&lt;=', 'last_date')]</field> -->
+		</record>
+
+		<record id="open_view_partner_contract_act3" model="ir.actions.act_window">
+			<field name="name">Contracts</field>
+			<field name="res_model">integc.hr.partner.contract</field>
+			<field name="view_type">tree</field>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_integc_hr_partner_contract_tree2" />
+			<field name="domain">[('state', '=', 'complete')]</field>
+			<field name="search_view_id" ref="view_integc_hr_partner_contract_filter" />
+			<field name="context">{"search_default_current_month_end": True}</field>
+			<!--<field name="domain">[('state', '=', 'complete'), ('date_end', '>=', 
+				'first_date'), ('date_end', '&lt;=', 'last_date')]</field> -->
+		</record>
+
+		<record id="board_integc_hr_form" model="ir.ui.view">
+			<field name="name">board.integc.form</field>
+			<field name="model">board.board</field>
+			<field name="arch" type="xml">
+				<form string="My Board" version="7.0">
+					<board style="1-1-1">
+						<column>
+							<action name="%(board_integc_hr_registration_request_action)d"
+								string="Progression des immatriculations" />
+							<action name="%(board_integc_hr_registration_request_line_act1)d"
+								string="Demandes Immatriculation en attente" />
+						</column>
+						<column>
+							<action name="%(open_view_employee_tree2)d" string="Liste des employés non immatriculés" />
+							<action name="%(board_integc_hr_employee_action_graph_job)d"
+								string="Employé par poste" />
+						</column>
+						<column>
+							<action name="%(board_integc_hr_employee_action4)d"
+								string="Employé par departement" />
+							<action name="%(board_integc_hr_registration_request_line_act2)d"
+								string="Demandes d'immatriculation validées" />
+						</column>
+					</board>
+				</form>
+			</field>
+		</record>
+
+		<record id="board_integc_hr_form2" model="ir.ui.view">
+			<field name="name">board.integc.form2</field>
+			<field name="model">board.board</field>
+			<field name="arch" type="xml">
+				<form string="My Board" version="7.0">
+					<board style="2-2">
+						<column>
+							<action name="%(board_integc_hr_registration_request_action)d"
+								string="Progression des immatriculations" />
+							<action name="%(open_view_contract_act)d" string="Contrats signés le mois en cours" />
+							<action name="%(open_view_contract_act1)d" string="Contrats terminés le mois en cours" />
+						</column>
+						<column>
+							<action name="%(board_integc_hr_registration_request_line_act1)d"
+								string="Demandes Immatriculation en attente" />
+							<action name="%(open_view_employee_tree2)d" string="Liste des employés non immatriculés" />
+							<action name="%(open_view_employee_tree1)d" string="Liste des employés par postes" />
+							<action name="%(open_view_partner_contract_act2)d"
+								string="Contrats prestataires signés le mois en cours" />
+							<action name="%(open_view_partner_contract_act3)d"
+								string="Contrats prestataires terminés le mois en cours" />
+							<action name="%(open_view_partner_contract_act1)d"
+								string="Contrats prestataires en attente de signature par le DG" />
+						</column>
+						<!--<column> -->
+						<!--<action name="%(board_integc_hr_registration_request_line_act2)d" 
+							string="Demandes d'immatriculation validées"/> -->
+						<!--<action name="%(open_view_contract_act1)d" string="Contrats terminés 
+							le mois en cours"/> -->
+						<!--</column> -->
+					</board>
+				</form>
+			</field>
+		</record>
+
+		<record id="open_board_integc_hr" model="ir.actions.act_window">
+			<field name="name">Tableau de bord</field>
+			<field name="res_model">board.board</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="usage">menu</field>
+			<field name="view_id" ref="board_integc_hr_form" />
+		</record>
+
+		<menuitem id="menu_integc_hr_dashboard_main" parent="hr.menu_hr_root"
+			name="Tableau de Bord" sequence="-1" />
+		<menuitem id="menu_integc_hr_dashboard" sequence="0"
+			parent="menu_integc_hr_dashboard_main" action="open_board_integc_hr" />
+	</data>
+</openerp>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate="0">
+
+		<!--Budget version View -->
+		<record id="view_budget_version_form_inherit_integc" model="ir.ui.view">
+			<field name="name">budget.version.form</field>
+			<field name="model">budget.version</field>
+			<field name="inherit_id" ref="budget.view_budget_version_form" />
+			<field name="arch" type="xml">
+				<data>
+					<xpath expr="//field[@name='budget_line_ids']/tree/field[@name='name']"
+						position="replace">
+						<field name="frequency" />
+					</xpath>
+					<xpath
+						expr="//field[@name='budget_line_ids']/tree/field[@name='budget_amount']"
+						position="after">
+						<field name="percentage" />
+					</xpath>
+				</data>
+			</field>
+		</record>
+
+		<!--Budget line View -->
+		<record id="view_budget_line_tree_inherit_integc" model="ir.ui.view">
+			<field name="name">budget.line.list</field>
+			<field name="model">budget.line</field>
+			<field name="inherit_id" ref="budget.view_budget_line_list" />
+			<field name="arch" type="xml">
+				<data>
+					<xpath expr="//field[@name='name']" position="replace">
+						<field name="frequency" />
+					</xpath>
+					<xpath expr="//field[@name='budget_amount']" position="after">
+						<field name="theorical_amount" sum="Total Amount" />
+					</xpath>
+					<xpath expr="//field[@name='theorical_amount']" position="after">
+						<field name="analytic_real_amount" sum="Total Amount" />
+					</xpath>
+					<xpath expr="//field[@name='analytic_real_amount']" position="after">
+						<field name="percentage" />
+					</xpath>
+				</data>
+			</field>
+		</record>
+
+		<record id="view_budget_line_search_inherit_integc" model="ir.ui.view">
+			<field name="name">budget.line.search</field>
+			<field name="model">budget.line</field>
+			<field name="inherit_id" ref="budget.view_budget_line_search" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='analytic_account_id']" position="after">
+					<field name="frequency" />
+				</xpath>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="view_budget_line_graph_integc">
+			<field name="name">budget.line.graph</field>
+			<field name="model">budget.line</field>
+			<field name="arch" type="xml">
+				<graph string="Lignes de budget" type="bar">
+					<field type="measure" name="theorical_amount" />
+					<field type="measure" name="analytic_real_amount" />
+					<field type="measure" name="analytic_amount" />
+				</graph>
+			</field>
+		</record>
+
+		<!-- ACTION: click on Financial Management/Budgets/Budgets lines -->
+		<record model="ir.actions.act_window" id="budget.open_budget_lines_list">
+			<field name="name">Open Budget Lines</field>
+			<field name="res_model">budget.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,graph</field>
+			<field name="view_id" ref="budget.view_budget_line_list" />
+			<field name="context">{'search_default_group_budget_item_id': 1}</field>
+		</record>
+
+	</data>
+</openerp>
