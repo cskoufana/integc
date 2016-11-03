@@ -24,6 +24,7 @@ def subtract_month(dt, month):
         ndt = dt1.replace(day=1)
     return ndt.strftime('%Y-%m-%d')
 
+
 class hr_employee(osv.osv):
     _name = 'hr.employee'
     _inherit = 'hr.employee'
@@ -568,7 +569,8 @@ class hr_contract(osv.osv):
                     if not 'grade_id' in values:
                         values['grade_id'] = record.grade_id.id
                     self._check_salary_grid(cr, uid, values, context=context)
-                values['analytic_account_id'] = record.employee_id.department_id.analytic_account_id.id if record.employee_id and record.employee_id.department_id and record.employee_id.department_id.analytic_account_id else False
+                if not record.project_id:
+                    values['analytic_account_id'] = record.employee_id.department_id.analytic_account_id.id if record.employee_id and record.employee_id.department_id and record.employee_id.department_id.analytic_account_id else False
         #logging.warning(values)
         return super(hr_contract, self).write(cr, uid, ids, values, context=context)
 
@@ -587,7 +589,7 @@ class hr_contract(osv.osv):
                 return False
         return True
 
-    #_constraints = [(_check_wage, _("Wage must be range in salary grid wage min and salary grid wage max."), ['wage'])]
+    _constraints = [(_check_wage, _("Wage must be range in salary grid wage min and salary grid wage max."), ['wage'])]
 
     def onchange_category_grade(self, cr, uid, ids, category, grade, context=None):
         salary_grid = None
@@ -639,10 +641,13 @@ class hr_contract(osv.osv):
         return True
 
     def scheduler_close_contract(self, cr, uid, context=None):
-        cr.execute("select c.id from hr_contract c where c.date_end is not null and c.state = 'progress' and c.date_end < '%s'" % time.strftime('%Y-%m-%d'))
-        ids = [x[0] for x in cr.fetchall()]
-        if ids:
-            self.write(cr, uid, ids, {'state', '=', 'done'})
+        contract_ids  = self.search(cr, uid, [('state', '=', 'progress'), ('date_end', '<', time.strftime('%Y-%m-%d'))], context=context)
+        if contract_ids:
+            self.write(cr, uid, contract_ids, {'state', '=', 'done'})
+        #cr.execute("select c.id from hr_contract c where c.date_end is not null and c.state = 'progress' and c.date_end < '%s'" % time.strftime('%Y-%m-%d'))
+        #ids = [x[0] for x in cr.fetchall()]
+        #if ids:
+        #    self.write(cr, uid, ids, {'state', '=', 'done'})
         return True
 
     def run_scheduler(self, cr, uid, context=None):

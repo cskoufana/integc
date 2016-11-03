@@ -977,7 +977,7 @@
             <field name="code">TOTAL_CHARGE_IMPOT_PATRON</field>
             <field name="sequence">3005</field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = categories.IMPOT_EMPLOYE + categories.CHARGE_PATRON </field>
+            <field name="amount_python_compute">result = categories.IMPOT_PATRON + categories.CHARGE_PATRON </field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">Somme des charges et impot du patron  </field>
         </record>

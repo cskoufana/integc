@@ -36,23 +36,22 @@
         <record id="act_open0" model="workflow.activity">
             <field name="wkf_id" ref="wkf"/>
             <field name="name">open0</field>
-            <field name="action">action_date_assign()
-action_move_create()
-action_number()
-invoice_validate()</field>
+            <field name="action">
+                   action_open0()
+            </field>
             <field name="kind">function</field>
         </record>
 
 
         <!--Transition-->
-        <record id="nt1" model="workflow.transition">
+        <record id="nt0" model="workflow.transition">
             <field name="act_from" ref="account.act_draft"/>
             <field name="act_to" ref="act_open0"/>
             <field name="signal">invoice_validate</field>
         </record>
 
         <record id="nt1" model="workflow.transition">
-            <field name="act_from" ref="account.act_open"/>
+            <field name="act_from" ref="act_open0"/>
             <field name="act_to" ref="act_open1"/>
             <field name="signal">invoice_validate</field>
         </record>

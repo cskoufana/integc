@@ -11,21 +11,28 @@
                     <!--<xpath expr="//button[@name='invoice_cancel']" position="replace">
                         <button name="invoice_cancel" states="draft" string="Cancel Invoice" groups="base.group_no_one"/>
                     </xpath>-->
-                    <xpath expr="//button[@name='invoice_open']" position="after">
+                    <xpath expr="//button[@name='invoice_open']" position="replace">
                         <!--<button name="invoice_open" states="approval1" string="Validate" class="oe_highlight" groups="base.group_user"/>-->
-                        <button name="invoice_validate" states="open0,open1,open2,open3,open4" string="Validate" class="oe_highlight" groups="account.group_account_invoice"/>
+                        <button name="invoice_validate" states="draft,open0,open1,open2,open3,open4" string="Validate" class="oe_highlight" groups="account.group_account_invoice"/>
 
                     </xpath>
                     <xpath expr="//button[@name='invoice_print']" position="replace">
                         <button name="invoice_print" string="Print" type="object" states="open0,open1,open2,open3,open4" groups="base.group_user"/>
                     </xpath>
                     <xpath expr="//field[@name='state']" position="replace">
-                        <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open,open1,open2,open3,open4,open5,paid" statusbar_colors='{"proforma":"blue","proforma2":"blue"}'/>
+                        <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open0,open1,open2,open3,open4,open5,paid" statusbar_colors='{"proforma":"blue","proforma2":"blue"}'
+                                states="draft,open0,open1,open2,open3,open4,open5,paid"/>
+                    </xpath>
+                    <xpath expr="//field[@name='partner_id']" position="after">
+                        <field name="validation_level" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                    </xpath>
+                    <xpath expr="//field[@name='account_id']" position="after">
+                        <field name="count"  readonly="1"/>
                     </xpath>
                     <notebook position="inside">
                         <page string="Stages">
                             <field name="stage_ids" readonly="0" >
-                                <tree>
+                                <tree create="false" delete="false">
                                     <field name="name" />
                                     <field name="date_start" />
                                     <field name="delay" />

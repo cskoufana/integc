@@ -9,7 +9,6 @@ from openerp import tools
 from openerp.osv.orm import except_orm
 from openerp.tools import float_compare
 from openerp.tools.translate import _
-import logging
 
 
 def add_dict(dict1, dict2):

@@ -44,12 +44,25 @@ def strToDatetime(strdate):
 
 
 class integc_budget_line(orm.Model):
+    
+    def _get_item_rel(self, cr, uid, ids, context=None):
+        
+        line_obj = self.pool['budget.line']
+        line_ids = line_obj.search(cr, uid,
+                                       [('budget_item_id', 'in', ids)],
+                                       context=context)
+        return line_ids
+    
+    _store_tuple = (lambda self, cr, uid, ids, c=None: ids,
+                    ['budget_item_id'], 10)
+    _item_store_tuple = (_get_item_rel, [], 20)
 
     """ Budget line.
+
     A budget version line NOT linked to an analytic account """
 
     _inherit = "budget.line"
-
+    
     def _fetch_budget_line_from_aal(self, cr, uid, ids, context=None):
         """
         return the list of budget line to which belong the
@@ -68,6 +81,24 @@ class integc_budget_line(orm.Model):
                                             account_ids)],
                                           context=context)
         return line_ids
+    
+    def _get_budget_currency_amount(self, cr, uid, ids, name, arg,
+                                    context=None):
+        """ return the line's amount xchanged in the budget's currency """
+        res = {}
+        currency_obj = self.pool.get('res.currency')
+        # We get all values from DB
+        for line in self.browse(cr, uid, ids, context=context):
+            if line.budget_currency_id:
+                budget_currency_id = line.budget_currency_id.id
+                res[line.id] = currency_obj.compute(cr, uid,
+                                                line.currency_id.id,
+                                                budget_currency_id,
+                                                line.amount,
+                                                context=context)
+            else:
+                res[line.id]=line.amount
+        return res
 
     def _get_analytic_amount(self, cr, uid, ids, field_names=None,
                              arg=False, context=None):
@@ -84,13 +115,16 @@ class integc_budget_line(orm.Model):
             if not anl_account:
                 res[line.id] = dict.fromkeys(field_names, 0.0)
                 continue
-            line_currency_id = line.currency_id.id
-            anl_currency_id = line.analytic_currency_id.id
-            amount = currency_obj.compute(cr, uid,
+            if line.currency_id:
+                line_currency_id = line.currency_id.id
+                anl_currency_id = line.analytic_currency_id.id
+                amount = currency_obj.compute(cr, uid,
                                           line_currency_id,
                                           anl_currency_id,
                                           line.amount,
                                           context=context)
+            else :
+                amount = line.amount;
             today = datetime.now()
             _logger.debug('today %s' % (today))
             _logger.debug('line.paid_date %s' % (line.paid_date))
@@ -149,7 +183,7 @@ class integc_budget_line(orm.Model):
                 'analytic_amount': fabs(amount),
                 'theorical_amount': fabs(theo_amt),
                 'analytic_real_amount': fabs(real),
-                'analytic_diff_amount': fabs(real) - amount,
+                'analytic_diff_amount': fabs(real) - fabs(theo_amt),
                 'percentage': perc,
             }
         return res
@@ -167,8 +201,10 @@ class integc_budget_line(orm.Model):
                 'budget.line': (lambda self, cr, uid, ids, c: ids,
                                 ['amount',
                                  'frequency',
+                                 'budget_item_id',
                                  'date_start',
                                  'date_stop',
+                                 'paid_date',
                                  'analytic_account_id',
                                  'currency_id'], 10),
                 'account.analytic.line': (_fetch_budget_line_from_aal,
@@ -188,6 +224,7 @@ class integc_budget_line(orm.Model):
                 'budget.line': (lambda self, cr, uid, ids, c: ids,
                                 ['amount',
                                  'frequency',
+                                 'budget_item_id',
                                  'date_start',
                                  'date_stop',
                                  'analytic_account_id',
@@ -201,12 +238,14 @@ class integc_budget_line(orm.Model):
         'analytic_amount': fields.function(
             _get_analytic_amount,
             type='float',
-            precision=dp.get_precision('Account'),
+            digits_compute=dp.get_precision('Account'),
             multi='analytic',
             string="In Analytic Amount's Currency",
             store={
                 'budget.line': (lambda self, cr, uid, ids, c: ids,
                                 ['amount',
+                                 'frequency',
+                                 'budget_item_id',
                                  'date_start',
                                  'date_stop',
                                  'analytic_account_id',
@@ -220,12 +259,14 @@ class integc_budget_line(orm.Model):
         'analytic_real_amount': fields.function(
             _get_analytic_amount,
             type='float',
-            precision=dp.get_precision('Account'),
+            digits_compute=dp.get_precision('Account'),
             multi='analytic',
             string="Analytic Real Amount",
             store={
                 'budget.line': (lambda self, cr, uid, ids, c: ids,
                                 ['amount',
+                                 'frequency',
+                                 'budget_item_id',
                                  'date_start',
                                  'date_stop',
                                  'analytic_account_id',
@@ -239,12 +280,14 @@ class integc_budget_line(orm.Model):
         'analytic_diff_amount': fields.function(
             _get_analytic_amount,
             type='float',
-            precision=dp.get_precision('Account'),
+            digits_compute=dp.get_precision('Account'),
             multi='analytic',
             string="Analytic Difference Amount",
             store={
                 'budget.line': (lambda self, cr, uid, ids, c: ids,
                                 ['amount',
+                                 'frequency',
+                                 'budget_item_id',
                                  'date_start',
                                  'date_stop',
                                  'analytic_account_id',
@@ -255,6 +298,37 @@ class integc_budget_line(orm.Model):
                                            'date'], 10),
             }
         ),
+        'budget_amount': fields.function(
+            _get_budget_currency_amount,
+            type='float',
+            digits_compute=dp.get_precision('Account'),
+            string="In Budget's Currency",
+            store=True),
+        'parent_id': fields.related(
+            'budget_item_id',
+            'parent_id',
+            relation='budget.item',
+            type='many2one',
+            string='Categorie',
+            readonly=True,
+            store={
+                'budget.line': _store_tuple,
+                'budget.item': _item_store_tuple
+                }),
+        'section_id': fields.related(
+            'budget_item_id',
+            'section_id',
+            relation='budget.item',
+            type='many2one',
+            string='Section',
+            readonly=True,
+            store={
+                'budget.line': _store_tuple,
+                'budget.item': _item_store_tuple}),
+                
+        'currency_id': fields.many2one('res.currency',
+                                       'Currency',
+                                       required=False),
         }
     _defaults = {
         'frequency': 1

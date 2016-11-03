@@ -186,6 +186,7 @@
             <field name="res_model">account.voucher</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
+            <field name="context">{'type': 'payment'}</field>
             <field name="view_id" ref="view_other_payment_tree"/>
         </record>
         <record id="action_other_payment_tree_view" model="ir.actions.act_window.view">

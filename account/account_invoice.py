@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 #__author__ = 'yenke'
-
-
 from openerp.osv import fields, osv
 import time
 from datetime import datetime
 from openerp import tools
 from openerp.osv.orm import except_orm
 from openerp.tools.translate import _
+import logging
 
 
 class account_invoice(osv.osv):
@@ -39,9 +38,33 @@ class account_invoice(osv.osv):
             \n* The \'Cancelled\' status is used when user cancel invoice.'),
         #'stage_ids': fields.many2many('integc.account.invoice.stage', 'integc_account_invoice_stage_rel','invoice_id', 'stage_id', 'Stages'),
         'stage_ids': fields.one2many('integc.account.invoice.stage', 'invoice_id', 'Stages'),
+        'validation_level': fields.selection([
+            ('open0','Project leader'),
+            ('open1', 'Engineer market'),
+            ('open2', 'Service manager'),
+            ('open3', 'Project manager'),
+            ('open4', 'MINMAP'),
+            ('open5', 'Pending payment'),
+        ], 'Accounting validation level'),
+        'count': fields.integer('Count Number'),
     }
 
-    def invoice_validate(self, cr, uid, ids, context=None):
+    _defaults = {
+        'validation_level': 'open0',
+        'count': 1,
+    }
+
+    def write_account_move(self, cr, uid, ids, state, context=None):
+        for inv in self.browse(cr, uid, ids, context=context):
+            if inv.validation_level == state:
+                super(account_invoice, self).action_date_assign(cr, uid, ids, context=context)
+                super(account_invoice, self).action_move_create(cr, uid, ids, context=context)
+                super(account_invoice, self).action_number(cr, uid, ids, context=context)
+                return True
+        return False
+
+
+    def check_amount(self, cr, uid, ids, context=None):
         contract_name, balance = self.pool.get('integc.hr.partner.contract').get_contract_balance(cr, uid, ids[0], context=None)
         if not contract_name:
             contract_name, balance = self.pool.get('integc.market.contract').get_contract_balance(cr, uid, ids[0], context=None)
@@ -50,56 +73,67 @@ class account_invoice(osv.osv):
                 if record.amount_total > balance:
                     raise osv.except_osv(_('Operation not allowed!'), _('You can''t not validate that invoice with the amount %s.\n'
                                                                         'The contract %s related to that invoice has balance %s' % (record.amount_total, contract_name, balance)))
-        for record in self.browse(cr, uid, ids, context=context):
-            for stage in record.stage_ids:
-                if stage.state == 'open0':
-                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_start': time.strftime('%Y-%m-%d %H:%M:%S')})
-            if record.type == 'out_invoice':
-                return self.write(cr, uid, ids, {'state': 'open0'}, context=context)
+
+    def invoice_validate(self, cr, uid, ids, context=None):
+        self.check_amount(cr, uid, ids, context=context)
         return self.write(cr, uid, ids, {'state': 'open'}, context=context)
 
-    def action_open1(self, cr, uid, ids, context=None):
+    def action_open0(self, cr, uid, ids, context=None):
         for record in self.browse(cr, uid, ids, context=context):
             for stage in record.stage_ids:
                 if stage.state == 'open0':
-                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_end': time.strftime('%Y-%m-%d %H:%M:%S')})
+                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_start': time.strftime('%Y-%m-%d %H:%M:%S')}, context=context)
+        self.write(cr, uid, ids, {'state': 'open0'}, context=context)
+        return self.write_account_move(cr, uid, ids, 'open0', context=context)
+
+    def action_open1(self, cr, uid, ids, context=None):
+        #self.check_amount(cr, uid, ids, context=context)
+        for record in self.browse(cr, uid, ids, context=context):
+            for stage in record.stage_ids:
+                if stage.state == 'open0':
+                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_end': time.strftime('%Y-%m-%d %H:%M:%S')}, context=context)
                 if stage.state == 'open1':
-                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_start': time.strftime('%Y-%m-%d %H:%M:%S')})
-        return self.write(cr, uid, ids, {'state': 'open1'}, context=context)
+                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_start': time.strftime('%Y-%m-%d %H:%M:%S')}, context=context)
+        self.write(cr, uid, ids, {'state': 'open1'}, context=context)
+        return self.write_account_move(cr, uid, ids, 'open1', context=context)
 
     def action_open2(self, cr, uid, ids, context=None):
         for record in self.browse(cr, uid, ids, context=context):
             for stage in record.stage_ids:
                 if stage.state == 'open1':
-                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_end': time.strftime('%Y-%m-%d %H:%M:%S')})
+                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_end': time.strftime('%Y-%m-%d %H:%M:%S')}, context=context)
                 if stage.state == 'open2':
-                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_start': time.strftime('%Y-%m-%d %H:%M:%S')})
-        return self.write(cr, uid, ids, {'state': 'open2'}, context=context)
+                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_start': time.strftime('%Y-%m-%d %H:%M:%S')}, context=context)
+        self.write(cr, uid, ids, {'state': 'open2'}, context=context)
+        return self.write_account_move(cr, uid, ids, 'open2', context=context)
 
     def action_open3(self, cr, uid, ids, context=None):
         for record in self.browse(cr, uid, ids, context=context):
             for stage in record.stage_ids:
                 if stage.state == 'open2':
-                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_end': time.strftime('%Y-%m-%d %H:%M:%S')})
+                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_end': time.strftime('%Y-%m-%d %H:%M:%S')}, context=context)
                 if stage.state == 'open3':
-                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_start': time.strftime('%Y-%m-%d %H:%M:%S')})
-        return self.write(cr, uid, ids, {'state': 'open3'}, context=context)
+                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_start': time.strftime('%Y-%m-%d %H:%M:%S')}, context=context)
+        self.write(cr, uid, ids, {'state': 'open3'}, context=context)
+        return self.write_account_move(cr, uid, ids, 'open3', context=context)
 
     def action_open4(self, cr, uid, ids, context=None):
         for record in self.browse(cr, uid, ids, context=context):
             for stage in record.stage_ids:
                 if stage.state == 'open3':
-                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_end': time.strftime('%Y-%m-%d %H:%M:%S')})
+                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_end': time.strftime('%Y-%m-%d %H:%M:%S')}, context=context)
                 if stage.state == 'open4':
-                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_start': time.strftime('%Y-%m-%d %H:%M:%S')})
-        return self.write(cr, uid, ids, {'state': 'open4'}, context=context)
+                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_start': time.strftime('%Y-%m-%d %H:%M:%S')}, context=context)
+        self.write(cr, uid, ids, {'state': 'open4'}, context=context)
+        return self.write_account_move(cr, uid, ids, 'open4', context=context)
 
     def action_open5(self, cr, uid, ids, context=None):
         for record in self.browse(cr, uid, ids, context=context):
             for stage in record.stage_ids:
                 if stage.state == 'open4':
-                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_end': time.strftime('%Y-%m-%d %H:%M:%S')})
-        return self.write(cr, uid, ids, {'state': 'open5'}, context=context)
+                    self.pool.get('integc.account.invoice.stage').write(cr, uid, stage.id, {'date_end': time.strftime('%Y-%m-%d %H:%M:%S')}, context=context)
+        self.write(cr, uid, ids, {'state': 'open5'}, context=context)
+        return self.write_account_move(cr, uid, ids, 'open5', context=context)
 
     def create(self, cr, uid, values, context=None):
         ids = super(account_invoice, self).create(cr, uid, values, context=context)
@@ -143,7 +177,7 @@ class account_invoice(osv.osv):
             for stage in record.stage_ids:
                 if stage.state == record.state:
                     #compute delay
-                    delay = ((datetime.strptime(time.strftime('%Y-%m-%d'),'%Y-%m-%d') - datetime.strptime(stage.date_start, '%Y-%m-%d')).days)
+                    delay = ((datetime.strptime(time.strftime('%Y-%m-%d'),'%Y-%m-%d') - datetime.strptime(stage.date_start[:10], '%Y-%m-%d')).days)
                     if delay >= stage.delay:
                         self.message_post(cr, uid, [record.id], body=_('Step %s of the invoice %s has exceeded the time limit.') % (stage.name, record.name))
         return True

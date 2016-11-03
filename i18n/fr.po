@@ -1,13 +1,14 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
+#	* account_accountant
 #	* integc
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 7.0-20140804-231303\n"
+"Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-27 21:04+0000\n"
-"PO-Revision-Date: 2016-10-27 21:04+0000\n"
+"POT-Creation-Date: 2016-11-02 22:42+0000\n"
+"PO-Revision-Date: 2016-11-02 22:42+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,354 +16,18 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: account
-#: selection:account.invoice,state:0
-msgid "Project leader"
-msgstr "Chef de projet"
-
-#. module: account
-#: selection:account.invoice,state:0
-msgid "Engineer market"
-msgstr "Ingénieur marché"
-
-#. module: account
-#: selection:account.invoice,state:0
-msgid "Service manager"
-msgstr "Chef service"
-
-#. module: account
-#: selection:account.invoice,state:0
-msgid "Project manager"
-msgstr "Maitre d'oeuvre"
-
-#. module: account
-#: selection:account.invoice,state:0
-msgid "Pending payment"
-msgstr "Attente paiement"
-
-
 #. module: integc
-#: field:integc.market,amount_total_market:0
-msgid "Total amount market"
-msgstr "Montant total marché"
-
-#. module: integc
-#: view:hr.payslip.run:0
-msgid "Charges et retenues salariales"
-msgstr "Charges et retenues salariales"
-
-#. module: integc
-#: view:hr.contract:0
-#: view:integc.hr.partner.contract:0
-#: view:integc.market.contract:0
-msgid "Compte analytique"
-msgstr "Compte analytique"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "Par débit de notre compte"
-msgstr "Par débit de notre compte"
-
-#. module: integc
-#: selection:integc.hr.partner.contract,invoicing_mode:0
-msgid "Monthly"
-msgstr "Mensuel"
-
-#. module: integc
-#: view:account.voucher:0
-msgid "Payment Ref"
-msgstr "Ref. du règlement"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "Veuillez agréer, Monsieur le Directeur, nos salutations distinguées"
-msgstr "Veuillez agréer, Monsieur le Directeur, nos salutations distinguées"
-
-#. module: integc
-#: field:integc.market,contract_id:0
-msgid "Base Contract"
-msgstr "Contrat de base"
-
-#. module: integc
-#: model:ir.model,name:integc.model_hr_department
-msgid "Department"
-msgstr "Département"
-
-#. module: integc
-#: selection:hr.contract,state:0
-#: selection:integc.hr.partner.contract,state:0
-msgid "Progress"
-msgstr "En cours"
-
-#. module: integc
-#: field:res.partner.bank,pos:0
-msgid "Point Of Sale"
-msgstr "Code Guichet"
-
-#. module: integc
-#: help:integc.hr.partner.contract,pricelist_id:0
-#: help:integc.market.contract,pricelist_id:0
-msgid "Pricelist for current contract."
-msgstr "Liste de prix pour ce contrat."
-
-#. module: integc
-#: model:ir.model,name:integc.model_integc_hr_registration_request
-msgid "Social security registration request"
-msgstr "Demande d'immatriculation CNPS"
-
-#. module: integc
-#: view:integc.hr.registration.request:0
-#: model:ir.actions.act_window,name:integc.integc_hr_registration_request_act
-#: model:ir.ui.menu,name:integc.menu_integc_hr_registration_request_view
-msgid "Registration request"
-msgstr "Demande d'immatriculation"
-
-#. module: integc
-#: field:integc.hr.partner.contract.line,product_uom:0
-#: field:integc.market.contract.line,product_uom:0
-#: field:integc.market.line,product_uom:0
-msgid "Unit of Measure "
-msgstr "Unité de mesure "
-
-#. module: integc
-#: code:addons/integc/account/account_voucher.py:270
+#: code:addons/integc/hr/hr.py:407
 #, python-format
-msgid "Wrong voucher line"
-msgstr "Mauvaise ligne budgétaire"
+msgid "'Wage Minimal' must be lower than 'Wage Maximal'."
+msgstr "La 'Base minimale' doit être inféreieur à la 'Base maximale'."
 
 #. module: integc
-#: field:integc.hr.partner.contract.line,salesman_id:0
-msgid "Salesperson"
-msgstr "Salesperson"
-
-#. module: integc
-#: report:payslip.run:0
-msgid "SAL. TAX"
-msgstr "SAL. TAX"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "N°"
-msgstr "N°"
-
-#. module: integc
-#: report:payslip.run:0
-msgid "RET. FISCALES"
-msgstr "RET. FISCALES"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "MONTANT EN LETTRE"
-msgstr "MONTANT EN LETTRE"
-
-#. module: integc
-#: field:integc.hr.partner.contract,invoicing_mode:0
-msgid "Invoicing Mode"
-msgstr "Mode de facturation"
-
-#. module: integc
-#: field:hr.department,analytic_account_id:0
-msgid "Analytic Account"
-msgstr "Compte analytique"
-
-#. module: integc
-#: code:addons/integc/hr/hr.py:1028
-#: code:addons/integc/hr/hr.py:1044
-#: code:addons/integc/hr/partner_contract.py:1014
-#: code:addons/integc/market/market.py:473
-#: code:addons/integc/market/market.py:1422
-#, python-format
-msgid "Configuration Error!"
-msgstr "Erreur de configuration!"
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-#: field:integc.hr.partner.contract,partner_id:0
-#: view:integc.market.contract:0
-#: model:ir.model,name:integc.model_res_partner
-msgid "Partner"
-msgstr "Partenaire"
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-#: view:integc.market.contract:0
-msgid "Facturé"
-msgstr "Facturé"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "Tel :"
-msgstr "Tel :"
-
-#. module: integc
-#: view:hr.contract:0
-#: view:integc.hr.partner.contract:0
-msgid "En Attente signature employé"
-msgstr "En Attente signature employé"
-
-#. module: integc
-#: view:account.voucher:0
-msgid "Cancel Voucher"
-msgstr "Cancel Voucher"
-
-#. module: integc
-#: field:integc.hr.partner.contract,state:0
-#: field:integc.hr.partner.contract.line,state:0
-#: field:integc.market.contract,state:0
-#: field:integc.market.contract.line,state:0
-#: field:integc.market.line,state:0
-msgid "Status"
-msgstr "Status"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "CODE BANQUE"
-msgstr "CODE BANQUE"
-
-#. module: integc
-#: view:hr.contract:0
-#: field:hr.contract,state:0
-#: view:hr.employee:0
-#: field:hr.employee,state_id:0
-#: field:integc.account.invoice.stage,state:0
-#: view:integc.hr.registration.request:0
-#: field:integc.hr.registration.request,state:0
-#: field:integc.hr.registration.request.line,state:0
-#: field:integc.market,state:0
-msgid "State"
-msgstr "Statut"
-
-#. module: integc
-#: code:addons/integc/hr/partner_contract.py:818
-#: code:addons/integc/market/market.py:1226
-#, python-format
-msgid "Please define income account for this product: \"%s\" (id:%d)."
-msgstr "Veuillez définir le compte crédit pour le produit: \"%s\" (id:%d)."
-
-#. module: integc
-#: field:hr.payslip.run,total_charge_patronale:0
-msgid "Total Charges"
-msgstr "Total Charges"
-
-#. module: integc
-#: code:addons/integc/hr/partner_contract.py:631
-#: code:addons/integc/market/market.py:1065
-#, python-format
-msgid "Cannot cancel this contract!"
-msgstr "Impossible de supprimer ce contract!"
-
-#. module: integc
-#: view:integc.hr.salary.grid:0
-msgid "Grid"
-msgstr "Grille"
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-msgid "Other Information"
-msgstr "Autre information"
-
-#. module: integc
-#: model:ir.actions.report.xml,name:integc.transfer_order
-msgid "Ordre de virement"
-msgstr "Ordre de virement"
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-#: view:integc.market:0
-#: view:integc.market.contract:0
-msgid "UoS"
-msgstr "UoS"
-
-#. module: integc
-#: model:ir.model,name:integc.model_integc_market_contract
-msgid "Market contract"
-msgstr "Contrat de marché"
-
-#. module: integc
-#: field:hr.payslip.run,cfc_patronal:0
-msgid "CFC Patronal"
-msgstr "CFC Patronal"
-
-#. module: integc
-#: report:payslip.run:0
-msgid "PRESTATIONS FAMILIALES"
-msgstr "PRESTATIONS FAMILIALES"
-
-#. module: integc
-#: field:hr.contract,seniority:0
-msgid "Seniority"
-msgstr "Ancienneté"
-
-#. module: integc
-#: field:integc.hr.category,representation_fees:0
-msgid "Representation Fees"
-msgstr "Frais de représentation"
-
-#. module: integc
-#: code:addons/integc/account/account_voucher.py:348
-#, python-format
-msgid "change"
-msgstr "change"
-
-#. module: integc
-#: code:addons/integc/hr/partner_contract.py:1037
-#: code:addons/integc/market/market.py:496
-#: code:addons/integc/market/market.py:1445
-#, python-format
-msgid "Cannot delete a contract line which is in state '%s'."
-msgstr "Impossible de supprimer une ligne de contrat à un état '%s'."
-
-#. module: integc
-#: report:payslip.run:0
-msgid "NOM"
-msgstr "NOM"
-
-#. module: integc
-#: report:payslip.run:0
-#: report:transfer.order:0
-msgid "MONTANT"
-msgstr "MONTANT"
-
-#. module: integc
-#: selection:integc.account.invoice.stage,state:0
-msgid "Service manager"
-msgstr "Service manager"
-
-#. module: integc
-#: report:integc.payslip:0
-msgid "Montant +"
-msgstr "Montant +"
-
-#. module: integc
-#: report:integc.payslip:0
-msgid "Montant -"
-msgstr "Montant -"
-
-#. module: integc
-#: field:integc.hr.partner.contract.line,price_subtotal:0
-#: field:integc.market.contract.line,price_subtotal:0
-#: field:integc.market.line,price_subtotal:0
-msgid "Subtotal"
-msgstr "Sous-Total"
-
-#. module: integc
-#: help:integc.hr.partner.contract,date_signature:0
-msgid "Date on which contract is signed."
-msgstr "Date à laquelle le contrat est signé par le perstataire."
-
-#. module: integc
-#: view:integc.hr.salary.grid:0
-msgid "Wage Range"
-msgstr "Plage de salaire"
-
-#. module: integc
-#: field:hr.contract,category_id:0
-#: view:integc.hr.category:0
-#: field:integc.hr.salary.grid,category_id:0
-#: model:ir.actions.act_window,name:integc.integc_hr_category_act
-#: model:ir.ui.menu,name:integc.menu_integc_hr_category_view
-msgid "Category"
-msgstr "Catégorie"
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
+#: view:integc.market:integc.view_integc_market_form
+#: view:integc.market.contract:integc.view_integc_market_contract_form
+msgid "(update)"
+msgstr "(Actualiser)"
 
 #. module: integc
 #: help:integc.hr.partner.contract.line,state:0
@@ -379,21 +44,14 @@ msgstr "* The 'Draft' status is set when the related contract in draft status.  
 "* The 'Cancelled' status is set when a user cancel the contract related."
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:632
-#: code:addons/integc/market/market.py:1066
-#, python-format
-msgid "First cancel all invoices attached to this contract."
-msgstr "Supprimer d'abord toutes les factuers associées à ce contract."
+#: view:integc.hr.registration.request:integc.view_integc_hr_registration_request_filter
+msgid "4 Derniers mois"
+msgstr "4 Derniers mois"
 
 #. module: integc
-#: view:hr.employee:0
-msgid "City"
-msgstr "Ville"
-
-#. module: integc
-#: field:hr.payslip.journal,date_from:0
-msgid "Date From"
-msgstr "Date début"
+#: report:transfer.order:0
+msgid "A L’ATTENTION"
+msgstr "A L’ATTENTION"
 
 #. module: integc
 #: help:integc.hr.partner.contract.line,address_allotment_id:0
@@ -403,1531 +61,9 @@ msgid "A partner to whom the particular product needs to be allotted."
 msgstr "A partner to whom the particular product needs to be allotted."
 
 #. module: integc
-#: field:integc.hr.partner.contract,invoiced_rate:0
-#: field:integc.market.contract,invoiced_rate:0
-msgid "Invoiced Ratio"
-msgstr "Ratio facturé"
-
-#. module: integc
-#: code:addons/integc/market/market.py:257
-#, python-format
-msgid "Avenant Contract"
-msgstr "Avenant Contract"
-
-#. module: integc
 #: report:payslip.run:0
 msgid "ACCIDENT DE TRAVAIL"
 msgstr "ACCIDENT DE TRAVAIL"
-
-#. module: integc
-#: model:res.groups,name:integc.group_chef_projet
-msgid "Chef de projets"
-msgstr "Chef de projets"
-
-#. module: integc
-#: view:hr.payslip.run:0
-msgid "Print Journal"
-msgstr "Imprimer le journal"
-
-#. module: integc
-#: view:hr.employee:0
-msgid "Bank Account Number"
-msgstr "N° Compte bancaire"
-
-#. module: integc
-#: view:hr.employee:0
-msgid "ZIP"
-msgstr "BP"
-
-#. module: integc
-#: field:integc.hr.partner.contract.line,product_uom_qty:0
-#: field:integc.market.contract.line,product_uom_qty:0
-#: field:integc.market.line,product_uom_qty:0
-msgid "Quantity"
-msgstr "Quantité"
-
-#. module: integc
-#: field:hr.contract,date_signature_director:0
-msgid "Date Signature Director"
-msgstr "Date Signature Directeur"
-
-#. module: integc
-#: model:res.groups,name:integc.group_dafc
-msgid "DAFC"
-msgstr "DAFC"
-
-#. module: integc
-#: model:ir.model,name:integc.model_integc_hr_contract
-msgid "integc.hr.contract"
-msgstr "integc.hr.contract"
-
-#. module: integc
-#: report:integc.payslip:0
-msgid "NET A PAYER"
-msgstr "NET A PAYER"
-
-#. module: integc
-#: field:integc.hr.partner.contract,fiscal_position:0
-#: field:integc.market.contract,fiscal_position:0
-msgid "Fiscal Position"
-msgstr "Position Fiscale"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "DE MONSIEUR LE DIRECTEUR DE"
-msgstr "DE MONSIEUR LE DIRECTEUR DE"
-
-#. module: integc
-#: report:integc.payslip:0
-msgid "PAIEMENT LE"
-msgstr "PAIEMENT LE"
-
-#. module: integc
-#: view:account.voucher:0
-msgid "Total Allocation"
-msgstr "Allocation totale"
-
-#. module: integc
-#: code:addons/integc/hr/hr.py:358
-#: sql_constraint:integc.hr.category:0
-#, python-format
-msgid "Category name already exists"
-msgstr "Ce nom de catégorie existe déjà"
-
-#. module: integc
-#: field:hr.payslip.run,cac:0
-#: report:payslip.run:0
-msgid "CAC"
-msgstr "CAC"
-
-#. module: integc
-#: model:ir.actions.act_window,name:integc.action_hr_payslip_journal
-msgid "PaySlip Journal"
-msgstr "Journal des bulettins"
-
-#. module: integc
-#: field:integc.hr.partner.contract,currency_id:0
-#: field:integc.market,currency_id:0
-#: field:integc.market.contract,currency_id:0
-msgid "Currency"
-msgstr "Dévise"
-
-#. module: integc
-#: field:integc.hr.category,risk_prime:0
-msgid "Risk Prime"
-msgstr "Prime de Risque"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "MONSIEUR LE DIRECTEUR,"
-msgstr "MONSIEUR LE DIRECTEUR,"
-
-#. module: integc
-#: help:integc.hr.partner.contract,date_confirm:0
-msgid "Date on which contract is confirmed."
-msgstr "Date à laquelle le contract est validé."
-
-#. module: integc
-#: view:hr.contract:0
-msgid "Date end: To"
-msgstr "Date de fin: Au"
-
-#. module: integc
-#: model:ir.actions.act_window,name:integc.view_integc_market_contract_act
-#: model:ir.ui.menu,name:integc.menu_view_integc_market_contract_view
-msgid "Market Contracts"
-msgstr "Contrats de marchés"
-
-#. module: integc
-#: code:addons/integc/account/account_invoice.py:50
-#: code:addons/integc/hr/hr.py:248
-#: code:addons/integc/hr/hr.py:892
-#: code:addons/integc/hr/partner_contract.py:527
-#: code:addons/integc/market/market.py:972
-#, python-format
-msgid "Operation not allowed!"
-msgstr "Opération non permise!"
-
-#. module: integc
-#: help:integc.hr.partner.contract,partner_invoice_id:0
-#: help:integc.market.contract,partner_invoice_id:0
-msgid "Invoice address for current sales order."
-msgstr "Adresse de facturation."
-
-#. module: integc
-#: code:addons/integc/hr/partner_contract.py:835
-#: code:addons/integc/market/market.py:1243
-#, python-format
-msgid "There is no Fiscal Position defined or Income category account defined for default properties of Product categories."
-msgstr "Il n'y a aucune position budgétaire définie ou de compte de revenu d'une catégorie défini pour les propriétés par défaut des catégories de produits."
-
-#. module: integc
-#: report:payslip.run:0
-msgid "RAISON"
-msgstr "RAISON"
-
-#. module: integc
-#: field:integc.account.invoice.stage,date_start:0
-msgid "Date start"
-msgstr "Date début"
-
-#. module: integc
-#: field:integc.hr.partner.contract,date_signature:0
-msgid "Date Signature"
-msgstr "Date Signature"
-
-#. module: integc
-#: view:integc.hr.category:0
-msgid "Allowance"
-msgstr "Indemnité"
-
-#. module: integc
-#: report:payslip.run:0
-msgid "PERIODE"
-msgstr "PERIODE"
-
-#. module: integc
-#: view:hr.employee:0
-msgid "Etat Civil"
-msgstr "Etat Civil"
-
-#. module: integc
-#: code:addons/integc/hr/partner_contract.py:545
-#: code:addons/integc/market/market.py:990
-#, python-format
-msgid "You cannot group sales having different currencies for the same partner."
-msgstr "You cannot group sales having different currencies for the same partner."
-
-#. module: integc
-#: report:payslip.run:0
-msgid "CFC"
-msgstr "CFC"
-
-#. module: integc
-#: field:integc.hr.partner.contract,amount_untaxed:0
-#: field:integc.market,amount_untaxed:0
-#: field:integc.market.contract,amount_untaxed:0
-msgid "Untaxed Amount"
-msgstr "Montant hors taxes"
-
-#. module: integc
-#: selection:integc.account.invoice.stage,state:0
-msgid "Project manager"
-msgstr "Maître d'oeuvre"
-
-#. module: integc
-#: view:integc.hr.registration.request:0
-msgid "Registration Line"
-msgstr "Line de demande"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "Le gérant"
-msgstr "Le gérant"
-
-#. module: integc
-#: field:hr.employee,zip:0
-msgid "Zip"
-msgstr "B.P"
-
-#. module: integc
-#: model:ir.actions.act_window,name:integc.view_integc_hr_partner_contract_act
-#: model:ir.ui.menu,name:integc.menu_view_integc_hr_partner_contract_view
-msgid "Partners Contracts"
-msgstr "Contrats prestataires"
-
-#. module: integc
-#: field:integc.hr.partner.contract,date_confirm:0
-msgid "Confirmation Date"
-msgstr "Date de confirmation"
-
-#. module: integc
-#: field:hr.payslip.run,fne:0
-#: report:payslip.run:0
-msgid "FNE"
-msgstr "FNE"
-
-#. module: integc
-#: field:integc.hr.partner.contract.line,address_allotment_id:0
-#: field:integc.market.contract.line,address_allotment_id:0
-#: field:integc.market.line,address_allotment_id:0
-msgid "Allotment Partner"
-msgstr "Lotissement partenaire"
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-#: view:integc.market.contract:0
-#: model:ir.model,name:integc.model_integc_hr_partner_contract
-msgid "Partner contract"
-msgstr "Contrat prestataire"
-
-#. module: integc
-#: view:hr.employee:0
-msgid "Immatriculés"
-msgstr "Immatriculés"
-
-#. module: integc
-#: view:account.voucher:0
-msgid "Supplier"
-msgstr "Fournisseur"
-
-#. module: integc
-#: field:integc.market,date_done:0
-#: field:integc.market.contract,date_done:0
-msgid "Date Done"
-msgstr "Date cloture"
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-#: view:integc.market:0
-#: view:integc.market.contract:0
-msgid "Contract Number"
-msgstr "N° Contrat"
-
-#. module: integc
-#: selection:account.voucher,voucher_mode:0
-msgid "Multiple"
-msgstr "Multiple"
-
-#. module: integc
-#: field:hr.payslip.run,rav:0
-#: report:payslip.run:0
-msgid "RAV"
-msgstr "RAV"
-
-#. module: integc
-#: help:integc.hr.partner.contract,amount_total:0
-#: help:integc.market,amount_total:0
-#: help:integc.market.contract,amount_total:0
-msgid "The total amount."
-msgstr "Le montant total."
-
-#. module: integc
-#: report:payslip.run:0
-msgid "TOTAL"
-msgstr "TOTAL"
-
-#. module: integc
-#: model:ir.model,name:integc.model_hr_payslip
-msgid "Pay Slip"
-msgstr "Feuille de paie"
-
-#. module: integc
-#: view:account.voucher:0
-msgid "Currency Options"
-msgstr "Options de la devise"
-
-#. module: integc
-#: view:hr.payslip:0
-msgid "Input Data"
-msgstr "Données d'entrée"
-
-#. module: integc
-#: view:account.voucher:0
-msgid "Suppliers"
-msgstr "Fournisseurs"
-
-#. module: integc
-#: field:integc.hr.registration.request,request_line_ids:0
-msgid "Request Line"
-msgstr "Ligne de demande"
-
-#. module: integc
-#: view:account.voucher:0
-msgid "Payment Options"
-msgstr "Options de paiement"
-
-#. module: integc
-#: view:account.voucher:0
-msgid "e.g. 003/10"
-msgstr "e.g. 003/10"
-
-#. module: integc
-#: code:addons/integc/account/account_voucher.py:311
-#, python-format
-msgid "You have to configure account base code and account tax code on the '%s' tax!"
-msgstr "You have to configure account base code and account tax code on the '%s' tax!"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "Motif:"
-msgstr "Motif:"
-
-#. module: integc
-#: field:integc.hr.partner.contract,partner_invoice_id:0
-#: field:integc.market.contract,partner_invoice_id:0
-msgid "Invoice Address"
-msgstr "Adresse facturation"
-
-#. module: integc
-#: code:addons/integc/hr/hr.py:892
-#, python-format
-msgid "There is no payslip to print"
-msgstr "Aucun bulletin à imprimer"
-
-#. module: integc
-#: field:hr.employee,acc_number:0
-msgid "Account Number"
-msgstr "Numéro de compte"
-
-#. module: integc
-#: field:hr.department,label:0
-msgid "Libelle"
-msgstr "Libelle"
-
-#. module: integc
-#: field:integc.hr.registration.request.line,date_registration:0
-msgid "Date registration"
-msgstr "Date immatriculation"
-
-#. module: integc
-#: selection:integc.account.invoice.stage,state:0
-msgid "Project leader"
-msgstr "Chef de projet"
-
-#. module: integc
-#: field:hr.payslip.run,total_charge_sociale:0
-msgid "Total Prestations Sociales"
-msgstr "Total Prestations Sociales"
-
-#. module: integc
-#: field:hr.payslip.run,irpp:0
-#: report:payslip.run:0
-msgid "IRPP"
-msgstr "IRPP"
-
-#. module: integc
-#: view:account.voucher:0
-msgid "Payment Information"
-msgstr "Information sur le paiement"
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-#: view:integc.market:0
-#: view:integc.market.contract:0
-msgid "(update)"
-msgstr "(Actualiser)"
-
-#. module: integc
-#: field:integc.hr.registration.request,date:0
-msgid "Date Request"
-msgstr "Date Demande"
-
-#. module: integc
-#: code:addons/integc/hr/hr.py:248
-#, python-format
-msgid "No employee registered. You must write at least one employee"
-msgstr "Aucun employé enregistré. Vous devez au moins en selectionner un"
-
-#. module: integc
-#: code:addons/integc/hr/partner_contract.py:342
-#: code:addons/integc/hr/partner_contract.py:874
-#: code:addons/integc/hr/partner_contract.py:1037
-#: code:addons/integc/market/market.py:496
-#: code:addons/integc/market/market.py:815
-#: code:addons/integc/market/market.py:1282
-#: code:addons/integc/market/market.py:1445
-#, python-format
-msgid "Invalid Action!"
-msgstr "Action invalide!"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "ORDRE DE VIREMENT N°"
-msgstr "ORDRE DE VIREMENT N°"
-
-#. module: integc
-#: selection:integc.hr.registration.request,state:0
-#: selection:integc.hr.registration.request.line,state:0
-msgid "Waiting"
-msgstr "Attente"
-
-#. module: integc
-#: view:hr.payslip.journal:0
-msgid "Print"
-msgstr "Imprimer"
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-#: field:integc.hr.partner.contract,type:0
-#: view:integc.market.contract:0
-#: field:integc.market.contract,type:0
-msgid "Type"
-msgstr "Type"
-
-#. module: integc
-#: help:hr.payslip,is_paid:0
-msgid "determines if the payslip is paid"
-msgstr "determine si le bulletin est payé"
-
-#. module: integc
-#: field:integc.hr.partner.contract,create_date:0
-#: field:integc.market,create_date:0
-#: field:integc.market.contract,create_date:0
-msgid "Creation Date"
-msgstr "Date création"
-
-#. module: integc
-#: model:ir.model,name:integc.model_hr_payslip_run
-msgid "Payslip Batches"
-msgstr "Lots de bulletins de paie"
-
-#. module: integc
-#: help:integc.hr.partner.contract,partner_shipping_id:0
-#: help:integc.market.contract,partner_shipping_id:0
-msgid "Delivery address for current contract."
-msgstr "Adresse de livraison."
-
-#. module: integc
-#: field:hr.employee,key:0
-#: field:res.partner.bank,key:0
-msgid "Key"
-msgstr "Clé"
-
-#. module: integc
-#: field:integc.hr.partner.contract,pricelist_id:0
-#: field:integc.market,pricelist_id:0
-#: field:integc.market.contract,pricelist_id:0
-msgid "Pricelist"
-msgstr "Liste de prix"
-
-#. module: integc
-#: help:integc.hr.partner.contract,amount_tax:0
-#: help:integc.market,amount_tax:0
-#: help:integc.market.contract,amount_tax:0
-msgid "The tax amount."
-msgstr "Montant des taxes."
-
-#. module: integc
-#: code:addons/integc/hr/hr.py:379
-#: sql_constraint:integc.hr.grade:0
-#, python-format
-msgid "Grade name already exists"
-msgstr "L'echelon existe déjà"
-
-#. module: integc
-#: selection:integc.account.invoice.stage,state:0
-msgid "Engineer market"
-msgstr "Ingénieur de marché"
-
-#. module: integc
-#: help:integc.hr.partner.contract,invoice_ids:0
-#: help:integc.market.contract,invoice_ids:0
-msgid "This is the list of invoices that have been generated for this contract. The same contract may have been invoiced in several times (by line for example)."
-msgstr "Ceci est la liste des factures générées pour ce document. Le même contrat peut être facturé plusieurs fois (par exemple: par ligne )."
-
-#. module: integc
-#: code:addons/integc/account/account_voucher.py:311
-#, python-format
-msgid "No Account Base Code and Account Tax Code!"
-msgstr "No Account Base Code and Account Tax Code!"
-
-#. module: integc
-#: model:res.groups,name:integc.group_chef_comptable
-msgid "Chef Comptable"
-msgstr "Chef Comptable"
-
-#. module: integc
-#: code:addons/integc/hr/hr.py:975
-#, python-format
-msgid "Payslip of %s"
-msgstr "Bulletin de %s"
-
-#. module: integc
-#: report:payslip.run:0
-msgid "CNPS"
-msgstr "CNPS"
-
-#. module: integc
-#: view:account.invoice:0
-#: field:account.invoice,stage_ids:0
-msgid "Stages"
-msgstr "Stages"
-
-#. module: integc
-#: view:hr.contract:0
-msgid "Catégorie"
-msgstr "Catégorie"
-
-#. module: integc
-#: view:hr.employee:0
-msgid "Est un Responsable"
-msgstr "Est un Responsable"
-
-#. module: integc
-#: field:hr.contract,grade_id:0
-#: view:integc.hr.grade:0
-#: field:integc.hr.salary.grid,grade_id:0
-#: model:ir.actions.act_window,name:integc.integc_hr_grade_act
-#: model:ir.ui.menu,name:integc.menu_integc_hr_grade_view
-msgid "Grade"
-msgstr "Echelon"
-
-#. module: integc
-#: view:integc.market:0
-msgid "days"
-msgstr "jours"
-
-#. module: integc
-#: view:hr.contract:0
-msgid "Sign"
-msgstr "Signer"
-
-#. module: integc
-#: field:hr.payslip.run,prest_fam:0
-msgid "Prestations Familiales"
-msgstr "Prestations Familiales"
-
-#. module: integc
-#: code:addons/integc/hr/partner_contract.py:996
-#: code:addons/integc/market/market.py:455
-#: code:addons/integc/market/market.py:1404
-#, python-format
-msgid "You have to select a pricelist or a customer in the sales form !\n"
-"Please set one before choosing a product."
-msgstr "Vous devez sélectionner un prestataire dans le formulaire de contrat!\n"
-"Veuillez en définir un avant de choisir les services."
-
-#. module: integc
-#: model:ir.model,name:integc.model_integc_hr_category
-msgid "Salary Category"
-msgstr "Catégorie"
-
-#. module: integc
-#: selection:hr.contract,state:0
-msgid "Waiting for signature of employee"
-msgstr "En attente de signature par l'employée"
-
-#. module: integc
-#: report:payslip.run:0
-msgid "REGIME CNPS"
-msgstr "REGIME CNPS"
-
-#. module: integc
-#: view:hr.employee:0
-msgid "Detail"
-msgstr "Détail"
-
-#. module: integc
-#: code:addons/integc/hr/hr.py:407
-#: constraint:integc.hr.salary.grid:0
-#, python-format
-msgid "'Wage Minimal' must be lower than 'Wage Maximal'."
-msgstr "La 'Base minimale' doit être inféreieur à la 'Base maximale'."
-
-#. module: integc
-#: selection:integc.hr.partner.contract,invoicing_mode:0
-msgid "Quarterly"
-msgstr "Trimestriel"
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-#: view:integc.market.contract:0
-msgid "Totalement facturé"
-msgstr "Totalement facturé"
-
-#. module: integc
-#: view:account.voucher:0
-msgid "Total Amount"
-msgstr "Montant total"
-
-#. module: integc
-#: sql_constraint:integc.hr.partner.contract:0
-#: sql_constraint:integc.market:0
-#: sql_constraint:integc.market.contract:0
-msgid "Contract Reference must be unique per Company!"
-msgstr "Le N° de contrat doit être unique!"
-
-#. module: integc
-#: field:integc.hr.contract,date:0
-#: field:integc.hr.partner.contract,date:0
-#: field:integc.market,date:0
-#: field:integc.market.contract,date:0
-#: field:partner.contract,date:0
-msgid "Date"
-msgstr "Date"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "Intitulé"
-msgstr "Intitulé"
-
-#. module: integc
-#: view:account.voucher:0
-msgid "Unreconcile"
-msgstr "Annuler le rapprochement"
-
-#. module: integc
-#: view:integc.hr.registration.request:0
-msgid "Search"
-msgstr "Filtre"
-
-#. module: integc
-#: code:addons/integc/account/account_voucher.py:270
-#, python-format
-msgid "The invoice you are willing to pay is not valid anymore."
-msgstr "The invoice you are willing to pay is not valid anymore."
-
-#. module: integc
-#: report:transfer.order:0
-msgid "CLE"
-msgstr "CLE"
-
-#. module: integc
-#: field:hr.payslip.run,cfc_salarial:0
-msgid "CFC Salarial"
-msgstr "CFC Salarial"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "N° DE COMPTE"
-msgstr "N° DE COMPTE"
-
-#. module: integc
-#: code:addons/integc/hr/partner_contract.py:1009
-#: code:addons/integc/market/market.py:468
-#: code:addons/integc/market/market.py:1417
-#, python-format
-msgid "No valid pricelist line found ! :"
-msgstr "Aucune ligne de tarif en vigueur trouvé ! :"
-
-#. module: integc
-#: field:integc.market,date_end:0
-#: field:integc.market.contract,date_end:0
-msgid "Date End"
-msgstr "Date fin"
-
-#. module: integc
-#: help:integc.hr.salary.grid,wage_min:0
-msgid "Basic Minimal Salary for this grid"
-msgstr "Salaire de base minimal pour cette grille"
-
-#. module: integc
-#: report:payslip.run:0
-msgid "PENSION VIELLESSE"
-msgstr "PENSION VIELLESSE"
-
-#. module: integc
-#: view:integc.hr.registration.request:0
-msgid "Total Employee"
-msgstr "Total Employee"
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-#: field:integc.hr.partner.contract.line,contract_id:0
-#: field:integc.market.contract.line,contract_id:0
-#: model:ir.actions.act_window,name:integc.partner_contract_act
-#: view:partner.contract:0
-msgid "Partner Contract"
-msgstr "Contrat prestataire"
-
-#. module: integc
-#: field:integc.hr.category,structure_id:0
-#: field:integc.hr.salary.grid,structure_id:0
-msgid "Salary Structure"
-msgstr "Structure salariale"
-
-#. module: integc
-#: report:integc.payslip:0
-msgid "Taux(%)"
-msgstr "Taux(%)"
-
-#. module: integc
-#: view:integc.hr.grade:0
-msgid "Notes ..."
-msgstr "Notes ..."
-
-#. module: integc
-#: field:integc.hr.registration.request,employee_count:0
-msgid "Employee Count"
-msgstr "Nombre d'employés"
-
-#. module: integc
-#: report:integc.payslip:0
-msgid "EMPLOI OCCUPE"
-msgstr "EMPLOI OCCUPE"
-
-#. module: integc
-#: field:integc.market,market_line:0
-msgid "Market Lines"
-msgstr "Lignes de marché"
-
-#. module: integc
-#: code:addons/integc/hr/partner_contract.py:527
-#: code:addons/integc/market/market.py:972
-#, python-format
-msgid "You cannot create invoice for that contract with balance %s"
-msgstr "Vous ne pouvez pas créer une facture pour ce contrat avec pour réliquat %s"
-
-#. module: integc
-#: selection:integc.hr.partner.contract,type:0
-msgid "Outsourcing"
-msgstr "Sous-Traitance"
-
-#. module: integc
-#: code:addons/integc/hr/partner_contract.py:1006
-#: code:addons/integc/market/market.py:465
-#: code:addons/integc/market/market.py:1414
-#, python-format
-msgid "Cannot find a pricelist line matching this product and quantity.\n"
-"You have to change either the product, the quantity or the pricelist."
-msgstr "Impossoble de trouver une ligne de liste de prix correspondant au produit et à la quantité.\n"
-"Vous devez changer le produit ou la quantité ou alors la liste de prix."
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-#: view:integc.market.contract:0
-msgid "Create Invoice"
-msgstr "Créer la facture"
-
-#. module: integc
-#: selection:integc.market.contract,type:0
-msgid "Avenant"
-msgstr "Avenant"
-
-#. module: integc
-#: field:hr.employee,is_registered:0
-msgid "Is registered to CNPS"
-msgstr "Est immatriculé à la CNPS"
-
-#. module: integc
-#: view:hr.contract:0
-#: view:integc.hr.partner.contract:0
-msgid "Brouillon"
-msgstr "Brouillon"
-
-#. module: integc
-#: field:integc.hr.category,housing_allowance:0
-msgid "housing Allowance"
-msgstr "Indemnité de logement"
-
-#. module: integc
-#: report:integc.payslip:0
-msgid "RAISON SOCIALE"
-msgstr "RAISON SOCIALE"
-
-#. module: integc
-#: view:account.voucher:0
-msgid "Credits"
-msgstr "Crédits"
-
-#. module: integc
-#: selection:integc.hr.partner.contract.line,type:0
-#: selection:integc.market.contract.line,type:0
-#: selection:integc.market.line,type:0
-msgid "on order"
-msgstr "on order"
-
-#. module: integc
-#: view:hr.employee:0
-msgid "Genre"
-msgstr "Genre"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "CODE GUICHET"
-msgstr "CODE GUICHET"
-
-#. module: integc
-#: field:hr.employee,bank:0
-msgid "Bank"
-msgstr "Banque"
-
-#. module: integc
-#: view:account.voucher:0
-msgid "e.g. Invoice SAJ/0042"
-msgstr "e.g. Invoice SAJ/0042"
-
-#. module: integc
-#: field:hr.payslip.run,acc_trav:0
-msgid "Accident de travail"
-msgstr "Accident de travail"
-
-#. module: integc
-#: code:addons/integc/hr/hr.py:255
-#, python-format
-msgid "Neither social security number or date registration is not defined for %s"
-msgstr "Le N° d'immatriculation ou la date n'est pas renseigné pour l'employé %s"
-
-#. module: integc
-#: field:integc.account.invoice.stage,name:0
-#: field:integc.hr.category,name:0
-#: field:integc.hr.grade,name:0
-#: field:integc.hr.salary.grid,name:0
-#: field:integc.market,name:0
-msgid "Name"
-msgstr "Nom"
-
-#. module: integc
-#: report:payslip.run:0
-msgid "SALAIRE BRUT"
-msgstr "SALAIRE BRUT"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "NKONO ERIC FLAVIEN"
-msgstr "NKONO ERIC FLAVIEN"
-
-#. module: integc
-#: model:res.groups,name:integc.group_responsable_hr
-msgid "Responsable RH"
-msgstr "Responsable RH"
-
-#. module: integc
-#: report:integc.payslip:0
-msgid "QUALIFICATION"
-msgstr "QUALIFICATION"
-
-#. module: integc
-#: model:ir.module.category,name:integc.integc_category_module
-msgid "INTEGC"
-msgstr "INTEGC"
-
-#. module: integc
-#: field:integc.market,amount_total:0
-msgid "Total Base"
-msgstr "Total Base"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "Nous vous prions de bien vouloir effectuer les virements suivants"
-msgstr "Nous vous prions de bien vouloir effectuer les virements suivants"
-
-#. module: integc
-#: model:ir.model,name:integc.model_integc_hr_grade
-msgid "Salary Grade"
-msgstr "Echelon"
-
-#. module: integc
-#: selection:account.voucher,voucher_mode:0
-msgid "Single"
-msgstr "Single"
-
-#. module: integc
-#: code:addons/integc/hr/partner_contract.py:919
-#: code:addons/integc/market/market.py:378
-#: code:addons/integc/market/market.py:1327
-#, python-format
-msgid "Before choosing a product,\n"
-" select a customer in the sales form."
-msgstr "Avant de choisir un produit,\n"
-" sélectionner le partenaire dans le formulaire."
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-#: view:integc.market:0
-#: view:integc.market.contract:0
-msgid "Total Tax Included"
-msgstr "Total Taxes Incluses"
-
-#. module: integc
-#: report:integc.payslip:0
-#: report:payslip.run:0
-msgid "MATRICULE"
-msgstr "MATRICULE"
-
-#. module: integc
-#: code:addons/integc/hr/partner_contract.py:919
-#: code:addons/integc/market/market.py:378
-#: code:addons/integc/market/market.py:1327
-#, python-format
-msgid "No Customer Defined!"
-msgstr "Aucun partenaire n'est définie!"
-
-#. module: integc
-#: selection:integc.hr.partner.contract,type:0
-msgid "Expert"
-msgstr "Expert"
-
-#. module: integc
-#: view:integc.hr.registration.request:0
-msgid "Group By..."
-msgstr "Grouper par..."
-
-#. module: integc
-#: field:integc.hr.partner.contract.line,type:0
-#: field:integc.market.contract.line,type:0
-#: field:integc.market.line,type:0
-msgid "Procurement Method"
-msgstr "Méthode de passation"
-
-#. module: integc
-#: model:res.groups,name:integc.group_gerant
-msgid "Gérant"
-msgstr "Gérant"
-
-#. module: integc
-#: view:account.voucher:0
-msgid "Set to Draft"
-msgstr "Mettre à l'état \"Brouillon\""
-
-#. module: integc
-#: selection:integc.market.contract,type:0
-msgid "Base"
-msgstr "Base"
-
-#. module: integc
-#: model:ir.ui.menu,name:integc.menu_others
-msgid "Others"
-msgstr "Autres"
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-#: view:integc.market:0
-#: view:integc.market.contract:0
-msgid "Services"
-msgstr "Services"
-
-#. module: integc
-#: view:account.invoice:0
-#: view:account.voucher:0
-#: view:hr.contract:0
-#: view:integc.hr.partner.contract:0
-#: view:integc.hr.registration.request:0
-#: view:integc.market:0
-#: view:integc.market.contract:0
-msgid "Validate"
-msgstr "Valider"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "RIB"
-msgstr "RIB"
-
-#. module: integc
-#: view:hr.contract:0
-#: view:integc.hr.partner.contract:0
-msgid "En Attente signature DG"
-msgstr "En Attente signature DG"
-
-#. module: integc
-#: field:integc.market,amount_total_avenant:0
-msgid "Total Avenant"
-msgstr "Total Avenant"
-
-#. module: integc
-#: view:integc.hr.category:0
-msgid "Prime"
-msgstr "Prime"
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-#: view:integc.market.contract:0
-msgid "Contract Number "
-msgstr "N° Contrat "
-
-#. module: integc
-#: field:integc.hr.contract,note:0
-#: view:integc.hr.grade:0
-#: field:partner.contract,note:0
-msgid "Notes"
-msgstr "Notes"
-
-#. module: integc
-#: selection:integc.hr.partner.contract,invoicing_mode:0
-msgid "Annual"
-msgstr "Annuel"
-
-#. module: integc
-#: field:integc.hr.partner.contract,amount_tax:0
-#: field:integc.hr.partner.contract.line,tax_id:0
-#: field:integc.market,amount_tax:0
-#: field:integc.market.contract,amount_tax:0
-#: field:integc.market.contract.line,tax_id:0
-#: field:integc.market.line,tax_id:0
-msgid "Taxes"
-msgstr "Taxes"
-
-#. module: integc
-#: code:addons/integc/hr/hr.py:635
-#, python-format
-msgid "There is not salary grid defined for this category and grade"
-msgstr "Aucune grille salariale n'est définie pour cette catégorie et cet échelon"
-
-#. module: integc
-#: model:ir.model,name:integc.model_hr_payslip_journal
-msgid "Payslip journal"
-msgstr "Journal de bulletin"
-
-#. module: integc
-#: field:integc.hr.registration.request.line,date:0
-msgid "Date request"
-msgstr "Date demande"
-
-#. module: integc
-#: field:integc.hr.partner.contract,contract_line:0
-#: field:integc.market.contract,contract_line:0
-msgid "Contract Lines"
-msgstr "Ligne de contrat"
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-#: view:integc.market:0
-#: view:integc.market.contract:0
-msgid "Terms and conditions..."
-msgstr "Termes et conditions..."
-
-#. module: integc
-#: field:integc.hr.registration.request.line,ssnid:0
-msgid "Social Security Number"
-msgstr "N° CNPS"
-
-#. module: integc
-#: field:hr.contract,date_signature_employee:0
-msgid "Date Signature Employee"
-msgstr "Date Signature Employé"
-
-#. module: integc
-#: help:integc.hr.partner.contract,analytic_account_id:0
-#: help:integc.market.contract,analytic_account_id:0
-msgid "The analytic account related to a contract."
-msgstr "Le compte analytique associé à ce contrat."
-
-#. module: integc
-#: view:hr.payslip:0
-msgid "Print Payslip"
-msgstr "Imprimer le bulletin"
-
-#. module: integc
-#: field:hr.contract,date_from:0
-msgid "Date from"
-msgstr "Date début"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "NUMERO COMPTE"
-msgstr "NUMERO COMPTE"
-
-#. module: integc
-#: field:hr.payslip,date_payment:0
-msgid "Date Payment"
-msgstr "Date de paiement"
-
-#. module: integc
-#: model:ir.model,name:integc.model_integc_market_line
-msgid "Market line"
-msgstr "Ligne de marché"
-
-#. module: integc
-#: report:integc.payslip:0
-#: report:payslip.run:0
-msgid "NIU"
-msgstr "NIU"
-
-#. module: integc
-#: view:hr.employee:0
-msgid "Non Contractualisés"
-msgstr "Non Contractualisés"
-
-#. module: integc
-#: field:account.voucher,partner_ids:0
-msgid "Partners"
-msgstr "Partenaires"
-
-#. module: integc
-#: report:payslip.run:0
-msgid "PPAL"
-msgstr "PPAL"
-
-#. module: integc
-#: model:ir.model,name:integc.model_integc_account_invoice_stage
-msgid "Customer invoice stage"
-msgstr "Etape de facture client"
-
-#. module: integc
-#: view:hr.employee:0
-msgid "Street..."
-msgstr "Rue..."
-
-#. module: integc
-#: field:hr.contract,wage_max:0
-#: field:integc.hr.salary.grid,wage_max:0
-msgid "Wage Maximal"
-msgstr "Base maximale"
-
-#. module: integc
-#: report:integc.payslip:0
-msgid "Noms"
-msgstr "Noms"
-
-#. module: integc
-#: selection:integc.hr.partner.contract,state:0
-msgid "Waiting for signature of partner"
-msgstr "En attente de signature du prestataire"
-
-#. module: integc
-#: view:hr.employee:0
-msgid "Location"
-msgstr "Localisation"
-
-#. module: integc
-#: view:hr.employee:0
-msgid "Registered to CNPS"
-msgstr "Immatriculé à la CNPS"
-
-#. module: integc
-#: report:integc.payslip:0
-msgid "CATEGORIE"
-msgstr "CATEGORIE"
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-#: view:integc.market.contract:0
-msgid "Group By"
-msgstr "Grouper par"
-
-#. module: integc
-#: model:ir.actions.act_window,name:integc.action_other_payment
-#: model:ir.ui.menu,name:integc.menu_action_other_payment
-msgid "Other Payment"
-msgstr "Autres paiements"
-
-#. module: integc
-#: report:payslip.run:0
-msgid "MONTANTS"
-msgstr "MONTANTS"
-
-#. module: integc
-#: view:hr.employee:0
-msgid "Identity Card Number"
-msgstr "N° CNI"
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-msgid "Date signature"
-msgstr "Date signature"
-
-#. module: integc
-#: help:integc.hr.salary.grid,wage_max:0
-msgid "Basic Maximal Salary for this grid"
-msgstr "Salaire de base maximal pour cette grille"
-
-#. module: integc
-#: code:addons/integc/hr/hr.py:1044
-#, python-format
-msgid "The Expense Journal \"%s\" has not properly configured the Debit Account!"
-msgstr "The Expense Journal \"%s\" has not properly configured the Debit Account!"
-
-#. module: integc
-#: selection:hr.contract,state:0
-#: view:hr.payslip.journal:0
-#: view:integc.hr.contract:0
-#: selection:integc.hr.contract,decision:0
-#: view:integc.hr.registration.request:0
-#: selection:integc.market,state:0
-#: view:partner.contract:0
-#: selection:partner.contract,decision:0
-msgid "Cancel"
-msgstr "Annuler"
-
-#. module: integc
-#: model:ir.model,name:integc.model_hr_payslip_input
-msgid "Payslip Input"
-msgstr "Entrée du bulletin"
-
-#. module: integc
-#: report:integc.payslip:0
-msgid "Cachet de l'employeur"
-msgstr "Cachet de l'employeur"
-
-#. module: integc
-#: model:ir.model,name:integc.model_account_voucher_line
-msgid "Voucher Lines"
-msgstr "Lignes de justificatif"
-
-#. module: integc
-#: field:integc.hr.registration.request,date_validation:0
-msgid "Date Validation"
-msgstr "Date Validation"
-
-#. module: integc
-#: help:integc.hr.partner.contract,invoice_exists:0
-#: help:integc.market.contract,invoice_exists:0
-msgid "It indicates that contract has at least one invoice."
-msgstr "Indique si ce contrat a au moins une facture."
-
-#. module: integc
-#: report:integc.payslip:0
-msgid "Signature de l'employé"
-msgstr "Signature de l'employé"
-
-#. module: integc
-#: help:integc.hr.partner.contract,create_date:0
-#: help:integc.market.contract,create_date:0
-msgid "Date on which contract is created."
-msgstr "Date à laquelle le contrat a été créé ."
-
-#. module: integc
-#: view:account.voucher:0
-msgid "Voucher Payment"
-msgstr "Règlement fournisseur"
-
-#. module: integc
-#: view:integc.market:0
-msgid "Create Avenant"
-msgstr "Créer un avenant"
-
-#. module: integc
-#: field:integc.hr.partner.contract,date_start:0
-msgid "Start Date"
-msgstr "Date début"
-
-#. module: integc
-#: selection:hr.contract,state:0
-#: selection:integc.hr.partner.contract,state:0
-msgid "Completed"
-msgstr "Terminé"
-
-#. module: integc
-#: report:integc.payslip:0
-msgid "PERIODE DU"
-msgstr "PERIODE DU"
-
-#. module: integc
-#: field:integc.hr.contract,decision:0
-#: field:partner.contract,decision:0
-msgid "Decision"
-msgstr "Décision"
-
-#. module: integc
-#: report:integc.payslip:0
-msgid "TEL:"
-msgstr "TEL:"
-
-#. module: integc
-#: selection:integc.account.invoice.stage,state:0
-msgid "MINMAP"
-msgstr "MINMAP"
-
-#. module: integc
-#: view:hr.employee:0
-msgid "Responsable"
-msgstr "Responsable"
-
-#. module: integc
-#: field:integc.market,has_contracts:0
-msgid "Has contracts"
-msgstr "A de contrats"
-
-#. module: integc
-#: field:integc.hr.category,responsibility_prime:0
-msgid "Responsibility Prime"
-msgstr "Prime de responsabilité"
-
-#. module: integc
-#: report:integc.payslip:0
-msgid "NOMS ET PRENONS DE L'EMPLOYE"
-msgstr "NOMS ET PRENONS DE L'EMPLOYE"
-
-#. module: integc
-#: report:integc.payslip:0
-msgid "BULLETIN DE PAIE"
-msgstr "BULLETIN DE PAIE"
-
-#. module: integc
-#: field:hr.payslip,is_paid:0
-#: field:integc.hr.partner.contract,invoiced:0
-#: field:integc.market.contract,invoiced:0
-msgid "Paid"
-msgstr "Payé"
-
-#. module: integc
-#: field:hr.employee,phone:0
-msgid "Phone"
-msgstr "Téléphone"
-
-#. module: integc
-#: view:account.voucher:0
-msgid "Journal Items"
-msgstr "Ècritures comptable"
-
-#. module: integc
-#: field:integc.hr.partner.contract.line,discount:0
-#: field:integc.market.contract.line,discount:0
-#: field:integc.market.line,discount:0
-msgid "Discount (%)"
-msgstr "Remise (%)"
-
-#. module: integc
-#: model:ir.model,name:integc.model_integc_hr_registration_request_line
-msgid "integc.hr.registration.request.line"
-msgstr "integc.hr.registration.request.line"
-
-#. module: integc
-#: model:res.groups,name:integc.group_agent_hr
-msgid "Agent RH"
-msgstr "Agent RH"
-
-#. module: integc
-#: field:hr.payslip.run,pens_viel:0
-msgid "Pension Vieillesse"
-msgstr "Pension Vieillesse"
-
-#. module: integc
-#: selection:hr.contract,state:0
-#: selection:integc.hr.partner.contract,state:0
-msgid "Waiting for signature of director"
-msgstr "En attente de signature du Directeur"
-
-#. module: integc
-#: model:res.groups,name:integc.group_cde
-msgid "CDE"
-msgstr "CDE"
-
-#. module: integc
-#: view:hr.contract:0
-#: view:integc.hr.partner.contract:0
-msgid "Terminé"
-msgstr "Terminé"
-
-#. module: integc
-#: view:hr.contract:0
-#: field:hr.contract,attachment_ids:0
-#: view:hr.employee:0
-#: field:hr.employee,attachment_ids:0
-#: view:integc.hr.partner.contract:0
-#: field:integc.hr.partner.contract,attachment_ids:0
-#: view:integc.market:0
-#: field:integc.market,attachment_ids:0
-#: view:integc.market.contract:0
-#: field:integc.market.contract,attachment_ids:0
-msgid "Attachments"
-msgstr "Pièces jointes"
-
-#. module: integc
-#: model:res.groups,name:integc.group_cdc
-msgid "CDC"
-msgstr "CDC"
-
-#. module: integc
-#: code:addons/integc/hr/partner_contract.py:481
-#: code:addons/integc/market/market.py:926
-#, python-format
-msgid "Customer Invoices"
-msgstr "Factures clients"
-
-#. module: integc
-#: model:ir.model,name:integc.model_account_voucher
-msgid "Accounting Voucher"
-msgstr "Justificatif comptable"
-
-#. module: integc
-#: field:integc.hr.category,transport_allowance:0
-msgid "Transport Allowance"
-msgstr "Indemnité de Transport"
-
-#. module: integc
-#: field:integc.hr.partner.contract.line,price_unit:0
-#: field:integc.market.contract.line,price_unit:0
-#: field:integc.market.line,price_unit:0
-msgid "Unit Price"
-msgstr "Prix Unitaire"
-
-#. module: integc
-#: selection:integc.hr.partner.contract.line,state:0
-#: selection:integc.market,state:0
-#: selection:integc.market.contract,state:0
-#: selection:integc.market.contract.line,state:0
-#: selection:integc.market.line,state:0
-msgid "Done"
-msgstr "Terminé"
-
-#. module: integc
-#: field:integc.account.invoice.stage,invoice_id:0
-#: model:ir.model,name:integc.model_account_invoice
-msgid "Invoice"
-msgstr "Facture"
-
-#. module: integc
-#: view:integc.hr.category:0
-msgid "Fees"
-msgstr "Frais"
-
-#. module: integc
-#: view:hr.payslip.run:0
-msgid "Prestations sociales"
-msgstr "Prestations sociales"
-
-#. module: integc
-#: selection:integc.hr.registration.request,state:0
-#: selection:integc.hr.registration.request.line,state:0
-msgid "Validated"
-msgstr "Validé"
-
-#. module: integc
-#: view:integc.market:0
-#: field:integc.market.contract,market_id:0
-#: field:integc.market.line,market_id:0
-#: model:ir.actions.act_window,name:integc.view_integc_market_act
-#: model:ir.model,name:integc.model_integc_market
-#: model:ir.ui.menu,name:integc.menu_market_root
-#: model:ir.ui.menu,name:integc.menu_view_integc_market_view
-msgid "Market"
-msgstr "Marché"
-
-#. module: integc
-#: view:integc.market.contract:0
-msgid "Market Contract"
-msgstr "Contrat de marché"
-
-#. module: integc
-#: report:payslip.run:0
-msgid "CFC SALARIAL"
-msgstr "CFC SALARIAL"
-
-#. module: integc
-#: model:ir.model,name:integc.model_partner_contract
-msgid "partner.contract"
-msgstr "partner.contract"
-
-#. module: integc
-#: view:integc.market:0
-#: field:integc.market,duration:0
-msgid "Delay"
-msgstr "Delay"
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-msgid "Date fin"
-msgstr "Date fin"
-
-#. module: integc
-#: help:integc.hr.partner.contract,amount_untaxed:0
-#: help:integc.market,amount_untaxed:0
-#: help:integc.market.contract,amount_untaxed:0
-msgid "The amount without tax."
-msgstr "Montant hors taxes."
-
-#. module: integc
-#: field:hr.payslip.run,tdl:0
-#: report:payslip.run:0
-msgid "TDL"
-msgstr "TDL"
-
-#. module: integc
-#: field:integc.hr.partner.contract.line,product_id:0
-#: field:integc.market.contract.line,product_id:0
-#: field:integc.market.line,product_id:0
-msgid "Product"
-msgstr "Produit"
-
-#. module: integc
-#: view:account.voucher:0
-msgid "Payment Method"
-msgstr "Méthode de paiement"
-
-#. module: integc
-#: view:hr.contract:0
-#: selection:integc.hr.contract,decision:0
-#: view:integc.hr.partner.contract:0
-#: selection:partner.contract,decision:0
-msgid "Complete"
-msgstr "Terminer"
-
-#. module: integc
-#: view:integc.market:0
-msgid "Name "
-msgstr "Name "
 
 #. module: integc
 #: report:integc.payslip:0
@@ -1936,140 +72,29 @@ msgid "ADRESSE"
 msgstr "ADRESSE"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:408
-#: sql_constraint:integc.hr.salary.grid:0
-#, python-format
-msgid "Salary grid name already exists"
-msgstr "Cette grille salariale existe déjà"
-
-#. module: integc
-#: field:integc.account.invoice.stage,delay:0
-msgid "Delay (Days)"
-msgstr "Délai (jours)"
-
-#. module: integc
-#: report:payslip.run:0
-msgid "ELTS EXCEP."
-msgstr "ELTS EXCEP."
-
-#. module: integc
-#: view:hr.employee:0
-msgid "Non Immatriculés"
-msgstr "Non Immatriculés"
-
-#. module: integc
-#: field:integc.hr.partner.contract,date_end:0
-msgid "End Date"
-msgstr "Date fin"
-
-#. module: integc
-#: field:integc.hr.partner.contract,name:0
-#: field:integc.market.contract,name:0
-msgid "Contract Reference"
-msgstr "N° Contrat"
-
-#. module: integc
-#: field:hr.contract,wage_min:0
-#: field:integc.hr.salary.grid,wage_min:0
-msgid "Wage Minimal"
-msgstr "Base minimale"
-
-#. module: integc
-#: field:integc.hr.partner.contract.line,product_uos:0
-#: field:integc.market.contract.line,product_uos:0
-#: field:integc.market.line,product_uos:0
-msgid "Product UoS"
-msgstr "Product UoS"
-
-#. module: integc
-#: view:hr.contract:0
-#: view:integc.hr.partner.contract:0
-#: view:integc.hr.registration.request:0
-msgid "Approve"
-msgstr "Approuver"
-
-#. module: integc
-#: help:integc.hr.partner.contract.line,sequence:0
-#: help:integc.market.contract.line,sequence:0
-#: help:integc.market.line,sequence:0
-msgid "Gives the sequence order when displaying a list of contract lines."
-msgstr "Gives the sequence order when displaying a list of contract lines."
-
-#. module: integc
-#: field:hr.contract,date_cancel:0
-#: field:integc.market,date_cancel:0
-#: field:integc.market.contract,date_cancel:0
-msgid "Date Cancel"
-msgstr "Date Annulation"
-
-#. module: integc
-#: model:ir.actions.report.xml,name:integc.payslip_run
-msgid "Livre de paie"
-msgstr "Livre de paie"
-
-#. module: integc
 #: report:integc.payslip:0
-msgid "Total retenues"
-msgstr "Total retenues"
+msgid "ANCIENNETE"
+msgstr "ANCIENNETE"
 
 #. module: integc
-#: help:integc.market,amount_total_market:0
-msgid "The total amount for the market."
-msgstr "Montant total du marché."
+#: field:hr.payslip.run,acc_trav:0
+msgid "Accident de travail"
+msgstr "Accident de travail"
 
 #. module: integc
-#: view:integc.hr.partner.contract:0
-#: view:integc.market:0
-#: view:integc.market.contract:0
-msgid "Duration"
-msgstr "Durée"
+#: field:hr.employee,acc_number:0
+msgid "Account Number"
+msgstr "Numéro de compte"
 
 #. module: integc
-#: field:integc.market,date_start:0
-#: field:integc.market.contract,date_start:0
-msgid "Date Start"
-msgstr "Date début"
+#: model:ir.model,name:integc.model_account_voucher
+msgid "Accounting Voucher"
+msgstr "Justificatif comptable"
 
 #. module: integc
-#: field:integc.hr.partner.contract,amount_total:0
-#: field:integc.market.contract,amount_total:0
-msgid "Total"
-msgstr "Total"
-
-#. module: integc
-#: view:integc.market:0
-msgid "Update Contracts"
-msgstr "Avenants"
-
-#. module: integc
-#: report:payslip.run:0
-msgid "NAP"
-msgstr "NAP"
-
-#. module: integc
-#: report:payslip.run:0
-msgid "BP"
-msgstr "BP"
-
-#. module: integc
-#: help:integc.market,amount_total_avenant:0
-msgid "The total amount avenant."
-msgstr "Montant total avenant."
-
-#. module: integc
-#: report:payslip.run:0
-msgid "CHARGES ET RETENUES SALARIALE"
-msgstr "CHARGES ET RETENUES SALARIALE"
-
-#. module: integc
-#: view:hr.employee:0
-msgid "Contractualisés"
-msgstr "Contractualisés"
-
-#. module: integc
-#: model:ir.ui.menu,name:integc.menu_market
-msgid "Markets"
-msgstr "Marchés"
+#: field:account.invoice,validation_level:0
+msgid "Accounting validation level"
+msgstr "Niveau validation des écritures comptables"
 
 #. module: integc
 #: code:addons/integc/hr/hr.py:1030
@@ -2079,9 +104,399 @@ msgid "Adjustment Entry"
 msgstr "Adjustment Entry"
 
 #. module: integc
-#: field:hr.employee,fax:0
-msgid "Fax"
-msgstr "Fax"
+#: model:res.groups,name:integc.group_agent_hr
+msgid "Agent RH"
+msgstr "Agent RH"
+
+#. module: integc
+#: field:budget.line,allocation_id:0
+msgid "Allocation"
+msgstr "Allocation"
+
+#. module: integc
+#: field:integc.hr.partner.contract.line,address_allotment_id:0
+#: field:integc.market.contract.line,address_allotment_id:0
+#: field:integc.market.line,address_allotment_id:0
+msgid "Allotment Partner"
+msgstr "Lotissement partenaire"
+
+#. module: integc
+#: view:integc.hr.category:integc.view_integc_hr_category_form
+msgid "Allowance"
+msgstr "Indemnité"
+
+#. module: integc
+#: field:market.invoice,amount_total:0
+msgid "Amount total"
+msgstr "Montant total"
+
+#. module: integc
+#: field:hr.department,analytic_account_id:0
+#: model:ir.model,name:integc.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Compte analytique"
+
+#. module: integc
+#: field:integc.hr.partner.contract,analytic_account_id:0
+#: field:integc.market,analytic_account_id:0
+#: field:integc.market.contract,analytic_account_id:0
+msgid "Analytic account"
+msgstr "Compte analytique"
+
+#. module: integc
+#: selection:integc.hr.partner.contract,invoicing_mode:0
+msgid "Annual"
+msgstr "Annuel"
+
+#. module: integc
+#: view:hr.contract:integc.hr_contract_form_inherit1
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
+#: view:integc.hr.registration.request:integc.view_integc_registration_request_form
+msgid "Approve"
+msgstr "Approuver"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Are you sure to unreconcile and cancel this record ?"
+msgstr "Êtes-vous sûr de vouloir délettrer et annuler cette entrée?"
+
+#. module: integc
+#: model:res.groups,name:integc.group_assistant_comptable
+msgid "Assistant Comptable"
+msgstr "Assistant Comptable"
+
+#. module: integc
+#: view:hr.contract:integc.hr_contract_form_inherit1
+#: field:hr.contract,attachment_ids:0
+#: view:hr.employee:integc.view_employee_form_inherit2
+#: field:hr.employee,attachment_ids:0
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
+#: field:integc.hr.partner.contract,attachment_ids:0
+#: view:integc.market:integc.view_integc_market_form
+#: field:integc.market,attachment_ids:0
+#: view:integc.market.contract:integc.view_integc_market_contract_form
+#: field:integc.market.contract,attachment_ids:0
+msgid "Attachments"
+msgstr "Pièces jointes"
+
+#. module: integc
+#: selection:integc.market.contract,type:0
+msgid "Avenant"
+msgstr "Avenant"
+
+#. module: integc
+#: code:addons/integc/market/market.py:334
+#, python-format
+msgid "Avenant Contract"
+msgstr "Contrat Avenant"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "BANQUE"
+msgstr "BANQUE"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "BP"
+msgstr "BP"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "BULLETIN DE PAIE"
+msgstr "BULLETIN DE PAIE"
+
+#. module: integc
+#: field:integc.hr.partner.contract,balance:0
+msgid "Balance"
+msgstr "Réliquat"
+
+#. module: integc
+#: field:hr.employee,bank:0
+msgid "Bank"
+msgstr "Banque"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_form_inherit3
+msgid "Bank ..."
+msgstr "Banque ..."
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_form_inherit3
+msgid "Bank Account Number"
+msgstr "N° Compte bancaire"
+
+#. module: integc
+#: model:ir.model,name:integc.model_res_partner_bank
+msgid "Bank Accounts"
+msgstr "Comptes bancaires"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_filter_inherit1
+msgid "Banque"
+msgstr "Banque"
+
+#. module: integc
+#: selection:integc.market.contract,type:0
+msgid "Base"
+msgstr "Base"
+
+#. module: integc
+#: field:integc.market,contract_id:0
+msgid "Base Contract"
+msgstr "Contrat de base"
+
+#. module: integc
+#: help:integc.hr.salary.grid,wage_max:0
+msgid "Basic Maximal Salary for this grid"
+msgstr "Salaire de base maximal pour cette grille"
+
+#. module: integc
+#: help:integc.hr.salary.grid,wage_min:0
+msgid "Basic Minimal Salary for this grid"
+msgstr "Salaire de base minimal pour cette grille"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:919
+#: code:addons/integc/market/market.py:455
+#: code:addons/integc/market/market.py:1454
+#, python-format
+msgid "Before choosing a product,\n"
+" select a customer in the sales form."
+msgstr "Avant de choisir un produit,\n"
+" sélectionner le partenaire dans le formulaire."
+
+#. module: integc
+#: view:hr.contract:integc.hr_contract_view_search_inherit1
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
+msgid "Brouillon"
+msgstr "Brouillon"
+
+#. module: integc
+#: model:ir.model,name:integc.model_budget_budget
+#: model:ir.ui.menu,name:integc.integc_menu_budget
+msgid "Budget"
+msgstr "Budget"
+
+#. module: integc
+#: model:ir.model,name:integc.model_budget_line
+msgid "Budget Lines"
+msgstr "Lignes de budget"
+
+#. module: integc
+#: model:ir.model,name:integc.model_budget_item
+msgid "Budget items"
+msgstr "Postes budgétaires"
+
+#. module: integc
+#: model:ir.actions.report.xml,name:integc.payslip
+msgid "Buletin de paie"
+msgstr "Buletin de paie"
+
+#. module: integc
+#: field:hr.payslip.run,cac:0
+#: report:payslip.run:0
+msgid "CAC"
+msgstr "CAC"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "CATEGORIE"
+msgstr "CATEGORIE"
+
+#. module: integc
+#: model:res.groups,name:integc.group_cdc
+msgid "CDC"
+msgstr "CDC"
+
+#. module: integc
+#: model:res.groups,name:integc.group_cde
+msgid "CDE"
+msgstr "CDE"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "CFC"
+msgstr "CFC"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "CFC PATRONALE"
+msgstr "CFC PATRONALE"
+
+#. module: integc
+#: field:hr.payslip.run,cfc_patronal:0
+msgid "CFC Patronal"
+msgstr "CFC Patronal"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "CFC SALARIAL"
+msgstr "CFC SALARIAL"
+
+#. module: integc
+#: field:hr.payslip.run,cfc_salarial:0
+msgid "CFC Salarial"
+msgstr "CFC Salarial"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "CHARGES ET RETENUES SALARIALE"
+msgstr "CHARGES ET RETENUES SALARIALE"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "CLE"
+msgstr "CLE"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "CNPS"
+msgstr "CNPS"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "CODE BANQUE"
+msgstr "CODE BANQUE"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "CODE GUICHET"
+msgstr "CODE GUICHET"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Cachet de l'employeur"
+msgstr "Cachet de l'employeur"
+
+#. module: integc
+#: selection:hr.contract,state:0
+#: view:hr.payslip.journal:integc.view_hr_payslip_journal
+#: view:integc.hr.contract:integc.view_integc_hr_contract_form
+#: selection:integc.hr.contract,decision:0
+#: view:integc.hr.registration.request:integc.view_integc_registration_request_form
+#: selection:integc.market,state:0
+#: view:market.invoice:integc.market_invoice_form
+#: view:partner.contract:integc.partner_contract_form
+#: selection:partner.contract,decision:0
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Cancel Voucher"
+msgstr "Annuler le bon"
+
+#. module: integc
+#: selection:integc.hr.registration.request,state:0
+#: selection:integc.hr.registration.request.line,state:0
+msgid "Canceled"
+msgstr "Annulé"
+
+#. module: integc
+#: selection:integc.hr.partner.contract,state:0
+#: selection:integc.hr.partner.contract.line,state:0
+#: selection:integc.market.contract,state:0
+#: selection:integc.market.contract.line,state:0
+#: selection:integc.market.line,state:0
+msgid "Cancelled"
+msgstr "Annulé"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:631
+#: code:addons/integc/market/market.py:1192
+#, python-format
+msgid "Cannot cancel this contract!"
+msgstr "Impossible de supprimer ce contract!"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:1037
+#: code:addons/integc/market/market.py:573
+#: code:addons/integc/market/market.py:1572
+#, python-format
+msgid "Cannot delete a contract line which is in state '%s'."
+msgstr "Impossible de supprimer une ligne de contrat à un état '%s'."
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:1006
+#: code:addons/integc/market/market.py:542
+#: code:addons/integc/market/market.py:1541
+#, python-format
+msgid "Cannot find a pricelist line matching this product and quantity.\n"
+"You have to change either the product, the quantity or the pricelist."
+msgstr "Impossoble de trouver une ligne de liste de prix correspondant au produit et à la quantité.\n"
+"Vous devez changer le produit ou la quantité ou alors la liste de prix."
+
+#. module: integc
+#: field:budget.line,parent_id:0
+msgid "Categorie"
+msgstr "Catégorie"
+
+#. module: integc
+#: view:budget.line:integc.view_budget_line_search_inherit_integc
+#: field:hr.contract,category_id:0
+#: view:integc.hr.category:integc.view_integc_hr_category_form
+#: view:integc.hr.category:integc.view_integc_hr_category_tree
+#: field:integc.hr.salary.grid,category_id:0
+#: model:ir.actions.act_window,name:integc.integc_hr_category_act
+#: model:ir.ui.menu,name:integc.menu_integc_hr_category_view
+msgid "Category"
+msgstr "Catégorie"
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:358
+#, python-format
+msgid "Category name already exists"
+msgstr "Ce nom de catégorie existe déjà"
+
+#. module: integc
+#: view:hr.contract:integc.hr_contract_view_search_inherit1
+msgid "Catégorie"
+msgstr "Catégorie"
+
+#. module: integc
+#: sql_constraint:integc.hr.category:0
+msgid "Ce nom de catégorie existe déjà"
+msgstr "Ce nom de catégorie existe déjà"
+
+#. module: integc
+#: sql_constraint:integc.hr.salary.grid:0
+msgid "Cette grille salariale existe déjà"
+msgstr "Cette grille salariale existe déjà"
+
+#. module: integc
+#: view:budget.line:integc.view_budget_line_search_inherit_integc
+msgid "Charges"
+msgstr "Charges"
+
+#. module: integc
+#: view:hr.payslip.run:integc.hr_payslip_run_form_inherit
+msgid "Charges et retenues salariales"
+msgstr "Charges et retenues salariales"
+
+#. module: integc
+#: model:res.groups,name:integc.group_chef_comptable
+msgid "Chef Comptable"
+msgstr "Chef Comptable"
+
+#. module: integc
+#: model:res.groups,name:integc.group_chef_projet
+msgid "Chef de projets"
+msgstr "Chef de projets"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_form_inherit2
+msgid "City"
+msgstr "Ville"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_form_inherit3
+msgid "Clé"
+msgstr "Clé"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_form_inherit3
+msgid "Code Guichet"
+msgstr "Code Guichet"
 
 #. module: integc
 #: field:hr.payslip.run,company_id:0
@@ -2094,140 +509,47 @@ msgid "Company"
 msgstr "Structure"
 
 #. module: integc
-#: field:hr.contract,date_to:0
-msgid "Date to"
-msgstr "Date de fin"
+#: view:hr.contract:integc.hr_contract_form_inherit1
+#: selection:integc.hr.contract,decision:0
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
+#: selection:partner.contract,decision:0
+msgid "Complete"
+msgstr "Terminer"
 
 #. module: integc
-#: field:integc.hr.partner.contract,partner_shipping_id:0
-#: field:integc.market.contract,partner_shipping_id:0
-msgid "Delivery Address"
-msgstr "Adresse de livraison"
-
-#. module: integc
-#: report:transfer.order:0
-msgid "BANQUE"
-msgstr "BANQUE"
-
-#. module: integc
-#: field:integc.market,date_open:0
-#: field:integc.market.contract,date_open:0
-msgid "Date Open"
-msgstr "Date Ouverture"
-
-#. module: integc
-#: view:integc.hr.registration.request:0
-#: field:integc.hr.registration.request.line,registration_id:0
-msgid "Registration Request"
-msgstr "Demande d'immatriculation"
-
-#. module: integc
-#: code:addons/integc/account/account_invoice.py:145
-#, python-format
-msgid "Step %s of the invoice %s has exceeded the time limit."
-msgstr "L'étape %s de la facture %s a dépassé le délai imparti."
-
-#. module: integc
-#: field:hr.contract,project_id:0
-#: field:integc.hr.partner.contract,project_id:0
-#: field:integc.market,project_id:0
-msgid "Project"
-msgstr "Projet"
-
-#. module: integc
-#: code:addons/integc/hr/partner_contract.py:419
-#: code:addons/integc/hr/partner_contract.py:544
-#: code:addons/integc/hr/partner_contract.py:655
-#: code:addons/integc/hr/partner_contract.py:817
-#: code:addons/integc/hr/partner_contract.py:834
-#: code:addons/integc/market/market.py:877
-#: code:addons/integc/market/market.py:989
-#: code:addons/integc/market/market.py:1079
-#: code:addons/integc/market/market.py:1225
-#: code:addons/integc/market/market.py:1242
-#, python-format
-msgid "Error!"
-msgstr "Erreur!"
-
-
-#. module: integc
-#: help:integc.market,pricelist_id:0
-msgid "Pricelist for current market."
-msgstr "Pricelist for current market."
-
-#. module: integc
+#: selection:hr.contract,state:0
 #: selection:integc.hr.partner.contract,state:0
-#: selection:integc.hr.partner.contract.line,state:0
-#: selection:integc.market.contract,state:0
-#: selection:integc.market.contract.line,state:0
-#: selection:integc.market.line,state:0
-msgid "Cancelled"
-msgstr "Annulé"
+msgid "Completed"
+msgstr "Terminé"
 
 #. module: integc
-#: report:transfer.order:0
-msgid "NOMS ET PRENOMS"
-msgstr "NOMS ET PRENOMS"
+#: view:hr.contract:integc.hr_contract_view_search_inherit1
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
+#: view:integc.market.contract:integc.view_integc_market_contract_search
+msgid "Compte analytique"
+msgstr "Compte analytique"
 
 #. module: integc
-#: code:addons/integc/account/account_invoice.py:51
+#: code:addons/integc/hr/hr.py:1028
+#: code:addons/integc/hr/hr.py:1044
+#: code:addons/integc/hr/partner_contract.py:1014
+#: code:addons/integc/market/market.py:550
+#: code:addons/integc/market/market.py:1549
 #, python-format
-msgid "You cant not validate that invoice with the amount %s.\n"
-"The contract %s related to that invoice has balance %s"
-msgstr "You cant not validate that invoice with the amount %s.\n"
-"The contract %s related to that invoice has balance %s"
+msgid "Configuration Error!"
+msgstr "Erreur de configuration!"
 
 #. module: integc
-#: field:integc.hr.category,note:0
-#: view:integc.hr.contract:0
-#: field:integc.hr.grade,note:0
-msgid "Note"
-msgstr "Note"
+#: view:integc.hr.contract:integc.view_integc_hr_contract_form
+#: view:market.invoice:integc.market_invoice_form
+#: view:partner.contract:integc.partner_contract_form
+msgid "Confirm"
+msgstr "Confirmer"
 
 #. module: integc
-#: report:payslip.run:0
-msgid "CFC PATRONALE"
-msgstr "CFC PATRONALE"
-
-#. module: integc
-#: field:account.voucher,voucher_mode:0
-msgid "Voucher Mode"
-msgstr "Voucher Mode"
-
-#. module: integc
-#: code:addons/integc/hr/partner_contract.py:420
-#: code:addons/integc/market/market.py:878
-#, python-format
-msgid "Please define sales journal for this company: \"%s\" (id:%d)."
-msgstr "Veuillez définir un journal pour la structure: \"%s\" (id:%d)."
-
-#. module: integc
-#: view:integc.hr.partner.contract:0
-#: view:integc.market.contract:0
-msgid "Payé"
-msgstr "Payé"
-
-#. module: integc
-#: field:integc.hr.partner.contract.line,product_uos_qty:0
-#: field:integc.market.contract.line,product_uos_qty:0
-#: field:integc.market.line,product_uos_qty:0
-msgid "Quantity (UoS)"
-msgstr "Quantité (UoS)"
-
-#. module: integc
-#: view:hr.employee:0
-msgid "Registration N°"
-msgstr "N° Matricule"
-
-#. module: integc
-#: model:res.groups,name:integc.group_dex
-msgid "DEX"
-msgstr "DEX"
-
-#. module: integc
-#: view:hr.employee:0
-msgid "Bank ..."
-msgstr "Banque ..."
+#: field:integc.hr.partner.contract,date_confirm:0
+msgid "Confirmation Date"
+msgstr "Date de confirmation"
 
 #. module: integc
 #: selection:integc.hr.partner.contract.line,state:0
@@ -2237,100 +559,279 @@ msgid "Confirmed"
 msgstr "Confirmé"
 
 #. module: integc
-#: field:integc.hr.partner.contract,note:0
-#: field:integc.market,note:0
-#: field:integc.market.contract,note:0
-msgid "Terms and conditions"
-msgstr "Termes et conditions"
+#: view:hr.contract:integc.view_integc_hr_contract_tree1
+#: view:hr.contract:integc.view_integc_hr_contract_tree2
+#: view:integc.hr.contract:integc.view_integc_hr_contract_form
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_tree1
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_tree2
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_tree3
+#: model:ir.actions.act_window,name:integc.integc_hr_contract_act
+#: model:ir.model,name:integc.model_hr_contract
+#: field:market.invoice,contract_id:0
+msgid "Contract"
+msgstr "Contrat"
 
 #. module: integc
-#: view:integc.hr.contract:0
-#: view:partner.contract:0
-msgid "Confirm"
-msgstr "Confirmer"
+#: field:integc.hr.partner.contract,contract_line:0
+#: field:integc.market.contract,contract_line:0
+msgid "Contract Lines"
+msgstr "Ligne de contrat"
 
 #. module: integc
-#: report:integc.payslip:0
-msgid "Salaire brut"
-msgstr "Salaire brut"
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_tree
+#: view:integc.market:integc.view_integc_market_form
+#: view:integc.market.contract:integc.view_integc_market_contract_form
+#: view:integc.market.contract:integc.view_integc_market_contract_tree
+msgid "Contract Number"
+msgstr "N° Contrat"
 
 #. module: integc
-#: field:integc.hr.partner.contract,analytic_account_id:0
-#: field:integc.market,analytic_account_id:0
-#: field:integc.market.contract,analytic_account_id:0
-msgid "Analytic account"
-msgstr "Compte analytique"
+#: field:integc.hr.partner.contract,name:0
+#: field:integc.market.contract,name:0
+msgid "Contract Reference"
+msgstr "N° Contrat"
 
 #. module: integc
-#: field:integc.hr.registration.request.line,employee_id:0
-#: model:ir.model,name:integc.model_hr_employee
-msgid "Employee"
-msgstr "Employé"
+#: sql_constraint:integc.hr.partner.contract:0
+#: sql_constraint:integc.market:0
+#: sql_constraint:integc.market.contract:0
+msgid "Contract Reference must be unique per Company!"
+msgstr "Le N° de contrat doit être unique!"
 
 #. module: integc
-#: view:hr.employee:0
-msgid "Banque"
-msgstr "Banque"
+#: field:budget.budget,analytic_account_id:0
+msgid "Contract/Analytic"
+msgstr "Contract/Analytic"
 
 #. module: integc
-#: field:integc.hr.partner.contract.line,invoice_lines:0
-#: field:integc.market.contract.line,invoice_lines:0
-msgid "Invoice Lines"
-msgstr "Lignes de facture"
+#: model:ir.actions.act_window,name:integc.open_view_contract_act
+#: model:ir.actions.act_window,name:integc.open_view_contract_act1
+#: model:ir.actions.act_window,name:integc.open_view_partner_contract_act1
+#: model:ir.actions.act_window,name:integc.open_view_partner_contract_act2
+#: model:ir.actions.act_window,name:integc.open_view_partner_contract_act3
+msgid "Contracts"
+msgstr "Contrats"
 
 #. module: integc
-#: view:account.voucher:0
-msgid "Voucher Entries"
-msgstr "Saisie de justificatifs"
+#: view:hr.employee:integc.view_employee_filter_inherit1
+msgid "Contractualisés"
+msgstr "Contractualisés"
 
 #. module: integc
-#: model:ir.model,name:integc.model_integc_market_contract_line
-msgid "Market contract line"
-msgstr "Ligne de contrat de marché"
+#: view:board.board:integc.board_integc_hr_form2
+msgid "Contrats prestataires en attente de signature par le DG"
+msgstr "Contrats prestataires en attente de signature par le DG"
 
 #. module: integc
-#: view:hr.employee:0
-msgid "Clé"
-msgstr "Clé"
+#: view:board.board:integc.board_integc_hr_form2
+msgid "Contrats prestataires signés le mois en cours"
+msgstr "Contrats prestataires signés le mois en cours"
 
 #. module: integc
-#: report:integc.payslip:0
-#: report:payslip.run:0
-msgid "N° CNPS"
-msgstr "N° CNPS"
+#: view:board.board:integc.board_integc_hr_form2
+msgid "Contrats prestataires terminés le mois en cours"
+msgstr "Contrats prestataires terminés le mois en cours"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:342
-#: code:addons/integc/market/market.py:815
+#: view:board.board:integc.board_integc_hr_form2
+msgid "Contrats signés le mois en cours"
+msgstr "Contrats signés le mois en cours"
+
+#. module: integc
+#: view:board.board:integc.board_integc_hr_form2
+msgid "Contrats terminés le mois en cours"
+msgstr "Contrats terminés le mois en cours"
+
+#. module: integc
+#: field:account.invoice,count:0
+msgid "Count Number"
+msgstr "N° Décompte"
+
+#. module: integc
+#: field:integc.market.contract,count_paid:0
+#: field:market.invoice,count_paid:0
+msgid "Count paid"
+msgstr "Décompte payé"
+
+#. module: integc
+#: view:integc.market:integc.view_integc_market_form
+msgid "Create Avenant"
+msgstr "Créer un avenant"
+
+#. module: integc
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
+#: view:integc.market:integc.view_integc_market_form
+#: view:integc.market.contract:integc.view_integc_market_contract_form
+msgid "Create Invoice"
+msgstr "Créer la facture"
+
+#. module: integc
+#: field:hr.payslip.journal,create_uid:0
+#: field:integc.account.invoice.stage,create_uid:0
+#: field:integc.hr.category,create_uid:0
+#: field:integc.hr.contract,create_uid:0
+#: field:integc.hr.grade,create_uid:0
+#: field:integc.hr.partner.contract,create_uid:0
+#: field:integc.hr.partner.contract.line,create_uid:0
+#: field:integc.hr.registration.request,create_uid:0
+#: field:integc.hr.registration.request.line,create_uid:0
+#: field:integc.hr.salary.grid,create_uid:0
+#: field:integc.market,create_uid:0
+#: field:integc.market.contract,create_uid:0
+#: field:integc.market.contract.line,create_uid:0
+#: field:integc.market.line,create_uid:0
+#: field:market.invoice,create_uid:0
+#: field:partner.contract,create_uid:0
+msgid "Created by"
+msgstr "Créé by"
+
+#. module: integc
+#: field:hr.payslip.journal,create_date:0
+#: field:integc.account.invoice.stage,create_date:0
+#: field:integc.hr.category,create_date:0
+#: field:integc.hr.contract,create_date:0
+#: field:integc.hr.grade,create_date:0
+#: field:integc.hr.partner.contract.line,create_date:0
+#: field:integc.hr.registration.request,create_date:0
+#: field:integc.hr.registration.request.line,create_date:0
+#: field:integc.hr.salary.grid,create_date:0
+#: field:integc.market.contract.line,create_date:0
+#: field:integc.market.line,create_date:0
+#: field:market.invoice,create_date:0
+#: field:partner.contract,create_date:0
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: integc
+#: field:integc.hr.partner.contract,create_date:0
+#: field:integc.market,create_date:0
+#: field:integc.market.contract,create_date:0
+msgid "Creation Date"
+msgstr "Date création"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Credits"
+msgstr "Crédits"
+
+#. module: integc
+#: field:integc.hr.partner.contract,currency_id:0
+#: field:integc.market,currency_id:0
+#: field:integc.market.contract,currency_id:0
+msgid "Currency"
+msgstr "Dévise"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Currency Options"
+msgstr "Options de la devise"
+
+#. module: integc
+#: field:integc.hr.partner.contract.line,order_partner_id:0
+#: field:integc.market,partner_id:0
+#: field:integc.market.contract,partner_id:0
+msgid "Customer"
+msgstr "Client"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:481
+#: code:addons/integc/market/market.py:1053
 #, python-format
-msgid "In order to delete a confirmed contract, you must cancel it before!"
-msgstr "Pour supprimer un contract validé, vous devez d'abord l'annuler!"
+msgid "Customer Invoices"
+msgstr "Factures clients"
 
 #. module: integc
-#: view:account.voucher:0
-msgid "Are you sure to unreconcile and cancel this record ?"
-msgstr "Êtes-vous sûr de vouloir délettrer et annuler cette entrée?"
+#: model:ir.model,name:integc.model_integc_account_invoice_stage
+msgid "Customer invoice stage"
+msgstr "Etape de facture client"
 
 #. module: integc
-#: view:hr.payslip:0
-msgid "Payslip Line"
-msgstr "Ligne de bulletin de salaire"
+#: model:res.groups,name:integc.group_dafc
+msgid "DAFC"
+msgstr "DAFC"
 
 #. module: integc
-#: model:res.groups,name:integc.group_assistant_comptable
-msgid "Assistant Comptable"
-msgstr "Assistant Comptable"
-
-
-#. module: integc
-#: view:hr.payslip.run:0
-msgid "Print Payslips"
-msgstr "Imprimer les bulletins"
+#: report:transfer.order:0
+msgid "DE MONSIEUR LE DIRECTEUR DE"
+msgstr "DE MONSIEUR LE DIRECTEUR DE"
 
 #. module: integc
-#: report:integc.payslip:0
-msgid "Salaire brut taxable"
-msgstr "Salaire brut taxable"
+#: model:res.groups,name:integc.group_dex
+msgid "DEX"
+msgstr "DEX"
+
+#. module: integc
+#: field:integc.hr.contract,date:0
+#: field:integc.hr.partner.contract,date:0
+#: field:integc.market,date:0
+#: field:integc.market.contract,date:0
+#: field:partner.contract,date:0
+msgid "Date"
+msgstr "Date"
+
+#. module: integc
+#: field:hr.contract,date_cancel:0
+#: field:integc.market,date_cancel:0
+#: field:integc.market.contract,date_cancel:0
+msgid "Date Cancel"
+msgstr "Date Annulation"
+
+#. module: integc
+#: field:integc.market,date_done:0
+#: field:integc.market.contract,date_done:0
+msgid "Date Done"
+msgstr "Date cloture"
+
+#. module: integc
+#: view:hr.contract:integc.view_integc_hr_contract_filter
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_filter
+#: field:integc.market,date_end:0
+#: field:integc.market.contract,date_end:0
+msgid "Date End"
+msgstr "Date fin"
+
+#. module: integc
+#: field:hr.payslip.journal,date_from:0
+msgid "Date From"
+msgstr "Date début"
+
+#. module: integc
+#: field:integc.market,date_open:0
+#: field:integc.market.contract,date_open:0
+msgid "Date Open"
+msgstr "Date Ouverture"
+
+#. module: integc
+#: field:hr.payslip,date_payment:0
+msgid "Date Payment"
+msgstr "Date de paiement"
+
+#. module: integc
+#: field:integc.hr.registration.request,date:0
+msgid "Date Request"
+msgstr "Date Demande"
+
+#. module: integc
+#: field:integc.hr.partner.contract,date_signature:0
+msgid "Date Signature"
+msgstr "Date Signature"
+
+#. module: integc
+#: field:hr.contract,date_signature_director:0
+msgid "Date Signature Director"
+msgstr "Date Signature Directeur"
+
+#. module: integc
+#: field:hr.contract,date_signature_employee:0
+msgid "Date Signature Employee"
+msgstr "Date Signature Employé"
+
+#. module: integc
+#: field:integc.market,date_start:0
+#: field:integc.market.contract,date_start:0
+msgid "Date Start"
+msgstr "Date début"
 
 #. module: integc
 #: field:hr.payslip.journal,date_to:0
@@ -2338,97 +839,176 @@ msgid "Date To"
 msgstr "Date fin"
 
 #. module: integc
+#: field:integc.hr.registration.request,date_validation:0
+msgid "Date Validation"
+msgstr "Date Validation"
+
+#. module: integc
+#: field:integc.account.invoice.stage,date_end:0
+msgid "Date end"
+msgstr "Date fin"
+
+#. module: integc
+#: view:hr.contract:integc.hr_contract_view_search_inherit1
+msgid "Date end: From"
+msgstr "Date de fin: Du"
+
+#. module: integc
+#: view:hr.contract:integc.hr_contract_view_search_inherit1
+msgid "Date end: To"
+msgstr "Date de fin: Au"
+
+#. module: integc
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
+msgid "Date fin"
+msgstr "Date fin"
+
+#. module: integc
+#: field:hr.contract,date_from:0
+msgid "Date from"
+msgstr "Date début"
+
+#. module: integc
+#: help:integc.hr.partner.contract,date_confirm:0
+msgid "Date on which contract is confirmed."
+msgstr "Date à laquelle le contract est validé."
+
+#. module: integc
+#: help:integc.hr.partner.contract,create_date:0
+#: help:integc.market.contract,create_date:0
+msgid "Date on which contract is created."
+msgstr "Date à laquelle le contrat a été créé ."
+
+#. module: integc
+#: help:integc.hr.partner.contract,date_signature:0
+msgid "Date on which contract is signed."
+msgstr "Date à laquelle le contrat est signé par le perstataire."
+
+#. module: integc
+#: field:budget.line,paid_date:0
+msgid "Date paiement"
+msgstr "Date paiement"
+
+#. module: integc
+#: field:integc.hr.registration.request.line,date_registration:0
+msgid "Date registration"
+msgstr "Date immatriculation"
+
+#. module: integc
+#: field:integc.hr.registration.request.line,date:0
+msgid "Date request"
+msgstr "Date demande"
+
+#. module: integc
+#: view:hr.contract:integc.view_integc_hr_contract_filter
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_filter
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
+msgid "Date signature"
+msgstr "Date signature"
+
+#. module: integc
+#: field:integc.account.invoice.stage,date_start:0
+msgid "Date start"
+msgstr "Date début"
+
+#. module: integc
+#: field:hr.contract,date_to:0
+msgid "Date to"
+msgstr "Date de fin"
+
+#. module: integc
+#: field:integc.hr.contract,decision:0
+#: field:partner.contract,decision:0
+msgid "Decision"
+msgstr "Decision"
+
+#. module: integc
 #: field:integc.account.invoice.stage,default:0
 msgid "Default for invoices"
 msgstr "Default for invoices"
 
 #. module: integc
-#: view:hr.employee:0
-msgid "Code Guichet"
-msgstr "Code Guichet"
+#: view:integc.market:integc.view_integc_market_form
+#: field:integc.market,duration:0
+msgid "Delay"
+msgstr "Délai"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:874
-#: code:addons/integc/market/market.py:1282
-#, python-format
-msgid "You cannot cancel a contract line that has already been invoiced."
-msgstr "You cannot cancel a contract line that has already been invoiced."
+#: field:integc.account.invoice.stage,delay:0
+msgid "Delay (Days)"
+msgstr "Délai (jours)"
 
 #. module: integc
-#: view:hr.contract:0
-msgid "Date end: From"
-msgstr "Date de fin: Du"
+#: view:integc.market:integc.view_integc_market_tree
+msgid "Delay (days)"
+msgstr "Délai (jours)"
 
 #. module: integc
-#: view:account.invoice:0
-msgid "Register Payment"
-msgstr "Enregistrer le règlement"
+#: field:integc.hr.partner.contract,partner_shipping_id:0
+#: field:integc.market.contract,partner_shipping_id:0
+msgid "Delivery Address"
+msgstr "Adresse de livraison"
 
 #. module: integc
-#: field:integc.hr.partner.contract.line,th_weight:0
-#: field:integc.market.contract.line,th_weight:0
-#: field:integc.market.line,th_weight:0
-msgid "Weight"
-msgstr "Poids"
+#: help:integc.hr.partner.contract,partner_shipping_id:0
+#: help:integc.market.contract,partner_shipping_id:0
+msgid "Delivery address for current contract."
+msgstr "Adresse de livraison."
 
 #. module: integc
-#: view:integc.hr.partner.contract:0
-#: field:integc.hr.partner.contract,invoice_count:0
-#: field:integc.hr.partner.contract,invoice_ids:0
-#: view:integc.hr.registration.request:0
-#: view:integc.market.contract:0
-#: field:integc.market.contract,invoice_count:0
-#: field:integc.market.contract,invoice_ids:0
-msgid "Invoices"
-msgstr "Factures"
+#: model:ir.actions.act_window,name:integc.board_integc_hr_registration_request_line_act1
+msgid "Demande d'immatriculation en attente"
+msgstr "Demande d'immatriculation en attente"
 
 #. module: integc
-#: selection:integc.hr.registration.request,state:0
-#: selection:integc.hr.registration.request.line,state:0
-msgid "Canceled"
-msgstr "Annulé"
+#: model:ir.actions.act_window,name:integc.board_integc_hr_registration_request_line_act2
+msgid "Demande d'immatriculation validée"
+msgstr "Demande d'immatriculation validée"
 
 #. module: integc
-#: field:hr.employee,pos:0
-msgid "Point of Sale"
-msgstr "Code Guichet"
+#: view:board.board:integc.board_integc_hr_form
+#: view:board.board:integc.board_integc_hr_form2
+msgid "Demandes Immatriculation en attente"
+msgstr "Demandes Immatriculation en attente"
 
 #. module: integc
-#: view:hr.payslip.journal:0
-#: view:integc.hr.contract:0
-#: view:partner.contract:0
-msgid "or"
-msgstr "ou"
+#: view:board.board:integc.board_integc_hr_form
+msgid "Demandes d'immatriculation validées"
+msgstr "Demandes d'immatriculation validées"
 
 #. module: integc
-#: field:integc.hr.partner.contract,invoice_exists:0
-#: field:integc.hr.partner.contract.line,invoiced:0
-#: field:integc.market.contract,invoice_exists:0
-#: field:integc.market.contract.line,invoiced:0
-msgid "Invoiced"
-msgstr "Facturé"
+#: field:integc.hr.partner.contract.line,name:0
+#: view:integc.market:integc.view_integc_market_tree
+#: field:integc.market.contract.line,name:0
+#: field:integc.market.line,name:0
+msgid "Description"
+msgstr "Description"
 
 #. module: integc
+#: view:integc.market:integc.view_integc_market_form
+msgid "Description ..."
+msgstr "Description ..."
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_form_inherit2
+msgid "Detail"
+msgstr "Détail"
+
+#. module: integc
+#: field:integc.hr.partner.contract.line,discount:0
+#: field:integc.market.contract.line,discount:0
+#: field:integc.market.line,discount:0
+msgid "Discount (%)"
+msgstr "Remise (%)"
+
+#. module: integc
+#: selection:integc.hr.partner.contract.line,state:0
 #: selection:integc.market,state:0
 #: selection:integc.market.contract,state:0
-msgid "Opened"
-msgstr "Ouvert"
-
-#. module: integc
-#: code:addons/integc/hr/partner_contract.py:655
-#: code:addons/integc/market/market.py:1079
-#, python-format
-msgid "You cannot confirm a contract which has no line."
-msgstr "Vous ne pouvez pas confirmer un contrat qui n'a pas de lignes"
-
-#. module: integc
-#: field:hr.contract,salary_grid_id:0
-#: view:integc.hr.salary.grid:0
-#: model:ir.actions.act_window,name:integc.integc_hr_salary_grid_act
-#: model:ir.model,name:integc.model_integc_hr_salary_grid
-#: model:ir.ui.menu,name:integc.menu_integc_hr_salary_grid
-msgid "Salary Grid"
-msgstr "Grille salariale"
+#: selection:integc.market.contract.line,state:0
+#: selection:integc.market.line,state:0
+msgid "Done"
+msgstr "Terminé"
 
 #. module: integc
 #: selection:hr.contract,state:0
@@ -2444,107 +1024,122 @@ msgid "Draft"
 msgstr "Bouillon"
 
 #. module: integc
-#: view:hr.employee:0
-msgid "N° Compte"
-msgstr "N° Compte"
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
+#: view:integc.market:integc.view_integc_market_form
+#: view:integc.market.contract:integc.view_integc_market_contract_form
+msgid "Duration"
+msgstr "Durée"
 
 #. module: integc
 #: report:payslip.run:0
-msgid "JOURNAL DES SALAIRES"
-msgstr "JOURNAL DES SALAIRES"
+msgid "ELTS EXCEP."
+msgstr "ELTS EXCEP."
 
 #. module: integc
-#: report:payslip.run:0
-msgid "TEL"
-msgstr "TEL"
+#: report:integc.payslip:0
+msgid "EMPLOI OCCUPE"
+msgstr "EMPLOI OCCUPE"
 
 #. module: integc
-#: field:hr.employee,street2:0
-msgid "Street2"
-msgstr "Rue 2"
+#: model:ir.actions.act_window,name:integc.board_integc_hr_employee_action4
+#: model:ir.actions.act_window,name:integc.board_integc_hr_employee_action_graph_job
+msgid "Employe"
+msgstr "Employé"
 
 #. module: integc
-#: field:integc.hr.partner.contract,user_id:0
-#: field:integc.hr.registration.request,user_id:0
-#: field:integc.market,user_id:0
-#: field:integc.market.contract,user_id:0
-msgid "User"
-msgstr "Utilisateur"
+#: view:hr.employee:integc.view_integc_hr_employee_graph1
+#: view:hr.employee:integc.view_integc_hr_employee_graph2
+#: field:integc.hr.registration.request.line,employee_id:0
+#: model:ir.model,name:integc.model_hr_employee
+msgid "Employee"
+msgstr "Employé"
 
 #. module: integc
-#: field:hr.employee,has_contract:0
-msgid "Has contract"
-msgstr "Has contract"
+#: field:integc.hr.registration.request,employee_count:0
+msgid "Employee Count"
+msgstr "Nombre d'employés"
 
 #. module: integc
-#: view:integc.hr.contract:0
-#: model:ir.actions.act_window,name:integc.integc_hr_contract_act
-#: model:ir.model,name:integc.model_hr_contract
-msgid "Contract"
-msgstr "Contrat"
+#: view:hr.employee:integc.view_employee_filter1
+#: view:hr.employee:integc.view_employee_tree1
+#: view:integc.hr.registration.request:integc.view_integc_registration_request_form
+msgid "Employees"
+msgstr "Employés"
 
 #. module: integc
-#: field:integc.market,contract_ids:0
-msgid "Other Contracts"
-msgstr "Autres contrats"
+#: model:ir.actions.act_window,name:integc.open_view_employee_tree1
+msgid "Employees Structure"
+msgstr "Structure des employés"
 
 #. module: integc
-#: field:integc.hr.partner.contract,balance:0
-#: field:integc.market.contract,balance:0
-msgid "Balance"
-msgstr "Réliquat"
+#: model:ir.actions.act_window,name:integc.open_view_employee_tree2
+msgid "Employees Structure 2"
+msgstr "Employees Structure 2"
 
 #. module: integc
-#: model:ir.model,name:integc.model_res_partner_bank
-msgid "Bank Accounts"
-msgstr "Comptes bancaires"
+#: view:board.board:integc.board_integc_hr_form
+msgid "Employé par departement"
+msgstr "Employé par departement"
 
 #. module: integc
-#: selection:integc.hr.partner.contract.line,type:0
-#: selection:integc.market.contract.line,type:0
-#: selection:integc.market.line,type:0
-msgid "from stock"
-msgstr "from stock"
+#: view:board.board:integc.board_integc_hr_form
+msgid "Employé par poste"
+msgstr "Employé par poste"
 
 #. module: integc
-#: report:payslip.run:0
-msgid "PRESTATIONS SOCIALES"
-msgstr "PRESTATIONS SOCIALES"
+#: view:hr.contract:integc.hr_contract_view_search_inherit1
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
+msgid "En Attente signature DG"
+msgstr "En Attente signature DG"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:998
-#: code:addons/integc/market/market.py:457
-#: code:addons/integc/market/market.py:1406
-#, python-format
-msgid "No Pricelist ! : "
-msgstr "No Pricelist ! : "
+#: view:hr.contract:integc.hr_contract_view_search_inherit1
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
+msgid "En Attente signature employé"
+msgstr "En Attente signature employé"
 
 #. module: integc
-#: view:hr.contract:0
-#: view:integc.hr.partner.contract:0
+#: view:hr.contract:integc.hr_contract_view_search_inherit1
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
 msgid "En Cours"
 msgstr "En Cours"
 
 #. module: integc
-#: report:integc.payslip:0
-msgid "Salaire brut cotisable"
-msgstr "Salaire brut cotisable"
-
-#. module: integc
-#: field:integc.account.invoice.stage,date_end:0
-msgid "Date end"
+#: field:integc.hr.partner.contract,date_end:0
+msgid "End Date"
 msgstr "Date fin"
 
 #. module: integc
-#: report:integc.payslip:0
-msgid "ANCIENNETE"
-msgstr "ANCIENNETE"
+#: selection:account.invoice,validation_level:0
+#: selection:account.invoice,state:0
+#: selection:integc.account.invoice.stage,state:0
+msgid "Engineer market"
+msgstr "Ingénieur de marché"
 
 #. module: integc
-#: help:integc.hr.partner.contract,invoiced:0
-#: help:integc.market.contract,invoiced:0
-msgid "It indicates that an invoice has been paid."
-msgstr "Indique si la facture a été payée."
+#: code:addons/integc/hr/partner_contract.py:419
+#: code:addons/integc/hr/partner_contract.py:544
+#: code:addons/integc/hr/partner_contract.py:655
+#: code:addons/integc/hr/partner_contract.py:817
+#: code:addons/integc/hr/partner_contract.py:834
+#: code:addons/integc/market/market.py:1004
+#: code:addons/integc/market/market.py:1116
+#: code:addons/integc/market/market.py:1206
+#: code:addons/integc/market/market.py:1352
+#: code:addons/integc/market/market.py:1369
+#, python-format
+msgid "Error!"
+msgstr "Erreur!"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_filter_inherit1
+msgid "Est un Responsable"
+msgstr "Est un Responsable"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_filter_inherit1
+msgid "Etat Civil"
+msgstr "Etat Civil"
 
 #. module: integc
 #: selection:integc.hr.partner.contract.line,state:0
@@ -2554,43 +1149,704 @@ msgid "Exception"
 msgstr "Exception"
 
 #. module: integc
-#: report:transfer.order:0
-msgid "A L’ATTENTION"
-msgstr "A L’ATTENTION"
+#: field:integc.market.contract,expected_count:0
+#: field:market.invoice,expected_count:0
+msgid "Expected count"
+msgstr "Décompte escompté"
 
 #. module: integc
-#: field:integc.hr.partner.contract.line,name:0
-#: field:integc.market.contract.line,name:0
-#: field:integc.market.line,name:0
-msgid "Description"
-msgstr "Description"
-
-#. module: integc
-#: model:ir.model,name:integc.model_integc_hr_partner_contract_line
-msgid "Partner contract line"
-msgstr "Ligne de contrat"
+#: selection:integc.hr.partner.contract,type:0
+msgid "Expert"
+msgstr "Expert"
 
 #. module: integc
 #: field:integc.hr.registration.request,external_reference:0
+#: field:integc.market,name:0
 msgid "External Reference"
 msgstr "Référence externe"
 
 #. module: integc
-#: view:account.voucher:0
+#: field:hr.payslip.run,fne:0
+#: report:payslip.run:0
+msgid "FNE"
+msgstr "FNE"
+
+#. module: integc
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
+#: view:integc.market.contract:integc.view_integc_market_contract_search
+msgid "Facturé"
+msgstr "Facturé"
+
+#. module: integc
+#: field:hr.employee,fax:0
+msgid "Fax"
+msgstr "Fax"
+
+#. module: integc
+#: view:integc.hr.category:integc.view_integc_hr_category_form
+msgid "Fees"
+msgstr "Frais"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:632
+#: code:addons/integc/market/market.py:1193
+#, python-format
+msgid "First cancel all invoices attached to this contract."
+msgstr "Supprimer d'abord toutes les factuers associées à ce contract."
+
+#. module: integc
+#: field:integc.hr.partner.contract,fiscal_position:0
+#: field:integc.market.contract,fiscal_position:0
+msgid "Fiscal Position"
+msgstr "Position Fiscale"
+
+#. module: integc
+#: help:integc.hr.partner.contract.line,type:0
+#: help:integc.market.contract.line,type:0
+#: help:integc.market.line,type:0
+msgid "From stock: When needed, the product is taken from the stock or we wait for replenishment.\n"
+"On order: When needed, the product is purchased or produced."
+msgstr "From stock: When needed, the product is taken from the stock or we wait for replenishment.\n"
+"On order: When needed, the product is purchased or produced."
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_filter_inherit1
+msgid "Genre"
+msgstr "Genre"
+
+#. module: integc
+#: help:integc.hr.partner.contract.line,sequence:0
+#: help:integc.market.contract.line,sequence:0
+#: help:integc.market.line,sequence:0
+msgid "Gives the sequence order when displaying a list of contract lines."
+msgstr "Gives the sequence order when displaying a list of contract lines."
+
+#. module: integc
+#: field:hr.contract,grade_id:0
+#: view:integc.hr.grade:integc.view_integc_hr_grade_form
+#: view:integc.hr.grade:integc.view_integc_hr_grade_tree
+#: field:integc.hr.salary.grid,grade_id:0
+#: model:ir.actions.act_window,name:integc.integc_hr_grade_act
+#: model:ir.ui.menu,name:integc.menu_integc_hr_grade_view
+msgid "Grade"
+msgstr "Echelon"
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:379
+#, python-format
+msgid "Grade name already exists"
+msgstr "L'echelon existe déjà"
+
+#. module: integc
+#: view:integc.hr.salary.grid:integc.view_integc_hr_salary_grid_form
+msgid "Grid"
+msgstr "Grille"
+
+#. module: integc
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
+#: view:integc.market.contract:integc.view_integc_market_contract_search
+msgid "Group By"
+msgstr "Grouper par"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_filter1
+#: view:integc.hr.registration.request:integc.view_integc_hr_registration_request_search
+msgid "Group By..."
+msgstr "Grouper par..."
+
+#. module: integc
+#: model:res.groups,name:integc.group_gerant
+msgid "Gérant"
+msgstr "Gérant"
+
+#. module: integc
+#: field:hr.employee,has_contract:0
+msgid "Has contract"
+msgstr "Has contract"
+
+#. module: integc
+#: field:integc.market,has_contracts:0
+msgid "Has contracts"
+msgstr "A de contrats"
+
+#. module: integc
+#: field:hr.payslip.journal,id:0
+#: field:integc.account.invoice.stage,id:0
+#: field:integc.hr.category,id:0
+#: field:integc.hr.contract,id:0
+#: field:integc.hr.grade,id:0
+#: field:integc.hr.partner.contract,id:0
+#: field:integc.hr.partner.contract.line,id:0
+#: field:integc.hr.registration.request,id:0
+#: field:integc.hr.registration.request.line,id:0
+#: field:integc.hr.salary.grid,id:0
+#: field:integc.market,id:0
+#: field:integc.market.contract,id:0
+#: field:integc.market.contract.line,id:0
+#: field:integc.market.line,id:0
+#: field:market.invoice,id:0
+#: field:partner.contract,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: integc
+#: model:ir.module.category,name:integc.integc_category_module
+msgid "INTEGC"
+msgstr "INTEGC"
+
+#. module: integc
+#: field:hr.payslip.run,irpp:0
+#: report:payslip.run:0
+msgid "IRPP"
+msgstr "IRPP"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_filter_inherit1
+#: view:hr.employee:integc.view_employee_form_inherit2
+msgid "Identity Card Number"
+msgstr "N° CNI"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_filter_inherit1
+msgid "Immatriculés"
+msgstr "Immatriculés"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:342
+#: code:addons/integc/market/market.py:944
+#, python-format
+msgid "In order to delete a confirmed contract, you must cancel it before!"
+msgstr "Pour supprimer un contract validé, vous devez d'abord l'annuler!"
+
+#. module: integc
+#: view:hr.payslip:integc.view_hr_payslip_form_inherit1
+msgid "Input Data"
+msgstr "Données d'entrée"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
 msgid "Internal Notes"
 msgstr "Notes internes"
 
 #. module: integc
-#: view:hr.payslip.journal:0
-msgid "PaySlip journal"
-msgstr "Journal des bulletins"
+#: field:integc.market,reference:0
+msgid "Internal Reference"
+msgstr "Référence interne"
 
 #. module: integc
-#: field:integc.hr.partner.contract.line,order_partner_id:0
-#: field:integc.market,partner_id:0
-#: field:integc.market.contract,partner_id:0
-msgid "Customer"
-msgstr "Client"
+#: report:transfer.order:0
+msgid "Intitulé"
+msgstr "Intitulé"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:342
+#: code:addons/integc/hr/partner_contract.py:874
+#: code:addons/integc/hr/partner_contract.py:1037
+#: code:addons/integc/market/market.py:573
+#: code:addons/integc/market/market.py:944
+#: code:addons/integc/market/market.py:1409
+#: code:addons/integc/market/market.py:1572
+#, python-format
+msgid "Invalid Action!"
+msgstr "Action invalide!"
+
+#. module: integc
+#: field:integc.account.invoice.stage,invoice_id:0
+#: model:ir.model,name:integc.model_account_invoice
+msgid "Invoice"
+msgstr "Facture"
+
+#. module: integc
+#: field:integc.hr.partner.contract,partner_invoice_id:0
+#: field:integc.market.contract,partner_invoice_id:0
+msgid "Invoice Address"
+msgstr "Adresse facturation"
+
+#. module: integc
+#: field:integc.hr.partner.contract.line,invoice_lines:0
+#: field:integc.market.contract.line,invoice_lines:0
+msgid "Invoice Lines"
+msgstr "Lignes de facture"
+
+#. module: integc
+#: help:integc.hr.partner.contract,partner_invoice_id:0
+#: help:integc.market.contract,partner_invoice_id:0
+msgid "Invoice address for current sales order."
+msgstr "Adresse de facturation."
+
+#. module: integc
+#: field:integc.hr.partner.contract,invoice_exists:0
+#: field:integc.hr.partner.contract.line,invoiced:0
+#: field:integc.market,invoice_exists:0
+#: field:integc.market.contract,invoice_exists:0
+#: field:integc.market.contract.line,invoiced:0
+msgid "Invoiced"
+msgstr "Facturé"
+
+#. module: integc
+#: field:integc.hr.partner.contract,invoiced_rate:0
+#: field:integc.market.contract,invoiced_rate:0
+msgid "Invoiced Ratio"
+msgstr "Ratio facturé"
+
+#. module: integc
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
+#: field:integc.hr.partner.contract,invoice_count:0
+#: field:integc.hr.partner.contract,invoice_ids:0
+#: view:integc.hr.registration.request:integc.view_integc_hr_registration_request_graph
+#: view:integc.market:integc.view_integc_market_form
+#: field:integc.market,invoice_count:0
+#: view:integc.market.contract:integc.view_integc_market_contract_form
+#: field:integc.market.contract,invoice_count:0
+#: field:integc.market.contract,invoice_ids:0
+msgid "Invoices"
+msgstr "Factures"
+
+#. module: integc
+#: field:integc.hr.partner.contract,invoicing_mode:0
+msgid "Invoicing Mode"
+msgstr "Mode de facturation"
+
+#. module: integc
+#: field:hr.employee,is_registered:0
+msgid "Is registered to CNPS"
+msgstr "Est immatriculé à la CNPS"
+
+#. module: integc
+#: help:integc.hr.partner.contract,invoiced:0
+#: help:integc.market.contract,invoiced:0
+msgid "It indicates that an invoice has been paid."
+msgstr "Indique si la facture a été payée."
+
+#. module: integc
+#: help:integc.hr.partner.contract,invoice_exists:0
+#: help:integc.market,invoice_exists:0
+#: help:integc.market.contract,invoice_exists:0
+msgid "It indicates that contract has at least one invoice."
+msgstr "Indique si ce contrat a au moins une facture."
+
+#. module: integc
+#: report:payslip.run:0
+msgid "JOURNAL DES SALAIRES"
+msgstr "JOURNAL DES SALAIRES"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_filter1
+msgid "Job"
+msgstr "Poste"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Journal Items"
+msgstr "Écritures comptables"
+
+#. module: integc
+#: field:hr.employee,key:0
+#: field:res.partner.bank,key:0
+msgid "Key"
+msgstr "Clé"
+
+#. module: integc
+#: sql_constraint:integc.hr.grade:0
+msgid "L'echelon existe déjà"
+msgstr "L'echelon existe déjà"
+
+#. module: integc
+#: constraint:integc.hr.salary.grid:0
+msgid "La 'Base minimale' doit être inféreieur à la 'Base maximale'."
+msgstr "La 'Base minimale' doit être inféreieur à la 'Base maximale'."
+
+#. module: integc
+#: field:hr.payslip.journal,write_uid:0
+#: field:integc.account.invoice.stage,write_uid:0
+#: field:integc.hr.category,write_uid:0
+#: field:integc.hr.contract,write_uid:0
+#: field:integc.hr.grade,write_uid:0
+#: field:integc.hr.partner.contract,write_uid:0
+#: field:integc.hr.partner.contract.line,write_uid:0
+#: field:integc.hr.registration.request,write_uid:0
+#: field:integc.hr.registration.request.line,write_uid:0
+#: field:integc.hr.salary.grid,write_uid:0
+#: field:integc.market,write_uid:0
+#: field:integc.market.contract,write_uid:0
+#: field:integc.market.contract.line,write_uid:0
+#: field:integc.market.line,write_uid:0
+#: field:market.invoice,write_uid:0
+#: field:partner.contract,write_uid:0
+msgid "Last Updated by"
+msgstr "Dernièrement modifié par"
+
+#. module: integc
+#: field:hr.payslip.journal,write_date:0
+#: field:integc.account.invoice.stage,write_date:0
+#: field:integc.hr.category,write_date:0
+#: field:integc.hr.contract,write_date:0
+#: field:integc.hr.grade,write_date:0
+#: field:integc.hr.partner.contract,write_date:0
+#: field:integc.hr.partner.contract.line,write_date:0
+#: field:integc.hr.registration.request,write_date:0
+#: field:integc.hr.registration.request.line,write_date:0
+#: field:integc.hr.salary.grid,write_date:0
+#: field:integc.market,write_date:0
+#: field:integc.market.contract,write_date:0
+#: field:integc.market.contract.line,write_date:0
+#: field:integc.market.line,write_date:0
+#: field:market.invoice,write_date:0
+#: field:partner.contract,write_date:0
+msgid "Last Updated on"
+msgstr "Dernièrement modifié le"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "Le gérant"
+msgstr "Le gérant"
+
+#. module: integc
+#: view:integc.hr.registration.request.line:integc.view_integc_hr_registration_request_line_filter
+msgid "Le mois en cours"
+msgstr "Le mois en cours"
+
+#. module: integc
+#: field:hr.department,label:0
+msgid "Libelle"
+msgstr "Libelle"
+
+#. module: integc
+#: view:account.analytic.account:integc.view_account_analytic_account_form_inherit_integc
+msgid "Lignes Budget"
+msgstr "Lignes Budget"
+
+#. module: integc
+#: field:account.analytic.account,budget_line_count:0
+#: view:budget.line:integc.view_budget_line_graph_integc
+msgid "Lignes de budget"
+msgstr "Lignes de budget"
+
+#. module: integc
+#: view:budget.line:integc.view_budget_line_search_inherit_integc
+msgid "Lignes representant la production"
+msgstr "Lignes representant la production"
+
+#. module: integc
+#: view:budget.line:integc.view_budget_line_search_inherit_integc
+msgid "Lignes representant les charges"
+msgstr "Lignes representant les charges"
+
+#. module: integc
+#: help:budget.budget,analytic_account_id:0
+msgid "Link this project to an analytic account if you need financial management on projects. It enables you to connect projects with budgets, planning, cost and revenue analysis, timesheets on projects, etc."
+msgstr "Link this project to an analytic account if you need financial management on projects. It enables you to connect projects with budgets, planning, cost and revenue analysis, timesheets on projects, etc."
+
+#. module: integc
+#: view:board.board:integc.board_integc_hr_form
+#: view:board.board:integc.board_integc_hr_form2
+msgid "Liste des employés non immatriculés"
+msgstr "Liste des employés non immatriculés"
+
+#. module: integc
+#: view:board.board:integc.board_integc_hr_form2
+msgid "Liste des employés par postes"
+msgstr "Liste des employés par postes"
+
+#. module: integc
+#: model:ir.actions.report.xml,name:integc.payslip_run
+msgid "Livre de paie"
+msgstr "Livre de paie"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_filter_inherit1
+msgid "Location"
+msgstr "Location"
+
+#. module: integc
+#: report:integc.payslip:0
+#: report:payslip.run:0
+msgid "MATRICULE"
+msgstr "MATRICULE"
+
+#. module: integc
+#: selection:account.invoice,validation_level:0
+#: selection:account.invoice,state:0
+#: selection:integc.account.invoice.stage,state:0
+msgid "MINMAP"
+msgstr "MINMAP"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "MONSIEUR LE DIRECTEUR,"
+msgstr "MONSIEUR LE DIRECTEUR,"
+
+#. module: integc
+#: report:payslip.run:0
+#: report:transfer.order:0
+msgid "MONTANT"
+msgstr "MONTANT"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "MONTANT EN LETTRE"
+msgstr "MONTANT EN LETTRE"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "MONTANTS"
+msgstr "MONTANTS"
+
+#. module: integc
+#: view:integc.market:integc.view_integc_market_form
+#: view:integc.market:integc.view_integc_market_tree
+#: field:integc.market.contract,market_id:0
+#: field:integc.market.line,market_id:0
+#: model:ir.actions.act_window,name:integc.view_integc_market_act
+#: model:ir.model,name:integc.model_integc_market
+#: model:ir.ui.menu,name:integc.menu_market_root
+#: model:ir.ui.menu,name:integc.menu_view_integc_market_view
+#: field:market.invoice,market_id:0
+msgid "Market"
+msgstr "Marché"
+
+#. module: integc
+#: view:integc.market.contract:integc.view_integc_market_contract_search
+#: view:integc.market.contract:integc.view_integc_market_contract_tree
+msgid "Market Contract"
+msgstr "Contrat de marché"
+
+#. module: integc
+#: model:ir.actions.act_window,name:integc.view_integc_market_contract_act
+msgid "Market Contracts"
+msgstr "Contrats de marchés"
+
+#. module: integc
+#: model:ir.actions.act_window,name:integc.market_invoice_act
+msgid "Market Invoice"
+msgstr "Facturation Marché"
+
+#. module: integc
+#: field:integc.market,market_line:0
+msgid "Market Lines"
+msgstr "Lignes de marché"
+
+#. module: integc
+#: model:ir.model,name:integc.model_integc_market_contract
+msgid "Market contract"
+msgstr "Contrat de marché"
+
+#. module: integc
+#: model:ir.model,name:integc.model_integc_market_contract_line
+msgid "Market contract line"
+msgstr "Ligne de contrat de marché"
+
+#. module: integc
+#: view:market.invoice:integc.market_invoice_form
+msgid "Market invoice"
+msgstr "Facturation Marché"
+
+#. module: integc
+#: model:ir.model,name:integc.model_integc_market_line
+msgid "Market line"
+msgstr "Ligne de marché"
+
+#. module: integc
+#: model:ir.ui.menu,name:integc.menu_market
+msgid "Markets"
+msgstr "Marchés"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Montant +"
+msgstr "Montant +"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Montant -"
+msgstr "Montant -"
+
+#. module: integc
+#: field:budget.line,theorical_amount:0
+msgid "Montant theorique"
+msgstr "Montant theorique"
+
+#. module: integc
+#: selection:integc.hr.partner.contract,invoicing_mode:0
+msgid "Monthly"
+msgstr "Mensuel"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "Motif:"
+msgstr "Motif:"
+
+#. module: integc
+#: selection:account.voucher,voucher_mode:0
+msgid "Multiple"
+msgstr "Multiple"
+
+#. module: integc
+#: view:board.board:integc.board_integc_hr_form
+#: view:board.board:integc.board_integc_hr_form2
+msgid "My Board"
+msgstr "Mon Tableau"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "NAP"
+msgstr "NAP"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "NET A PAYER"
+msgstr "NET A PAYER"
+
+#. module: integc
+#: report:integc.payslip:0
+#: report:payslip.run:0
+msgid "NIU"
+msgstr "NIU"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "NKONO ERIC FLAVIEN"
+msgstr "NKONO ERIC FLAVIEN"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "NOM"
+msgstr "NOM"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "NOMS ET PRENOMS"
+msgstr "NOMS ET PRENOMS"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "NOMS ET PRENONS DE L'EMPLOYE"
+msgstr "NOMS ET PRENONS DE L'EMPLOYE"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "NUMERO COMPTE"
+msgstr "NUMERO COMPTE"
+
+#. module: integc
+#: field:integc.account.invoice.stage,name:0
+#: field:integc.hr.category,name:0
+#: field:integc.hr.grade,name:0
+#: field:integc.hr.salary.grid,name:0
+msgid "Name"
+msgstr "Nom"
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:255
+#, python-format
+msgid "Neither social security number or date registration is not defined for %s"
+msgstr "Le N° d'immatriculation ou la date n'est pas renseigné pour l'employé %s"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:919
+#: code:addons/integc/market/market.py:455
+#: code:addons/integc/market/market.py:1454
+#, python-format
+msgid "No Customer Defined!"
+msgstr "Aucun partenaire n'est définie!"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:998
+#: code:addons/integc/market/market.py:534
+#: code:addons/integc/market/market.py:1533
+#, python-format
+msgid "No Pricelist ! : "
+msgstr "No Pricelist ! : "
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:248
+#, python-format
+msgid "No employee registered. You must write at least one employee"
+msgstr "Aucun employé enregistré. Vous devez au moins en selectionner un"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:1009
+#: code:addons/integc/market/market.py:545
+#: code:addons/integc/market/market.py:1544
+#, python-format
+msgid "No valid pricelist line found ! :"
+msgstr "Aucune ligne de tarif en vigueur trouvé ! :"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Noms"
+msgstr "Noms"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_filter_inherit1
+msgid "Non Contractualisés"
+msgstr "Non Contractualisés"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_filter_inherit1
+msgid "Non Immatriculés"
+msgstr "Non Immatriculés"
+
+#. module: integc
+#: field:integc.hr.category,note:0
+#: view:integc.hr.contract:integc.view_integc_hr_contract_form
+#: field:integc.hr.grade,note:0
+msgid "Note"
+msgstr "Note"
+
+#. module: integc
+#: field:integc.hr.contract,note:0
+#: view:integc.hr.grade:integc.view_integc_hr_grade_form
+#: field:partner.contract,note:0
+msgid "Notes"
+msgstr "Notes"
+
+#. module: integc
+#: view:integc.hr.grade:integc.view_integc_hr_grade_form
+msgid "Notes ..."
+msgstr "Notes ..."
+
+#. module: integc
+#: report:transfer.order:0
+msgid "Nous vous prions de bien vouloir effectuer les virements suivants"
+msgstr "Nous vous prions de bien vouloir effectuer les virements suivants"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "N°"
+msgstr "N°"
+
+#. module: integc
+#: report:integc.payslip:0
+#: report:payslip.run:0
+msgid "N° CNPS"
+msgstr "N° CNPS"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_form_inherit3
+msgid "N° Compte"
+msgstr "N° Compte"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "N° DE COMPTE"
+msgstr "N° DE COMPTE"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "ORDRE DE VIREMENT N°"
+msgstr "ORDRE DE VIREMENT N°"
+
+#. module: account_accountant
+#: model:ir.actions.client,name:account_accountant.action_client_account_menu
+msgid "Open Accounting Menu"
+msgstr "Ouvrez le menu Comptabilité"
+
+#. module: integc
+#: selection:integc.market,state:0
+#: selection:integc.market.contract,state:0
+msgid "Opened"
+msgstr "Ouvert"
 
 #. module: integc
 #: code:addons/integc/hr/hr.py:255
@@ -2600,25 +1856,409 @@ msgid "Operation not allowed"
 msgstr "Opération non permise"
 
 #. module: integc
-#: view:account.voucher:0
-msgid "Supplier Invoices and Outstanding transactions"
-msgstr "Factures fournisseurs et transactions exceptionnelles"
-
-#. module: integc
-#: view:integc.hr.registration.request:0
-msgid "Employees"
-msgstr "Employées"
-
-#. module: integc
-#: code:addons/integc/hr/hr.py:1028
+#: code:addons/integc/account/account_invoice.py:74
+#: code:addons/integc/hr/hr.py:248
+#: code:addons/integc/hr/hr.py:892
+#: code:addons/integc/hr/partner_contract.py:527
+#: code:addons/integc/market/market.py:1099
 #, python-format
-msgid "The Expense Journal \"%s\" has not properly configured the Credit Account!"
-msgstr "The Expense Journal \"%s\" has not properly configured the Credit Account!"
+msgid "Operation not allowed!"
+msgstr "Opération non permise!"
+
+#. module: integc
+#: model:ir.actions.report.xml,name:integc.transfer_order
+msgid "Ordre de virement"
+msgstr "Ordre de virement"
+
+#. module: integc
+#: field:integc.market,contract_ids:0
+msgid "Other Contracts"
+msgstr "Autres contrats"
+
+#. module: integc
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
+msgid "Other Information"
+msgstr "Autre information"
+
+#. module: integc
+#: model:ir.actions.act_window,name:integc.action_other_payment
+#: model:ir.ui.menu,name:integc.menu_action_other_payment
+msgid "Other Payment"
+msgstr "Autres paiements"
+
+#. module: integc
+#: model:ir.ui.menu,name:integc.menu_others
+msgid "Others"
+msgstr "Autres"
+
+#. module: integc
+#: selection:integc.hr.partner.contract,type:0
+msgid "Outsourcing"
+msgstr "Sous-Traitance"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "PAIEMENT LE"
+msgstr "PAIEMENT LE"
 
 #. module: integc
 #: report:payslip.run:0
-msgid "SAL. COTISA"
-msgstr "SAL. COTISA"
+msgid "PENSION VIELLESSE"
+msgstr "PENSION VIELLESSE"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "PERIODE"
+msgstr "PERIODE"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "PERIODE DU"
+msgstr "PERIODE DU"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "PPAL"
+msgstr "PPAL"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "PRESTATIONS FAMILIALES"
+msgstr "PRESTATIONS FAMILIALES"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "PRESTATIONS SOCIALES"
+msgstr "PRESTATIONS SOCIALES"
+
+#. module: integc
+#: field:hr.payslip,is_paid:0
+#: field:integc.hr.partner.contract,invoiced:0
+#: field:integc.market.contract,invoiced:0
+msgid "Paid"
+msgstr "Payé"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "Par débit de notre compte"
+msgstr "Par débit de notre compte"
+
+#. module: integc
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
+#: field:integc.hr.partner.contract,partner_id:0
+#: view:integc.market.contract:integc.view_integc_market_contract_search
+#: model:ir.model,name:integc.model_res_partner
+msgid "Partner"
+msgstr "Partenaire"
+
+#. module: integc
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_tree
+#: field:integc.hr.partner.contract.line,contract_id:0
+#: field:integc.market.contract.line,contract_id:0
+#: model:ir.actions.act_window,name:integc.partner_contract_act
+#: view:partner.contract:integc.partner_contract_form
+msgid "Partner Contract"
+msgstr "Contrat prestataire"
+
+#. module: integc
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
+#: view:integc.market.contract:integc.view_integc_market_contract_form
+#: model:ir.model,name:integc.model_integc_hr_partner_contract
+msgid "Partner contract"
+msgstr "Contrat prestataire"
+
+#. module: integc
+#: model:ir.model,name:integc.model_integc_hr_partner_contract_line
+msgid "Partner contract line"
+msgstr "Ligne de contrat"
+
+#. module: integc
+#: field:account.voucher,partner_ids:0
+msgid "Partners"
+msgstr "Partenaires"
+
+#. module: integc
+#: model:ir.actions.act_window,name:integc.view_integc_hr_partner_contract_act
+#: model:ir.ui.menu,name:integc.menu_view_integc_hr_partner_contract_view
+msgid "Partners Contracts"
+msgstr "Contrats prestataires"
+
+#. module: integc
+#: model:ir.model,name:integc.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Feuille de paie"
+
+#. module: integc
+#: model:ir.actions.act_window,name:integc.action_hr_payslip_journal
+msgid "PaySlip Journal"
+msgstr "Journal des bulettins"
+
+#. module: integc
+#: view:hr.payslip.journal:integc.view_hr_payslip_journal
+msgid "PaySlip journal"
+msgstr "Journal des bulletins"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Payment Information"
+msgstr "Information sur le paiement"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Payment Method"
+msgstr "Méthode de paiement"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Payment Options"
+msgstr "Options de paiement"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Payment Ref"
+msgstr "Ref. du règlement"
+
+#. module: integc
+#: field:integc.hr.partner.contract,payment_term:0
+#: field:integc.market.contract,payment_term:0
+msgid "Payment Term"
+msgstr "Termes de paiement"
+
+#. module: integc
+#: model:ir.model,name:integc.model_hr_payslip_run
+msgid "Payslip Batches"
+msgstr "Lots de bulletins de paie"
+
+#. module: integc
+#: model:ir.model,name:integc.model_hr_payslip_input
+msgid "Payslip Input"
+msgstr "Entrée du bulletin"
+
+#. module: integc
+#: view:hr.payslip:integc.view_hr_payslip_form_inherit1
+msgid "Payslip Line"
+msgstr "Ligne de bulletin de salaire"
+
+#. module: integc
+#: model:ir.model,name:integc.model_hr_payslip_journal
+msgid "Payslip journal"
+msgstr "Journal de bulletin"
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:975
+#, python-format
+msgid "Payslip of %s"
+msgstr "Bulletin de %s"
+
+#. module: integc
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
+#: view:integc.market.contract:integc.view_integc_market_contract_search
+msgid "Payé"
+msgstr "Payé"
+
+#. module: integc
+#: selection:account.invoice,validation_level:0
+msgid "Pending payment"
+msgstr "Attente de paiement"
+
+#. module: integc
+#: field:hr.payslip.run,pens_viel:0
+msgid "Pension Vieillesse"
+msgstr "Pension Vieillesse"
+
+#. module: integc
+#: field:hr.employee,phone:0
+msgid "Phone"
+msgstr "Téléphone"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:818
+#: code:addons/integc/market/market.py:1353
+#, python-format
+msgid "Please define income account for this product: \"%s\" (id:%d)."
+msgstr "Veuillez définir le compte crédit pour le produit: \"%s\" (id:%d)."
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:420
+#: code:addons/integc/market/market.py:1005
+#, python-format
+msgid "Please define sales journal for this company: \"%s\" (id:%d)."
+msgstr "Veuillez définir un journal pour la structure: \"%s\" (id:%d)."
+
+#. module: integc
+#: field:res.partner.bank,pos:0
+msgid "Point Of Sale"
+msgstr "Code Guichet"
+
+#. module: integc
+#: field:hr.employee,pos:0
+msgid "Point of Sale"
+msgstr "Code Guichet"
+
+#. module: integc
+#: field:budget.line,percentage:0
+msgid "Pourcentage"
+msgstr "Pourcentage"
+
+#. module: integc
+#: field:hr.payslip.run,prest_fam:0
+msgid "Prestations Familiales"
+msgstr "Prestations Familiales"
+
+#. module: integc
+#: view:hr.payslip.run:integc.hr_payslip_run_form_inherit
+msgid "Prestations sociales"
+msgstr "Prestations sociales"
+
+#. module: integc
+#: field:integc.hr.partner.contract,pricelist_id:0
+#: field:integc.market,pricelist_id:0
+#: field:integc.market.contract,pricelist_id:0
+msgid "Pricelist"
+msgstr "Liste de prix"
+
+#. module: integc
+#: help:integc.hr.partner.contract,pricelist_id:0
+#: help:integc.market.contract,pricelist_id:0
+msgid "Pricelist for current contract."
+msgstr "Liste de prix pour ce contrat."
+
+#. module: integc
+#: help:integc.market,pricelist_id:0
+msgid "Pricelist for current market."
+msgstr "Pricelist for current market."
+
+#. module: integc
+#: view:integc.hr.category:integc.view_integc_hr_category_form
+msgid "Prime"
+msgstr "Prime"
+
+#. module: integc
+#: view:account.invoice:integc.view_invoice_form_inherit1
+#: view:hr.payslip.journal:integc.view_hr_payslip_journal
+msgid "Print"
+msgstr "Imprimer"
+
+#. module: integc
+#: view:hr.payslip.run:integc.hr_payslip_run_form_inherit
+msgid "Print Journal"
+msgstr "Imprimer le livre de paie"
+
+#. module: integc
+#: view:hr.payslip:integc.view_hr_payslip_form_inherit
+msgid "Print Payslip"
+msgstr "Imprimer les bulletins"
+
+#. module: integc
+#: view:hr.payslip.run:integc.hr_payslip_run_form_inherit
+msgid "Print Payslips"
+msgstr "Imprimer les bulletins"
+
+#. module: integc
+#: field:integc.hr.partner.contract.line,type:0
+#: field:integc.market.contract.line,type:0
+#: field:integc.market.line,type:0
+msgid "Procurement Method"
+msgstr "Méthode de passation"
+
+#. module: integc
+#: field:integc.hr.partner.contract.line,product_id:0
+#: field:integc.market.contract.line,product_id:0
+#: field:integc.market.line,product_id:0
+msgid "Product"
+msgstr "Produit"
+
+#. module: integc
+#: field:integc.hr.partner.contract.line,product_uos:0
+#: field:integc.market.contract.line,product_uos:0
+#: field:integc.market.line,product_uos:0
+msgid "Product UoS"
+msgstr "Product UoS"
+
+#. module: integc
+#: view:budget.line:integc.view_budget_line_search_inherit_integc
+msgid "Produits"
+msgstr "Produits"
+
+#. module: integc
+#: selection:hr.contract,state:0
+#: selection:integc.hr.partner.contract,state:0
+msgid "Progress"
+msgstr "En cours"
+
+#. module: integc
+#: view:board.board:integc.board_integc_hr_form
+#: view:board.board:integc.board_integc_hr_form2
+#: model:ir.actions.act_window,name:integc.board_integc_hr_registration_request_action
+msgid "Progression des immatriculations"
+msgstr "Progression des immatriculations"
+
+#. module: integc
+#: field:hr.contract,project_id:0
+#: field:integc.hr.partner.contract,project_id:0
+#: field:integc.market,project_id:0
+msgid "Project"
+msgstr "Projet"
+
+#. module: integc
+#: selection:account.invoice,validation_level:0
+#: selection:account.invoice,state:0
+#: selection:integc.account.invoice.stage,state:0
+msgid "Project leader"
+msgstr "Chef de projet"
+
+#. module: integc
+#: selection:account.invoice,validation_level:0
+#: selection:account.invoice,state:0
+#: selection:integc.account.invoice.stage,state:0
+msgid "Project manager"
+msgstr "Maître d'ouvrage"
+
+#. module: integc
+#: view:budget.line:integc.view_budget_line_search_inherit_integc
+msgid "Projets"
+msgstr "Projets"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "QUALIFICATION"
+msgstr "QUALIFICATION"
+
+#. module: integc
+#: field:integc.hr.partner.contract.line,product_uom_qty:0
+#: field:integc.market.contract.line,product_uom_qty:0
+#: field:integc.market.line,product_uom_qty:0
+msgid "Quantity"
+msgstr "Quantité"
+
+#. module: integc
+#: field:integc.hr.partner.contract.line,product_uos_qty:0
+#: field:integc.market.contract.line,product_uos_qty:0
+#: field:integc.market.line,product_uos_qty:0
+msgid "Quantity (UoS)"
+msgstr "Quantité (UoS)"
+
+#. module: integc
+#: selection:integc.hr.partner.contract,invoicing_mode:0
+msgid "Quarterly"
+msgstr "Trimestriel"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "RAISON"
+msgstr "RAISON"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "RAISON SOCIALE"
+msgstr "RAISON SOCIALE"
+
+#. module: integc
+#: field:hr.payslip.run,rav:0
+#: report:payslip.run:0
+msgid "RAV"
+msgstr "RAV"
 
 #. module: integc
 #: report:integc.payslip:0
@@ -2626,9 +2266,178 @@ msgid "REGIME"
 msgstr "REGIME"
 
 #. module: integc
-#: model:ir.actions.report.xml,name:integc.payslip
-msgid "Buletin de paie"
-msgstr "Buletin de paie"
+#: report:payslip.run:0
+msgid "REGIME CNPS"
+msgstr "REGIME CNPS"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "RET. FISCALES"
+msgstr "RET. FISCALES"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "RIB"
+msgstr "RIB"
+
+#. module: integc
+#: view:account.invoice:integc.view_invoice_customer_1
+msgid "Register Payment"
+msgstr "Enregistrer le règlement"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_filter_inherit1
+msgid "Registered to CNPS"
+msgstr "Immatriculé à la CNPS"
+
+#. module: integc
+#: view:integc.hr.registration.request:integc.view_integc_hr_registration_request_graph1
+msgid "Registration"
+msgstr "Immatriculation"
+
+#. module: integc
+#: view:integc.hr.registration.request:integc.view_integc_registration_request_form
+msgid "Registration Line"
+msgstr "Line de demande"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_filter_inherit1
+#: view:hr.employee:integc.view_employee_form_inherit2
+msgid "Registration N°"
+msgstr "N° Matricule"
+
+#. module: integc
+#: view:integc.hr.registration.request:integc.view_integc_hr_registration_request_tree
+#: field:integc.hr.registration.request.line,registration_id:0
+msgid "Registration Request"
+msgstr "Demande d'immatriculation"
+
+#. module: integc
+#: view:integc.hr.registration.request.line:integc.view_integc_hr_registration_request_line_tree1
+#: view:integc.hr.registration.request.line:integc.view_integc_hr_registration_request_line_tree2
+msgid "Registration Request Line"
+msgstr "Line d'immatriculation"
+
+#. module: integc
+#: view:integc.hr.registration.request:integc.view_integc_registration_request_form
+#: model:ir.actions.act_window,name:integc.integc_hr_registration_request_act
+#: model:ir.ui.menu,name:integc.menu_integc_hr_registration_request_view
+msgid "Registration request"
+msgstr "Demande d'immatriculation"
+
+#. module: integc
+#: field:integc.hr.category,representation_fees:0
+msgid "Representation Fees"
+msgstr "Frais de représentation"
+
+#. module: integc
+#: field:integc.hr.registration.request,request_line_ids:0
+msgid "Request Line"
+msgstr "Ligne de demande"
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_filter_inherit1
+msgid "Responsable"
+msgstr "Responsable"
+
+#. module: integc
+#: model:res.groups,name:integc.group_responsable_hr
+msgid "Responsable RH"
+msgstr "Responsable RH"
+
+#. module: integc
+#: field:integc.hr.category,responsibility_prime:0
+msgid "Responsibility Prime"
+msgstr "Prime de responsabilité"
+
+#. module: integc
+#: field:integc.hr.category,risk_prime:0
+msgid "Risk Prime"
+msgstr "Prime de Risque"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "SAL. COTISA"
+msgstr "SAL. COTISA"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "SAL. TAX"
+msgstr "SAL. TAX"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "SALAIRE BRUT"
+msgstr "SALAIRE BRUT"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Salaire brut"
+msgstr "Salaire brut"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Salaire brut cotisable"
+msgstr "Salaire brut cotisable"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Salaire brut taxable"
+msgstr "Salaire brut taxable"
+
+#. module: integc
+#: model:ir.model,name:integc.model_integc_hr_category
+msgid "Salary Category"
+msgstr "Catégorie"
+
+#. module: integc
+#: model:ir.model,name:integc.model_integc_hr_grade
+msgid "Salary Grade"
+msgstr "Echelon"
+
+#. module: integc
+#: field:hr.contract,salary_grid_id:0
+#: view:integc.hr.salary.grid:integc.view_integc_hr_salary_grid_form
+#: view:integc.hr.salary.grid:integc.view_integc_hr_salary_grid_tree
+#: model:ir.actions.act_window,name:integc.integc_hr_salary_grid_act
+#: model:ir.model,name:integc.model_integc_hr_salary_grid
+#: model:ir.ui.menu,name:integc.menu_integc_hr_salary_grid
+msgid "Salary Grid"
+msgstr "Grille salariale"
+
+#. module: integc
+#: field:integc.hr.category,structure_id:0
+#: field:integc.hr.salary.grid,structure_id:0
+msgid "Salary Structure"
+msgstr "Structure salariale"
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:408
+#, python-format
+msgid "Salary grid name already exists"
+msgstr "Cette grille salariale existe déjà"
+
+#. module: integc
+#: field:integc.hr.partner.contract.line,salesman_id:0
+msgid "Salesperson"
+msgstr "Salesperson"
+
+#. module: integc
+#: view:integc.hr.registration.request:integc.view_integc_hr_registration_request_search
+msgid "Search"
+msgstr "Filtre"
+
+#. module: integc
+#: field:budget.item,section_id:0
+#: view:budget.line:integc.view_budget_line_search_inherit_integc
+#: field:budget.line,section_id:0
+msgid "Section"
+msgstr "Section"
+
+#. module: integc
+#: field:hr.contract,seniority:0
+msgid "Seniority"
+msgstr "Ancienneté"
 
 #. module: integc
 #: field:integc.account.invoice.stage,sequence:0
@@ -2639,15 +2448,94 @@ msgid "Sequence"
 msgstr "Sequence"
 
 #. module: integc
-#: field:integc.hr.partner.contract,payment_term:0
-#: field:integc.market.contract,payment_term:0
-msgid "Payment Term"
-msgstr "Termes de paiement"
+#: selection:account.invoice,validation_level:0
+#: selection:account.invoice,state:0
+#: selection:integc.account.invoice.stage,state:0
+msgid "Service manager"
+msgstr "Chef Service"
 
 #. module: integc
-#: help:integc.hr.partner.contract,project_id:0
-msgid "The project related to a contract."
-msgstr "Le projet associé à ce contrat"
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
+#: view:integc.market:integc.view_integc_market_form
+#: view:integc.market.contract:integc.view_integc_market_contract_form
+msgid "Services"
+msgstr "Services"
+
+#. module: integc
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
+#: view:integc.market:integc.view_integc_market_form
+#: view:integc.market.contract:integc.view_integc_market_contract_form
+msgid "Services Lines"
+msgstr "Lignes de service"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Set to Draft"
+msgstr "Mettre à l'état \"Brouillon\""
+
+#. module: integc
+#: view:hr.contract:integc.hr_contract_form_inherit1
+msgid "Sign"
+msgstr "Signer"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Signature de l'employé"
+msgstr "Signature de l'employé"
+
+#. module: integc
+#: selection:account.voucher,voucher_mode:0
+msgid "Single"
+msgstr "Unique"
+
+#. module: integc
+#: field:integc.hr.registration.request.line,ssnid:0
+msgid "Social Security Number"
+msgstr "N° CNPS"
+
+#. module: integc
+#: model:ir.model,name:integc.model_integc_hr_registration_request
+msgid "Social security registration request"
+msgstr "Demande d'immatriculation CNPS"
+
+#. module: integc
+#: view:account.invoice:integc.view_invoice_form_inherit1
+#: field:account.invoice,stage_ids:0
+msgid "Stages"
+msgstr "Etapes"
+
+#. module: integc
+#: field:integc.hr.partner.contract,date_start:0
+msgid "Start Date"
+msgstr "Date début"
+
+#. module: integc
+#: view:hr.contract:integc.hr_contract_view_search_inherit1
+#: field:hr.contract,state:0
+#: view:hr.employee:integc.view_employee_form_inherit2
+#: field:hr.employee,state_id:0
+#: field:integc.account.invoice.stage,state:0
+#: view:integc.hr.registration.request:integc.view_integc_hr_registration_request_search
+#: field:integc.hr.registration.request,state:0
+#: field:integc.hr.registration.request.line,state:0
+#: field:integc.market,state:0
+msgid "State"
+msgstr "Statut"
+
+#. module: integc
+#: field:integc.hr.partner.contract,state:0
+#: field:integc.hr.partner.contract.line,state:0
+#: field:integc.market.contract,state:0
+#: field:integc.market.contract.line,state:0
+#: field:integc.market.line,state:0
+msgid "Status"
+msgstr "Status"
+
+#. module: integc
+#: code:addons/integc/account/account_invoice.py:182
+#, python-format
+msgid "Step %s of the invoice %s has exceeded the time limit."
+msgstr "L'étape %s de la facture %s a dépassé le délai imparti."
 
 #. module: integc
 #: field:hr.employee,street:0
@@ -2655,9 +2543,535 @@ msgid "Street"
 msgstr "Rue"
 
 #. module: integc
-#: view:integc.hr.partner.contract:0
-#: view:integc.market:0
-#: view:integc.market.contract:0
-msgid "Services Lines"
-msgstr "Lignes de service"
+#: view:hr.employee:integc.view_employee_form_inherit2
+msgid "Street..."
+msgstr "Rue..."
+
+#. module: integc
+#: field:hr.employee,street2:0
+msgid "Street2"
+msgstr "Rue 2"
+
+#. module: integc
+#: field:integc.hr.partner.contract.line,price_subtotal:0
+#: field:integc.market.contract.line,price_subtotal:0
+#: field:integc.market.line,price_subtotal:0
+msgid "Subtotal"
+msgstr "Sous-Total"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Supplier"
+msgstr "Fournisseur"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Supplier Invoices and Outstanding transactions"
+msgstr "Factures fournisseurs et transactions exceptionnelles"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Suppliers"
+msgstr "Fournisseurs"
+
+#. module: integc
+#: field:hr.payslip.run,tdl:0
+#: report:payslip.run:0
+msgid "TDL"
+msgstr "TDL"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "TEL"
+msgstr "TEL"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "TEL:"
+msgstr "TEL:"
+
+#. module: integc
+#: report:payslip.run:0
+msgid "TOTAL"
+msgstr "TOTAL"
+
+#. module: integc
+#: model:ir.ui.menu,name:integc.menu_integc_hr_dashboard_main
+msgid "Tableau de Bord"
+msgstr "Tableau de Bord"
+
+#. module: integc
+#: model:ir.actions.act_window,name:integc.open_board_integc_hr
+#: model:ir.ui.menu,name:integc.menu_integc_hr_dashboard
+msgid "Tableau de bord"
+msgstr "Tableau de bord"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Taux(%)"
+msgstr "Taux(%)"
+
+#. module: integc
+#: field:integc.hr.partner.contract,amount_tax:0
+#: field:integc.hr.partner.contract.line,tax_id:0
+#: field:integc.market,amount_tax:0
+#: field:integc.market.contract,amount_tax:0
+#: field:integc.market.contract.line,tax_id:0
+#: field:integc.market.line,tax_id:0
+msgid "Taxes"
+msgstr "Taxes"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "Tel :"
+msgstr "Tel :"
+
+#. module: integc
+#: view:hr.contract:integc.hr_contract_view_search_inherit1
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
+msgid "Terminé"
+msgstr "Terminé"
+
+#. module: integc
+#: field:integc.hr.partner.contract,note:0
+#: field:integc.market,note:0
+#: field:integc.market.contract,note:0
+msgid "Terms and conditions"
+msgstr "Termes et conditions"
+
+#. module: integc
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
+#: view:integc.market:integc.view_integc_market_form
+#: view:integc.market.contract:integc.view_integc_market_contract_form
+msgid "Terms and conditions..."
+msgstr "Termes et conditions..."
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:1028
+#, python-format
+msgid "The Expense Journal \"%s\" has not properly configured the Credit Account!"
+msgstr "Le compte Crédit n'est pas proprement configuré pour le journal \"%s\" !"
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:1044
+#, python-format
+msgid "The Expense Journal \"%s\" has not properly configured the Debit Account!"
+msgstr "Le compte Débit n'est pas proprement configuré pour le journal \"%s\" !"
+
+#. module: integc
+#: help:integc.hr.partner.contract,amount_untaxed:0
+#: help:integc.market,amount_untaxed:0
+#: help:integc.market.contract,amount_untaxed:0
+msgid "The amount without tax."
+msgstr "Montant hors taxes."
+
+#. module: integc
+#: help:integc.hr.partner.contract,analytic_account_id:0
+#: help:integc.market.contract,analytic_account_id:0
+msgid "The analytic account related to a contract."
+msgstr "Le compte analytique associé à ce contrat."
+
+#. module: integc
+#: code:addons/integc/account/account_voucher.py:273
+#, python-format
+msgid "The invoice you are willing to pay is not valid anymore."
+msgstr "La facture pour laquelle vous voullez effectuer le paiement n'est plus valide."
+
+#. module: integc
+#: help:integc.hr.partner.contract,project_id:0
+msgid "The project related to a contract."
+msgstr "Le projet associé à ce contrat"
+
+#. module: integc
+#: help:integc.hr.partner.contract,amount_tax:0
+#: help:integc.market,amount_tax:0
+#: help:integc.market.contract,amount_tax:0
+msgid "The tax amount."
+msgstr "Montant des taxes."
+
+#. module: integc
+#: help:integc.market,amount_total_avenant:0
+msgid "The total amount avenant."
+msgstr "Montant total avenant."
+
+#. module: integc
+#: help:integc.market,amount_total_market:0
+msgid "The total amount for the market."
+msgstr "Montant total du marché."
+
+#. module: integc
+#: help:integc.hr.partner.contract,amount_total:0
+#: help:integc.market,amount_total:0
+#: help:integc.market.contract,amount_total:0
+msgid "The total amount."
+msgstr "Le montant total."
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:835
+#: code:addons/integc/market/market.py:1370
+#, python-format
+msgid "There is no Fiscal Position defined or Income category account defined for default properties of Product categories."
+msgstr "Il n'y a aucune position budgétaire définie ou de compte de revenu d'une catégorie défini pour les propriétés par défaut des catégories de produits."
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:892
+#, python-format
+msgid "There is no payslip to print"
+msgstr "Aucun bulletin à imprimer"
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:635
+#, python-format
+msgid "There is not salary grid defined for this category and grade"
+msgstr "Aucune grille salariale n'est définie pour cette catégorie et cet échelon"
+
+#. module: integc
+#: help:integc.hr.partner.contract,invoice_ids:0
+#: help:integc.market.contract,invoice_ids:0
+msgid "This is the list of invoices that have been generated for this contract. The same contract may have been invoiced in several times (by line for example)."
+msgstr "Ceci est la liste des factures générées pour ce document. Le même contrat peut être facturé plusieurs fois (par exemple: par ligne )."
+
+#. module: integc
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_tree1
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_tree2
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_tree3
+#: field:integc.hr.partner.contract,amount_total:0
+#: field:integc.market.contract,amount_total:0
+msgid "Total"
+msgstr "Total"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Total Allocation"
+msgstr "Allocation totale"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_payment_tree
+#: view:budget.line:integc.view_budget_line_tree_inherit_integc
+msgid "Total Amount"
+msgstr "Montant total"
+
+#. module: integc
+#: field:integc.market,amount_total_avenant:0
+msgid "Total Avenant"
+msgstr "Total Avenant"
+
+#. module: integc
+#: field:integc.market,amount_total:0
+msgid "Total Base"
+msgstr "Total Base"
+
+#. module: integc
+#: field:hr.payslip.run,total_charge_patronale:0
+msgid "Total Charges"
+msgstr "Total Charges"
+
+#. module: integc
+#: view:integc.hr.registration.request:integc.view_integc_hr_registration_request_tree
+msgid "Total Employee"
+msgstr "Total Employé"
+
+#. module: integc
+#: field:hr.payslip.run,total_charge_sociale:0
+msgid "Total Prestations Sociales"
+msgstr "Total Prestations Sociales"
+
+#. module: integc
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_tree
+#: view:integc.market:integc.view_integc_market_form
+#: view:integc.market:integc.view_integc_market_tree
+#: view:integc.market.contract:integc.view_integc_market_contract_tree
+msgid "Total Tax Included"
+msgstr "Total Taxes Incluses"
+
+#. module: integc
+#: field:integc.market,amount_total_market:0
+msgid "Total amount market"
+msgstr "Montant total marché"
+
+#. module: integc
+#: report:integc.payslip:0
+msgid "Total retenues"
+msgstr "Total retenues"
+
+#. module: integc
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
+#: view:integc.market.contract:integc.view_integc_market_contract_search
+msgid "Totalement facturé"
+msgstr "Totalement facturé"
+
+#. module: integc
+#: field:integc.hr.category,transport_allowance:0
+msgid "Transport Allowance"
+msgstr "Indemnité de Transport"
+
+#. module: integc
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
+#: field:integc.hr.partner.contract,type:0
+#: view:integc.market.contract:integc.view_integc_market_contract_search
+#: field:integc.market.contract,type:0
+#: field:market.invoice,contract_type:0
+msgid "Type"
+msgstr "Type"
+
+#. module: integc
+#: view:integc.market.contract:integc.view_integc_market_contract_form
+msgid "Undiscounted count"
+msgstr "Décompte non escompté"
+
+#. module: integc
+#: field:integc.market.contract,balance:0
+#: field:market.invoice,balance:0
+msgid "Unexpected count"
+msgstr "Décompte non escompté"
+
+#. module: integc
+#: field:integc.hr.partner.contract.line,price_unit:0
+#: field:integc.market.contract.line,price_unit:0
+#: field:integc.market.line,price_unit:0
+msgid "Unit Price"
+msgstr "Prix Unitaire"
+
+#. module: integc
+#: field:integc.hr.partner.contract.line,product_uom:0
+#: field:integc.market.contract.line,product_uom:0
+#: field:integc.market.line,product_uom:0
+msgid "Unit of Measure "
+msgstr "Unité de mesure "
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Unreconcile"
+msgstr "Annuler le rapprochement"
+
+#. module: integc
+#: field:integc.hr.partner.contract,amount_untaxed:0
+#: field:integc.market,amount_untaxed:0
+#: field:integc.market.contract,amount_untaxed:0
+msgid "Untaxed Amount"
+msgstr "Montant hors taxes"
+
+#. module: integc
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
+#: view:integc.market:integc.view_integc_market_form
+#: view:integc.market.contract:integc.view_integc_market_contract_form
+msgid "UoS"
+msgstr "UoS"
+
+#. module: integc
+#: view:integc.market:integc.view_integc_market_form
+msgid "Update Contracts"
+msgstr "Avenants"
+
+#. module: integc
+#: field:integc.hr.partner.contract,user_id:0
+#: field:integc.hr.registration.request,user_id:0
+#: field:integc.market,user_id:0
+#: field:integc.market.contract,user_id:0
+msgid "User"
+msgstr "Utilisateur"
+
+#. module: integc
+#: view:account.invoice:integc.view_invoice_form_inherit1
+#: view:account.voucher:integc.view_other_receipt_form
+#: view:hr.contract:integc.hr_contract_form_inherit1
+#: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
+#: view:integc.hr.registration.request:integc.view_integc_registration_request_form
+#: view:integc.market:integc.view_integc_market_form
+#: view:integc.market.contract:integc.view_integc_market_contract_form
+msgid "Validate"
+msgstr "Valider"
+
+#. module: integc
+#: selection:integc.hr.registration.request,state:0
+#: selection:integc.hr.registration.request.line,state:0
+msgid "Validated"
+msgstr "Validé"
+
+#. module: integc
+#: report:transfer.order:0
+msgid "Veuillez agréer, Monsieur le Directeur, nos salutations distinguées"
+msgstr "Veuillez agréer, Monsieur le Directeur, nos salutations distinguées"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_payment_tree
+msgid "Voucher Entries"
+msgstr "Saisie de justificatifs"
+
+#. module: integc
+#: model:ir.model,name:integc.model_account_voucher_line
+msgid "Voucher Lines"
+msgstr "Lignes de justificatif"
+
+#. module: integc
+#: field:account.voucher,voucher_mode:0
+msgid "Voucher Mode"
+msgstr "Selection fournisseur"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Voucher Payment"
+msgstr "Règlement fournisseur"
+
+#. module: integc
+#: field:hr.contract,wage_max:0
+#: field:integc.hr.salary.grid,wage_max:0
+msgid "Wage Maximal"
+msgstr "Base maximale"
+
+#. module: integc
+#: field:hr.contract,wage_min:0
+#: field:integc.hr.salary.grid,wage_min:0
+msgid "Wage Minimal"
+msgstr "Base minimale"
+
+#. module: integc
+#: view:integc.hr.salary.grid:integc.view_integc_hr_salary_grid_form
+msgid "Wage Range"
+msgstr "Plage de salaire"
+
+#. module: integc
+#: selection:integc.hr.registration.request,state:0
+#: selection:integc.hr.registration.request.line,state:0
+msgid "Waiting"
+msgstr "Attente"
+
+#. module: integc
+#: selection:hr.contract,state:0
+#: selection:integc.hr.partner.contract,state:0
+msgid "Waiting for signature of director"
+msgstr "En attente de signature du Directeur"
+
+#. module: integc
+#: selection:hr.contract,state:0
+msgid "Waiting for signature of employee"
+msgstr "En attente de signature par l'employée"
+
+#. module: integc
+#: selection:integc.hr.partner.contract,state:0
+msgid "Waiting for signature of partner"
+msgstr "En attente de signature du prestataire"
+
+#. module: integc
+#: field:integc.hr.partner.contract.line,th_weight:0
+#: field:integc.market.contract.line,th_weight:0
+#: field:integc.market.line,th_weight:0
+msgid "Weight"
+msgstr "Poids"
+
+#. module: integc
+#: code:addons/integc/account/account_voucher.py:273
+#, python-format
+msgid "Wrong voucher line"
+msgstr "Wrong voucher line"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:874
+#: code:addons/integc/market/market.py:1409
+#, python-format
+msgid "You cannot cancel a contract line that has already been invoiced."
+msgstr "Vous ne pouvez pas annuler une ligne de contrat déja facturé."
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:655
+#: code:addons/integc/market/market.py:1206
+#, python-format
+msgid "You cannot confirm a contract which has no line."
+msgstr "Vous ne pouvez pas confirmer un contrat qui n'a pas de lignes"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:527
+#: code:addons/integc/market/market.py:1099
+#, python-format
+msgid "You cannot create invoice for that contract with balance %s"
+msgstr "Vous ne pouvez pas créer une facture pour ce contrat avec pour réliquat %s"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:545
+#: code:addons/integc/market/market.py:1117
+#, python-format
+msgid "You cannot group sales having different currencies for the same partner."
+msgstr "You cannot group sales having different currencies for the same partner."
+
+#. module: integc
+#: code:addons/integc/account/account_invoice.py:75
+#, python-format
+msgid "You cant not validate that invoice with the amount %s.\n"
+"The contract %s related to that invoice has balance %s"
+msgstr "Vous ne pouvez pas valider cette facture avec le montant %s.\n"
+"Le contrat %s associé à cette facture a un décompte non escompté de %s"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:996
+#: code:addons/integc/market/market.py:532
+#: code:addons/integc/market/market.py:1531
+#, python-format
+msgid "You have to select a pricelist or a customer in the sales form !\n"
+"Please set one before choosing a product."
+msgstr "Vous devez sélectionner un prestataire dans le formulaire de contrat!\n"
+"Veuillez en définir un avant de choisir les services."
+
+#. module: integc
+#: view:hr.employee:integc.view_employee_form_inherit2
+msgid "ZIP"
+msgstr "BP"
+
+#. module: integc
+#: field:hr.employee,zip:0
+msgid "Zip"
+msgstr "B.P"
+
+#. module: integc
+#: code:addons/integc/account/account_voucher.py:345
+#, python-format
+msgid "change"
+msgstr "change"
+
+#. module: integc
+#: view:integc.market:integc.view_integc_market_form
+msgid "days"
+msgstr "jours"
+
+#. module: integc
+#: help:hr.payslip,is_paid:0
+msgid "determines if the payslip is paid"
+msgstr "determine si le bulletin est payé"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "e.g. 003/10"
+msgstr "e.g. 003/10"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "e.g. Invoice SAJ/0042"
+msgstr "Ex: Facture SAJ/0042"
+
+#. module: integc
+#: selection:integc.hr.partner.contract.line,type:0
+#: selection:integc.market.contract.line,type:0
+#: selection:integc.market.line,type:0
+msgid "from stock"
+msgstr "from stock"
+
+#. module: integc
+#: field:integc.hr.category,housing_allowance:0
+msgid "housing Allowance"
+msgstr "Indemnité de logement"
+
+
+#. module: integc
+#: selection:integc.hr.partner.contract.line,type:0
+#: selection:integc.market.contract.line,type:0
+#: selection:integc.market.line,type:0
+msgid "on order"
+msgstr "on order"
+
+#. module: integc
+#: view:hr.payslip.journal:integc.view_hr_payslip_journal
+#: view:integc.hr.contract:integc.view_integc_hr_contract_form
+#: view:market.invoice:integc.market_invoice_form
+#: view:partner.contract:integc.partner_contract_form
+msgid "or"
+msgstr "ou"
 

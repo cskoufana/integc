@@ -107,8 +107,56 @@ class integc_market(osv.osv):
                     res[record.id] = True
         return res
 
+    def _invoice_count(self, cr, uid, ids, field_name, arg, context=None):
+        res={}
+        for record in self.browse(cr, uid, ids, dict(context, active_test=False)):
+            res[record.id] = 0
+            for contract in record.contract_ids:
+                res[record.id] += len(contract.invoice_ids)
+        return res
+
+    def _invoice_exists(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for market in self.browse(cursor, user, ids, context=context):
+            res[market.id] = False
+            for contract in market.contract_ids:
+                if contract.invoice_ids:
+                    res[market.id] = True
+        return res
+
+    def _invoiced_search(self, cursor, user, obj, name, args, context=None):
+        if not len(args):
+            return []
+        clause = ''
+        contract_clause = ''
+        no_invoiced = False
+        for arg in args:
+            if arg[1] == '=':
+                if arg[2]:
+                    clause += 'AND inv.state = \'paid\''
+                else:
+                    clause += 'AND inv.state != \'cancel\' AND contract.state != \'cancel\'  AND inv.state <> \'paid\'  AND rel.contract_id = contract.id '
+                    contract_clause = ',  integc_market_contract AS contract '
+                    no_invoiced = True
+
+        cursor.execute('SELECT rel.contract_id ' \
+                'FROM integc_market_contract_invoice_rel AS rel, account_invoice AS inv '+ contract_clause + \
+                'WHERE rel.invoice_id = inv.id ' + clause)
+        res = cursor.fetchall()
+        if no_invoiced:
+            cursor.execute('SELECT contract.id ' \
+                    'FROM integc_market_contract AS contract ' \
+                    'WHERE contract.id NOT IN ' \
+                        '(SELECT rel.contract_id ' \
+                        'FROM integc_market_contract_invoice_rel AS rel) and contract.state != \'cancel\'')
+            res.extend(cursor.fetchall())
+        if not res:
+            return [('id', '=', 0)]
+        return [('id', 'in', [x[0] for x in res])]
+
     _columns = {
-        'name': fields.char('Name', size=64, required=True),
+        'name': fields.char('External Reference', required=True),
+        'reference': fields.char('Internal Reference'),
         'state': fields.selection([
             ('draft', 'Draft'),
             ('open', 'Opened'),
@@ -136,6 +184,8 @@ class integc_market(osv.osv):
                                            "attachment_id", "market_id", "Attachments"),
         'pricelist_id': fields.many2one('product.pricelist', 'Pricelist', required=True, readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, help="Pricelist for current market."),
         'currency_id': fields.related('pricelist_id', 'currency_id', type="many2one", relation="res.currency", string="Currency", readonly=True, required=True),
+        'invoice_exists': fields.function(_invoice_exists, string='Invoiced',
+            fnct_search=_invoiced_search, type='boolean', help="It indicates that contract has at least one invoice."),
         'amount_untaxed': fields.function(_amount_all, digits_compute=dp.get_precision('Account'), string='Untaxed Amount',
             store={
                 'integc.market': (lambda self, cr, uid, ids, c={}: ids, ['market_line'], 10),
@@ -168,7 +218,9 @@ class integc_market(osv.osv):
             multi='sums', help="The total amount for the market."),
 
         'company_id': fields.many2one('res.company', 'Company', readonly=True),
+        'invoice_count': fields.function(_invoice_count, type='integer', string="Invoices",),
     }
+    _order = 'id desc'
     _defaults = {
         'date': fields.date.context_today,
         'date_start': fields.date.context_today,
@@ -179,6 +231,30 @@ class integc_market(osv.osv):
     _sql_constraints = [
         ('name_uniq', 'unique(name, company_id)', 'Contract Reference must be unique per Company!'),
     ]
+
+    def action_view_invoice(self, cr, uid, ids, context=None):
+        '''
+        This function returns an action that display existing invoices of given contract ids. It can either be a in a list or in a form view, if there is only one invoice to show.
+        '''
+        mod_obj = self.pool.get('ir.model.data')
+        act_obj = self.pool.get('ir.actions.act_window')
+
+        result = mod_obj.get_object_reference(cr, uid, 'account', 'action_invoice_tree1')
+        id = result and result[1] or False
+        result = act_obj.read(cr, uid, [id], context=context)[0]
+        #compute the number of invoices to display
+        inv_ids = []
+        for market in self.browse(cr, uid, ids, context=context):
+            for contract in market.contract_ids:
+                inv_ids += [invoice.id for invoice in contract.invoice_ids]
+        #choose the view_mode accordingly
+        if len(inv_ids)>1:
+            result['domain'] = "[('id','in',["+','.join(map(str, inv_ids))+"])]"
+        else:
+            res = mod_obj.get_object_reference(cr, uid, 'account', 'invoice_form')
+            result['views'] = [(res and res[1] or False, 'form')]
+            result['res_id'] = inv_ids and inv_ids[0] or False
+        return result
 
     def onchange_pricelist_id(self, cr, uid, ids, pricelist_id, contract_lines, context=None):
         context = context or {}
@@ -227,6 +303,7 @@ class integc_market(osv.osv):
                 }))
 
             vals = {
+                'name': record.name,
                 'type': 'base',
                 'market_id': record.id,
                 'state': 'open',
@@ -511,7 +588,7 @@ class integc_market_contract(osv.osv):
             'state': 'draft',
             'invoice_ids': [],
             'date_confirm': False,
-            'name': self.pool.get('ir.sequence').get(cr, uid, 'integc.market.contract'),
+            #'name': self.pool.get('ir.sequence').get(cr, uid, 'integc.market.contract'),
         })
         return super(integc_market_contract, self).copy(cr, uid, id, default, context=context)
 
@@ -632,6 +709,45 @@ class integc_market_contract(osv.osv):
             res[record.id] = record.amount_total - balance
         return res
 
+    def _get_expected_count(self, cr, uid, ids, field_name, args, context=None):
+        res = {}
+        #contract_ids = []
+        invoice_ids = []
+        balance = 0.0
+        cond = '='
+        values = ids[0]
+        if len(ids) > 1 :
+            values = tuple(ids)
+            cond = 'in'
+        cr.execute('SELECT rel.invoice_id FROM integc_market_contract_invoice_rel AS rel WHERE rel.contract_id %s %s' % (cond,values))
+        for x in cr.fetchall():
+            invoice_ids.append(x[0])
+        for invoice in self.pool.get('account.invoice').browse(cr, uid, invoice_ids, context=context):
+            if invoice.state not in ['draft', 'cancel','paid']:
+                balance += invoice.amount_total
+        for record in self.browse(cr, uid, ids, context=context):
+            res[record.id] = record.amount_total - balance
+        return res
+
+    def _get_count_paid(self, cr, uid, ids, field_name, args, context=None):
+        res = {}
+        #contract_ids = []
+        invoice_ids = []
+        balance = 0.0
+        cond = '='
+        values = ids[0]
+        if len(ids) > 1 :
+            values = tuple(ids)
+            cond = 'in'
+        cr.execute('SELECT rel.invoice_id FROM integc_market_contract_invoice_rel AS rel WHERE rel.contract_id %s %s' % (cond,values))
+        for x in cr.fetchall():
+            invoice_ids.append(x[0])
+        for invoice in self.pool.get('account.invoice').browse(cr, uid, invoice_ids, context=context):
+            if invoice.state == 'paid':
+                balance += invoice.amount_total
+        for record in self.browse(cr, uid, ids, context=context):
+            res[record.id] = record.amount_total - balance
+        return res
 
     def _set_amount_balance(self, cr, uid, ids, name, args, context=None):
         balance = self._amount_balance(cr, uid, ids, context=context)
@@ -714,7 +830,7 @@ class integc_market_contract(osv.osv):
         return result.keys()
 
     _columns = {
-        'name': fields.char('Contract Reference', size=64, readonly=True),
+        'name': fields.char('Contract Reference', size=64, readonly=False),
         'market_id': fields.many2one('integc.market', 'Market'),
         'state': fields.selection([
             ('draft', 'Draft'),
@@ -768,12 +884,25 @@ class integc_market_contract(osv.osv):
             },
             multi='sums', help="The total amount."),
 
-        'balance': fields.function(_get_amount_balance, digits_compute=dp.get_precision('Account'), string='Balance',
+        'balance': fields.function(_get_amount_balance, digits_compute=dp.get_precision('Account'), string='Unexpected count',
             store={
                 'integc.market.contract': (lambda self, cr, uid, ids, c={}: ids, [], 10),
                 'integc.market.contract.line': (_get_contract, ['price_unit', 'tax_id', 'discount', 'product_uom_qty'], 10),
                 'account.invoice': (_get_contract_from_invoice, ['state'], 10),
             }),
+        'count_paid': fields.function(_get_count_paid, digits_compute=dp.get_precision('Account'), string='Count paid',
+            store={
+                'integc.market.contract': (lambda self, cr, uid, ids, c={}: ids, ['name','date_start', 'date_end'], 10),
+                #'integc.market.contract.line': (_get_contract, ['price_unit', 'tax_id', 'discount', 'product_uom_qty'], 10),
+                'account.invoice': (_get_contract_from_invoice, ['state'], 10),
+            }),
+        'expected_count': fields.function(_get_expected_count, digits_compute=dp.get_precision('Account'), string='Expected count',
+            store={
+                'integc.market.contract': (lambda self, cr, uid, ids, c={}: ids, ['name','date_start', 'date_end'], 10),
+                #'integc.market.contract.line': (_get_contract, ['price_unit', 'tax_id', 'discount', 'product_uom_qty'], 10),
+                'account.invoice': (_get_contract_from_invoice, ['state'], 10),
+            }),
+
 
         'payment_term': fields.many2one('account.payment.term', 'Payment Term'),
         'fiscal_position': fields.many2one('account.fiscal.position', 'Fiscal Position'),
@@ -816,7 +945,6 @@ class integc_market_contract(osv.osv):
 
         return osv.osv.unlink(self, cr, uid, unlink_ids, context=context)
 
-
     def onchange_pricelist_id(self, cr, uid, ids, pricelist_id, contract_lines, context=None):
         context = context or {}
         if not pricelist_id:
@@ -825,7 +953,6 @@ class integc_market_contract(osv.osv):
             'currency_id': self.pool.get('product.pricelist').browse(cr, uid, pricelist_id, context=context).currency_id.id
         }
         return {'value': value}
-
 
     def onchange_partner_id(self, cr, uid, ids, part, context=None):
         if not part:
@@ -848,10 +975,10 @@ class integc_market_contract(osv.osv):
             val['pricelist_id'] = pricelist
         return {'value': val}
 
-    def create(self, cr, uid, vals, context=None):
-        if 'name' not in vals:
-            vals['name'] = self.pool.get('ir.sequence').get(cr, uid, 'integc.market.contract')
-        return super(integc_market_contract, self).create(cr, uid, vals, context=context)
+    #def create(self, cr, uid, vals, context=None):
+    #    if 'name' not in vals:
+    #        vals['name'] = self.pool.get('ir.sequence').get(cr, uid, 'integc.market.contract')
+    #    return super(integc_market_contract, self).create(cr, uid, vals, context=context)
 
     def button_dummy(self, cr, uid, ids, context=None):
         return True
@@ -869,10 +996,10 @@ class integc_market_contract(osv.osv):
         """
         if context is None:
             context = {}
-        #journal_ids = self.pool.get('account.journal').search(cr, uid,
-        #    [('type', '=', 'sale'), ('company_id', '=', contract.company_id.id)],
-        #    limit=1)
-        journal_ids = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'integc', 'account_journal_payroll')
+        journal_ids = self.pool.get('account.journal').search(cr, uid,
+            [('type', '=', 'sale'), ('company_id', '=', contract.company_id.id)],
+            limit=1)
+        #journal_ids = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'integc', 'account_journal_payroll')
         if not journal_ids:
             raise osv.except_osv(_('Error!'),
                 _('Please define sales journal for this company: "%s" (id:%d).') % (contract.company_id.name, contract.company_id.id))
@@ -883,14 +1010,15 @@ class integc_market_contract(osv.osv):
             'reference': contract.name,
             'account_id': contract.partner_id.property_account_receivable.id,
             'partner_id': contract.partner_invoice_id.id,
-            'journal_id': journal_ids[1],
+            'journal_id': journal_ids[0],
             'invoice_line': [(6, 0, lines)],
             'currency_id': contract.pricelist_id.currency_id.id,
             'comment': contract.note,
             'fiscal_position': contract.fiscal_position.id or contract.partner_id.property_account_position.id,
             'date_invoice': context.get('date_invoice', False),
             'company_id': contract.company_id.id,
-            'user_id': uid
+            'user_id': uid,
+            'count': len(contract.invoice_ids) + 1
         }
 
         #invoice_vals.update(self._inv_get(cr, uid, contract, context=context))
@@ -907,7 +1035,6 @@ class integc_market_contract(osv.osv):
         inv_obj.button_compute(cr, uid, [inv_id])
         return inv_id
 
-
     def manual_invoice(self, cr, uid, ids, context=None):
         """ create invoices for the given contracts (ids), and open the form
             view of one of the newly created invoices
@@ -919,7 +1046,7 @@ class integc_market_contract(osv.osv):
         inv_ids = set(inv.id for contract in self.browse(cr, uid, ids, context) for inv in contract.invoice_ids)
 
 
-        res = mod_obj.get_object_reference(cr, uid, 'account', 'invoice_supplier_form')
+        res = mod_obj.get_object_reference(cr, uid, 'account', 'invoice_form')
         res_id = res and res[1] or False,
 
         return {
@@ -942,7 +1069,7 @@ class integc_market_contract(osv.osv):
         mod_obj = self.pool.get('ir.model.data')
         act_obj = self.pool.get('ir.actions.act_window')
 
-        result = mod_obj.get_object_reference(cr, uid, 'account', 'action_invoice_tree2')
+        result = mod_obj.get_object_reference(cr, uid, 'account', 'action_invoice_tree1')
         id = result and result[1] or False
         result = act_obj.read(cr, uid, [id], context=context)[0]
         #compute the number of invoices to display
@@ -953,7 +1080,7 @@ class integc_market_contract(osv.osv):
         if len(inv_ids)>1:
             result['domain'] = "[('id','in',["+','.join(map(str, inv_ids))+"])]"
         else:
-            res = mod_obj.get_object_reference(cr, uid, 'account', 'invoice_supplier_form')
+            res = mod_obj.get_object_reference(cr, uid, 'account', 'invoice_form')
             result['views'] = [(res and res[1] or False, 'form')]
             result['res_id'] = inv_ids and inv_ids[0] or False
         return result

@@ -673,10 +673,13 @@ class integc_hr_partner_contract(osv.osv):
         return {'value': res}
 
     def scheduler_close_contract(self, cr, uid, context=None):
-        cr.execute("select c.id from integc_hr_partner_contract c where c.date_end is not null and c.state = 'progress' and c.date_end < '%s'" % time.strftime('%Y-%m-%d'))
-        ids = [x[0] for x in cr.fetchall()]
-        if ids:
-            self.write(cr, uid, ids, {'state', '=', 'complete'})
+        contract_ids  = self.search(cr, uid, [('state', '=', 'progress'), ('date_end', '<', time.strftime('%Y-%m-%d'))], context=context)
+        if contract_ids:
+            self.write(cr, uid, contract_ids, {'state', '=', 'complete'})
+        #cr.execute("select c.id from integc_hr_partner_contract c where c.date_end is not null and c.state = 'progress' and c.date_end < '%s'" % time.strftime('%Y-%m-%d'))
+        #ids = [x[0] for x in cr.fetchall()]
+        #if ids:
+        #    self.write(cr, uid, ids, {'state', '=', 'complete'})
         return True
 
     def run_scheduler(self, cr, uid, context=None):

@@ -30,10 +30,18 @@ class integc_budget_item(orm.Model):
     This is a link between budgets and financial accounts. """
     _inherit = "budget.item"
     
+    _store_tuple = (lambda self, cr, uid, ids, c=None: ids,
+                    [], 10)
+    
     _columns = {
         'parent_id': fields.many2one('budget.item',
-                                     string='Parent Item',
+                                     string='Categorie',
                                      ondelete='cascade',
                                      domain='[("type","=","view")]'),
+        'section_id': fields.related('parent_id', 'parent_id', relation='budget.item',type='many2one', string='Section',
+            readonly=True,
+            store={
+                'budget.item': _store_tuple
+                }),
     }
 

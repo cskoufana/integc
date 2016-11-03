@@ -32,7 +32,7 @@
         'hr/partner_contract_workflow.xml',
         'hr/partner_contract_view.xml',
         'hr/board_hr_view.xml',
-        #'budget/budget_view.xml',
+        'budget/budget_view.xml',
         'res/res_partner_view.xml',
         'res/res_bank_view.xml',
         'account/account_invoice_data.xml',
@@ -41,7 +41,9 @@
         'account/report/account_report_view.xml',
         'account/account_voucher_view.xml',
         'market/market_sequence.xml',
+        'market/wizard/market_wizard_view.xml',
         'market/market_view.xml',
+
     ],
 
     'demo': [],
