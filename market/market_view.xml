@@ -28,6 +28,10 @@
                         </button>
                     </div>-->
                     <div class="oe_right oe_button_box">
+                           <button class="oe_inline oe_stat_button" type="action" name="%(budget.action_budget_line_analytic_tree)d" icon="fa-tasks" states="open,done">
+                                <field string="Lignes Budget" name="budget_line_count" widget="statinfo"/>
+                           </button>
+
                           <button class="oe_inline oe_stat_button" type="object" attrs="{'invisible': [('invoice_exists', '=', False)]}" groups="base.group_user"
                                 name="action_view_invoice" icon="fa-pencil-square-o">
                             <field string="Invoices" name="invoice_count" widget="statinfo"/>
@@ -36,12 +40,12 @@
                     <group>
                         <group>
                             <field name="name" string="Référence"/>
-                            <field name="reference" />
+                            <field name="reference" required="1"/>
                         </group>
                         <group>
                             <!--<separator string="Description"/>-->
                             <field name="invoice_exists" invisible="1" />
-                            <field name="note" colspan="2" nolabel="1" placeholder="Description ..."/>
+                            <field name="note" colspan="2" nolabel="1" placeholder="Description ..." required="1"/>
                         </group>
                         <group>
 
@@ -112,10 +116,10 @@
                                 </div>
                                 <field name="amount_total_market" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}" />
                             </group>
-                            <div class="oe_clear"/>
-                            <field name="note" class="oe_inline" placeholder="Terms and conditions..."/>
+                            <!--<div class="oe_clear"/>-->
+                            <!--<field name="note" class="oe_inline" placeholder="Terms and conditions..."/>-->
                         </page>
-                        <page string="Update Contracts" attrs="{'invisible': [('has_contracts', '!=', True)]}">
+                        <page string="Contrats" attrs="{'invisible': [('has_contracts', '!=', True)]}">
                             <field name="contract_ids" readonly="1">
                                 <tree>
                                     <field name="name" string="Contract Number"/>
@@ -259,9 +263,18 @@
                                         states="draft,sent" string="(update)" type="object" class="oe_edit_only oe_link"/>
                                 </div>
                                 <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
-                                <field name="expected_count" readonly="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}" />
-                                <field name="count_paid" readonly="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}" />
-                                <field name="balance" string="Undiscounted count" readonly="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}" />
+                                <div class="oe_subtotal_footer_separator oe_inline">
+                                    <label for="expected_count" />
+                                </div>
+                                <field name="expected_count" nolabel="1" readonly="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}" />
+                                <div class="oe_subtotal_footer_separator oe_inline">
+                                    <label for="count_paid" />
+                                </div>
+                                <field name="count_paid" nolabel="1" readonly="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}" />
+                                <div class="oe_subtotal_footer_separator oe_inline">
+                                    <label for="balance" string="Undiscounted count"/>
+                                </div>
+                                <field name="balance" nolabel="1" readonly="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}" />
                             </group>
                             <div class="oe_clear"/>
                             <field name="note" class="oe_inline" placeholder="Terms and conditions..."/>

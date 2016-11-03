@@ -124,6 +124,12 @@ class integc_market(osv.osv):
                     res[market.id] = True
         return res
 
+    def _budget_line_count(self, cr, uid, ids, field_name, arg, context=None):
+        res={}
+        for record in self.browse(cr, uid, ids, dict(context)):
+            res[record.id] = len(record.analytic_account_id.budget_line_ids)
+        return res
+
     def _invoiced_search(self, cursor, user, obj, name, args, context=None):
         if not len(args):
             return []
@@ -219,6 +225,7 @@ class integc_market(osv.osv):
 
         'company_id': fields.many2one('res.company', 'Company', readonly=True),
         'invoice_count': fields.function(_invoice_count, type='integer', string="Invoices",),
+        'budget_line_count': fields.function(_budget_line_count, type='integer', string="Lignes de budget",),
     }
     _order = 'id desc'
     _defaults = {
@@ -726,7 +733,7 @@ class integc_market_contract(osv.osv):
             if invoice.state not in ['draft', 'cancel','paid']:
                 balance += invoice.amount_total
         for record in self.browse(cr, uid, ids, context=context):
-            res[record.id] = record.amount_total - balance
+            res[record.id] = balance
         return res
 
     def _get_count_paid(self, cr, uid, ids, field_name, args, context=None):
@@ -746,7 +753,7 @@ class integc_market_contract(osv.osv):
             if invoice.state == 'paid':
                 balance += invoice.amount_total
         for record in self.browse(cr, uid, ids, context=context):
-            res[record.id] = record.amount_total - balance
+            res[record.id] = balance
         return res
 
     def _set_amount_balance(self, cr, uid, ids, name, args, context=None):
@@ -892,14 +899,14 @@ class integc_market_contract(osv.osv):
             }),
         'count_paid': fields.function(_get_count_paid, digits_compute=dp.get_precision('Account'), string='Count paid',
             store={
-                'integc.market.contract': (lambda self, cr, uid, ids, c={}: ids, ['name','date_start', 'date_end'], 10),
-                #'integc.market.contract.line': (_get_contract, ['price_unit', 'tax_id', 'discount', 'product_uom_qty'], 10),
+                'integc.market.contract': (lambda self, cr, uid, ids, c={}: ids, [], 10),
+                'integc.market.contract.line': (_get_contract, ['price_unit', 'tax_id', 'discount', 'product_uom_qty'], 10),
                 'account.invoice': (_get_contract_from_invoice, ['state'], 10),
             }),
         'expected_count': fields.function(_get_expected_count, digits_compute=dp.get_precision('Account'), string='Expected count',
             store={
-                'integc.market.contract': (lambda self, cr, uid, ids, c={}: ids, ['name','date_start', 'date_end'], 10),
-                #'integc.market.contract.line': (_get_contract, ['price_unit', 'tax_id', 'discount', 'product_uom_qty'], 10),
+                'integc.market.contract': (lambda self, cr, uid, ids, c={}: ids, [], 10),
+                'integc.market.contract.line': (_get_contract, ['price_unit', 'tax_id', 'discount', 'product_uom_qty'], 10),
                 'account.invoice': (_get_contract_from_invoice, ['state'], 10),
             }),
 

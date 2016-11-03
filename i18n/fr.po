@@ -23,6 +23,19 @@ msgid "'Wage Minimal' must be lower than 'Wage Maximal'."
 msgstr "La 'Base minimale' doit être inféreieur à la 'Base maximale'."
 
 #. module: integc
+#: code:addons/integc/hr/hr.py:592
+#: constraint:hr.contract:0
+#, python-format
+msgid "Wage must be range in salary grid wage min and salary grid wage max."
+msgstr "Le salaire doit être compris entre le salaire maximal et le salaire minimal."
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:592
+#, python-format
+msgid "wage"
+msgstr "Salaire"
+
+#. module: integc
 #: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
 #: view:integc.market:integc.view_integc_market_form
 #: view:integc.market.contract:integc.view_integc_market_contract_form

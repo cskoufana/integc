@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data noupdate="0">
-        <!--<record model="ir.ui.view" id="view_inherit_res_partner_form">-->
-            <!--<field name="name">inherit.res.partner.form</field>-->
+        <record model="ir.ui.view" id="view_inherit_res_partner_form">
+            <field name="name">inherit.res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <field name="parent_id" position="before">
+                    <group attrs="{'invisible': [('is_company','=', False)]}" col="1">
+                        <group col="2">
+                            <field name="niu" nolabel="1" placeholder="NIU"/>
+                        </group>
+                    </group>
+                </field>
+            </field>
+        </record>
+
+        <!--<record id="view_res_partner_filter_inherit1" model="ir.ui.view">-->
+            <!--<field name="name">res.partner.select</field>-->
             <!--<field name="model">res.partner</field>-->
-            <!--<field name="inherit_id" ref="base.view_partner_form" />-->
+            <!--<field name="inherit_id" ref="base.view_res_partner_filter" />-->
             <!--<field name="arch" type="xml">-->
-                <!--<field name="parent_id" position="before">-->
-                    <!--<group attrs="{'invisible': [('is_company','=', False)]}" col="1">-->
-                        <!--<group col="2">-->
-                            <!--<field name="niu" nolabel="1" placeholder="NIU"/>-->
-                        <!--</group>-->
-                    <!--</group>-->
-                <!--</field>-->
+                <!--<data>-->
+                    <!--<xpath expr="//filter[@name='supplier']" position="after">-->
+                        <!--<filter string="Compte" name="compte" domain="[('property_account_payable', '=', '422000')]" />-->
+                    <!--</xpath>-->
+                <!--</data>-->
             <!--</field>-->
         <!--</record>-->
     </data>

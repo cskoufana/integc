@@ -94,7 +94,7 @@ class hr_employee(osv.osv):
             'customer': False,
         }
         # get default account
-        account_ids = self.pool.get('account.account').search(cr, uid, [('code', '=', '422000')], context=context)
+        account_ids = self.pool.get('account.account').search(cr, uid, ['|', ('code', '=', '422'), ('code', '=', '422000')], context=context)
         val['property_account_payable'] = account_ids and account_ids[0] or False
         val['property_account_receivable'] = account_ids and account_ids[0] or False
         partner_id = self.pool.get('res.partner').create(cr, uid, val, context=context)
@@ -589,7 +589,7 @@ class hr_contract(osv.osv):
                 return False
         return True
 
-    _constraints = [(_check_wage, _("Wage must be range in salary grid wage min and salary grid wage max."), ['wage'])]
+    _constraints = [(_check_wage, _("Wage must be range in salary grid wage min and salary grid wage max."), [_('wage')])]
 
     def onchange_category_grade(self, cr, uid, ids, category, grade, context=None):
         salary_grid = None

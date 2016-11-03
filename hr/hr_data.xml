@@ -993,6 +993,9 @@
             <field name="note">Somme des charges et impot du patron  </field>
         </record>
 
+        <!--Begin Director salary element-->
+
+        <!--End Director salary element-->
         <!-- Salary Structure -->
 
 
