@@ -1153,9 +1153,6 @@
         <record id="hr_contract_type_cdi" model="hr.contract.type">
             <field name="name">CDI</field>
         </record>
-        <delete model="hr.contract.type" search="[('name','=','Employee')]" />
-        <delete model="hr.contract.type" search="[('name','=','Worker')]" />
-        <delete model="hr.contract.type" search="[('name','=','Subcontractor')]" />
 
         <!--Scheduler-->
         <record forcecreate="True" id="ir_cron_close_hr_contract" model="ir.cron">

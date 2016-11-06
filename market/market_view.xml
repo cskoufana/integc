@@ -28,11 +28,14 @@
                         </button>
                     </div>-->
                     <div class="oe_right oe_button_box">
-                           <button class="oe_inline oe_stat_button" type="action" name="%(budget.action_budget_line_analytic_tree)d" icon="fa-tasks" states="open,done">
+                           <button class="oe_inline oe_stat_button" context="{'integc_active_id':analytic_account_id}" type="action" name="%(budget.action_budget_line_analytic_tree)d" icon="fa-tasks" states="open,done">
                                 <field string="Lignes Budget" name="budget_line_count" widget="statinfo"/>
                            </button>
+						<button class="oe_inline oe_stat_button" context="{'integc_active_id':analytic_account_id}" type="action" string="Analse Budget"
+							name="%(budget.action_budget_line_analytic_tree2)d" icon="fa-bar-chart">
+						</button>
 
-                          <button class="oe_inline oe_stat_button" type="object" attrs="{'invisible': [('invoice_exists', '=', False)]}" groups="base.group_user"
+                          <button class="oe_inline oe_stat_button" context="{'integc_active_id':analytic_account_id}" type="object" attrs="{'invisible': [('invoice_exists', '=', False)]}" groups="base.group_user"
                                 name="action_view_invoice" icon="fa-pencil-square-o">
                             <field string="Invoices" name="invoice_count" widget="statinfo"/>
                         </button>

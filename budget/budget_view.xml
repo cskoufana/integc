@@ -79,9 +79,9 @@
 			<field name="model">budget.line</field>
 			<field name="arch" type="xml">
 				<graph string="Lignes de budget" type="bar">
+					<field type="measure" String="Montant Budgetisé" name="analytic_amount" />
 					<field type="measure" name="theorical_amount" />
 					<field type="measure" name="analytic_real_amount" />
-					<field type="measure" name="analytic_amount" />
 				</graph>
 			</field>
 		</record>
@@ -104,8 +104,22 @@
 			<field name="view_mode">tree,form,graph</field>
 			<field name="view_id" ref="view_budget_line_tree_inherit_integc" />
 			<field name="context">{
-				'search_default_analytic_account_id': [active_id],
-				'default_analytic_account_id': active_id,
+				'search_default_analytic_account_id': [integc_active_id],
+				'default_analytic_account_id': integc_active_id,
+				}
+			</field>
+			<field name="search_view_id" ref="view_budget_line_search_inherit_integc" />
+		</record>
+		<record id="budget.action_budget_line_analytic_tree2" model="ir.actions.act_window">
+			<field name="name">Analyse Budget</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">budget.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">graph,tree</field>
+			<field name="view_id" ref="view_budget_line_graph_integc" />
+			<field name="context">{
+				'search_default_analytic_account_id': [integc_active_id],
+				'default_analytic_account_id': integc_active_id,
 				'search_default_group_budget_item_id': True,
 				}
 			</field>
@@ -122,10 +136,15 @@
 			<field name="arch" type="xml">
 				<data>
 					<xpath expr="//div[@name='buttons']" position="inside">
-						<button class="oe_inline oe_stat_button" type="action"
+						<button class="oe_inline oe_stat_button" type="action" 
+							context="{'integc_active_id':id}"
 							name="%(budget.action_budget_line_analytic_tree)d" icon="fa-tasks">
 							<field string="Lignes Budget" name="budget_line_count"
 								widget="statinfo" />
+						</button>
+						<button class="oe_inline oe_stat_button" type="action" string="Analse Budget"
+						context="{'integc_active_id':id}"
+							name="%(budget.action_budget_line_analytic_tree2)d" icon="fa-bar-chart">
 						</button>
 					</xpath>
 				</data>
