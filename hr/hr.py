@@ -355,6 +355,10 @@ class integc_hr_category(osv.osv):
         'representation_fees': fields.float('Representation Fees', digits=(16,2)),
         'risk_prime': fields.float('Risk Prime', digits=(16,2)),
         'responsibility_prime': fields.float('Responsibility Prime', digits=(16,2)),
+        'vehicle_allowance': fields.float('Vehicle Allowance', digits=(16,2)),
+        'water_allowance': fields.float('Water Allowance', digits=(16,2)),
+        'electricity_allowance': fields.float('Electricity Allowance', digits=(16,2)),
+        'homeworker_allowance': fields.float('Home worker Allowance', digits=(16,6)),
     }
     _sql_constraints = [('integc_category_name_unique','unique(name)', _('Category name already exists'))]
     _defaults = {
@@ -569,7 +573,7 @@ class hr_contract(osv.osv):
                     if not 'grade_id' in values:
                         values['grade_id'] = record.grade_id.id
                     self._check_salary_grid(cr, uid, values, context=context)
-                if not record.project_id:
+                if ('project_id' in values and not values['project_id']) or not record.project_id:
                     values['analytic_account_id'] = record.employee_id.department_id.analytic_account_id.id if record.employee_id and record.employee_id.department_id and record.employee_id.department_id.analytic_account_id else False
         #logging.warning(values)
         return super(hr_contract, self).write(cr, uid, ids, values, context=context)
