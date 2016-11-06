@@ -607,10 +607,10 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
             <para style="P5">[[p.rate &lt; 100 and p.rate]]</para>
           </td>
           <td>
-            <para style="P8">[[ p.category_id.code not in ('CHARGES','IMPOT','CHARGES_TOTALES') and formatLang(p.total , digits=0)]]</para>
+            <para style="P8">[[ p.category_id.code not in ('DED','IMPOT_EMPLOYE','CHARGE_EMPLOYE','TOTAL_RETENUE') and formatLang(p.total , digits=0)]]</para>
           </td>
           <td>
-            <para style="P8">[[ p.category_id.code in ('CHARGES','IMPOT','CHARGES_TOTALES') and formatLang(p.total , digits=0)]]</para>
+            <para style="P8">[[ p.category_id.code in ('DED','IMPOT_EMPLOYE','CHARGE_EMPLOYE','TOTAL_RETENUE') and formatLang(p.total , digits=0)]]</para>
           </td>
         </tr>
       </blockTable>
