@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#__author__ = 'yenke'
+# __author__ = 'yenke'
 
 
 
@@ -20,7 +20,7 @@ def subtract_month(dt, month):
     ndt = dt
     for n in range(month):
         dt0 = ndt.replace(day=1)
-        dt1 = dt0 - timedelta(days= 1)
+        dt1 = dt0 - timedelta(days=1)
         ndt = dt1.replace(day=1)
     return ndt.strftime('%Y-%m-%d')
 
@@ -29,6 +29,12 @@ class hr_employee(osv.osv):
     _name = 'hr.employee'
     _inherit = 'hr.employee'
 
+    def _fetch_registration_request_line_from_aal(self, cr, uid, ids, context=None):
+        line_ids = []
+        for aal in self.browse(cr, uid, ids, context=context):
+            if aal.employee_id and aal.employee_id.id not in line_ids:
+                line_ids.append(aal.employee_id.id)
+        return line_ids
     def _is_registered(self, cr, uid, ids, field_name, args, context=None):
         res = {}
         for record in self.browse(cr, uid, ids, context=context):
@@ -61,15 +67,23 @@ class hr_employee(osv.osv):
         'zip': fields.char('Zip', change_default=True, size=24),
         'city': fields.char('City', size=128),
         'state_id': fields.many2one("res.country.state", 'State'),
-        #'country_id': fields.many2one('res.country', 'Country'),
+        # 'country_id': fields.many2one('res.country', 'Country'),
         'phone': fields.char('Phone', size=64),
         'fax': fields.char('Fax', size=64),
         'bank': fields.many2one('res.bank', 'Bank'),
         'acc_number': fields.char('Account Number', size=64),
         'pos': fields.char('Point of Sale', size=64),
         'key': fields.char('Key', size=64),
-        'is_registered': fields.function(_is_registered, fnct_inv=_set_registered, string='Is registered to CNPS', type='boolean', store=True),
-        #'has_contract': fields.function(_has_contract, fnct_inv=_set_contract, string='Has contract', type='boolean', store=True),
+        'is_registered': fields.function(_is_registered, fnct_inv=_set_registered,
+                                         string='Is registered to CNPS', type='boolean',
+                                         store={
+                'hr.employee': (lambda self, cr, uid, ids, c: ids,
+                                ['ssnid'], 10),
+                'integc.hr.registration.request.line': (_fetch_registration_request_line_from_aal,
+                                          ['ssnid',
+                                           'state'], 10),
+            }),
+        # 'has_contract': fields.function(_has_contract, fnct_inv=_set_contract, string='Has contract', type='boolean', store=True),
         'has_contract': fields.boolean(string='Has contract'),
         'attachment_ids': fields.many2many("ir.attachment", "hr_employee_attachment_rel",
                                            "attachment_id", "contract_id", "Attachments"),
@@ -82,7 +96,7 @@ class hr_employee(osv.osv):
     }
 
     def create(self, cr, uid, values, context=None):
-        #Create partner
+        # Create partner
         val = {
             'name': values['name'],
             'street': 'street' in values and values['street'] or False,
@@ -99,7 +113,7 @@ class hr_employee(osv.osv):
         val['property_account_receivable'] = account_ids and account_ids[0] or False
         partner_id = self.pool.get('res.partner').create(cr, uid, val, context=context)
         values['address_home_id'] = partner_id
-        #Create bank account
+        # Create bank account
         if 'acc_number' in values and values['acc_number']:
             vals = {
                 'acc_number': values['acc_number'] if 'acc_number' in values else False,
@@ -109,7 +123,7 @@ class hr_employee(osv.osv):
                 'bank': 'bank' in values and values['bank'] or False,
                 'state': self.pool.get('res.partner.bank')._bank_type_get(cr, uid, context=context)[0][0]
             }
-            #if(vals['bank'] and not vals['acc_number'] or not vals['pos'] or not vals['key']) or (not vals['bank'] and vals['acc_number'] or not vals['pos'] or not vals['key']) or (not vals['bank'] or not vals['acc_number'] and vals['pos'] or not vals['key']) or (vals['bank'] and not vals['acc_number'] or not vals['pos'] and vals['key']):
+            # if(vals['bank'] and not vals['acc_number'] or not vals['pos'] or not vals['key']) or (not vals['bank'] and vals['acc_number'] or not vals['pos'] or not vals['key']) or (not vals['bank'] or not vals['acc_number'] and vals['pos'] or not vals['key']) or (vals['bank'] and not vals['acc_number'] or not vals['pos'] and vals['key']):
             #        raise osv.except_osv(_('Error'), _('Information about bank account are missing'))
 
             bank_account_id = self.pool.get('res.partner.bank').create(cr, uid, vals, context=context)
@@ -133,7 +147,7 @@ class hr_employee(osv.osv):
                 values['address_home_id'] = partner_id
             else:
                 self.pool.get('res.partner').write(cr, uid, record.address_home_id.id, val, context=context)
-            #Create bank account
+            # Create bank account
             vals = {
                 'acc_number': 'acc_number' in values and values['acc_number'] or record.acc_number,
                 'pos': 'pos' in values and values['pos'] or record.pos,
@@ -142,13 +156,13 @@ class hr_employee(osv.osv):
                 'bank': 'bank' in values and values['bank'] or record.bank.id,
                 'state': self.pool.get('res.partner.bank')._bank_type_get(cr, uid, context=context)[0][0]
             }
-            #if(vals['bank'] and not vals['acc_number'] or not vals['pos'] or not vals['key']) or (not vals['bank'] and vals['acc_number'] or not vals['pos'] or not vals['key']) or (not vals['bank'] or not vals['acc_number'] and vals['pos'] or not vals['key']) or (vals['bank'] and not vals['acc_number'] or not vals['pos'] and vals['key']):
+            # if(vals['bank'] and not vals['acc_number'] or not vals['pos'] or not vals['key']) or (not vals['bank'] and vals['acc_number'] or not vals['pos'] or not vals['key']) or (not vals['bank'] or not vals['acc_number'] and vals['pos'] or not vals['key']) or (vals['bank'] and not vals['acc_number'] or not vals['pos'] and vals['key']):
             #    raise osv.except_osv(_('Error'), _('Information about bank account are missing'))
             if not record.bank_account_id and vals['acc_number']:
                 bank_account_id = self.pool.get('res.partner.bank').create(cr, uid, vals, context=context)
                 values['bank_account_id'] = bank_account_id
             elif record.bank_account_id:
-                #bank_account_id = record.bank_account_id.id
+                # bank_account_id = record.bank_account_id.id
                 self.pool.get('res.partner.bank').write(cr, uid, record.bank_account_id.id, vals, context=context)
 
             return super(hr_employee, self).write(cr, uid, ids, values, context=context)
@@ -197,7 +211,7 @@ class integc_hr_registration_request(osv.osv):
         self.write(cr, uid, ids, {'date_to': res}, context=context)
         return res
 
-    #def _registration_search(self, cursor, user, obj, name, args, context=None):
+    # def _registration_search(self, cursor, user, obj, name, args, context=None):
     #    ids = set()
     #    for cond in args:
     #        amount = cond[2]
@@ -233,8 +247,8 @@ class integc_hr_registration_request(osv.osv):
         ], string='State'),
         'employee_count': fields.function(_get_employee_count, fnct_inv=_set_employee_count, string='Employee Count', type='integer', store=True),
         'external_reference': fields.char('External Reference', size=64),
-        #'date_from': fields.function(_get_date_from, type='date', string='Date From', method=True, fnct_search=_registration_search),
-        #'date_to': fields.function(_get_date_to, type='date', string='Date To', method=True, fnct_search=_registration_search),
+        # 'date_from': fields.function(_get_date_from, type='date', string='Date From', method=True, fnct_search=_registration_search),
+        # 'date_to': fields.function(_get_date_to, type='date', string='Date To', method=True, fnct_search=_registration_search),
     }
 
     _order = 'date desc, id'
@@ -255,24 +269,24 @@ class integc_hr_registration_request(osv.osv):
                 if not line.ssnid or not line.date_registration:
                     raise osv.except_osv(_('Operation not allowed'), _('Neither social security number or date registration is not defined for %s' % line.employee_id.name))
                 self.pool.get('hr.employee').write(cr, uid, [line.employee_id.id], {'ssnid': line.ssnid}, context=context)
-                #self.pool.get('integc.hr.registration.request.line').write(cr, uid, line.id, {'state': 'validate', 'date_registration': record.date_registration})
+                # self.pool.get('integc.hr.registration.request.line').write(cr, uid, line.id, {'state': 'validate', 'date_registration': record.date_registration})
         return self.write(cr, uid, ids, {'state': 'validate', 'date_validation': time.strftime('%Y-%m-%d')}, context=context)
 
     def cancel_registration(self, cr, uid, ids, context=None):
-        #for record in self.browse(cr, uid, ids, context=context):
+        # for record in self.browse(cr, uid, ids, context=context):
         #    for line in record.request_line_ids:
         #        self.pool.get('integc.hr.registration.request.line').write(cr, uid, line.id, {'state': 'cancel'})
         self.write(cr, uid, ids, {'state': 'cancel'}, context=context)
         return True
 
     def action_waiting(self, cr, uid, ids, context=None):
-        #for record in self.browse(cr, uid, ids, context=context):
+        # for record in self.browse(cr, uid, ids, context=context):
         #    for line in record.request_line_ids:
         #        self.pool.get('integc.hr.registration.request.line').write(cr, uid, line.id, {'state': 'waiting'})
         self.write(cr, uid, ids, {'state': 'waiting'}, context=context)
         return True
 
-    #def _check_employee(self, cr, uid, employee_id, context=None):
+    # def _check_employee(self, cr, uid, employee_id, context=None):
     #
 
 integc_hr_registration_request()
@@ -282,6 +296,14 @@ class integc_hr_registration_request_line(osv.osv):
     """
     Registration request line
     """
+    def _fetch_request_line_from_aal(self, cr, uid, ids, context=None):
+        line_obj = self.pool.get('integc.hr.registration.request.line')
+        line_ids = line_obj.search(cr, uid,[('registration_id',
+                                            'in',
+                                            ids)],
+                                          context=context)
+        return line_ids
+    
     _name = 'integc.hr.registration.request.line'
     _columns = {
         'employee_id': fields.many2one('hr.employee', 'Employee', domain="[('ssnid', '=', None)]"),
@@ -289,12 +311,13 @@ class integc_hr_registration_request_line(osv.osv):
         'ssnid': fields.char('Social Security Number', size=64),
         'date_registration': fields.date('Date registration'),
         'registration_id': fields.many2one('integc.hr.registration.request', 'Registration Request'),
-        'state': fields.related('registration_id', 'state', type='selection', string='State', selection=[
-            ('draft', 'Draft'),
-            ('waiting', 'Waiting'),
-            ('validate', 'Validated'),
-            ('cancel', 'Canceled')
-        ], readonly=True, store=True),
+        'state': fields.related('registration_id', 'state', type='char', string='State', readonly=True,
+            store={
+                   'integc.hr.registration.request.line': (lambda self, cr, uid, ids, c: ids,
+                                ['ssnid','date_registration'], 10),
+                   'integc.hr.registration.request': (_fetch_request_line_from_aal,
+                                          ['state'], 10),
+            }),
     }
 integc_hr_registration_request_line()
 
@@ -307,7 +330,7 @@ class hr_department(osv.osv):
     _inherit = 'hr.department'
     _columns = {
         'analytic_account_id': fields.many2one('account.analytic.account', 'Analytic Account', ondelete="cascade", required=False),
-		'label' : fields.char('Libelle',size=255)
+		'label' : fields.char('Libelle', size=255)
     }
 	
     def create(self, cr, uid, values, context=None):
@@ -350,17 +373,17 @@ class integc_hr_category(osv.osv):
         'name': fields.char('Name', size=64, required=True),
         'note': fields.text('Note'),
         'structure_id': fields.many2one('hr.payroll.structure', 'Salary Structure', required=True),
-        'transport_allowance': fields.float('Transport Allowance', digits=(16,2)),
-        'housing_allowance': fields.float('housing Allowance', digits=(16,2)),
-        'representation_fees': fields.float('Representation Fees', digits=(16,2)),
-        'risk_prime': fields.float('Risk Prime', digits=(16,2)),
-        'responsibility_prime': fields.float('Responsibility Prime', digits=(16,2)),
+        'transport_allowance': fields.float('Transport Allowance', digits=(16, 2)),
+        'housing_allowance': fields.float('housing Allowance', digits=(16, 2)),
+        'representation_fees': fields.float('Representation Fees', digits=(16, 2)),
+        'risk_prime': fields.float('Risk Prime', digits=(16, 2)),
+        'responsibility_prime': fields.float('Responsibility Prime', digits=(16, 2)),
         'vehicle_allowance': fields.float('Vehicle Allowance', digits=(16,2)),
         'water_allowance': fields.float('Water Allowance', digits=(16,2)),
         'electricity_allowance': fields.float('Electricity Allowance', digits=(16,2)),
         'homeworker_allowance': fields.float('Home worker Allowance', digits=(16,6)),
     }
-    _sql_constraints = [('integc_category_name_unique','unique(name)', _('Category name already exists'))]
+    _sql_constraints = [('integc_category_name_unique', 'unique(name)', _('Category name already exists'))]
     _defaults = {
         'transport_allowance': 0.0,
         'housing_allowance': 0.0,
@@ -381,7 +404,7 @@ class integc_hr_grade(osv.osv):
         'name': fields.char('Name', size=64, required=True),
         'note': fields.text('Note'),
     }
-    _sql_constraints = [('integc_grade_name_unique','unique(name)', _('Grade name already exists'))]
+    _sql_constraints = [('integc_grade_name_unique', 'unique(name)', _('Grade name already exists'))]
 integc_hr_grade()
 
 
@@ -398,8 +421,8 @@ class integc_hr_salary_grid(osv.osv):
         'name':  fields.char('Name', size=128, readonly=True),
         'category_id': fields.many2one('integc.hr.category', 'Category', required=True),
         'grade_id': fields.many2one('integc.hr.grade', 'Grade', required=True),
-        'wage_min': fields.float('Wage Minimal', digits=(16,2), required=True, help="Basic Minimal Salary for this grid"),
-        'wage_max': fields.float('Wage Maximal', digits=(16,2), required=True, help="Basic Maximal Salary for this grid"),
+        'wage_min': fields.float('Wage Minimal', digits=(16, 2), required=True, help="Basic Minimal Salary for this grid"),
+        'wage_max': fields.float('Wage Maximal', digits=(16, 2), required=True, help="Basic Maximal Salary for this grid"),
         'structure_id': fields.related('category_id', 'structure_id', relation='hr.payroll.structure', type='many2one', store=False, readonly=True, string="Salary Structure"),
     }
 
@@ -409,8 +432,8 @@ class integc_hr_salary_grid(osv.osv):
                 return False
         return True
 
-    _constraints = [(_check_wage,_("'Wage Minimal' must be lower than 'Wage Maximal'."), ['wage_min', 'wage_max'])]
-    _sql_constraints = [('integc_salary_grid_name_unique','unique(name)', _('Salary grid name already exists'))]
+    _constraints = [(_check_wage, _("'Wage Minimal' must be lower than 'Wage Maximal'."), ['wage_min', 'wage_max'])]
+    _sql_constraints = [('integc_salary_grid_name_unique', 'unique(name)', _('Salary grid name already exists'))]
 
     def create(self, cr, uid, values, context=None):
         category = self.pool.get('integc.hr.category').browse(cr, uid, values['category_id'], context=context)
@@ -419,7 +442,7 @@ class integc_hr_salary_grid(osv.osv):
             values['name'] = category.name + " - " + grade.name
         return super(integc_hr_salary_grid, self).create(cr, uid, values, context=context)
 
-    #def write(self, cr, uid, ids, values, context=None):
+    # def write(self, cr, uid, ids, values, context=None):
     #    for record in self.browse(cr, uid, ids, context=context):
     #        if 'category_id' not in values:
     #            category = record.category_id
@@ -433,7 +456,7 @@ class integc_hr_salary_grid(osv.osv):
     #            values['name'] = category.name + " - " + grade.name
     #        return super(integc_hr_salary_grid, self).write(cr, uid, ids, values, context=context)
 
-    #def onchange_category(self, cr, uid, ids, cat, context=None):
+    # def onchange_category(self, cr, uid, ids, cat, context=None):
     #    if cat:
     #        cat = self.pool.get('integc.hr.category').browse(cr, uid, cat, context=context)
     #    return {
@@ -456,13 +479,13 @@ class hr_contract(osv.osv):
     def _get_seniority(self, cr, uid, ids, field_name, args, context=None):
         res = {}
         for record in self.browse(cr, uid, ids, context=context):
-            res[record.id] = ((datetime.strptime(time.strftime('%Y-%m-%d'),'%Y-%m-%d') - datetime.strptime(record.date_start, '%Y-%m-%d')).days)/365
+            res[record.id] = ((datetime.strptime(time.strftime('%Y-%m-%d'), '%Y-%m-%d') - datetime.strptime(record.date_start, '%Y-%m-%d')).days) / 365
         return res
 
     def _set_seniority(self, cr, uid, id, name, value, args=None, context=None):
         if value:
             this = self.browse(cr, uid, id, context=context)
-            seniority = ((datetime.strptime(time.strftime('%Y-%m-%d'),'%Y-%m-%d') - datetime.strptime(this.date_start, '%Y-%m-%d')).days)/365
+            seniority = ((datetime.strptime(time.strftime('%Y-%m-%d'), '%Y-%m-%d') - datetime.strptime(this.date_start, '%Y-%m-%d')).days) / 365
             self.write(cr, uid, id, {'seniority': seniority})
             return seniority
 
@@ -473,24 +496,24 @@ class hr_contract(osv.osv):
         return str(datetime.now() + relativedelta.relativedelta(months=+1, day=1, days=-1))[:10]
 
     def _get_type(self, cr, uid, context=None):
-        #type_ids = self.pool.get('hr.contract.type').search(cr, uid, [('name', '=', 'CDD')])
-        #return type_ids and type_ids[0] or False
+        # type_ids = self.pool.get('hr.contract.type').search(cr, uid, [('name', '=', 'CDD')])
+        # return type_ids and type_ids[0] or False
         return False
 
 
     _columns = {
         'name': fields.char('Contract Reference', size=64, required=False),
         'salary_grid_id': fields.many2one('integc.hr.salary.grid', 'Salary Grid'),
-        #'category_id': fields.related('salary_grid_id', 'category_id', relation='integc.hr.category',type='many2one', string='Category', readonly=True, store=True),
-        #'grade_id': fields.related('salary_grid_id', 'category_id', relation='integc.hr.category',type='many2one', string='Category', readonly=True, store=True),
+        # 'category_id': fields.related('salary_grid_id', 'category_id', relation='integc.hr.category',type='many2one', string='Category', readonly=True, store=True),
+        # 'grade_id': fields.related('salary_grid_id', 'category_id', relation='integc.hr.category',type='many2one', string='Category', readonly=True, store=True),
         'category_id': fields.many2one('integc.hr.category', 'Category'),
         'grade_id': fields.many2one('integc.hr.grade', 'Grade'),
         'wage_min': fields.related('salary_grid_id', 'wage_min', type='float', string='Wage Minimal', readonly=True),
         'wage_max': fields.related('salary_grid_id', 'wage_max', type='float', string='Wage Maximal', readonly=True),
         'seniority': fields.function(_get_seniority, fnct_inv=_set_seniority, string='Seniority', type='integer'),
-        'job_id': fields.related('employee_id','job_id', type='many2one', relation='hr.job', string="Job Title", readonly=True),
+        'job_id': fields.related('employee_id', 'job_id', type='many2one', relation='hr.job', string="Job Title", readonly=True),
         'project_id': fields.many2one('project.project', 'Project'),
-        #'analytic_account_id': fields.related('project_id', 'analytic_account_id', type='many2one', relation='account.analytic.account', string="Analytic Account", readonly=True),
+        # 'analytic_account_id': fields.related('project_id', 'analytic_account_id', type='many2one', relation='account.analytic.account', string="Analytic Account", readonly=True),
         'state': fields.selection([
             ('draft', 'Draft'),
             ('signature_director', 'Waiting for signature of director'),
@@ -502,8 +525,8 @@ class hr_contract(osv.osv):
         'date_cancel': fields.datetime('Date Cancel'),
         'date_signature_director': fields.datetime('Date Signature Director'),
         'date_signature_employee': fields.datetime('Date Signature Employee'),
-        'date_from': fields.function(lambda *a,**k:{}, method=True, type='date',string="Date from"),
-        'date_to': fields.function(lambda *a,**k:{}, method=True, type='date',string="Date to"),
+        'date_from': fields.function(lambda *a, **k:{}, method=True, type='date', string="Date from"),
+        'date_to': fields.function(lambda *a, **k:{}, method=True, type='date', string="Date to"),
         'attachment_ids': fields.many2many("ir.attachment", "hr_partner_contract_attachment_rel",
                                            "attachment_id", "contract_id", "Attachments"),
     }
@@ -554,11 +577,11 @@ class hr_contract(osv.osv):
             values['name'] = self.pool.get('ir.sequence').get(cr, uid, 'hr.contract')
         employee = self.pool.get('hr.employee').browse(cr, uid, values['employee_id'], context=context)
         values['analytic_account_id'] = employee and employee.department_id and employee.department_id.analytic_account_id.id
-        #logging.warning("values['analytic_account_id'] = %s" % values['analytic_account_id'])
+        # logging.warning("values['analytic_account_id'] = %s" % values['analytic_account_id'])
         if 'project_id' in values and values['project_id']:
             project = self.pool.get('project.project').browse(cr, uid, values['project_id'], context=context)
             values['analytic_account_id'] = project and project.analytic_account_id.id or False
-        #logging.warning("values['analytic_account_id'] = %s" % values['analytic_account_id'])
+        # logging.warning("values['analytic_account_id'] = %s" % values['analytic_account_id'])
         return super(hr_contract, self).create(cr, uid, values, context=context)
 
     def write(self, cr, uid, ids, values, context=None):
@@ -575,7 +598,7 @@ class hr_contract(osv.osv):
                     self._check_salary_grid(cr, uid, values, context=context)
                 if ('project_id' in values and not values['project_id']) or not record.project_id:
                     values['analytic_account_id'] = record.employee_id.department_id.analytic_account_id.id if record.employee_id and record.employee_id.department_id and record.employee_id.department_id.analytic_account_id else False
-        #logging.warning(values)
+        # logging.warning(values)
         return super(hr_contract, self).write(cr, uid, ids, values, context=context)
 
     def copy(self, cr, uid, id, default=None, context=None):
@@ -597,7 +620,7 @@ class hr_contract(osv.osv):
 
     def onchange_category_grade(self, cr, uid, ids, category, grade, context=None):
         salary_grid = None
-        #logging.warning('Cat %s - Grad %s' % (category, grade))
+        # logging.warning('Cat %s - Grad %s' % (category, grade))
         if category:
             category = self.pool.get('integc.hr.category').browse(cr, uid, category, context=context)
             if grade:
@@ -634,9 +657,9 @@ class hr_contract(osv.osv):
             category = values['category_id']
             grade = values['grade_id']
             salary_grid_ids = self.pool.get('integc.hr.salary.grid').search(cr, uid, [('category_id', '=', category), ('grade_id', '=', grade)], context=context)
-            #logging.warning(salary_grid_ids)
+            # logging.warning(salary_grid_ids)
             salary_grid = self.pool.get('integc.hr.salary.grid').browse(cr, uid, salary_grid_ids, context=context)
-            #logging.warning(salary_grid)
+            # logging.warning(salary_grid)
             if not salary_grid:
                 raise osv.except_osv(_('Operation not allowed'), _('There is not salary grid defined for this category and grade'))
             salary_grid = salary_grid and salary_grid[0]
@@ -645,12 +668,12 @@ class hr_contract(osv.osv):
         return True
 
     def scheduler_close_contract(self, cr, uid, context=None):
-        contract_ids  = self.search(cr, uid, [('state', '=', 'progress'), ('date_end', '<', time.strftime('%Y-%m-%d'))], context=context)
+        contract_ids = self.search(cr, uid, [('state', '=', 'progress'), ('date_end', '<', time.strftime('%Y-%m-%d'))], context=context)
         if contract_ids:
             self.write(cr, uid, contract_ids, {'state', '=', 'done'})
-        #cr.execute("select c.id from hr_contract c where c.date_end is not null and c.state = 'progress' and c.date_end < '%s'" % time.strftime('%Y-%m-%d'))
-        #ids = [x[0] for x in cr.fetchall()]
-        #if ids:
+        # cr.execute("select c.id from hr_contract c where c.date_end is not null and c.state = 'progress' and c.date_end < '%s'" % time.strftime('%Y-%m-%d'))
+        # ids = [x[0] for x in cr.fetchall()]
+        # if ids:
         #    self.write(cr, uid, ids, {'state', '=', 'done'})
         return True
 
@@ -799,14 +822,14 @@ class hr_payslip_run(osv.osv):
         res = {}
         for record in self.browse(cr, uid, ids, context=context):
             res[record.id] = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'TOTAL_IMPOT')
-            #res[record.id] = record.irpp + record.cac + record.fne + record.tdl + record.rav + record.cfc_salarial + record.cfc_patronal
+            # res[record.id] = record.irpp + record.cac + record.fne + record.tdl + record.rav + record.cfc_salarial + record.cfc_patronal
         return res
 
     def _set_charge_patronale(self, cr, uid, id, name, value, args=None, context=None):
         if value:
             for record in self.browse(cr, uid, id, context=context):
                 res = self.get_total_payslip_amount_by_rule_code(cr, uid, record.slip_ids, 'TOTAL_IMPOT')
-                #res = record.irpp + record.cac + record.fne + record.tdl + record.rav + record.cfc_salarial + record.cfc_patronal
+                # res = record.irpp + record.cac + record.fne + record.tdl + record.rav + record.cfc_salarial + record.cfc_patronal
                 self.write(cr, uid, id, {'total_charge_patronale': res})
                 return res
 
@@ -831,18 +854,18 @@ class hr_payslip_run(osv.osv):
 
     _columns = {
         'company_id': fields.many2one('res.company', 'Company', required=True),
-        'irpp': fields.function(_get_irpp, fnct_inv=_set_irpp, string='IRPP', type='float', digits=(32,0)),
-        'cac': fields.function(_get_cac, fnct_inv=_set_cac, string='CAC', type='float', digits=(32,0)),
-        'cfc_patronal': fields.function(_get_cfc_patronal, fnct_inv=_set_cfc_patronal, string='CFC Patronal', type='float', digits=(32,0)),
-        'cfc_salarial': fields.function(_get_cfc_salarial, fnct_inv=_set_cfc_salarial, string='CFC Salarial', type='float', digits=(32,0)),
-        'fne': fields.function(_get_fne, fnct_inv=_set_fne, string='FNE', type='float', digits=(32,0)),
-        'tdl': fields.function(_get_tdl, fnct_inv=_set_tdl, string='TDL', type='float', digits=(32,0)),
-        'rav': fields.function(_get_rav, fnct_inv=_set_rav, string='RAV', type='float', digits=(32,0)),
-        'prest_fam': fields.function(_get_prest_fam, fnct_inv=_set_prest_fam, string='Prestations Familiales', type='float', digits=(32,0)),
-        'pens_viel': fields.function(_get_pens_viel, fnct_inv=_set_pens_viel, string='Pension Vieillesse', type='float', digits=(32,0)),
-        'acc_trav': fields.function(_get_acc_trav, fnct_inv=_set_acc_trav, string='Accident de travail', type='float', digits=(32,0)),
-        'total_charge_patronale': fields.function(_get_charge_patronale, fnct_inv=_set_charge_patronale, string='Total Charges', type='float', digits=(32,0)),
-        'total_charge_sociale': fields.function(_get_charge_sociale, fnct_inv=_set_charge_sociale, string='Total Prestations Sociales', type='float', digits=(32,0)),
+        'irpp': fields.function(_get_irpp, fnct_inv=_set_irpp, string='IRPP', type='float', digits=(32, 0)),
+        'cac': fields.function(_get_cac, fnct_inv=_set_cac, string='CAC', type='float', digits=(32, 0)),
+        'cfc_patronal': fields.function(_get_cfc_patronal, fnct_inv=_set_cfc_patronal, string='CFC Patronal', type='float', digits=(32, 0)),
+        'cfc_salarial': fields.function(_get_cfc_salarial, fnct_inv=_set_cfc_salarial, string='CFC Salarial', type='float', digits=(32, 0)),
+        'fne': fields.function(_get_fne, fnct_inv=_set_fne, string='FNE', type='float', digits=(32, 0)),
+        'tdl': fields.function(_get_tdl, fnct_inv=_set_tdl, string='TDL', type='float', digits=(32, 0)),
+        'rav': fields.function(_get_rav, fnct_inv=_set_rav, string='RAV', type='float', digits=(32, 0)),
+        'prest_fam': fields.function(_get_prest_fam, fnct_inv=_set_prest_fam, string='Prestations Familiales', type='float', digits=(32, 0)),
+        'pens_viel': fields.function(_get_pens_viel, fnct_inv=_set_pens_viel, string='Pension Vieillesse', type='float', digits=(32, 0)),
+        'acc_trav': fields.function(_get_acc_trav, fnct_inv=_set_acc_trav, string='Accident de travail', type='float', digits=(32, 0)),
+        'total_charge_patronale': fields.function(_get_charge_patronale, fnct_inv=_set_charge_patronale, string='Total Charges', type='float', digits=(32, 0)),
+        'total_charge_sociale': fields.function(_get_charge_sociale, fnct_inv=_set_charge_sociale, string='Total Prestations Sociales', type='float', digits=(32, 0)),
     }
 
     _defaults = {
@@ -853,11 +876,11 @@ class hr_payslip_run(osv.osv):
 
     def get_payslip_amount_by_rule_code(self, cr, uid, obj, code):
         res = 0
-        #logging.warning('%s - %s' % (obj, code))
+        # logging.warning('%s - %s' % (obj, code))
         payslip_line = self.pool.get('hr.payslip.line')
-        line_ids = payslip_line.search(cr, uid, [('slip_id', '=', obj.id),('code', '=', code )])
+        line_ids = payslip_line.search(cr, uid, [('slip_id', '=', obj.id), ('code', '=', code)])
         for line in payslip_line.browse(cr, uid, line_ids):
-            #logging.warning(line)
+            # logging.warning(line)
             res += line.total
         return res
 
@@ -865,7 +888,7 @@ class hr_payslip_run(osv.osv):
         res = 0
         for obj in objects:
             res += self.get_payslip_amount_by_rule_code(cr, uid, obj, code)
-        #logging.warning('%s - %s' % (code, res))
+        # logging.warning('%s - %s' % (code, res))
         return round(res)
 
     def get_total_by_rule_category(self, cr, uid, obj, code):
@@ -875,11 +898,11 @@ class hr_payslip_run(osv.osv):
         cate_ids = rule_cate_obj.search(cr, uid, [('code', '=', code)])
 
         category_total = 0
-        #logging.warning(code)
+        # logging.warning(code)
         if cate_ids:
-            line_ids = payslip_line.search(cr, uid, [('slip_id', '=', obj.id),('category_id.id', '=', cate_ids[0] )])
+            line_ids = payslip_line.search(cr, uid, [('slip_id', '=', obj.id), ('category_id.id', '=', cate_ids[0])])
             for line in payslip_line.browse(cr, uid, line_ids):
-                #logging.warning('%s - %s' % (code, line.total))
+                # logging.warning('%s - %s' % (code, line.total))
                 category_total += line.total
 
         return round(category_total)
@@ -891,7 +914,7 @@ class hr_payslip_run(osv.osv):
         return round(res)
 
     def print_payslip(self, cr, uid, ids, context=None):
-        #assert len(ids) == 1, 'This option should only be used for a single id at a time.'
+        # assert len(ids) == 1, 'This option should only be used for a single id at a time.'
         payslip = self.pool.get('hr.payslip')
         payslip_ids = []
         for record in self.browse(cr, uid, ids, context=context):
@@ -1034,7 +1057,7 @@ class hr_payslip(osv.osv):
             if float_compare(credit_sum, debit_sum, precision_digits=precision) == -1:
                 acc_id = slip.journal_id.default_credit_account_id.id
                 if not acc_id:
-                    raise osv.except_osv(_('Configuration Error!'),_('The Expense Journal "%s" has not properly configured the Credit Account!')%(slip.journal_id.name))
+                    raise osv.except_osv(_('Configuration Error!'), _('The Expense Journal "%s" has not properly configured the Credit Account!') % (slip.journal_id.name))
                 adjust_credit = (0, 0, {
                     'name': _('Adjustment Entry'),
                     'date': timenow,
@@ -1050,7 +1073,7 @@ class hr_payslip(osv.osv):
             elif float_compare(debit_sum, credit_sum, precision_digits=precision) == -1:
                 acc_id = slip.journal_id.default_debit_account_id.id
                 if not acc_id:
-                    raise osv.except_osv(_('Configuration Error!'),_('The Expense Journal "%s" has not properly configured the Debit Account!')%(slip.journal_id.name))
+                    raise osv.except_osv(_('Configuration Error!'), _('The Expense Journal "%s" has not properly configured the Debit Account!') % (slip.journal_id.name))
                 adjust_debit = (0, 0, {
                     'name': _('Adjustment Entry'),
                     'date': timenow,
@@ -1068,9 +1091,9 @@ class hr_payslip(osv.osv):
             if slip.journal_id.entry_posted:
                 move_pool.post(cr, uid, [move_id], context=context)
         return True
-        #return super(hr_payslip, self).process_sheet(cr, uid, [slip.id], context=context)
+        # return super(hr_payslip, self).process_sheet(cr, uid, [slip.id], context=context)
 
-        #TODO move this function into hr_contract module, on hr.employee object
+        # TODO move this function into hr_contract module, on hr.employee object
     def get_contract(self, cr, uid, employee, date_from, date_to, context=None):
         """
         @param employee: browse record of employee
@@ -1080,13 +1103,13 @@ class hr_payslip(osv.osv):
         """
         contract_obj = self.pool.get('hr.contract')
         clause = []
-        #a contract is valid if it ends between the given dates
-        clause_1 = ['&',('date_end', '<=', date_to),('date_end','>=', date_from)]
-        #OR if it starts between the given dates
-        clause_2 = ['&',('date_start', '<=', date_to),('date_start','>=', date_from)]
-        #OR if it starts before the date_from and finish after the date_end (or never finish)
-        clause_3 = [('date_start','<=', date_from),'|',('date_end', '=', False),('date_end','>=', date_to)]
-        clause_final =  [('employee_id', '=', employee.id), ('state', '=', 'progress'),'|','|'] + clause_1 + clause_2 + clause_3
+        # a contract is valid if it ends between the given dates
+        clause_1 = ['&', ('date_end', '<=', date_to), ('date_end', '>=', date_from)]
+        # OR if it starts between the given dates
+        clause_2 = ['&', ('date_start', '<=', date_to), ('date_start', '>=', date_from)]
+        # OR if it starts before the date_from and finish after the date_end (or never finish)
+        clause_3 = [('date_start', '<=', date_from), '|', ('date_end', '=', False), ('date_end', '>=', date_to)]
+        clause_final = [('employee_id', '=', employee.id), ('state', '=', 'progress'), '|', '|'] + clause_1 + clause_2 + clause_3
         contract_ids = contract_obj.search(cr, uid, clause_final, context=context)
         return contract_ids
 
