@@ -7,7 +7,14 @@
             <field name="inherit_id" ref="account.view_bank_statement_form2" />
             <field name="arch" type="xml">
                 <data>
-
+                    <xpath expr="//form/sheet/label" position="before">
+                         <div class="oe_right oe_button_box">
+                             <button name="%(account.action_cash_box_out)d" string="Take Money Out" states="open"
+                            class="oe_inline oe_stat_button" type="action" icon="fa-reply-all"/>
+                             <button name="%(account.action_cash_box_in)d" string="Put Money In" states="open"
+                            class="oe_inline oe_stat_button" type="action" icon="fa-share"/>
+                         </div>
+                    </xpath>
                     <xpath expr="//form/sheet/notebook/page/field/tree/field[6]" position="after">
                         <button type="object" groups="base.group_user"
                                 name="print_receipt" icon="../../../../../integc/static/src/img/icons/print" help="Print receipt">

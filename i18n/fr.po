@@ -18,6 +18,16 @@ msgstr ""
 
 #. module: integc
 #: view:account.bank.statement:integc.view_bank_statement_form2_inherit
+msgid "Take Money Out"
+msgstr "Retrait d'argent"
+
+#. module: integc
+#: view:account.bank.statement:integc.view_bank_statement_form2_inherit
+msgid "Put Money In"
+msgstr "Entrée d'argent"
+
+#. module: integc
+#: view:account.bank.statement:integc.view_bank_statement_form2_inherit
 msgid "Print receipt"
 msgstr "Imprimer le reçu de caisse"
 
