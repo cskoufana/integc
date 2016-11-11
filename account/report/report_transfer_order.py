@@ -1,4 +1,5 @@
 #-*- coding:utf-8 -*-
+#__author__ = 'yenke'
 
 from openerp.report import report_sxw
 from openerp.tools import amount_to_text_en

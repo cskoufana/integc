@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_bank_statement_form2_inherit" model="ir.ui.view">
+            <field name="name">account.bank.statement.form.inherit</field>
+            <field name="model">account.bank.statement</field>
+            <field name="inherit_id" ref="account.view_bank_statement_form2" />
+            <field name="arch" type="xml">
+                <data>
+
+                    <xpath expr="//form/sheet/notebook/page/field/tree/field[6]" position="after">
+                        <button type="object" groups="base.group_user"
+                                name="print_receipt" icon="../../../../../integc/static/src/img/icons/print" help="Print receipt">
+                        </button>
+                    </xpath>
+                    <xpath expr="//form/sheet/notebook/page/field/tree/field[5]" position="after">
+                        <field name="analytic_account_id"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

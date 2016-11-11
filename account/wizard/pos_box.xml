@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="cash_box_in_form_inherit">
+            <field name="name">cash_box_in_inherit</field>
+            <field name="model">cash.box.in</field>
+            <field name="inherit_id" ref="account.cash_box_in_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='amount']" position="after">
+                        <field name="analytic_account_id"  class="oe_inline"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="cash_box_out_form_inherit">
+            <field name="name">cash_box_out_inherit</field>
+            <field name="model">cash.box.out</field>
+            <field name="inherit_id" ref="account.cash_box_out_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='amount']" position="after">
+                        <field name="analytic_account_id"  class="oe_inline"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    </data>
+</openerp>

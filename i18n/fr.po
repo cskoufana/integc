@@ -17,6 +17,11 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: integc
+#: view:account.bank.statement:integc.view_bank_statement_form2_inherit
+msgid "Print receipt"
+msgstr "Imprimer le reçu de caisse"
+
+#. module: integc
 #: code:addons/integc/hr/hr.py:407
 #, python-format
 msgid "'Wage Minimal' must be lower than 'Wage Maximal'."
@@ -150,6 +155,9 @@ msgid "Analytic Account"
 msgstr "Compte analytique"
 
 #. module: integc
+#: field:account.bank.statement.line,analytic_account_id:0
+#: field:cash.box.in,analytic_account_id:0
+#: field:cash.box.out,analytic_account_id:0
 #: field:integc.hr.partner.contract,analytic_account_id:0
 #: field:integc.market,analytic_account_id:0
 #: field:integc.market.contract,analytic_account_id:0

@@ -12,5 +12,11 @@
                 rml="integc/account/report/transfer_report.rml"
                 string="Ordre de virement"/>
 
+        <report auto="False" header="False" id="pos_box_receipt"
+                model="account.bank.statement.line"
+                name="pos.box"
+                rml="integc/account/report/receipt.rml"
+                string="Reçu caisse" />
+
     </data>
 </openerp>
