@@ -15,14 +15,14 @@
                             class="oe_inline oe_stat_button" type="action" icon="fa-share"/>
                          </div>
                     </xpath>
-                    <xpath expr="//form/sheet/notebook/page/field/tree/field[6]" position="after">
+                    <xpath expr="//form/sheet/notebook/page/field/tree/field[@name='partner_id']" position="after">
+                        <field name="product_id" />
+                        <field name="analytic_account_id"/>
+                    </xpath>
+                     <xpath expr="//form/sheet/notebook/page/field/tree/field[@name='amount']" position="after">
                         <button type="object" groups="base.group_user"
                                 name="print_receipt" icon="../../../../../integc/static/src/img/icons/print" help="Print receipt">
                         </button>
-                    </xpath>
-                    <xpath expr="//form/sheet/notebook/page/field/tree/field[5]" position="after">
-                        <field name="product_id" />
-                        <field name="analytic_account_id"/>
                     </xpath>
                 </data>
             </field>
