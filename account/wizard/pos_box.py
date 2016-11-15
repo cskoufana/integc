@@ -14,7 +14,7 @@ class CashBoxIn(osv.osv_memory):
 
     def _compute_values_for_statement_line(self, cr, uid, box, record, context=None):
         res = super(CashBoxIn, self)._compute_values_for_statement_line(cr, uid, box, record, context=context)
-        res['analytic_account_id'] = box.analytic_account_id.id if box.analytic_account_id else False,
+        res['analytic_account_id'] = box.analytic_account_id.id if box.analytic_account_id else None,
         res['date'] = time.strftime('%Y-%m-%d %H:%M:%S')
         return res
 
@@ -31,16 +31,17 @@ class CashBoxOut(osv.osv_memory):
 
     def _compute_values_for_statement_line(self, cr, uid, box, record, context=None):
         res = super(CashBoxOut, self)._compute_values_for_statement_line(cr, uid, box, record, context=context)
-        res['analytic_account_id'] = box.analytic_account_id.id if box.analytic_account_id else False,
+        res['analytic_account_id'] = box.analytic_account_id.id if box.analytic_account_id else None,
         res['date'] = time.strftime('%Y-%m-%d %H:%M:%S')
-        res['partner_id'] = box.partner_id.id if box.partner_id else False,
+        res['partner_id'] = box.partner_id.id if box.partner_id else None,
         if box.product_id:
-            account_id = box.product_id.property_account_income.id
+            res['product_id'] = box.product_id.id
+            account_id = box.product_id.property_account_expense.id
             if not account_id:
-                account_id = box.product_id.categ_id.property_account_income_categ.id
+                account_id = box.product_id.categ_id.property_account_expense_categ.id
             if not account_id:
                 raise osv.except_osv(_('Error!'),
-                        _('Please define income account for this product: "%s" (id:%d).') % \
+                        _('Please define expense account for this product: "%s" (id:%d).') % \
                             (box.product_id.name, box.product_id.id,))
             res['account_id'] = account_id
         return res
