@@ -21,6 +21,7 @@
                         </button>
                     </xpath>
                     <xpath expr="//form/sheet/notebook/page/field/tree/field[5]" position="after">
+                        <field name="product_id" />
                         <field name="analytic_account_id"/>
                     </xpath>
                 </data>
