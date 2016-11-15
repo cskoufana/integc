@@ -3,8 +3,8 @@
 
 from openerp.report import report_sxw
 from openerp.tools import amount_to_text_en
-import logging
 import utility
+
 
 class transfer_order_report(report_sxw.rml_parse):
 
@@ -52,7 +52,6 @@ class transfer_order_report(report_sxw.rml_parse):
 
 
     def get_amount_letter(self, amount):
-        logging.warning(amount)
         return str(utility.trad(float(amount))).upper()
 
 

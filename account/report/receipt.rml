@@ -2,11 +2,15 @@
 <document filename="test.pdf">
   <template pageSize="(594.0,397.0)" title="Test" author="Martin Simon" allowSplitting="20">
     <pageTemplate id="first">
-      <frame id="first" x1="0.0" y1="0.0" width="594" height="397"/>
+      <frame id="first" x1="28.0" y1="0.0" width="538" height="383"/>
     </pageTemplate>
   </template>
   <stylesheet>
     <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Tableau7">
       <blockAlignment value="LEFT"/>
       <blockValign value="TOP"/>
     </blockTableStyle>
@@ -60,11 +64,15 @@
     </initialize>
     <paraStyle name="P1" fontName="Helvetica" fontSize="10.0" leading="13"/>
     <paraStyle name="P2" fontName="Helvetica" fontSize="10.0" leading="13" alignment="RIGHT"/>
-    <paraStyle name="P3" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT"/>
-    <paraStyle name="P4" fontName="Helvetica" fontSize="9.0" leading="11" alignment="CENTER"/>
-    <paraStyle name="P5" fontName="Helvetica" fontSize="12.0" leading="15"/>
-    <paraStyle name="P6" fontName="Helvetica" fontSize="12.0" leading="15" alignment="CENTER"/>
-    <paraStyle name="P7" fontName="Helvetica" fontSize="6.0" leading="8"/>
+    <paraStyle name="P3" fontName="Helvetica-Bold" fontSize="10.0" leading="13"/>
+    <paraStyle name="P4" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT"/>
+    <paraStyle name="P5" fontName="Helvetica" fontSize="9.0" leading="11" alignment="CENTER"/>
+    <paraStyle name="P6" fontName="Helvetica"/>
+    <paraStyle name="P7" fontName="Helvetica" fontSize="12.0" leading="15"/>
+    <paraStyle name="P8" fontName="Helvetica-Bold" fontSize="12.0" leading="15" alignment="CENTER"/>
+    <paraStyle name="P9" fontName="Helvetica" fontSize="12.0" leading="15" alignment="CENTER"/>
+    <paraStyle name="P10" fontName="Helvetica" fontSize="5.0" leading="7" alignment="LEFT"/>
+    <paraStyle name="P11" fontName="Helvetica" fontSize="6.0" leading="8"/>
     <paraStyle name="Standard" fontName="Helvetica"/>
     <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
     <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
@@ -270,21 +278,24 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
     </images>
   </stylesheet>
   <story>
-    <para style="P7">[[ repeatIn(objects,'o') ]]</para>
+    <para style="P11">[[ repeatIn(objects,'o') ]]</para>
     <illustration height="56.0" width="180.0">
       <image x="0" y="0" file="10000000000000B40000005AA8C869D1.png" height="56.0" width="180.0"/>
     </illustration>
-    <para style="P4">FICHE DE DEPENSE</para>
-    <para style="P6">
-      <font color="white"> </font>
-    </para>
-    <blockTable colWidths="148.0,445.0" style="Tableau1">
+    <blockTable colWidths="537.0" style="Tableau7">
+      <tr>
+        <td>
+          <para style="P8">FICHE DE DEPENSE</para>
+        </td>
+      </tr>
+    </blockTable>
+    <blockTable colWidths="134.0,403.0" style="Tableau1">
       <tr>
         <td>
           <para style="P1">Motif</para>
         </td>
         <td>
-          <para style="P1">[[o.name]]</para>
+          <para style="P3">[[o.name]]</para>
         </td>
       </tr>
       <tr>
@@ -292,7 +303,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           <para style="P1">Bénéficiaire</para>
         </td>
         <td>
-          <para style="P1">[[o.partner_id.name]]</para>
+          <para style="P3">[[o.partner_id.name]]</para>
         </td>
       </tr>
       <tr>
@@ -300,23 +311,23 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           <para style="P1">Dépense</para>
         </td>
         <td>
-          <para style="P1">[[o.name]] DU [[o.date]]</para>
+          <para style="P3">[[o.name]] DU [[o.date]]</para>
         </td>
       </tr>
     </blockTable>
-    <blockTable colWidths="148.0,148.0,148.0,149.0" style="Tableau2">
+    <blockTable colWidths="134.0,134.0,134.0,134.0" style="Tableau2">
       <tr>
         <td>
           <para style="P1">Montant</para>
         </td>
         <td>
-          <para style="P1">[[(o.amount &gt; 0) and o.amount or o.amount * -1]]</para>
+          <para style="P3">[[(o.amount &gt; 0) and formatLang(o.amount, digits=0) or formatLang(o.amount * -1, digits=0)]]</para>
         </td>
         <td>
           <para style="P1">Date opération</para>
         </td>
         <td>
-          <para style="P1">[[o.date]]</para>
+          <para style="P3">[[o.date]]</para>
         </td>
       </tr>
       <tr>
@@ -324,50 +335,44 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           <para style="P1">Compte</para>
         </td>
         <td>
-          <para style="P1">[[o.account_id.name]]</para>
+          <para style="P3">[[(o.amount &gt; 0) and o.journal_id.default_credit_account_id.display_name or o.journal_id.default_debit_account_id.display_name]]</para>
         </td>
         <td>
           <para style="P1">Mode règlement</para>
         </td>
         <td>
-          <para style="P1">Espèce</para>
+          <para style="P3">Espèce</para>
         </td>
       </tr>
     </blockTable>
-    <blockTable colWidths="148.0,445.0" style="Tableau3">
+    <blockTable colWidths="134.0,403.0" style="Tableau3">
       <tr>
         <td>
           <para style="P1">Projet</para>
         </td>
         <td>
-          <para style="P1">[[o.analytic_account_id.name]]</para>
+          <para style="P3">[[o.analytic_account_id.name]]</para>
         </td>
       </tr>
     </blockTable>
-    <blockTable colWidths="148.0,148.0,148.0,149.0" style="Tableau4">
+    <blockTable colWidths="134.0,134.0,134.0,134.0" style="Tableau4">
       <tr>
         <td>
           <para style="P1">Date impression</para>
         </td>
         <td>
-          <para style="P1">
-            <font face="Helvetica">[[time.strftime('%d/%m/%Y')]]</font>
-          </para>
+          <para style="P3">[[time.strftime('%d/%m/%Y')]]</para>
         </td>
         <td>
           <para style="P1">Heure impression</para>
         </td>
         <td>
-          <para style="Table Contents">
-            <font face="Helvetica">[[time.strftime('%H:%M:%S')]]</font>
-          </para>
+          <para style="P3">[[time.strftime('%H:%M:%S')]]</para>
         </td>
       </tr>
     </blockTable>
-    <para style="P5">
-      <font color="white"> </font>
-    </para>
-    <blockTable colWidths="297.0,297.0" style="Tableau6">
+
+    <blockTable colWidths="269.0,269.0" style="Tableau6">
       <tr>
         <td>
           <para style="P1">Signature bénéficiaire</para>
@@ -395,18 +400,18 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
         </td>
       </tr>
     </blockTable>
-    <blockTable colWidths="594.0" style="Tableau5">
+    <blockTable colWidths="537.0" style="Tableau5">
       <tr>
         <td>
-          <para style="P3">Imprimé le [[time.strftime('%d/%m/%Y')]]</para>
-          <para style="P4">[[o.company_id.name]]</para>
-          <para style="P4">N° Contribuable [[o.company_id.partner_id.niu]]</para>
-          <para style="P4">B.P. [[o.company_id.zip]]</para>
-          <para style="P4">Tél : [[o.company_id.phone]] Fax : [[o.comany_id.fax]]</para>
+          <para style="P4">Imprimé le [[time.strftime('%d/%m/%Y')]]</para>
+          <para style="P5">[[o.company_id.name]]</para>
+          <para style="P5">N° Contribuable [[o.company_id.partner_id.niu]]</para>
+          <para style="P5">B.P. [[o.company_id.zip]]</para>
+          <para style="P5">Tél : [[o.company_id.phone]] Fax : [[o.company_id.fax]]</para>
         </td>
       </tr>
     </blockTable>
-    <para style="Standard">
+    <para style="P6">
       <font color="white"> </font>
     </para>
   </story>
