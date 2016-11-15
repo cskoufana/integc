@@ -1975,6 +1975,7 @@ msgid "Par débit de notre compte"
 msgstr "Par débit de notre compte"
 
 #. module: integc
+#: field:cash.box.out,partner_id:0
 #: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
 #: field:integc.hr.partner.contract,partner_id:0
 #: view:integc.market.contract:integc.view_integc_market_contract_search
@@ -2195,6 +2196,7 @@ msgstr "Méthode de passation"
 
 #. module: integc
 #: field:integc.hr.partner.contract.line,product_id:0
+#: field:cash.box.out,product_id:0
 #: field:integc.market.contract.line,product_id:0
 #: field:integc.market.line,product_id:0
 msgid "Product"
