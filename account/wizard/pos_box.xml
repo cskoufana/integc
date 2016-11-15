@@ -22,7 +22,9 @@
             <field name="arch" type="xml">
                 <data>
                     <xpath expr="//field[@name='amount']" position="after">
+                        <field name="product_id" class="oe_inline" />
                         <field name="analytic_account_id"  class="oe_inline"/>
+                        <field name="partner_id" class="oe_inline" />
                     </xpath>
                 </data>
             </field>
