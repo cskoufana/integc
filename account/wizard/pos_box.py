@@ -24,8 +24,9 @@ class CashBoxOut(osv.osv_memory):
     _inherit = 'cash.box.out'
 
     _columns = {
+        'name': fields.text('Name', required=True),
         'analytic_account_id': fields.many2one('account.analytic.account', 'Analytic account'),
-        'product_id': fields.many2one('product.product', 'Product'),
+        'product_id': fields.many2one('product.product', 'Product', domain="[('hr_expense_ok', '=', True)]"),
         'partner_id': fields.many2one('res.partner', 'Partner')
     }
 

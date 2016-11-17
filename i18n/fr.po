@@ -2091,6 +2091,7 @@ msgstr "Payé"
 
 #. module: integc
 #: selection:account.invoice,validation_level:0
+#: selection:account.invoice,state:0
 msgid "Pending payment"
 msgstr "Attente de paiement"
 

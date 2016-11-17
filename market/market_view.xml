@@ -2,7 +2,7 @@
 <openerp>
     <data noupdate="0">
         <!--Menu-->
-         <menuitem name="Market"
+         <menuitem name="Market" groups="integc.group_market_manager"
             id="menu_market_root" sequence="89"/>
         <menuitem id="menu_market" parent="menu_market_root" name="Markets" sequence="40" />
         <!--Market-->

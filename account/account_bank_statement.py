@@ -90,7 +90,7 @@ class account_bank_statement_line(osv.osv):
     _columns = {
         'date': fields.datetime('Date', required=True),
         'analytic_account_id': fields.many2one('account.analytic.account', 'Analytic account'),
-        'product_id': fields.many2one('product.product', 'Product')
+        'product_id': fields.many2one('product.product', 'Product', domain="[('hr_expense_ok', '=', True)]")
     }
 
     _defaults = {

@@ -201,7 +201,7 @@
             <field name="view_id" ref="view_other_receipt_form"/>
             <field name="act_window_id" ref="action_other_payment"/>
         </record>
-        <menuitem id="menu_others" name="Others" parent="account.menu_finance" sequence="3"/>
+        <menuitem id="menu_others" name="Others" parent="account.menu_finance" sequence="3" groups="integc.group_assistant_comptable"/>
         <menuitem action="action_other_payment" id="menu_action_other_payment" parent="menu_others"/>
     </data>
 </openerp>

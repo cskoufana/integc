@@ -2,6 +2,14 @@
 <openerp>
     <data noupdate="0">
 
+        <!--Contract Menu-->
+        <record model="ir.ui.menu" id="hr_contract.hr_menu_contract">
+          <field name="groups_id" eval="[(4, ref('integc.group_agent_hr'))]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="hr.menu_hr_root">
+          <field name="groups_id" eval="[(6,0,[ref('group_agent_hr'), ref('group_responsable_hr')])]"/>
+        </record>
         <!--Employee View-->
         <record id="view_employee_form_inherit1" model="ir.ui.view">
             <field name="name">hr.employee.form</field>
@@ -53,12 +61,12 @@
             <data>
                 <xpath expr="/form/sheet" position="before">
                     <header>
-                        <button name="btn_validate" class="oe_highlight" states="draft" string="Validate"/>
-                        <button name="btn_approve" class="oe_highlight" states="signature_director" string="Approve"/>
-                        <button name="btn_approve" class="oe_highlight" states="signature_employee" string="Sign"/>
+                        <button name="btn_validate" class="oe_highlight" states="draft" string="Validate" groups="integc.group_responsable_hr"/>
+                        <button name="btn_approve" class="oe_highlight" states="signature_director" string="Approve" groups="integc.group_responsable_hr"/>
+                        <button name="btn_approve" class="oe_highlight" states="signature_employee" string="Sign" groups="integc.group_responsable_hr"/>
                         <!--<button name="btn_cancel"  states="progress" string="Cancel"/>-->
                         <!--<button name="btn_complete"  class="oe_highlight" states="progress" string="Complete"/>-->
-                        <button name="%(integc_hr_contract_act)d" string="Complete" states="progress"
+                        <button name="%(integc_hr_contract_act)d" string="Complete" states="progress" groups="integc.group_responsable_hr"
                             class="oe_highlight" type="action"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,signature_director,signature_employee,progress,done"/>
                          <!--<field name="state" widget="statusbar" statusbar_visible="cancel" states="cancel"/>-->
@@ -419,6 +427,9 @@
                     <button name="refund_sheet" position="after">
                         <button string="Print Payslip" name="print_payslip" type="object"/>
                     </button>
+                    <button name="hr_verify_sheet" position="replace">
+                        <button string="Confirm" name="hr_verify_sheet" states="draft" class="oe_highlight" groups="integc.group_responsable_hr"/>
+                    </button>
                     <field name="credit_note" position="after">
                         <field name="is_paid" readonly="1" />
                         <field name="date_payment" readonly="1" attrs="{'invisible': [('is_paid', '=', False)]}" />
@@ -619,8 +630,8 @@
             <field name="arch" type="xml">
                 <form string="Registration request" version="7.0">
                     <header>
-                        <button name="btn_approve" states="draft" string="Approve" class="oe_highlight" />
-                        <button name="btn_validate" string="Validate" states="waiting" class="oe_highlight"/>
+                        <button name="btn_approve" states="draft" string="Approve" class="oe_highlight" groups="integc.group_responsable_hr"/>
+                        <button name="btn_validate" string="Validate" states="waiting" class="oe_highlight" groups="integc.group_responsable_hr"/>
                         <button name="btn_cancel" string="Cancel" states="waiting"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,waiting,validate" />
                         <!--<field name="state" widget="statusbar" statusbar_visible="waiting" states="cancel"/>-->

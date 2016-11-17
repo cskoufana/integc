@@ -41,6 +41,7 @@
         'account/report/account_report_view.xml',
         'account/account_voucher_view.xml',
         'account/account_bank_statement_view.xml',
+        'account/account_menuitem.xml',
         'account/wizard/pos_box.xml',
         'market/market_sequence.xml',
         'market/wizard/market_wizard_view.xml',

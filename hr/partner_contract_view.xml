@@ -7,8 +7,8 @@
             <field name="arch" type="xml">
                 <form string="Partner contract" version="7.0">
                     <header>
-                        <button name="btn_validate_contract" states="draft" string="Validate" class="oe_highlight" />
-                        <button name="btn_approve_contract" states="waiting_director" string="Approve" class="oe_highlight"  />
+                        <button name="btn_validate_contract" states="draft" string="Validate" class="oe_highlight" groups="integc.group_responsable_hr"/>
+                        <button name="btn_approve_contract" states="waiting_director" string="Approve" class="oe_highlight"  groups="integc.group_responsable_hr"/>
                         <button name="btn_approve_contract" states="waiting_partner" string="Approve" class="oe_highlight"  />
                         <button name="create_invoice" states="progress" class="oe_highlight" string="Create Invoice" type="object" />
                         <button name="%(partner_contract_act)d" string="Complete" states="progress"
@@ -182,7 +182,6 @@
             action="view_integc_hr_partner_contract_act"
             parent="hr.menu_hr_main"
             sequence="10"
-            groups="group_responsable_hr,group_assistant_comptable,group_chef_comptable"
         />
     </data>
 </openerp>
