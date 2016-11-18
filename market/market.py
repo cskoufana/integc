@@ -296,6 +296,8 @@ class integc_market(osv.osv):
         # create base contract
         for record in self.browse(cr, uid, ids, context=context):
             sub_line = []
+            if not record.market_line:
+                raise osv.except_osv(_('Operation non permise!'), _('Vous ne pouvez pas valider un marche qui n a pas de lignes de produits'))
             for line in record.market_line:
                 sub_line.append((0, 0, {
                     'name': line.name,

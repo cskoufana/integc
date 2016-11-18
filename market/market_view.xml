@@ -16,7 +16,7 @@
                         <button name="create_avenant" states="open" string="Create Avenant" type="object" />
 
                         <button name="%(market_invoice_act)d" string="Create Invoice" states="open"
-                            class="oe_highlight" type="action"/>
+                            class="oe_highlight" type="action" groups="integc.group_assistant_comptable"/>
 
                         <field name="state" widget="statusbar" statusbar_visible="draft,open,done"/>
                 </header>
@@ -28,14 +28,15 @@
                         </button>
                     </div>-->
                     <div class="oe_right oe_button_box">
-                           <button class="oe_inline oe_stat_button" context="{'integc_active_id':analytic_account_id}" type="action" name="%(budget.action_budget_line_analytic_tree)d" icon="fa-tasks" states="open,done">
+                           <button class="oe_inline oe_stat_button" context="{'integc_active_id':analytic_account_id}" type="action" name="%(budget.action_budget_line_analytic_tree)d" icon="fa-tasks" states="open,done"
+                                   groups="integc.group_assistant_comptable">
                                 <field string="Lignes Budget" name="budget_line_count" widget="statinfo"/>
                            </button>
-						<button class="oe_inline oe_stat_button" context="{'integc_active_id':analytic_account_id}" type="action" string="Analse Budget"
-							name="%(budget.action_budget_line_analytic_tree2)d" icon="fa-bar-chart">
+						<button class="oe_inline oe_stat_button" context="{'integc_active_id':analytic_account_id}" type="action" string="Analyse Budget"
+							name="%(budget.action_budget_line_analytic_tree2)d" icon="fa-bar-chart" groups="integc.group_assistant_comptable">
 						</button>
 
-                          <button class="oe_inline oe_stat_button" context="{'integc_active_id':analytic_account_id}" type="object" attrs="{'invisible': [('invoice_exists', '=', False)]}" groups="base.group_user"
+                          <button class="oe_inline oe_stat_button" context="{'integc_active_id':analytic_account_id}" type="object" attrs="{'invisible': [('invoice_exists', '=', False)]}" groups="integc.group_assistant_comptable"
                                 name="action_view_invoice" icon="fa-pencil-square-o">
                             <field string="Invoices" name="invoice_count" widget="statinfo"/>
                         </button>
@@ -187,7 +188,7 @@
                 <form string="Partner contract" version="7.0">
                     <header>
                         <button name="action_open" states="draft" string="Validate" class="oe_highlight" type="object"/>
-                        <button name="create_invoice" states="open" class="oe_highlight" string="Create Invoice" type="object"/>
+                        <button name="create_invoice" states="open" class="oe_highlight" string="Create Invoice" type="object" groups="integc.group_assistant_comptable"/>
                         <!--<button name="%(partner_contract_act)d" string="Complete" states="progress"
                             class="oe_highlight" type="action"/>-->
 
@@ -202,8 +203,8 @@
                     </div>
 
                     <div class="oe_right oe_button_box">
-                          <button class="oe_inline oe_stat_button" type="object" attrs="{'invisible': [('invoice_exists', '=', False)]}" groups="base.group_user"
-                                name="action_view_invoice" icon="fa-pencil-square-o">
+                          <button class="oe_inline oe_stat_button" type="object" attrs="{'invisible': [('invoice_exists', '=', False)]}" groups="integc.group_assistant_comptable"
+                                name="action_view_invoice" icon="fa-pencil-square-o" >
                             <field string="Invoices" name="invoice_count" widget="statinfo"/>
                         </button>
                     </div>
