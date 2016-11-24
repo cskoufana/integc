@@ -1425,6 +1425,8 @@
             <field name="amount_python_compute">result = round(categories.BRUT * 0.015)</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">CFC Patronale : SAL. BRUT * 0.015</field>
+            <field name="account_credit" search="[('code', 'like', '4472%')]" />
+            <field name="account_debit" search="[('code', 'like', '6413%')]" />
         </record>
 
         <record id="hr_rule_fne" model="hr.salary.rule">
@@ -1439,6 +1441,8 @@
             <field name="amount_python_compute">result = round(categories.BRUT * 0.01)</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">FNE = SAL. BRUT * 0.01</field>
+            <field name="account_credit" search="[('code', 'like', '4424%')]" />
+            <field name="account_debit" search="[('code', 'like', '6413%')]" />
         </record>
 
         <record id="hr_rule_total_impot" model="hr.salary.rule">
