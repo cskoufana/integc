@@ -3,8 +3,8 @@
     <data noupdate="0">
 
         <!--Account account-->
-        <record id="pcg_661210" model="account.account"><field name="name">Primes</field><field name="code">661210</field><field name="type">other</field><field name="user_type" ref="l10n_syscohada.account_type_expense" /><field name="parent_id" search="[('code', 'like', '6612')]" /></record>
-        <record id="pcg_661211" model="account.account"><field name="name">Indemnités</field><field name="code">661211</field><field name="type">other</field><field name="user_type" ref="l10n_syscohada.account_type_expense" /><field name="parent_id" search="[('code', 'like', '6612')]" /></record>
+        <record id="pcg_661210" model="account.account"><field name="name">Primes</field><field name="code">661210</field><field name="type">other</field><field name="user_type" ref="l10n_syscohada.account_type_expense" /><field name="parent_id" search="[('code', '=', '6612')]" /></record>
+        <record id="pcg_661211" model="account.account"><field name="name">Indemnités</field><field name="code">661211</field><field name="type">other</field><field name="user_type" ref="l10n_syscohada.account_type_expense" /><field name="parent_id" search="[('code', '=', '6612')]" /></record>
 
 
 
@@ -191,7 +191,7 @@
             <field name="code">BASE</field>
             <field name="sequence">1</field>
             <field name="note">Salaire de base </field>
-            <field name="account_debit" search="[('code', 'like', '6611%')]" />
+            <field name="account_debit" search="[('code', '=', '661100')]" />
         </record>
 
         <!--<record id="hr_rule_basic_hor" model="hr.salary.rule">
@@ -328,7 +328,7 @@
             <field name="appears_on_payslip" eval="True"/>
             <!--<field name="note"></field>-->
             <field eval="[(6, 0, [ref('hr_payroll_rules_IRPP0'),ref('hr_payroll_rules_IRPP1'), ref('hr_payroll_rules_IRPP2'),ref('hr_payroll_rules_IRPP3'), ref('hr_payroll_rules_IRPP4') ])]" name="child_ids"/>
-            <field name="account_credit" search="[('code', 'like', '4472%')]" />
+            <field name="account_credit" search="[('code', '=', '447200')]" />
         </record>
 
         <record id="hr_rule_CAC_10_per_cent_IRPP" model="hr.salary.rule">
@@ -343,7 +343,7 @@
             <field name="amount_select">code</field>
             <field name="amount_python_compute">result = round(categories.TRANCHEIRPP * 0.1)</field>
             <field name="appears_on_payslip" eval="True"/>
-            <field name="account_credit" search="[('code', 'like', '4472%')]" />
+            <field name="account_credit" search="[('code', '=', '447200')]" />
             <!--<field name="note"></field>-->
         </record>
 
@@ -480,7 +480,7 @@
             <field name="appears_on_payslip" eval="True"/>
             <field eval="[(6, 0, [ref('hr_payroll_rules_TDL0'),ref('hr_payroll_rules_TDL1'), ref('hr_payroll_rules_TDL2'),ref('hr_payroll_rules_TDL3'), ref('hr_payroll_rules_TDL4'), ref('hr_payroll_rules_TDL5'), ref('hr_payroll_rules_TDL6'), ref('hr_payroll_rules_TDL7'), ref('hr_payroll_rules_TDL8'), ref('hr_payroll_rules_TDL9') ])]" name="child_ids"/>
             <field name="note">Somme toutes les tranches TDL</field>
-            <field name="account_credit" search="[('code', 'like', '4472%')]" />
+            <field name="account_credit" search="[('code', '=', '447200')]" />
         </record>
 
         <record id="hr_payroll_rules_RAV0" model="hr.salary.rule">
@@ -639,7 +639,7 @@
             <field name="appears_on_payslip" eval="True"/>
             <field eval="[(6, 0, [ref('hr_payroll_rules_RAV0'),ref('hr_payroll_rules_RAV1'), ref('hr_payroll_rules_RAV2'),ref('hr_payroll_rules_RAV3'), ref('hr_payroll_rules_RAV4'), ref('hr_payroll_rules_RAV5'), ref('hr_payroll_rules_RAV6'), ref('hr_payroll_rules_RAV7'), ref('hr_payroll_rules_RAV8'), ref('hr_payroll_rules_RAV9'), ref('hr_payroll_rules_RAV10'), ref('hr_payroll_rules_RAV11') ])]" name="child_ids"/>
             <field name="note">Somme toutes les tranches RAV</field>
-            <field name="account_credit" search="[('code', 'like', '4472%')]" />
+            <field name="account_credit" search="[('code', '=', '447200')]" />
         </record>
 
         <record id="hr_payroll_rules_CFC0" model="hr.salary.rule">
@@ -685,7 +685,7 @@
             <field name="appears_on_payslip" eval="True"/>
             <field eval="[(6, 0, [ref('hr_payroll_rules_CFC0'),ref('hr_payroll_rules_CFC1')])]" name="child_ids"/>
             <field name="note">Somme toutes les tranches CFC</field>
-            <field name="account_credit" search="[('code', 'like', '4472%')]" />
+            <field name="account_credit" search="[('code', '=', '447200')]" />
         </record>
 
         <record id="hr_payroll_rules_PENV0" model="hr.salary.rule">
@@ -733,7 +733,7 @@
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Somme toutes les tranches PENV</field>
             <field eval="[(6, 0, [ref('hr_payroll_rules_PENV0'),ref('hr_payroll_rules_PENV1') ])]" name="child_ids"/>
-            <field name="account_credit" search="[('code', 'like', '4313%')]" />
+            <field name="account_credit" search="[('code', '=', '431300')]" />
         </record>
 
         <record id="hr_rule_AVANSAL" model="hr.salary.rule">
@@ -760,7 +760,7 @@
             <field name="amount_python_compute">result = inputs.HS.amount </field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Heure supplémentaire</field>
-            <field name="account_debit" search="[('code', 'like', '6611%')]" />
+            <field name="account_debit" search="[('code', '=', '661100')]" />
         </record>
 
         <record id="hr_rule_REMBC" model="hr.salary.rule">
@@ -787,7 +787,7 @@
             <field name="amount_python_compute">result = inputs.CONGE.amount </field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Congé</field>
-            <field name="account_debit" search="[('code', 'like', '6613%')]" />
+            <field name="account_debit" search="[('code', '=', '661300')]" />
         </record>
 
         <record id="hr_payroll.hr_rule_net" model="hr.salary.rule">
@@ -796,7 +796,7 @@
             <field name="category_id" ref="hr_payroll.NET"/>
             <field name="amount_python_compute">result = round(BRUT - categories.IMPOT_EMPLOYE - categories.DED - categories.CHARGE_EMPLOYE)</field>
             <field name="note">Salaire Net qui est le salaire Brut - toutes les retenues et impots </field>
-            <field name="account_credit" search="[('code', 'like', '422%')]" />
+            <field name="account_credit" search="[('code', '=', '422000')]" />
         </record>
 
         <record id="hr_payroll_rule_total_retenue" model="hr.salary.rule">
@@ -1121,7 +1121,7 @@
             <field name="amount_python_compute">result = inputs.INDMLICENCIEMENT.amount </field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de licenciement</field>
-            <field name="account_debit" search="[('code', 'like', '6614%')]" />
+            <field name="account_debit" search="[('code', '=', '661400')]" />
         </record>
 
         <record id="hr_rule_INDMREPRESENTATION" model="hr.salary.rule">
@@ -1191,7 +1191,7 @@
             <field name="amount_python_compute">result = contract.category_id.sickness_allowance</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de maladie</field>
-            <field name="account_debit" search="[('code', 'like', '6615%')]" />
+            <field name="account_debit" search="[('code', '=', '661500')]" />
         </record>
 
         <record id="hr_rule_INDMBICYCLE" model="hr.salary.rule">
@@ -1261,7 +1261,7 @@
             <field name="amount_python_compute">result = contract.category_id.housing_advantage</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de logement</field>
-            <field name="account_debit" search="[('code', 'like', '6617%')]" />
+            <field name="account_debit" search="[('code', '=', '661700')]" />
         </record>
 
         <record id="hr_rule_INDMLOG_FISC" model="hr.salary.rule">
@@ -1288,7 +1288,7 @@
             <field name="amount_python_compute">result = round(contract.category_id.vehicle_advantage * contract.employee_id.vehicle_count)</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de véhicule</field>
-            <field name="account_debit" search="[('code', 'like', '6617%')]" />
+            <field name="account_debit" search="[('code', '=', '661700')]" />
         </record>
 
         <record id="hr_rule_INDVEHICULE_FISC" model="hr.salary.rule">
@@ -1315,7 +1315,7 @@
             <field name="amount_python_compute">result = round(contract.category_id.housewife_advantage * contract.employee_id.housewife_count)</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité domestique</field>
-            <field name="account_debit" search="[('code', 'like', '6617%')]" />
+            <field name="account_debit" search="[('code', '=', '661700')]" />
         </record>
 
         <record id="hr_rule_INDMDOMESTIQUE_FISC" model="hr.salary.rule">
@@ -1342,7 +1342,7 @@
             <field name="amount_python_compute">result = contract.category_id.electricity_advantage</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité d'électricité</field>
-            <field name="account_debit" search="[('code', 'like', '6617%')]" />
+            <field name="account_debit" search="[('code', '=', '661700')]" />
         </record>
 
         <record id="hr_rule_INDMELECTRICITE_FISC" model="hr.salary.rule">
@@ -1369,7 +1369,7 @@
             <field name="amount_python_compute">result = contract.category_id.water_advantage</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité d'eau</field>
-            <field name="account_debit" search="[('code', 'like', '6617%')]" />
+            <field name="account_debit" search="[('code', '=', '661700')]" />
         </record>
 
         <record id="hr_rule_INDMEAU_FISC" model="hr.salary.rule">
@@ -1396,7 +1396,7 @@
             <field name="amount_python_compute">result = contract.category_id.food_advantage</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de nouriture</field>
-            <field name="account_debit" search="[('code', 'like', '6617%')]" />
+            <field name="account_debit" search="[('code', '=', '661700')]" />
         </record>
 
     <record id="hr_rule_INDMNOURITURE_FISC" model="hr.salary.rule">
@@ -1425,8 +1425,8 @@
             <field name="amount_python_compute">result = round(categories.BRUT * 0.015)</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">CFC Patronale : SAL. BRUT * 0.015</field>
-            <field name="account_credit" search="[('code', 'like', '4472%')]" />
-            <field name="account_debit" search="[('code', 'like', '6413%')]" />
+            <field name="account_credit" search="[('code', '=', '447200')]" />
+            <field name="account_debit" search="[('code', '=', '641300')]" />
         </record>
 
         <record id="hr_rule_fne" model="hr.salary.rule">
@@ -1441,8 +1441,8 @@
             <field name="amount_python_compute">result = round(categories.BRUT * 0.01)</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">FNE = SAL. BRUT * 0.01</field>
-            <field name="account_credit" search="[('code', 'like', '4424%')]" />
-            <field name="account_debit" search="[('code', 'like', '6413%')]" />
+            <field name="account_credit" search="[('code', '=', '442400')]" />
+            <field name="account_debit" search="[('code', '=', '641300')]" />
         </record>
 
         <record id="hr_rule_total_impot" model="hr.salary.rule">
@@ -1468,7 +1468,8 @@
             <field name="amount_python_compute">result = round(min(categories.BRUT_COTISABLE,750000) * 0.07)</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">Prestation familiale : min(BRUT_COTISABLE, 750000) * 0.07</field>
-            <field name="account_credit" search="[('code', 'like', '4311%')]" />
+            <field name="account_credit" search="[('code', '=', '431100')]" />
+            <field name="account_debit" search="[('code', '=', '664100')]" />
         </record>
 
         <record id="hr_rule_pension_viellesse" model="hr.salary.rule">
@@ -1483,7 +1484,8 @@
             <field name="amount_python_compute">result = round(min(categories.BRUT_COTISABLE, 750000) * 0.042)</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">Pension viellesse : min(BRUT_COTISABLE, 750000) * 0.042</field>
-            <field name="account_credit" search="[('code', 'like', '4313%')]" />
+            <field name="account_credit" search="[('code', '=', '431300')]" />
+            <field name="account_debit" search="[('code', '=', '664100')]" />
         </record>
 
         <record id="hr_rule_pension_viellesse_totale" model="hr.salary.rule">
@@ -1509,7 +1511,8 @@
             <field name="amount_python_compute">result = round(min(categories.BRUT_COTISABLE, 750000) * 0.0175)</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">Accident de travail : min(BRUT_COTISABLE, 75000) * 0.0175</field>
-            <field name="account_credit" search="[('code', 'like', '4312%')]" />
+            <field name="account_credit" search="[('code', '=', '431200')]" />
+            <field name="account_debit" search="[('code', '=', '664100')]" />
         </record>
 
         <record id="hr_rule_total_charge" model="hr.salary.rule">
