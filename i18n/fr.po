@@ -2181,7 +2181,7 @@ msgstr "Imprimer le livre de paie"
 #. module: integc
 #: view:hr.payslip:integc.view_hr_payslip_form_inherit
 msgid "Print Payslip"
-msgstr "Imprimer les bulletins"
+msgstr "Imprimer le bulletin"
 
 #. module: integc
 #: view:hr.payslip.run:integc.hr_payslip_run_form_inherit
@@ -3108,4 +3108,160 @@ msgstr "on order"
 #: view:partner.contract:integc.partner_contract_form
 msgid "or"
 msgstr "ou"
+
+#. module: integc
+#: field:integc.hr.category,housing_advantage:0
+msgid "housing Allowance"
+msgstr "Indemnité de logement"
+
+#. module: integc
+#: view:integc.hr.category:integc.view_integc_hr_category_form
+msgid "Allowances"
+msgstr "Indemnités"
+
+#. module: integc
+#: field:integc.hr.category,basket_allowance:0
+msgid "Basket Allowance"
+msgstr "Indeminté de panier"
+
+#. module: integc
+#: field:integc.hr.category,bicycle_allowance:0
+msgid "Bicycle Allowance"
+msgstr "Indemnité bicyclette"
+
+#. module: integc
+#: field:integc.hr.category,clothing_allowance:0
+msgid "Clothing Allowance"
+msgstr "Indemnité habillement"
+
+#. module: integc
+#: field:integc.hr.category,dirt_allowance:0
+msgid "Dirt Allowance"
+msgstr "Indemnité de salissure"
+
+#. module: integc
+#: field:integc.hr.category,electricity_advantage:0
+msgid "Electricity Allowance"
+msgstr "Indemnité d'électricité"
+
+#. module: integc
+#: field:integc.hr.category,food_advantage:0
+msgid "Food Allowance"
+msgstr "Indemnité nouriture"
+
+#. module: integc
+#: field:integc.hr.category,housewife_advantage:0
+msgid "Housewife Allowance"
+msgstr "Indemnité ménagère"
+
+#. module: integc
+#: field:integc.hr.category,representation_allowance:0
+msgid "Representation Allowance"
+msgstr "Indemnité de représentation"
+
+#. module: integc
+#: field:integc.hr.category,sickness_allowance:0
+msgid "Sickness Allowance"
+msgstr "Indemnité maladie"
+
+#. module: integc
+#: field:integc.hr.category,tool_allowance:0
+msgid "Tool Allowance"
+msgstr "Indemnité d'outillage"
+
+#. module: integc
+#: field:integc.hr.category,vehicle_advantage:0
+msgid "Vehicle Allowance"
+msgstr "Indemnité véhicule"
+
+#. module: integc
+#: field:integc.hr.category,water_advantage:0
+msgid "Water Allowance"
+msgstr "Indemnité d'eau"
+
+#. module: integc
+#: field:hr.employee,vehicle_count:0
+msgid "Vehicle count"
+msgstr "Nombre de véhicules"
+
+#. module: integc
+#: field:integc.hr.category,transport_prime:0
+msgid "Transport Prime"
+msgstr "Prime de transport"
+
+#. module: integc
+#: field:integc.hr.category,attendance_prime:0
+msgid "Attendance Prime"
+msgstr "Prime d'assiduité"
+
+#. module: integc
+#: field:hr.contract,cash_prime:0
+msgid "Cash Prime"
+msgstr "Prime de caisse"
+
+#. module: integc
+#: field:integc.hr.category,function_prime:0
+msgid "Function Prime"
+msgstr "Prime de fonction"
+
+#. module: integc
+#: field:hr.contract,household_prime:0
+msgid "Household Prime"
+msgstr "Prime de ménage"
+
+#. module: integc
+#: field:hr.contract,interim_prime:0
+msgid "Interim Prime"
+msgstr "Prime d'intérim"
+
+#. module: integc
+#: field:hr.contract,performance_prime:0
+msgid "Performance Prime"
+msgstr "Prime de rendement"
+
+#. module: integc
+#: field:hr.contract,project_prime:0
+msgid "Project Prime"
+msgstr "Prime de projet"
+
+#. module: integc
+#: field:hr.contract,reception_prime:0
+msgid "Reception Prime"
+msgstr "Prime d'accueil"
+
+#. module: integc
+#: field:hr.contract,reconversion_prime:0
+msgid "Reconversion Prime"
+msgstr "Prime de reconversion"
+
+#. module: integc
+#: field:hr.contract,replacement_prime:0
+msgid "Replacement Prime"
+msgstr "Prime de remplacement"
+
+#. module: integc
+#: field:hr.contract,secretariat_prime:0
+msgid "Secretariat Prime"
+msgstr "Prime de sécrétariat"
+
+#. module: integc
+#: field:integc.hr.category,technical_prime:0
+msgid "Technical Prime"
+msgstr "Prime de technicité"
+
+#. module: integc
+#: field:hr.employee,housewife_count:0
+msgid "Housewife count"
+msgstr "Nombre de ménagères"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:420
+#, python-format
+msgid "Please define purchase journal for this company: \"%s\" (id:%d)."
+msgstr "Veuillez définir le journal des achats pour la société: \"%s\" (id:%d)."
+
+#. module: integc
+#: view:integc.hr.category:integc.view_integc_hr_category_form
+msgid "Advantages"
+msgstr "Avantages"
 

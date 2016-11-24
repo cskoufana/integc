@@ -74,6 +74,19 @@
                     </header>
                 </xpath>
                 <xpath expr="//form/sheet/notebook/page[2]" position="replace">
+                    <page string="Primes">
+                        <group col="4">
+                            <field name="performance_prime" />
+                            <field name="cash_prime" />
+                            <field name="secretariat_prime" />
+                            <field name="household_prime" />
+                            <field name="reception_prime" />
+                            <field name="reconversion_prime" />
+                            <field name="replacement_prime" />
+                            <field name="interim_prime" />
+                            <field name="project_prime" />
+                        </group>
+                    </page>
                     <page string="Attachments">
                         <field name="attachment_ids" select="1" widget="many2many_binary" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}"/>
                     </page>
@@ -210,27 +223,43 @@
                 <form string="Category" version="7.0">
                     <sheet>
                         <group>
-                            <group>
-                                <field name="name" />
-                                <!--<separator string="Notes"/>-->
-                                <!--<field name="note" colspan="2" placeholder="Notes ..." nolabel="1"/>-->
-                                <field name="structure_id" />
-                                <group>
-                                <group string="Prime">
+                            <field name="name" />
+                            <field name="structure_id" />
+                        </group>
+                        <notebook>
+                            <page string="Primes">
+                                <group col="4">
                                     <field name="responsibility_prime" />
                                     <field name="risk_prime" />
+                                    <field name="technical_prime" />
+                                    <field name="attendance_prime" />
+                                    <field name="transport_prime" />
+                                    <field name="function_prime" />
                                 </group>
-                                <group string="Allowance">
+                            </page>
+                            <page string="Allowances">
+                                <group col="4">
                                     <field name="transport_allowance" />
-                                    <field name="housing_allowance" />
+                                    <field name="representation_allowance" />
+                                    <field name="dirt_allowance" />
+                                    <field name="basket_allowance" />
+                                    <field name="sickness_allowance" />
+                                    <field name="bicycle_allowance" />
+                                    <field name="clothing_allowance" />
+                                    <field name="tool_allowance" />
                                 </group>
-                                <group string="Fees">
-                                    <field name="representation_fees" />
+                            </page>
+                            <page string="Advantages">
+                                <group col="4">
+                                    <field name="housing_advantage" />
+                                    <field name="vehicle_advantage" />
+                                    <field name="housewife_advantage" />
+                                    <field name="electricity_advantage" />
+                                    <field name="water_advantage" />
+                                    <field name="food_advantage" />
                                 </group>
-                            </group>
-                            </group>
-
-                        </group>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
@@ -241,7 +270,6 @@
             <field name="arch" type="xml">
                 <tree string="Category">
                     <field name="name" />
-                    <!--<field name="note" />-->
                     <field name="structure_id" />
                 </tree>
             </field>
@@ -528,6 +556,8 @@
                     <xpath expr="//field[@name='otherid']" position="replace">
                         <label for="otherid" string="Registration N°" />
                         <field name="otherid" nolabel="1"  required="1"/>
+                        <field name="vehicle_count" required="1"/>
+                        <field name="housewife_count" required="1"/>
                     </xpath>
 
                     <xpath expr="//field[@name='passport_id']" position="replace">

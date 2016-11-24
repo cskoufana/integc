@@ -411,13 +411,13 @@ class integc_hr_partner_contract(osv.osv):
         """
         if context is None:
             context = {}
-        #journal_ids = self.pool.get('account.journal').search(cr, uid,
-        #    [('type', '=', 'sale'), ('company_id', '=', contract.company_id.id)],
-        #    limit=1)
-        journal_ids = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'integc', 'account_journal_payroll')
+        journal_ids = self.pool.get('account.journal').search(cr, uid,
+            [('type', '=', 'purchase'), ('company_id', '=', contract.company_id.id)],
+            limit=1)
+        #journal_ids = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'integc', 'account_journal_payroll')
         if not journal_ids:
             raise osv.except_osv(_('Error!'),
-                _('Please define sales journal for this company: "%s" (id:%d).') % (contract.company_id.name, contract.company_id.id))
+                _('Please define purchase journal for this company: "%s" (id:%d).') % (contract.company_id.name, contract.company_id.id))
         invoice_vals = {
             'name': '',
             'origin': contract.name,
@@ -425,7 +425,7 @@ class integc_hr_partner_contract(osv.osv):
             'reference': contract.name,
             'account_id': contract.partner_id.property_account_receivable.id,
             'partner_id': contract.partner_invoice_id.id,
-            'journal_id': journal_ids[1],
+            'journal_id': journal_ids[0],
             'invoice_line': [(6, 0, lines)],
             'currency_id': contract.pricelist_id.currency_id.id,
             'comment': contract.note,

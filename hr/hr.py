@@ -35,6 +35,7 @@ class hr_employee(osv.osv):
             if aal.employee_id and aal.employee_id.id not in line_ids:
                 line_ids.append(aal.employee_id.id)
         return line_ids
+
     def _is_registered(self, cr, uid, ids, field_name, args, context=None):
         res = {}
         for record in self.browse(cr, uid, ids, context=context):
@@ -87,10 +88,14 @@ class hr_employee(osv.osv):
         'has_contract': fields.boolean(string='Has contract'),
         'attachment_ids': fields.many2many("ir.attachment", "hr_employee_attachment_rel",
                                            "attachment_id", "contract_id", "Attachments"),
+        'vehicle_count': fields.integer('Vehicle count'),
+        'housewife_count': fields.integer('Housewife count'),
 
     }
 
     _defaults = {
+        'vehicle_count': 0,
+        'housewife_count': 0,
         'has_contract': False,
         'country_id': lambda self, cr, uid, context: self.pool.get('ir.model.data').get_object_reference(cr, uid, 'base', 'cm')[1],
     }
@@ -373,23 +378,51 @@ class integc_hr_category(osv.osv):
         'name': fields.char('Name', size=64, required=True),
         'note': fields.text('Note'),
         'structure_id': fields.many2one('hr.payroll.structure', 'Salary Structure', required=True),
-        'transport_allowance': fields.float('Transport Allowance', digits=(16, 2)),
-        'housing_allowance': fields.float('housing Allowance', digits=(16, 2)),
-        'representation_fees': fields.float('Representation Fees', digits=(16, 2)),
+
         'risk_prime': fields.float('Risk Prime', digits=(16, 2)),
         'responsibility_prime': fields.float('Responsibility Prime', digits=(16, 2)),
-        'vehicle_allowance': fields.float('Vehicle Allowance', digits=(16,2)),
-        'water_allowance': fields.float('Water Allowance', digits=(16,2)),
-        'electricity_allowance': fields.float('Electricity Allowance', digits=(16,2)),
-        'homeworker_allowance': fields.float('Home worker Allowance', digits=(16,6)),
+        'technical_prime': fields.float('Technical Prime', digits=(16, 2)),
+        'attendance_prime': fields.float('Attendance Prime', digits=(16, 2)),
+        'transport_prime': fields.float('Transport Prime', digits=(16, 2)),
+        'function_prime': fields.float('Function Prime', digits=(16, 2)),
+
+        'transport_allowance': fields.float('Transport Allowance', digits=(16, 2)),
+        'representation_allowance': fields.float('Representation Allowance', digits=(16, 2)),
+        'dirt_allowance': fields.float('Dirt Allowance', digits=(16, 2)),
+        'basket_allowance': fields.float('Basket Allowance', digits=(16, 2)),
+        'sickness_allowance': fields.float('Sickness Allowance', digits=(16, 2)),
+        'bicycle_allowance': fields.float('Bicycle Allowance', digits=(16, 2)),
+        'clothing_allowance': fields.float('Clothing Allowance', digits=(16, 2)),
+        'tool_allowance': fields.float('Tool Allowance', digits=(16, 2)),
+
+        'housing_advantage': fields.float('housing Allowance', digits=(16, 2)),
+        'vehicle_advantage': fields.float('Vehicle Allowance', digits=(16, 2)),
+        'housewife_advantage': fields.float('Housewife Allowance', digits=(16, 2)),
+        'electricity_advantage': fields.float('Electricity Allowance', digits=(16, 2)),
+        'water_advantage': fields.float('Water Allowance', digits=(16, 2)),
+        'food_advantage': fields.float('Food Allowance', digits=(16, 2)),
     }
     _sql_constraints = [('integc_category_name_unique', 'unique(name)', _('Category name already exists'))]
     _defaults = {
+        'housing_advantage': 0.0,
+        'vehicle_advantage': 0.0,
+        'housewife_advantage': 0.0,
+        'electricity_advantage': 0.0,
+        'water_advantage': 0.0,
+        'food_advantage': 0.0,
+        'representation_allowance': 0.0,
         'transport_allowance': 0.0,
-        'housing_allowance': 0.0,
-        'representation_fees': 0.0,
+        'dirt_allowance': 0.0,
+        'basket_allowance': 0.0,
+        'sickness_allowance': 0.0,
+        'bicycle_allowance': 0.0,
+        'clothing_allowance': 0.0,
+        'tool_allowance': 0.0,
         'risk_prime': 0.0,
         'responsibility_prime': 0.0,
+        'technical_prime': 0.0,
+        'attendance_prime': 0.0,
+        'function_prime': 0.0,
     }
 integc_hr_category()
 
@@ -529,11 +562,29 @@ class hr_contract(osv.osv):
         'date_to': fields.function(lambda *a, **k:{}, method=True, type='date', string="Date to"),
         'attachment_ids': fields.many2many("ir.attachment", "hr_partner_contract_attachment_rel",
                                            "attachment_id", "contract_id", "Attachments"),
+        'performance_prime': fields.float('Performance Prime', digits=(16, 2)),
+        'cash_prime': fields.float('Cash Prime', digits=(16, 2)),
+        'secretariat_prime': fields.float('Secretariat Prime', digits=(16, 2)),
+        'household_prime': fields.float('Household Prime', digits=(16, 2)),
+        'reception_prime': fields.float('Reception Prime', digits=(16, 2)),
+        'reconversion_prime': fields.float('Reconversion Prime', digits=(16, 2)),
+        'replacement_prime': fields.float('Replacement Prime', digits=(16, 2)),
+        'interim_prime': fields.float('Interim Prime', digits=(16, 2)),
+        'project_prime': fields.float('Project Prime', digits=(16, 2)),
     }
 
     _defaults = {
         'state': 'draft',
-        'journal_id': lambda self, cr, uid, context: self.pool.get('ir.model.data').get_object_reference(cr, uid, 'integc', 'account_journal_payroll')[1]
+        'journal_id': lambda self, cr, uid, context: self.pool.get('ir.model.data').get_object_reference(cr, uid, 'integc', 'account_journal_payroll')[1],
+        'performance_prime': 0.0,
+        'cash_prime': 0.0,
+        'secretariat_prime': 0.0,
+        'household_prime': 0.0,
+        'reception_prime': 0.0,
+        'reconversion_prime': 0.0,
+        'replacement_prime': 0.0,
+        'interim_prime': 0.0,
+        'project_prime': 0.0,
     }
 
     def action_cancel(self, cr, uid, ids, context=None):
@@ -1126,6 +1177,12 @@ class hr_payslip_input(osv.osv):
             ('PRIMPROJ', 'Prime Projet'),
             ('REMBC', 'Remboursement Crédit'),
             ('CONGE', 'Congé'),
+            ('INDMLICENCIEMENT', 'Indemnité de licenciement'),
+            ('PRIMBONNESEPARATION', 'Prime de bonne séparation'),
+            ('PRIMFINCARRIERE', 'Prime de fin de carrière'),
+            ('PRIMRAPPEL', 'Prime de rappels'),
+            ('PRIMBILAN', 'Prime de bilan'),
+            ('HS', 'Heures supplémentaire'),
         ], 'Code', required=True),
     }
 hr_payslip_input()
