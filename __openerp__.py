@@ -22,6 +22,7 @@
     'data' : [
         'security/integc_security.xml',
         'security/ir.model.access.csv',
+        'tax_data.xml',
         'hr/hr_data.xml',
         'hr/hr_sequence.xml',
         'hr/wizard/hr_wizard.xml',
@@ -32,6 +33,7 @@
         'hr/partner_contract_workflow.xml',
         'hr/partner_contract_view.xml',
         'hr/board_hr_view.xml',
+        'budget/budget_data.xml',
         'budget/budget_view.xml',
         'res/res_partner_view.xml',
         'res/res_bank_view.xml',

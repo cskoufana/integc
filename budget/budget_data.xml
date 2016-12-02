@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--Budget Allocation Type-->
+        <record model="budget.allocation.type" id="budget_allocation_type_charges">
+            <field name="name">Charges</field>
+        </record>
+        <record model="budget.allocation.type" id="budget_allocation_type_products">
+            <field name="name">Produits</field>
+        </record>
+        <!--Budget Item Parent-->
+        <record model="budget.item" id="budget_item_parent">
+            <field name="name">Structure INTEGC</field>
+            <field name="code">INTEGC</field>
+            <field name="type">view</field>
+            <field name="sequence">0</field>
+        </record>
+        <!--Budget Item Level 0-->
+        <record model="budget.item" id="budget_item_ca">
+            <field name="name">Chiffre d'affaire</field>
+            <field name="code">CA</field>
+            <field name="type">view</field>
+            <field name="parent_id" ref="budget_item_parent" />
+            <field name="allocation_id" ref="budget_allocation_type_products" />
+            <field name="sequence">0</field>
+        </record>
+        <!--Budget Item Level 1-->
+        <record model="budget.item" id="budget_item_production_int">
+            <field name="name">Production intermédiare</field>
+            <field name="code">PI</field>
+            <field name="type">view</field>
+            <field name="parent_id" ref="budget_item_ca" />
+            <field name="allocation_id" ref="budget_allocation_type_products" />
+            <field name="sequence">1</field>
+        </record>
+        <!--Budget Item Level 2-->
+        <record model="budget.item" id="budget_item_production">
+            <field name="name">Production</field>
+            <field name="code">PROD</field>
+            <field name="type">normal</field>
+            <field name="parent_id" ref="budget_item_production_int" />
+            <field name="sequence">100</field>
+            <field name="allocation_id" ref="budget_allocation_type_products" />
+            <!--<field name="account" eval="[(6,0,[search='[('code','like','70%')]'])]"/>-->
+        </record>
+
+    </data>
+</openerp>

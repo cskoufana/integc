@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+       <!--Sale tax-->
+        <record model="account.tax" id="vat_ret_5_5_sale">
+            <field name="name">TVA+RET 5,5% (Vente)</field>
+            <field name="type_tax_use">sale</field>
+            <field name="type">balance</field>
+            <field name="child_depend" eval="True" />
+        </record>
+
+        <record model="account.tax" id="child_vat_19_25_ret_5_5_sale">
+            <field name="name">TVA 19,25% Enfant (Vente)</field>
+            <field name="type_tax_use">all</field>
+            <field name="type">percent</field>
+            <field name="amount">0.1925</field>
+            <field name="parent_id" ref="vat_ret_5_5_sale" />
+            <field name="sequence">1</field>
+            <field name="account_collected_id" search="[('code', 'like', '411400')]" />
+        </record>
+
+        <record model="account.tax" id="child_vat_on_invoice_19_25_ret_5_5_sale">
+            <field name="name">TVA sur facture 19,25% Enfant (Vente)</field>
+            <field name="type_tax_use">all</field>
+            <field name="type">percent</field>
+            <field name="amount">-0.1925</field>
+            <field name="parent_id" ref="vat_ret_5_5_sale" />
+            <field name="sequence">2</field>
+            <field name="account_collected_id" search="[('code', 'like', '411400')]" />
+        </record>
+
+        <record model="account.tax" id="child_ret_5_5_sale">
+            <field name="name">RT 5,5% (Vente)</field>
+            <field name="type_tax_use">all</field>
+            <field name="type">percent</field>
+            <field name="amount">-0.055</field>
+            <field name="parent_id" ref="vat_ret_5_5_sale" />
+            <field name="sequence">3</field>
+            <field name="account_collected_id" search="[('code', 'like', '442100')]" />
+        </record>
+
+        <!-- TVA + RET 2,2%-->
+        <record model="account.tax" id="vat_ret_2_2_sale">
+            <field name="name">TVA + RET 2,2% (Vente)</field>
+            <field name="type_tax_use">sale</field>
+            <field name="type">balance</field>
+            <field name="child_depend" eval="True" />
+        </record>
+
+        <record model="account.tax" id="child_vat_19_25_ret_2_2_sale">
+            <field name="name">TVA 19,25% Enfant 1 (Vente)</field>
+            <field name="type_tax_use">all</field>
+            <field name="type">percent</field>
+            <field name="amount">0.1925</field>
+            <field name="parent_id" ref="vat_ret_2_2_sale" />
+            <field name="sequence">1</field>
+            <field name="account_collected_id" search="[('code', 'like', '411400')]" />
+        </record>
+
+        <record model="account.tax" id="child_vat_on_invoice_19_25_ret_2_2_sale">
+            <field name="name">TVA sur facture 19,25% Enfant 1 (Vente)</field>
+            <field name="type_tax_use">all</field>
+            <field name="type">percent</field>
+            <field name="amount">-0.1925</field>
+            <field name="parent_id" ref="vat_ret_2_2_sale" />
+            <field name="sequence">2</field>
+            <field name="account_collected_id" search="[('code', 'like', '411400')]" />
+        </record>
+
+        <record model="account.tax" id="child_ret_2_2_sale">
+            <field name="name">RT 2,2% (Vente)</field>
+            <field name="type_tax_use">all</field>
+            <field name="type">percent</field>
+            <field name="amount">-0.022</field>
+            <field name="parent_id" ref="vat_ret_2_2_sale" />
+            <field name="sequence">3</field>
+            <field name="account_collected_id" search="[('code', 'like', '442100')]" />
+        </record>
+
+        <record model="account.tax" id="ret_5_5_sale">
+            <field name="name">Retenue 5,5% (Vente)</field>
+            <field name="type_tax_use">sale</field>
+            <field name="type">percent</field>
+            <field name="amount">0.055</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record model="account.tax" id="ret_2_2_sale">
+            <field name="name">Retenue 2,2% (Vente)</field>
+            <field name="type_tax_use">sale</field>
+            <field name="type">percent</field>
+            <field name="amount">0.022</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <!--Purchase tax-->
+        <record model="account.tax" id="vat_ret_5_5_purchase">
+            <field name="name">TVA + RET 5,5% (Achat)</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="type">balance</field>
+            <field name="child_depend" eval="True" />
+        </record>
+
+        <record model="account.tax" id="child_vat_19_25_ret_5_5_purchase">
+            <field name="name">TVA 19,25% Enfant (Achat)</field>
+            <field name="type_tax_use">all</field>
+            <field name="type">percent</field>
+            <field name="amount">0.1925</field>
+            <field name="parent_id" ref="vat_ret_5_5_purchase" />
+            <field name="sequence">1</field>
+            <field name="account_collected_id" search="[('code', 'like', '411400')]" />
+        </record>
+
+        <record model="account.tax" id="child_vat_on_invoice_19_25_ret_5_5_purchase">
+            <field name="name">TVA sur facture 19,25% Enfant (Achat)</field>
+            <field name="type_tax_use">all</field>
+            <field name="type">percent</field>
+            <field name="amount">-0.1925</field>
+            <field name="parent_id" ref="vat_ret_5_5_purchase" />
+            <field name="sequence">2</field>
+            <field name="account_collected_id" search="[('code', 'like', '411400')]" />
+        </record>
+
+        <record model="account.tax" id="child_ret_5_5_purchase">
+            <field name="name">RT 5,5% (Achat)</field>
+            <field name="type_tax_use">all</field>
+            <field name="type">percent</field>
+            <field name="amount">-0.055</field>
+            <field name="parent_id" ref="vat_ret_5_5_purchase" />
+            <field name="sequence">3</field>
+            <field name="account_collected_id" search="[('code', 'like', '442100')]" />
+        </record>
+
+        <!-- TVA + RET 2,2%-->
+        <record model="account.tax" id="vat_ret_2_2_purchase">
+            <field name="name">TVA + RET 2,2% (Achat)</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="type">balance</field>
+            <field name="child_depend" eval="True" />
+        </record>
+
+        <record model="account.tax" id="child_vat_19_25_ret_2_2_purchase">
+            <field name="name">TVA 19,25% Enfant 1 (Achat)</field>
+            <field name="type_tax_use">all</field>
+            <field name="type">percent</field>
+            <field name="amount">0.1925</field>
+            <field name="parent_id" ref="vat_ret_2_2_purchase" />
+            <field name="sequence">1</field>
+            <field name="account_collected_id" search="[('code', 'like', '411400')]" />
+        </record>
+
+        <record model="account.tax" id="child_vat_on_invoice_19_25_ret_2_2_purchase">
+            <field name="name">TVA sur facture 19,25% Enfant 1 (Achat)</field>
+            <field name="type_tax_use">all</field>
+            <field name="type">percent</field>
+            <field name="amount">-0.1925</field>
+            <field name="parent_id" ref="vat_ret_2_2_purchase" />
+            <field name="sequence">2</field>
+            <field name="account_collected_id" search="[('code', 'like', '411400')]" />
+        </record>
+
+        <record model="account.tax" id="child_ret_2_2_purchase">
+            <field name="name">RT 2,2% (Achat)</field>
+            <field name="type_tax_use">all</field>
+            <field name="type">percent</field>
+            <field name="amount">-0.022</field>
+            <field name="parent_id" ref="vat_ret_2_2_purchase" />
+            <field name="sequence">3</field>
+            <field name="account_collected_id" search="[('code', 'like', '442100')]" />
+        </record>
+
+        <record model="account.tax" id="ret_5_5_purchase">
+            <field name="name">Retenue 5,5% (Achat)</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="type">percent</field>
+            <field name="amount">0.055</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record model="account.tax" id="ret_2_2_purchase">
+            <field name="name">Retenue 2,2% (Achat)</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="type">percent</field>
+            <field name="amount">0.022</field>
+            <field name="sequence">1</field>
+        </record>
+    </data>
+</openerp>

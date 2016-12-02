@@ -3,8 +3,8 @@
     <data noupdate="0">
 
         <!--Account account-->
-        <record id="pcg_661210" model="account.account"><field name="name">Primes</field><field name="code">661210</field><field name="type">other</field><field name="user_type" ref="l10n_syscohada.account_type_expense" /><field name="parent_id" search="[('code', '=', '6612')]" /></record>
-        <record id="pcg_661211" model="account.account"><field name="name">Indemnités</field><field name="code">661211</field><field name="type">other</field><field name="user_type" ref="l10n_syscohada.account_type_expense" /><field name="parent_id" search="[('code', '=', '6612')]" /></record>
+        <record id="pcg_661210" model="account.account"><field name="name">Primes</field><field name="code">661210</field><field name="type">other</field><field name="user_type" ref="l10n_syscohada.account_type_expense" /><field name="parent_id" search="[('code', 'like', '6612')]" /></record>
+        <record id="pcg_661211" model="account.account"><field name="name">Indemnités</field><field name="code">661211</field><field name="type">other</field><field name="user_type" ref="l10n_syscohada.account_type_expense" /><field name="parent_id" search="[('code', 'like', '6612')]" /></record>
 
 
 
@@ -184,6 +184,21 @@
             <field name="parent_id" eval="False"/>
         </record>
 
+        <!--CNPS Partner-->
+        <record id="res_partner_CNPS" model="res.partner">
+            <field name="name">CNPS</field>
+            <field name="is_company" eval="True" />
+            <field name="supplier" eval="True" />
+            <field name="customer" eval="False" />
+        </record>
+        <!-- Contribution Register -->
+
+        <record id="hr_CNPS_register" model="hr.contribution.register">
+            <field name="name">CNPS</field>
+            <field name="note">Caisse Nationale de Prévoyance Sociale</field>
+            <field name="partner_id" ref="res_partner_CNPS" />
+        </record>
+
         <!-- HR SALARY RULES-->
 
         <record id="hr_payroll.hr_rule_basic" model="hr.salary.rule">
@@ -191,7 +206,7 @@
             <field name="code">BASE</field>
             <field name="sequence">1</field>
             <field name="note">Salaire de base </field>
-            <field name="account_debit" search="[('code', '=', '661100')]" />
+            <field name="account_debit" search="[('code', 'like', '661100')]" />
         </record>
 
         <!--<record id="hr_rule_basic_hor" model="hr.salary.rule">
@@ -211,7 +226,7 @@
         <record id="hr_payroll.hr_rule_brut" model="hr.salary.rule">
             <field name="name">Salaire Brut</field>
             <field name="code">BRUT</field>
-            <field name="sequence">1000</field>
+            <field name="sequence">6</field>
             <field name="category_id" ref="hr_payroll.GROSS"/>
              <field name="amount_select">code</field>
             <field name="amount_python_compute">result = categories.BASE + categories.INDM + categories.PRIME + categories.ADV + categories.HS</field>
@@ -222,7 +237,7 @@
         <record id="hr_payroll.hr_rule_taxable_intermediaire" model="hr.salary.rule">
             <field name="name">Salaire Brut taxable intermediaire</field>
             <field name="code">BRUT_TAXABLE_INTERMEDIAIRE</field>
-            <field name="sequence">1001</field>
+            <field name="sequence">6</field>
             <field name="category_id" ref="BRUT_TAXABLE_INTERMEDIAIRE"/>
              <field name="amount_select">code</field>
             <field name="amount_python_compute">result = categories.BASE + categories.HS + categories.PRIME</field>
@@ -233,7 +248,7 @@
         <record id="hr_payroll.hr_rule_taxable" model="hr.salary.rule">
             <field name="name">Salaire Brut taxable</field>
             <field name="code">BRUT_TAXABLE</field>
-            <field name="sequence">1005</field>
+            <field name="sequence">7</field>
             <field name="category_id" ref="BRUT_TAXABLE"/>
              <field name="amount_select">code</field>
             <field name="amount_python_compute">result = categories.BRUT_TAXABLE_INTERMEDIAIRE + categories.ADVFISC</field>
@@ -244,7 +259,7 @@
         <record id="hr_rule_cotisable" model="hr.salary.rule">
             <field name="name">Salaire brut cotisable</field>
             <field name="code">BRUT_COTISABLE</field>
-            <field name="sequence">1002</field>
+            <field name="sequence">7</field>
             <field name="category_id" ref="BRUT_COTISABLE"/>
              <field name="amount_select">code</field>
             <field name="amount_python_compute">result = categories.BASE + categories.PRIME + categories.HS + categories.ADV</field>
@@ -256,7 +271,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHEIRPP"/>
             <field name="name">IRPP0</field>
             <field name="code">IRPP0</field>
-            <field name="sequence">1997</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (62000.00 - BRUT_TAXABLE) >= 0 </field>
             <field name="amount_select">fix</field>
@@ -269,7 +284,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHEIRPP"/>
             <field name="name">IRPP1</field>
             <field name="code">IRPP1</field>
-            <field name="sequence">1997</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (316300.00 - BRUT_TAXABLE)  >= 0 and  (BRUT_TAXABLE - 62000.00) > 0 </field>
             <field name="amount_select">code</field>
@@ -282,7 +297,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHEIRPP"/>
             <field name="name">IRPP2</field>
             <field name="code">IRPP2</field>
-            <field name="sequence">1997</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (435680.00 - BRUT_TAXABLE)  >= 0 and (BRUT_TAXABLE - 316300.00) > 0 </field>
             <field name="amount_select">code</field>
@@ -295,7 +310,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHEIRPP"/>
             <field name="name">IRPP3</field>
             <field name="code">IRPP3</field>
-            <field name="sequence">1997</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (673780.00 - BRUT_TAXABLE)  >= 0  and (BRUT_TAXABLE - 435680.00) > 0</field>
             <field name="amount_select">code</field>
@@ -308,7 +323,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHEIRPP"/>
             <field name="name">IRPP4</field>
             <field name="code">IRPP4</field>
-            <field name="sequence">1997</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (BRUT_TAXABLE - 673780.00)  > 0 </field>
             <field name="amount_select">code</field>
@@ -319,7 +334,7 @@
 
         <record id="hr_rule_IRPP" model="hr.salary.rule">
             <field name="name">Impôt sur le Revenu des Personnes Physiques IRPP  </field>
-            <field name="sequence">1998</field>
+            <field name="sequence">9</field>
             <field name="category_id" ref="IMPOT_EMPLOYE"/>
             <field name="code">IRPP</field>
             <field name="condition_select">none</field>
@@ -328,12 +343,12 @@
             <field name="appears_on_payslip" eval="True"/>
             <!--<field name="note"></field>-->
             <field eval="[(6, 0, [ref('hr_payroll_rules_IRPP0'),ref('hr_payroll_rules_IRPP1'), ref('hr_payroll_rules_IRPP2'),ref('hr_payroll_rules_IRPP3'), ref('hr_payroll_rules_IRPP4') ])]" name="child_ids"/>
-            <field name="account_credit" search="[('code', '=', '447200')]" />
+            <field name="account_credit" search="[('code', 'like', '447200')]" />
         </record>
 
         <record id="hr_rule_CAC_10_per_cent_IRPP" model="hr.salary.rule">
             <field name="name">C.A.C 10% IRPP  </field>
-            <field name="sequence">1999</field>
+            <field name="sequence">10</field>
             <field name="category_id" ref="IMPOT_EMPLOYE"/>
             <field name="code">CAC</field>
             <field name="condition_select">none</field>
@@ -343,7 +358,7 @@
             <field name="amount_select">code</field>
             <field name="amount_python_compute">result = round(categories.TRANCHEIRPP * 0.1)</field>
             <field name="appears_on_payslip" eval="True"/>
-            <field name="account_credit" search="[('code', '=', '447200')]" />
+            <field name="account_credit" search="[('code', 'like', '447200')]" />
             <!--<field name="note"></field>-->
         </record>
 
@@ -351,7 +366,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
             <field name="name">TDL0</field>
             <field name="code">TDL0</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (62000.00 - contract.wage) > 0 </field>
             <field name="amount_select">fix</field>
@@ -364,7 +379,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
             <field name="name">TDL1</field>
             <field name="code">TDL1</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (75000.00 - contract.wage) > 0  and (contract.wage - 62000.00) >= 0</field>
             <field name="amount_select">fix</field>
@@ -376,7 +391,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
             <field name="name">TDL2</field>
             <field name="code">TDL2</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (100000.00 - contract.wage) >= 0 and (contract.wage - 75000) >= 0</field>
             <field name="amount_select">fix</field>
@@ -388,7 +403,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
             <field name="name">TDL3</field>
             <field name="code">TDL3</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (125000.00 - contract.wage) >= 0 and (contract.wage - 100000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -400,7 +415,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
             <field name="name">TDL4</field>
             <field name="code">TDL4</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (150000.00 - contract.wage) >= 0 and (contract.wage - 125000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -412,7 +427,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
             <field name="name">TDL5</field>
             <field name="code">TDL5</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (200000.00 - contract.wage) >= 0 and (contract.wage - 150000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -424,7 +439,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
             <field name="name">TDL6</field>
             <field name="code">TDL6</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (250000.00 - contract.wage) >= 0 and (contract.wage - 200000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -436,7 +451,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
             <field name="name">TDL7</field>
             <field name="code">TDL7</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (300000.00 - contract.wage) >= 0 and (contract.wage - 250000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -448,7 +463,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
             <field name="name">TDL8</field>
             <field name="code">TDL8</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (500000.00 - contract.wage) >= 0 and (contract.wage - 300000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -460,7 +475,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHETDL"/>
             <field name="name">TDL9</field>
             <field name="code">TDL9</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (contract.wage - 500000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -471,7 +486,7 @@
 
         <record id="hr_rule_TDL" model="hr.salary.rule">
             <field name="name">TDL </field>
-            <field name="sequence">1999</field>
+            <field name="sequence">9</field>
             <field name="category_id" ref="IMPOT_EMPLOYE"/>
             <field name="code">TDL</field>
             <field name="condition_select">none</field>
@@ -480,14 +495,14 @@
             <field name="appears_on_payslip" eval="True"/>
             <field eval="[(6, 0, [ref('hr_payroll_rules_TDL0'),ref('hr_payroll_rules_TDL1'), ref('hr_payroll_rules_TDL2'),ref('hr_payroll_rules_TDL3'), ref('hr_payroll_rules_TDL4'), ref('hr_payroll_rules_TDL5'), ref('hr_payroll_rules_TDL6'), ref('hr_payroll_rules_TDL7'), ref('hr_payroll_rules_TDL8'), ref('hr_payroll_rules_TDL9') ])]" name="child_ids"/>
             <field name="note">Somme toutes les tranches TDL</field>
-            <field name="account_credit" search="[('code', '=', '447200')]" />
+            <field name="account_credit" search="[('code', 'like', '447200')]" />
         </record>
 
         <record id="hr_payroll_rules_RAV0" model="hr.salary.rule">
             <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
             <field name="name">RAV0</field>
             <field name="code">RAV0</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (50000.00 - BRUT_TAXABLE) >= 0 </field>
             <field name="amount_select">fix</field>
@@ -499,7 +514,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
             <field name="name">RAV1</field>
             <field name="code">RAV1</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (100000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 50000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -511,7 +526,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
             <field name="name">RAV2</field>
             <field name="code">RAV2</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (200000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 100000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -523,7 +538,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
             <field name="name">RAV3</field>
             <field name="code">RAV3</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (300000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 200000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -535,7 +550,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
             <field name="name">RAV4</field>
             <field name="code">RAV4</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (400000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 300000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -547,7 +562,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
             <field name="name">RAV5</field>
             <field name="code">RAV5</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (500000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 400000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -559,7 +574,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
             <field name="name">RAV6</field>
             <field name="code">RAV6</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (600000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 500000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -571,7 +586,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
             <field name="name">RAV7</field>
             <field name="code">RAV7</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (700000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 600000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -583,7 +598,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
             <field name="name">RAV8</field>
             <field name="code">RAV8</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (800000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 700000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -595,7 +610,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
             <field name="name">RAV9</field>
             <field name="code">RAV9</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (900000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 800000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -607,7 +622,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
             <field name="name">RAV10</field>
             <field name="code">RAV10</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (1000000.00 - BRUT_TAXABLE) >= 0  and (BRUT_TAXABLE - 900000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -619,7 +634,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHERAV"/>
             <field name="name">RAV11</field>
             <field name="code">RAV11</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (BRUT_TAXABLE - 1000000.00) > 0</field>
             <field name="amount_select">fix</field>
@@ -630,7 +645,7 @@
 
         <record id="hr_rule_RAV" model="hr.salary.rule">
             <field name="name">RAV</field>
-            <field name="sequence">1999</field>
+            <field name="sequence">9</field>
             <field name="category_id" ref="IMPOT_EMPLOYE"/>
             <field name="code">RAV</field>
             <field name="condition_select">none</field>
@@ -639,14 +654,14 @@
             <field name="appears_on_payslip" eval="True"/>
             <field eval="[(6, 0, [ref('hr_payroll_rules_RAV0'),ref('hr_payroll_rules_RAV1'), ref('hr_payroll_rules_RAV2'),ref('hr_payroll_rules_RAV3'), ref('hr_payroll_rules_RAV4'), ref('hr_payroll_rules_RAV5'), ref('hr_payroll_rules_RAV6'), ref('hr_payroll_rules_RAV7'), ref('hr_payroll_rules_RAV8'), ref('hr_payroll_rules_RAV9'), ref('hr_payroll_rules_RAV10'), ref('hr_payroll_rules_RAV11') ])]" name="child_ids"/>
             <field name="note">Somme toutes les tranches RAV</field>
-            <field name="account_credit" search="[('code', '=', '447200')]" />
+            <field name="account_credit" search="[('code', 'like', '447200')]" />
         </record>
 
         <record id="hr_payroll_rules_CFC0" model="hr.salary.rule">
             <field name="category_id" ref="hr_payroll.TRANCHECFC"/>
             <field name="name">CFC0</field>
             <field name="code">CFC0</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (62000.00 - BRUT_TAXABLE) > 0 </field>
             <field name="amount_select">fix</field>
@@ -658,7 +673,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHECFC"/>
             <field name="name">CFC1</field>
             <field name="code">CFC1</field>
-            <field name="sequence">1998</field>
+            <field name="sequence">8</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (BRUT_TAXABLE - 62000.00) >= 0 </field>
             <field name="amount_select">code</field>
@@ -672,7 +687,7 @@
 
         <record id="hr_rule_CFC" model="hr.salary.rule">
             <field name="name">CFC</field>
-            <field name="sequence">1999</field>
+            <field name="sequence">9</field>
             <field name="category_id" ref="IMPOT_EMPLOYE"/>
             <field name="code">CFC</field>
             <field name="condition_select">none</field>
@@ -685,14 +700,14 @@
             <field name="appears_on_payslip" eval="True"/>
             <field eval="[(6, 0, [ref('hr_payroll_rules_CFC0'),ref('hr_payroll_rules_CFC1')])]" name="child_ids"/>
             <field name="note">Somme toutes les tranches CFC</field>
-            <field name="account_credit" search="[('code', '=', '447200')]" />
+            <field name="account_credit" search="[('code', 'like', '447200')]" />
         </record>
 
         <record id="hr_payroll_rules_PENV0" model="hr.salary.rule">
             <field name="category_id" ref="hr_payroll.TRANCHEPENV"/>
             <field name="name">PENV0</field>
             <field name="code">PENV0</field>
-            <field name="sequence">2998</field>
+            <field name="sequence">9</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (750000.00 - BRUT_COTISABLE) >= 0 </field>
             <!--<field name="amount_select">percentage</field>-->
@@ -707,7 +722,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHEPENV"/>
             <field name="name">PENV1</field>
             <field name="code">PENV1</field>
-            <field name="sequence">2998</field>
+            <field name="sequence">9</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (BRUT_TAXABLE - 750000.00) > 0 </field>
             <!--<field name="amount_select">percentage</field>-->
@@ -721,7 +736,7 @@
 
         <record id="hr_rule_PENV" model="hr.salary.rule">
             <field name="name">Pension Vieillesse</field>
-            <field name="sequence">2999</field>
+            <field name="sequence">10</field>
             <field name="category_id" ref="CHARGE_EMPLOYE"/>
             <field name="code">PENV</field>
             <field name="condition_select">none</field>
@@ -732,13 +747,14 @@
             <field name="amount_percentage_base">categories.TRANCHEPENV</field>-->
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Somme toutes les tranches PENV</field>
+            <field name="register_id" ref="hr_CNPS_register"/>
             <field eval="[(6, 0, [ref('hr_payroll_rules_PENV0'),ref('hr_payroll_rules_PENV1') ])]" name="child_ids"/>
-            <field name="account_credit" search="[('code', '=', '431300')]" />
+            <field name="account_credit" search="[('code', 'like', '431300')]" />
         </record>
 
         <record id="hr_rule_AVANSAL" model="hr.salary.rule">
             <field name="name">Avance sur salaire</field>
-            <field name="sequence">2999</field>
+            <field name="sequence">11</field>
             <field name="category_id" ref="hr_payroll.DED"/>
             <field name="code">AVANSAL</field>
             <field name="condition_select">python</field>
@@ -747,11 +763,12 @@
             <field name="amount_python_compute">result = inputs.AVANSAL.amount </field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Avance sur salaire</field>
+            <field name="account_credit" search="[('code', 'like', '422000')]" />
         </record>
 
         <record id="hr_rule_HS" model="hr.salary.rule">
             <field name="name">Heure supplémentaire</field>
-            <field name="sequence">5</field>
+            <field name="sequence">2</field>
             <field name="category_id" ref="HS"/>
             <field name="code">HS</field>
             <field name="condition_select">python</field>
@@ -760,12 +777,12 @@
             <field name="amount_python_compute">result = inputs.HS.amount </field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Heure supplémentaire</field>
-            <field name="account_debit" search="[('code', '=', '661100')]" />
+            <field name="account_debit" search="[('code', 'like', '661100')]" />
         </record>
 
         <record id="hr_rule_REMBC" model="hr.salary.rule">
             <field name="name">Remboursement crédit</field>
-            <field name="sequence">2999</field>
+            <field name="sequence">11</field>
             <field name="category_id" ref="hr_payroll.DED"/>
             <field name="code">REMBC</field>
             <field name="condition_select">python</field>
@@ -774,11 +791,12 @@
             <field name="amount_python_compute">result = inputs.REMBC.amount </field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Remboursement crédit</field>
+            <field name="account_credit" search="[('code', 'like', '422000')]" />
         </record>
 
         <record id="hr_rule_CONGE" model="hr.salary.rule">
             <field name="name">Congé</field>
-            <field name="sequence">5</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">CONGE</field>
             <field name="condition_select">python</field>
@@ -787,21 +805,21 @@
             <field name="amount_python_compute">result = inputs.CONGE.amount </field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Congé</field>
-            <field name="account_debit" search="[('code', '=', '661300')]" />
+            <field name="account_debit" search="[('code', 'like', '661300')]" />
         </record>
 
         <record id="hr_payroll.hr_rule_net" model="hr.salary.rule">
             <field name="name">Net</field>
-            <field name="sequence">100000</field>
+            <field name="sequence">12</field>
             <field name="category_id" ref="hr_payroll.NET"/>
             <field name="amount_python_compute">result = round(BRUT - categories.IMPOT_EMPLOYE - categories.DED - categories.CHARGE_EMPLOYE)</field>
-            <field name="note">Salaire Net qui est le salaire Brut - toutes les retenues et impots </field>
-            <field name="account_credit" search="[('code', '=', '422000')]" />
+            <field name="note">Salaire Net qui est le salaire Brut - toutes les retenues et impots de l'employé</field>
+            <field name="account_credit" search="[('code', 'like', '422000')]" />
         </record>
 
         <record id="hr_payroll_rule_total_retenue" model="hr.salary.rule">
             <field name="name">Total Retenues</field>
-            <field name="sequence">3003</field>
+            <field name="sequence">12</field>
              <field name="code">TOTAL_RETENUE</field>
              <field name="condition_select">none</field>
             <field name="category_id" ref="TOTAL_RETENUE"/>
@@ -815,7 +833,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHEPANC"/>
             <field name="name">PANC0</field>
             <field name="code">PANC0</field>
-            <field name="sequence">6</field>
+            <field name="sequence">2</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = (2 - contract.seniority) > 0 </field>
             <field name="amount_select">fix</field>
@@ -828,7 +846,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHEPANC"/>
             <field name="name">PANC1</field>
             <field name="code">PANC1</field>
-            <field name="sequence">6</field>
+            <field name="sequence">2</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = contract.seniority == 2 </field>
             <field name="amount_select">code</field>
@@ -840,7 +858,7 @@
             <field name="category_id" ref="hr_payroll.TRANCHEPANC"/>
             <field name="name">PANC2</field>
             <field name="code">PANC2</field>
-            <field name="sequence">6</field>
+            <field name="sequence">2</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = contract.seniority > 2 </field>
             <field name="amount_select">code</field>
@@ -851,7 +869,7 @@
 
         <record id="hr_rule_PANC" model="hr.salary.rule">
             <field name="name">Prime d'ancienneté</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PANC</field>
             <field name="condition_select">none</field>
@@ -865,7 +883,7 @@
 
         <record id="hr_rule_PRIMRESP" model="hr.salary.rule">
             <field name="name">Prime de responsabilité</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMRESP</field>
             <field name="condition_select">python</field>
@@ -879,7 +897,7 @@
 
         <record id="hr_rule_PRIMFONCTION" model="hr.salary.rule">
             <field name="name">Prime de fonctions</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMFONCTION</field>
             <field name="condition_select">python</field>
@@ -893,7 +911,7 @@
 
         <record id="hr_rule_PRIMRISQ" model="hr.salary.rule">
             <field name="name">Prime de risque</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMRISQ</field>
             <field name="condition_select">python</field>
@@ -906,7 +924,7 @@
         </record>
         <record id="hr_rule_PRIMREND" model="hr.salary.rule">
             <field name="name">Prime de rendement</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMREND</field>
             <field name="condition_select">python</field>
@@ -919,7 +937,7 @@
         </record>
         <record id="hr_rule_PRIMCAIS" model="hr.salary.rule">
             <field name="name">Prime de caisse</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMCAIS</field>
             <field name="condition_select">python</field>
@@ -932,7 +950,7 @@
         </record>
         <record id="hr_rule_PRIMSEC" model="hr.salary.rule">
             <field name="name">Prime de secrétariat</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMSEC</field>
             <field name="condition_select">python</field>
@@ -945,7 +963,7 @@
         </record>
         <record id="hr_rule_PRIMMENAGE" model="hr.salary.rule">
             <field name="name">Prime de ménage</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMMENAGE</field>
             <field name="condition_select">python</field>
@@ -959,7 +977,7 @@
 
         <record id="hr_rule_PRIMRECEPTION" model="hr.salary.rule">
             <field name="name">Prime de réception</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMRECEPTION</field>
             <field name="condition_select">python</field>
@@ -972,7 +990,7 @@
         </record>
         <record id="hr_rule_PRIMRECONVERSION" model="hr.salary.rule">
             <field name="name">Prime de reconversion</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMRECONVERSION</field>
             <field name="condition_select">python</field>
@@ -986,7 +1004,7 @@
 
         <record id="hr_rule_PRIMREMPLACEMENT" model="hr.salary.rule">
             <field name="name">Prime de remplacement</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMREMPLACEMENT</field>
             <field name="condition_select">python</field>
@@ -1000,7 +1018,7 @@
 
         <record id="hr_rule_PRIMINTERIM" model="hr.salary.rule">
             <field name="name">Prime d'interim</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMINTERIM</field>
             <field name="condition_select">python</field>
@@ -1014,7 +1032,7 @@
 
         <record id="hr_rule_PRIMTECHNICITE" model="hr.salary.rule">
             <field name="name">Prime de technicité</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMTECHNICITE</field>
             <field name="condition_select">python</field>
@@ -1028,7 +1046,7 @@
 
         <record id="hr_rule_PRIMASSIDUITE" model="hr.salary.rule">
             <field name="name">Prime d'assiduité</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMASSIDUITE</field>
             <field name="condition_select">python</field>
@@ -1042,7 +1060,7 @@
 
         <record id="hr_rule_PRIMPROJ" model="hr.salary.rule">
             <field name="name">Prime de projet</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMPROJ</field>
             <field name="condition_select">python</field>
@@ -1056,7 +1074,7 @@
 
         <record id="hr_rule_PRIMFINCARRIERE" model="hr.salary.rule">
             <field name="name">Prime de fin de carrière</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMFINCARRIERE</field>
             <field name="condition_select">python</field>
@@ -1070,7 +1088,7 @@
 
         <record id="hr_rule_PRIMBONNESEPARATION" model="hr.salary.rule">
             <field name="name">Prime de bonne séparation</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMBONNESEPARATION</field>
             <field name="condition_select">python</field>
@@ -1084,7 +1102,7 @@
 
         <record id="hr_rule_PRIMRAPPEL" model="hr.salary.rule">
             <field name="name">Prime de rappel</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMRAPPEL</field>
             <field name="condition_select">python</field>
@@ -1098,7 +1116,7 @@
 
         <record id="hr_rule_PRIMBILAN" model="hr.salary.rule">
             <field name="name">Prime de bilan</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMBILAN</field>
             <field name="condition_select">python</field>
@@ -1112,7 +1130,7 @@
 
         <record id="hr_rule_INDMLICENCIEMENT" model="hr.salary.rule">
             <field name="name">Indemnité de licenciement</field>
-            <field name="sequence">6</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="hr_payroll.ALW"/>
             <field name="code">INDMLICENCIEMENT</field>
             <field name="condition_select">python</field>
@@ -1121,12 +1139,12 @@
             <field name="amount_python_compute">result = inputs.INDMLICENCIEMENT.amount </field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de licenciement</field>
-            <field name="account_debit" search="[('code', '=', '661400')]" />
+            <field name="account_debit" search="[('code', 'like', '661400')]" />
         </record>
 
         <record id="hr_rule_INDMREPRESENTATION" model="hr.salary.rule">
             <field name="name">Indemnité de représentation</field>
-            <field name="sequence">7</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="hr_payroll.ALW"/>
             <field name="code">INDMREPRESENTATION</field>
             <field name="condition_select">python</field>
@@ -1140,7 +1158,7 @@
 
         <record id="hr_rule_INDMTRANSP" model="hr.salary.rule">
             <field name="name">Indemnite de transport</field>
-            <field name="sequence">5</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="hr_payroll.ALW"/>
             <field name="code">INDMTRANSP</field>
              <field name="condition_select">python</field>
@@ -1154,7 +1172,7 @@
 
         <record id="hr_rule_INDMSALISSURE" model="hr.salary.rule">
             <field name="name">Indemnite de salissure</field>
-            <field name="sequence">5</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="hr_payroll.ALW"/>
             <field name="code">INDMSALISSURE</field>
              <field name="condition_select">python</field>
@@ -1168,7 +1186,7 @@
 
         <record id="hr_rule_INDMPANIER" model="hr.salary.rule">
             <field name="name">Indemnite de panier</field>
-            <field name="sequence">5</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="hr_payroll.ALW"/>
             <field name="code">INDMPANIER</field>
              <field name="condition_select">python</field>
@@ -1182,7 +1200,7 @@
 
         <record id="hr_rule_INDMMALADIE" model="hr.salary.rule">
             <field name="name">Indemnite de maladie</field>
-            <field name="sequence">5</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="hr_payroll.ALW"/>
             <field name="code">INDMMALADIE</field>
              <field name="condition_select">python</field>
@@ -1191,12 +1209,12 @@
             <field name="amount_python_compute">result = contract.category_id.sickness_allowance</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de maladie</field>
-            <field name="account_debit" search="[('code', '=', '661500')]" />
+            <field name="account_debit" search="[('code', 'like', '661500')]" />
         </record>
 
         <record id="hr_rule_INDMBICYCLE" model="hr.salary.rule">
             <field name="name">Indemnite de bicyclette</field>
-            <field name="sequence">5</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="hr_payroll.ALW"/>
             <field name="code">INDMBICYCLE</field>
              <field name="condition_select">python</field>
@@ -1210,7 +1228,7 @@
 
         <record id="hr_rule_INDMSHABILLEMENT" model="hr.salary.rule">
             <field name="name">Indemnite d'habillement</field>
-            <field name="sequence">5</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="hr_payroll.ALW"/>
             <field name="code">INDMHABILLEMENT</field>
              <field name="condition_select">python</field>
@@ -1224,7 +1242,7 @@
 
         <record id="hr_rule_INDMOUTILLAGE" model="hr.salary.rule">
             <field name="name">Indemnite d'outillage</field>
-            <field name="sequence">5</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="hr_payroll.ALW"/>
             <field name="code">INDMOUTILLAGE</field>
              <field name="condition_select">python</field>
@@ -1238,7 +1256,7 @@
 
         <record id="hr_rule_PRIMTRANSP" model="hr.salary.rule">
             <field name="name">Prime de transport</field>
-            <field name="sequence">5</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMTRANSP</field>
              <field name="condition_select">python</field>
@@ -1252,7 +1270,7 @@
 
         <record id="hr_rule_INDMLOG" model="hr.salary.rule">
             <field name="name">Indemnite de logement</field>
-            <field name="sequence">5</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="ADVANTAGE"/>
             <field name="code">INDMLOG</field>
              <field name="condition_select">python</field>
@@ -1261,12 +1279,12 @@
             <field name="amount_python_compute">result = contract.category_id.housing_advantage</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de logement</field>
-            <field name="account_debit" search="[('code', '=', '661700')]" />
+            <field name="account_debit" search="[('code', 'like', '661700')]" />
         </record>
 
         <record id="hr_rule_INDMLOG_FISC" model="hr.salary.rule">
             <field name="name">Indemnite de logement dans la limite du fisc</field>
-            <field name="sequence">1003</field>
+            <field name="sequence">4</field>
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMLOG_FISC</field>
               <field name="condition_select">python</field>
@@ -1279,7 +1297,7 @@
 
         <record id="hr_rule_INDVEHICULE" model="hr.salary.rule">
             <field name="name">Indemnite véhicule</field>
-            <field name="sequence">5</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="ADVANTAGE"/>
             <field name="code">INDMVEHICULE</field>
              <field name="condition_select">python</field>
@@ -1288,12 +1306,12 @@
             <field name="amount_python_compute">result = round(contract.category_id.vehicle_advantage * contract.employee_id.vehicle_count)</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de véhicule</field>
-            <field name="account_debit" search="[('code', '=', '661700')]" />
+            <field name="account_debit" search="[('code', 'like', '661700')]" />
         </record>
 
         <record id="hr_rule_INDVEHICULE_FISC" model="hr.salary.rule">
             <field name="name">Indemnite véhicule dans la limite du fisc</field>
-            <field name="sequence">1003</field>
+            <field name="sequence">4</field>
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMVEHICULE_FISC</field>
             <field name="condition_select">python</field>
@@ -1306,7 +1324,7 @@
 
         <record id="hr_rule_INDMDOMESTIQUE" model="hr.salary.rule">
             <field name="name">Indemnite domestique</field>
-            <field name="sequence">5</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="ADVANTAGE"/>
             <field name="code">INDMDOMESTIQUE</field>
              <field name="condition_select">python</field>
@@ -1315,12 +1333,12 @@
             <field name="amount_python_compute">result = round(contract.category_id.housewife_advantage * contract.employee_id.housewife_count)</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité domestique</field>
-            <field name="account_debit" search="[('code', '=', '661700')]" />
+            <field name="account_debit" search="[('code', 'like', '661700')]" />
         </record>
 
         <record id="hr_rule_INDMDOMESTIQUE_FISC" model="hr.salary.rule">
             <field name="name">Indemnite domestique dans la limite du fisc</field>
-            <field name="sequence">1003</field>
+            <field name="sequence">4</field>
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMDOMESTIQUE_FISC</field>
              <field name="condition_select">python</field>
@@ -1333,7 +1351,7 @@
 
         <record id="hr_rule_INDMELECTRICITE" model="hr.salary.rule">
             <field name="name">Indemnite d'électricité</field>
-            <field name="sequence">5</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="ADVANTAGE"/>
             <field name="code">INDMELECTRICITE</field>
              <field name="condition_select">python</field>
@@ -1342,12 +1360,12 @@
             <field name="amount_python_compute">result = contract.category_id.electricity_advantage</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité d'électricité</field>
-            <field name="account_debit" search="[('code', '=', '661700')]" />
+            <field name="account_debit" search="[('code', 'like', '661700')]" />
         </record>
 
         <record id="hr_rule_INDMELECTRICITE_FISC" model="hr.salary.rule">
             <field name="name">Indemnite d'électricité dans la limite du fisc</field>
-            <field name="sequence">1003</field>
+            <field name="sequence">4</field>
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMELECTRICITE_FISC</field>
             <field name="condition_select">python</field>
@@ -1360,7 +1378,7 @@
 
         <record id="hr_rule_INDMEAU" model="hr.salary.rule">
             <field name="name">Indemnite d'eau</field>
-            <field name="sequence">5</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="ADVANTAGE"/>
             <field name="code">INDMEAU</field>
              <field name="condition_select">python</field>
@@ -1369,12 +1387,12 @@
             <field name="amount_python_compute">result = contract.category_id.water_advantage</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité d'eau</field>
-            <field name="account_debit" search="[('code', '=', '661700')]" />
+            <field name="account_debit" search="[('code', 'like', '661700')]" />
         </record>
 
         <record id="hr_rule_INDMEAU_FISC" model="hr.salary.rule">
             <field name="name">Indemnite d'eau dans la limite du fisc</field>
-            <field name="sequence">1003</field>
+            <field name="sequence">4</field>
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMEAU_FISC</field>
             <field name="condition_select">python</field>
@@ -1387,7 +1405,7 @@
 
         <record id="hr_rule_INDMNOURITURE" model="hr.salary.rule">
             <field name="name">Indemnite de nouriture</field>
-            <field name="sequence">5</field>
+            <field name="sequence">3</field>
             <field name="category_id" ref="ADVANTAGE"/>
             <field name="code">INDMNOURITURE</field>
              <field name="condition_select">python</field>
@@ -1396,12 +1414,12 @@
             <field name="amount_python_compute">result = contract.category_id.food_advantage</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de nouriture</field>
-            <field name="account_debit" search="[('code', '=', '661700')]" />
+            <field name="account_debit" search="[('code', 'like', '661700')]" />
         </record>
 
     <record id="hr_rule_INDMNOURITURE_FISC" model="hr.salary.rule">
             <field name="name">Indemnite de nouriture dans la limite du fisc</field>
-            <field name="sequence">1003</field>
+            <field name="sequence">4</field>
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMNOURITURE_FISC</field>
              <field name="condition_select">python</field>
@@ -1417,7 +1435,7 @@
             <field name="category_id" ref="IMPOT_PATRON"/>
             <field name="name">CFC Patronal</field>
             <field name="code">CFC_PATRONAL</field>
-            <field name="sequence">2000</field>
+            <field name="sequence">13</field>
             <!--<field name="amount_select">percentage</field>
             <field name="amount_percentage">1.5</field>
             <field name="amount_percentage_base">categories.BRUT</field>-->
@@ -1425,15 +1443,15 @@
             <field name="amount_python_compute">result = round(categories.BRUT * 0.015)</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">CFC Patronale : SAL. BRUT * 0.015</field>
-            <field name="account_credit" search="[('code', '=', '447200')]" />
-            <field name="account_debit" search="[('code', '=', '641300')]" />
+            <field name="account_credit" search="[('code', 'like', '447200')]" />
+            <field name="account_debit" search="[('code', 'like', '641300')]" />
         </record>
 
         <record id="hr_rule_fne" model="hr.salary.rule">
             <field name="category_id" ref="IMPOT_PATRON"/>
             <field name="name">FNE</field>
             <field name="code">FNE</field>
-            <field name="sequence">2000</field>
+            <field name="sequence">13</field>
            <!-- <field name="amount_select">percentage</field>
             <field name="amount_percentage">1</field>
             <field name="amount_percentage_base">categories.BRUT</field>-->
@@ -1441,15 +1459,15 @@
             <field name="amount_python_compute">result = round(categories.BRUT * 0.01)</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">FNE = SAL. BRUT * 0.01</field>
-            <field name="account_credit" search="[('code', '=', '442400')]" />
-            <field name="account_debit" search="[('code', '=', '641300')]" />
+            <field name="account_credit" search="[('code', 'like', '442400')]" />
+            <field name="account_debit" search="[('code', 'like', '641300')]" />
         </record>
 
         <record id="hr_rule_total_impot" model="hr.salary.rule">
             <field name="category_id" ref="TOTAL_IMPOT"/>
             <field name="name">Total Impot</field>
             <field name="code">TOTAL_IMPOT</field>
-            <field name="sequence">2004</field>
+            <field name="sequence">14</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">result = categories.IMPOT_EMPLOYE + categories.IMPOT_PATRON</field>
             <field name="note">Somme tous les impots employé et patron : Somme(IRPP, RAV, CFC, TDL, CFC PATRONAL, FNE)  </field>
@@ -1460,7 +1478,7 @@
             <field name="category_id" ref="CHARGE_PATRON"/>
             <field name="name">Prestation familiale</field>
             <field name="code">PREST_FAM</field>
-            <field name="sequence">2000</field>
+            <field name="sequence">14</field>
             <!--<field name="amount_select">percentage</field>
             <field name="amount_percentage">7</field>
             <field name="amount_percentage_base">categories.BRUT_COTISABLE</field>-->
@@ -1468,15 +1486,16 @@
             <field name="amount_python_compute">result = round(min(categories.BRUT_COTISABLE,750000) * 0.07)</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">Prestation familiale : min(BRUT_COTISABLE, 750000) * 0.07</field>
-            <field name="account_credit" search="[('code', '=', '431100')]" />
-            <field name="account_debit" search="[('code', '=', '664100')]" />
+            <field name="register_id" ref="hr_CNPS_register"/>
+            <field name="account_credit" search="[('code', 'like', '431100')]" />
+            <field name="account_debit" search="[('code', 'like', '664100')]" />
         </record>
 
         <record id="hr_rule_pension_viellesse" model="hr.salary.rule">
             <field name="category_id" ref="CHARGE_PATRON"/>
             <field name="name">Pension viellesse</field>
             <field name="code">PENS_VIEL</field>
-            <field name="sequence">2000</field>
+            <field name="sequence">14</field>
             <!--<field name="amount_select">percentage</field>
             <field name="amount_percentage">4.2</field>
             <field name="amount_percentage_base">categories.BRUT_COTISABLE</field>-->
@@ -1484,15 +1503,16 @@
             <field name="amount_python_compute">result = round(min(categories.BRUT_COTISABLE, 750000) * 0.042)</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">Pension viellesse : min(BRUT_COTISABLE, 750000) * 0.042</field>
-            <field name="account_credit" search="[('code', '=', '431300')]" />
-            <field name="account_debit" search="[('code', '=', '664100')]" />
+            <field name="register_id" ref="hr_CNPS_register"/>
+            <field name="account_credit" search="[('code', 'like', '431300')]" />
+            <field name="account_debit" search="[('code', 'like', '664100')]" />
         </record>
 
         <record id="hr_rule_pension_viellesse_totale" model="hr.salary.rule">
             <field name="category_id" ref="TOTAL_PENSION"/>
             <field name="name">Pension viellesse Totale</field>
             <field name="code">TOTAL_PENSION</field>
-            <field name="sequence">3000</field>
+            <field name="sequence">15</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">result = PENS_VIEL + PENV</field>
             <field name="appears_on_payslip" eval="False"/>
@@ -1503,7 +1523,7 @@
             <field name="category_id" ref="CHARGE_PATRON"/>
             <field name="name">Accident de travail</field>
             <field name="code">ACC_TRAV</field>
-            <field name="sequence">2000</field>
+            <field name="sequence">14</field>
             <!--<field name="amount_select">percentage</field>
             <field name="amount_percentage">1.75</field>
             <field name="amount_percentage_base">categories.BRUT_COTISABLE</field>-->
@@ -1511,15 +1531,16 @@
             <field name="amount_python_compute">result = round(min(categories.BRUT_COTISABLE, 750000) * 0.0175)</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">Accident de travail : min(BRUT_COTISABLE, 75000) * 0.0175</field>
-            <field name="account_credit" search="[('code', '=', '431200')]" />
-            <field name="account_debit" search="[('code', '=', '664100')]" />
+            <field name="register_id" ref="hr_CNPS_register"/>
+            <field name="account_credit" search="[('code', 'like', '431200')]" />
+            <field name="account_debit" search="[('code', 'like', '664100')]" />
         </record>
 
         <record id="hr_rule_total_charge" model="hr.salary.rule">
             <field name="category_id" ref="TOTAL_CHARGE"/>
             <field name="name">Total Charges</field>
             <field name="code">TOTAL_CHARGE</field>
-            <field name="sequence">3000</field>
+            <field name="sequence">15</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">result = categories.CHARGE_EMPLOYE + categories.CHARGE_PATRON </field>
             <field name="appears_on_payslip" eval="False"/>
@@ -1530,7 +1551,7 @@
             <field name="category_id" ref="TOTAL_CHARGE_IMPOT_PATRON"/>
             <field name="name">Total Charges et Impôt Patron</field>
             <field name="code">TOTAL_CHARGE_IMPOT_PATRON</field>
-            <field name="sequence">3005</field>
+            <field name="sequence">15</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">result = categories.IMPOT_PATRON + categories.CHARGE_PATRON </field>
             <field name="appears_on_payslip" eval="False"/>
@@ -1541,7 +1562,7 @@
             <field name="category_id" ref="TOTAL_CHARGE_IMPOT_EMPLOYE"/>
             <field name="name">Total Charges et Impot Employé</field>
             <field name="code">TOTAL_CHARGE_IMPOT_EMPLOYE</field>
-            <field name="sequence">3005</field>
+            <field name="sequence">15</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">result = categories.IMPOT_EMPLOYE + categories.CHARGE_EMPLOYE </field>
             <field name="appears_on_payslip" eval="False"/>
