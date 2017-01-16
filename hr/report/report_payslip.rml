@@ -607,10 +607,10 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
             <para style="P5">[[p.rate &lt; 100 and p.rate]]</para>
           </td>
           <td>
-            <para style="P8">[[ p.category_id.code not in ('DED','IMPOT_EMPLOYE','CHARGE_EMPLOYE','TOTAL_RETENUE') and formatLang(p.total , digits=0)]]</para>
+            <para style="P8">[[ p.category_id.code not in ('DED','IMPOT_EMPLOYE','CHARGE_EMPLOYE','TOTAL_RETENUE') and format_amount(formatLang(p.total , digits=0))]]</para>
           </td>
           <td>
-            <para style="P8">[[ p.category_id.code in ('DED','IMPOT_EMPLOYE','CHARGE_EMPLOYE','TOTAL_RETENUE') and formatLang(p.total , digits=0)]]</para>
+            <para style="P8">[[ p.category_id.code in ('DED','IMPOT_EMPLOYE','CHARGE_EMPLOYE','TOTAL_RETENUE') and format_amount(formatLang(p.total , digits=0))]]</para>
           </td>
         </tr>
       </blockTable>
@@ -631,7 +631,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           <para style="P19">Salaire brut taxable</para>
         </td>
         <td>
-          <para style="P18">[[ formatLang (get_total_by_rule_category(o, 'BRUT_TAXABLE'), digits=0) ]]</para>
+          <para style="P18">[[ format_amount(formatLang (get_total_by_rule_category(o, 'BRUT_TAXABLE'), digits=0)) ]]</para>
         </td>
         <td>
           <para style="P16">
@@ -644,7 +644,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           <para style="P19">Salaire brut cotisable</para>
         </td>
         <td>
-          <para style="P18">[[ formatLang (get_total_by_rule_category(o, 'BRUT_COTISABLE'), digits=0) ]]</para>
+          <para style="P18">[[ format_amount(formatLang (get_total_by_rule_category(o, 'BRUT_COTISABLE'), digits=0)) ]]</para>
         </td>
         <td>
           <para style="P16">
@@ -657,7 +657,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           <para style="P19">Salaire brut</para>
         </td>
         <td>
-          <para style="P18">[[ formatLang (get_total_by_rule_category(o, 'BRUT') , digits=0)]]</para>
+          <para style="P18">[[ format_amount(formatLang (get_total_by_rule_category(o, 'BRUT') , digits=0))]]</para>
         </td>
         <td>
           <para style="P16">
@@ -675,7 +675,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           </para>
         </td>
         <td>
-          <para style="P18">[[ formatLang (round(get_total_by_rule_category(o, 'TOTAL_RETENUE')), digits=0)]]</para>
+          <para style="P18">[[ format_amount(formatLang (round(get_total_by_rule_category(o, 'TOTAL_RETENUE')), digits=0))]]</para>
         </td>
       </tr>
     </blockTable>
@@ -694,7 +694,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
       </tr>
       <tr>
         <td>
-          <para style="P17">[[ formatLang (get_total_by_rule_category(o, 'NET'),digits=0) ]]</para>
+          <para style="P17">[[ format_amount(formatLang (get_total_by_rule_category(o, 'NET'),digits=0)) ]]</para>
         </td>
       </tr>
     </blockTable>

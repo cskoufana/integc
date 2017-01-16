@@ -6,6 +6,13 @@ from openerp.tools import amount_to_text_en
 import utility
 
 
+def format_amount(s, sep=' '):
+    if len(s) <= 3:
+        return s
+    else:
+        return format_amount(s[:-3]) + sep + s[-3:]
+
+
 class transfer_order_report(report_sxw.rml_parse):
 
     def __init__(self, cr, uid, name, context):
@@ -15,6 +22,7 @@ class transfer_order_report(report_sxw.rml_parse):
             'get_amount_letter': self.get_amount_letter,
             'get_total_amount_by_partner': self.get_total_amount_by_partner,
             'get_partner_list': self.get_partner_list,
+            'format_amount': format_amount,
         })
 
     def get_bank_account_by_partner(self, obj):

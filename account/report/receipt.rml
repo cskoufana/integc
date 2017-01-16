@@ -389,7 +389,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           <para style="P1">Montant</para>
         </td>
         <td>
-          <para style="P3">[[(o.amount &gt; 0) and formatLang(o.amount, digits=0) or formatLang(o.amount * -1, digits=0)]]</para>
+          <para style="P3">[[(o.amount &gt; 0) and format_amount(formatLang(o.amount, digits=0)) or format_amount(formatLang(o.amount * -1, digits=0))]]</para>
         </td>
         <td>
           <para style="P1">Date opération</para>

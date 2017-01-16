@@ -9,6 +9,14 @@ import time
 from datetime import datetime
 from dateutil import relativedelta
 
+
+def format_amount(s, sep=' '):
+    if len(s) <= 3:
+        return s
+    else:
+        return format_amount(s[:-3]) + sep + s[-3:]
+
+
 class payslip_run_report(report_sxw.rml_parse):
 
     def __init__(self, cr, uid, name, context):
@@ -19,7 +27,8 @@ class payslip_run_report(report_sxw.rml_parse):
             'get_total_by_rule_category': self.get_total_by_rule_category,
             'get_payslip_amount_by_rule_code': self.get_payslip_amount_by_rule_code,
             'get_total_amount_by_category': self.get_total_amount_by_category,
-            'get_total_payslip_amount_by_rule_code': self.get_total_payslip_amount_by_rule_code
+            'get_total_payslip_amount_by_rule_code': self.get_total_payslip_amount_by_rule_code,
+            'format_amount': format_amount
 
         })
 

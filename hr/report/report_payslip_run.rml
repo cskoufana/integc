@@ -648,40 +648,40 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           <para style="P8">[[o.employee_id.ssnid or '']]</para>
         </td>
         <td>
-          <para style="P4">[[ formatLang (get_total_by_rule_category(o, 'BRUT') , digits=0)]]</para>
+          <para style="P4">[[ format_amount(formatLang (get_total_by_rule_category(o, 'BRUT') , digits=0))]]</para>
         </td>
         <td>
-          <para style="P2">[[formatLang(get_payslip_amount_by_rule_code(o,'INDMTANSP'), digits=0)]]</para>
+          <para style="P2">[[format_amount(formatLang(get_payslip_amount_by_rule_code(o,'INDMTANSP'), digits=0))]]</para>
         </td>
         <td>
-          <para style="P4">[[ formatLang (get_total_by_rule_category(o, 'BRUT_TAXABLE'), digits=0) ]]</para>
+          <para style="P4">[[ format_amount(formatLang (get_total_by_rule_category(o, 'BRUT_TAXABLE'), digits=0)) ]]</para>
         </td>
         <td>
-          <para style="P4">[[ formatLang (get_total_by_rule_category(o, 'BRUT_COTISABLE'), digits=0) ]]</para>
+          <para style="P4">[[ format_amount(formatLang (get_total_by_rule_category(o, 'BRUT_COTISABLE'), digits=0)) ]]</para>
         </td>
         <td>
-          <para style="P2">[[formatLang(get_payslip_amount_by_rule_code(o,'IRPP'), digits=0)]]</para>
+          <para style="P2">[[format_amount(formatLang(get_payslip_amount_by_rule_code(o,'IRPP'), digits=0))]]</para>
         </td>
         <td>
-          <para style="P2">[[formatLang(get_payslip_amount_by_rule_code(o,'CAC'), digits=0)]]</para>
+          <para style="P2">[[format_amount(formatLang(get_payslip_amount_by_rule_code(o,'CAC'), digits=0))]]</para>
         </td>
         <td>
-          <para style="P2">[[formatLang(get_payslip_amount_by_rule_code(o,'CFC'), digits=0)]]</para>
+          <para style="P2">[[format_amount(formatLang(get_payslip_amount_by_rule_code(o,'CFC'), digits=0))]]</para>
         </td>
         <td>
-          <para style="P2">[[formatLang(get_payslip_amount_by_rule_code(o,'TDL'), digits=0)]]</para>
+          <para style="P2">[[format_amount(formatLang(get_payslip_amount_by_rule_code(o,'TDL'), digits=0))]]</para>
         </td>
         <td>
-          <para style="P2">[[formatLang(get_payslip_amount_by_rule_code(o,'RAV'), digits=0)]]</para>
+          <para style="P2">[[format_amount(formatLang(get_payslip_amount_by_rule_code(o,'RAV'), digits=0))]]</para>
         </td>
         <td>
-          <para style="P4">[[ formatLang (get_total_by_rule_category(o, 'IMPOT_EMPLOYE'), digits=0)]]</para>
+          <para style="P4">[[ format_amount(formatLang (get_total_by_rule_category(o, 'IMPOT_EMPLOYE'), digits=0))]]</para>
         </td>
         <td>
-          <para style="P2">[[formatLang(get_payslip_amount_by_rule_code(o,'PENV'), digits=0)]]</para>
+          <para style="P2">[[format_amount(formatLang(get_payslip_amount_by_rule_code(o,'PENV'), digits=0))]]</para>
         </td>
         <td>
-          <para style="P5">[[ formatLang (get_total_by_rule_category(o, 'NET'),digits=0) ]]</para>
+          <para style="P5">[[ format_amount(formatLang (get_total_by_rule_category(o, 'NET'),digits=0)) ]]</para>
         </td>
       </tr>
     </blockTable>
@@ -695,40 +695,40 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           <para style="P3">TOTAL</para>
         </td>
         <td>
-          <para style="P4">[[ formatLang (get_total_amount_by_category(obj.slip_ids, 'BRUT') , digits=0)]]</para>
+          <para style="P4">[[ format_amount(formatLang (get_total_amount_by_category(obj.slip_ids, 'BRUT') , digits=0))]]</para>
         </td>
         <td>
-          <para style="P2">[[formatLang(get_total_payslip_amount_by_rule_code(obj.slip_ids,'INDMTANSP'), digits=0)]]</para>
+          <para style="P2">[[format_amount(formatLang(get_total_payslip_amount_by_rule_code(obj.slip_ids,'INDMTANSP'), digits=0))]]</para>
         </td>
         <td>
-          <para style="P4">[[ formatLang (get_total_amount_by_category(obj.slip_ids, 'BRUT_TAXABLE'), digits=0) ]]</para>
+          <para style="P4">[[ format_amount(formatLang (get_total_amount_by_category(obj.slip_ids, 'BRUT_TAXABLE'), digits=0)) ]]</para>
         </td>
         <td>
-          <para style="P4">[[ formatLang (get_total_amount_by_category(obj.slip_ids, 'BRUT_COTISABLE'), digits=0) ]]</para>
+          <para style="P4">[[ format_amount(formatLang (get_total_amount_by_category(obj.slip_ids, 'BRUT_COTISABLE'), digits=0)) ]]</para>
         </td>
         <td>
-          <para style="P2">[[formatLang(get_total_payslip_amount_by_rule_code(obj.slip_ids,'IRPP'), digits=0)]]</para>
+          <para style="P2">[[format_amount(formatLang(get_total_payslip_amount_by_rule_code(obj.slip_ids,'IRPP'), digits=0))]]</para>
         </td>
         <td>
-          <para style="P2">[[formatLang(get_total_payslip_amount_by_rule_code(obj.slip_ids,'CAC'), digits=0)]]</para>
+          <para style="P2">[[format_amount(formatLang(get_total_payslip_amount_by_rule_code(obj.slip_ids,'CAC'), digits=0))]]</para>
         </td>
         <td>
-          <para style="P2">[[formatLang(get_total_payslip_amount_by_rule_code(obj.slip_ids,'CFC'), digits=0)]]</para>
+          <para style="P2">[[format_amount(formatLang(get_total_payslip_amount_by_rule_code(obj.slip_ids,'CFC'), digits=0))]]</para>
         </td>
         <td>
-          <para style="P2">[[formatLang(get_total_payslip_amount_by_rule_code(obj.slip_ids,'TDL'), digits=0)]]</para>
+          <para style="P2">[[format_amount(formatLang(get_total_payslip_amount_by_rule_code(obj.slip_ids,'TDL'), digits=0))]]</para>
         </td>
         <td>
-          <para style="P2">[[formatLang(get_total_payslip_amount_by_rule_code(obj.slip_ids,'RAV'), digits=0)]]</para>
+          <para style="P2">[[format_amount(formatLang(get_total_payslip_amount_by_rule_code(obj.slip_ids,'RAV'), digits=0))]]</para>
         </td>
         <td>
-          <para style="P4">[[ formatLang (get_total_amount_by_category(obj.slip_ids, 'IMPOT_EMPLOYE'), digits=0)]]</para>
+          <para style="P4">[[ format_amount(formatLang (get_total_amount_by_category(obj.slip_ids, 'IMPOT_EMPLOYE'), digits=0))]]</para>
         </td>
         <td>
-          <para style="P2">[[formatLang(get_total_payslip_amount_by_rule_code(obj.slip_ids,'PENV'), digits=0)]]</para>
+          <para style="P2">[[format_amount(formatLang(get_total_payslip_amount_by_rule_code(obj.slip_ids,'PENV'), digits=0))]]</para>
         </td>
         <td>
-          <para style="P5">[[ formatLang (get_total_amount_by_category(obj.slip_ids, 'NET'),digits=0) ]]</para>
+          <para style="P5">[[ format_amount(formatLang (get_total_amount_by_category(obj.slip_ids, 'NET'),digits=0)) ]]</para>
         </td>
       </tr>
     </blockTable>
@@ -754,7 +754,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P9">PRESTATIONS FAMILIALES</para>
               </td>
               <td>
-                <para style="P13">[[formatLang(obj.prest_fam, digits=0) ]]</para>
+                <para style="P13">[[format_amount(formatLang(obj.prest_fam, digits=0)) ]]</para>
               </td>
             </tr>
             <tr>
@@ -762,7 +762,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P9">PENSION VIELLESSE</para>
               </td>
               <td>
-                <para style="P13">[[formatLang(obj.pens_viel, digits=0) ]]</para>
+                <para style="P13">[[format_amount(formatLang(obj.pens_viel, digits=0)) ]]</para>
               </td>
             </tr>
             <tr>
@@ -770,7 +770,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P9">ACCIDENT DE TRAVAIL</para>
               </td>
               <td>
-                <para style="P13">[[formatLang(obj.acc_trav, digits=0) ]]</para>
+                <para style="P13">[[format_amount(formatLang(obj.acc_trav, digits=0)) ]]</para>
               </td>
             </tr>
             <tr>
@@ -778,7 +778,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P5">TOTAL</para>
               </td>
               <td>
-                <para style="P29">[[formatLang(obj.total_charge_sociale, digits=0) ]]</para>
+                <para style="P29">[[format_amount(formatLang(obj.total_charge_sociale, digits=0)) ]]</para>
               </td>
             </tr>
           </blockTable>
@@ -819,13 +819,13 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P9">IRPP</para>
               </td>
               <td>
-                <para style="P3">[[formatLang(obj.irpp, digits=0)]]</para>
+                <para style="P3">[[format_amount(formatLang(obj.irpp, digits=0))]]</para>
               </td>
               <td>
-                <para style="P3">[[formatLang(obj.cac, digits=0)]]</para>
+                <para style="P3">[[format_amount(formatLang(obj.cac, digits=0))]]</para>
               </td>
               <td>
-                <para style="P3">[[formatLang((obj.cac + obj.irpp), digits=0)]]</para>
+                <para style="P3">[[format_amount(formatLang((obj.cac + obj.irpp), digits=0))]]</para>
               </td>
             </tr>
             <tr>
@@ -833,7 +833,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P9">CFC PATRONALE</para>
               </td>
               <td>
-                <para style="P13">[[formatLang(obj.cfc_patronal, digits=0) ]]</para>
+                <para style="P13">[[format_amount(formatLang(obj.cfc_patronal, digits=0)) ]]</para>
               </td>
               <td>
                 <para style="P10">
@@ -841,7 +841,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 </para>
               </td>
               <td>
-                <para style="P13">[[formatLang(obj.cfc_patronal, digits=0) ]]</para>
+                <para style="P13">[[format_amount(formatLang(obj.cfc_patronal, digits=0)) ]]</para>
               </td>
             </tr>
             <tr>
@@ -849,7 +849,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P8">CFC SALARIAL</para>
               </td>
               <td>
-                <para style="P3">[[formatLang(obj.cfc_salarial, digits=0)]]</para>
+                <para style="P3">[[format_amount(formatLang(obj.cfc_salarial, digits=0))]]</para>
               </td>
               <td>
                 <para style="P10">
@@ -857,7 +857,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 </para>
               </td>
               <td>
-                <para style="P3">[[formatLang(obj.cfc_salarial, digits=0)]]</para>
+                <para style="P3">[[format_amount(formatLang(obj.cfc_salarial, digits=0))]]</para>
               </td>
             </tr>
             <tr>
@@ -865,7 +865,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P8">FNE</para>
               </td>
               <td>
-                <para style="P13">[[formatLang(obj.fne, digits=0) ]]</para>
+                <para style="P13">[[format_amount(formatLang(obj.fne, digits=0)) ]]</para>
               </td>
               <td>
                 <para style="P10">
@@ -873,7 +873,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 </para>
               </td>
               <td>
-                <para style="P13">[[formatLang(obj.fne, digits=0) ]]</para>
+                <para style="P13">[[format_amount(formatLang(obj.fne, digits=0)) ]]</para>
               </td>
             </tr>
             <tr>
@@ -881,7 +881,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P8">TDL</para>
               </td>
               <td>
-                <para style="P3">[[formatLang(obj.tdl, digits=0)]]</para>
+                <para style="P3">[[format_amount(formatLang(obj.tdl, digits=0))]]</para>
               </td>
               <td>
                 <para style="P10">
@@ -889,7 +889,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 </para>
               </td>
               <td>
-                <para style="P3">[[formatLang(obj.tdl, digits=0)]]</para>
+                <para style="P3">[[format_amount(formatLang(obj.tdl, digits=0))]]</para>
               </td>
             </tr>
             <tr>
@@ -897,7 +897,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P8">RAV</para>
               </td>
               <td>
-                <para style="P3">[[formatLang(obj.rav, digits=0)]]</para>
+                <para style="P3">[[format_amount(formatLang(obj.rav, digits=0))]]</para>
               </td>
               <td>
                 <para style="P10">
@@ -905,7 +905,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 </para>
               </td>
               <td>
-                <para style="P3">[[formatLang(obj.rav, digits=0)]]</para>
+                <para style="P3">[[format_amount(formatLang(obj.rav, digits=0))]]</para>
               </td>
             </tr>
             <tr>
@@ -913,13 +913,13 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
                 <para style="P8">TOTAL</para>
               </td>
               <td>
-                <para style="P21">[[formatLang((obj.total_charge_patronale - obj.cac), digits=0)]]</para>
+                <para style="P21">[[format_amount(formatLang((obj.total_charge_patronale - obj.cac), digits=0))]]</para>
               </td>
               <td>
-                <para style="P21">[[formatLang(obj.cac, digits=0)]]</para>
+                <para style="P21">[[format_amount(formatLang(obj.cac, digits=0))]]</para>
               </td>
               <td>
-                <para style="P21">[[formatLang(obj.total_charge_patronale, digits=0)]]</para>
+                <para style="P21">[[format_amount(formatLang(obj.total_charge_patronale, digits=0))]]</para>
               </td>
             </tr>
           </blockTable>
