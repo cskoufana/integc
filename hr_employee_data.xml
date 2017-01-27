@@ -1,0 +1,867 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+            <!-- hr_department-->
+            <record id="hr_department_DG" model="hr.department">
+                <field name="name">DIRECTION GENERALE</field>
+            </record>
+            <record id="hr_department_DAFC" model="hr.department">
+                <field name="name">DAFC</field>
+            </record>
+
+            <record id="hr_department_DEX" model="hr.department">
+                <field name="name">DEX</field>
+            </record>
+
+            <record id="hr_job_GERANT" model="hr.job">
+                <field name="name">GERANT</field>
+            </record>
+            <record id="hr_job_CHAUFFEUR" model="hr.job">
+                <field name="name">CHAUFFEUR</field>
+            </record>
+            <record id="hr_job_MECANICIEN" model="hr.job">
+                <field name="name">MECANICEN</field>
+            </record>
+            <record model="hr.job" id="hr_job_DAFC">
+                <field name="name">DAFC</field>
+            </record>
+            <record model="hr.job" id="hr_job_DEX">
+                <field name="name">DEX</field>
+            </record>
+            <record model="hr.job" id="hr_job_ING_ASS">
+                <field name="name">INGENIEUR ASSISTANT</field>
+            </record>
+            <record model="hr.job" id="hr_job_SECRETAIRE">
+                <field name="name">SECRETAIRE</field>
+            </record>
+            <record model="hr.job" id="hr_job_ASSISTANT">
+                <field name="name">ASSISTANT</field>
+            </record>
+            <record model="hr.job" id="hr_job_GARDIEN">
+                <field name="name">GARDIEN</field>
+            </record>
+            <record model="hr.job" id="hr_job_RESP_ET">
+                <field name="name">RESPONSABLE DES ETUDES</field>
+            </record>
+            <record model="hr.job" id="hr_job_CRS">
+                <field name="name">CRS</field>
+            </record>
+            <record model="hr.job" id="hr_job_CDC">
+                <field name="name">CDC</field>
+            </record>
+            <record model="hr.job" id="hr_job_ASS_R">
+                <field name="name">ASSISTANT R</field>
+            </record>
+            <record model="hr.job" id="hr_job_AGENT_ENTRETIEN">
+                <field name="name">AGENT D'ENTRETIEN</field>
+            </record>
+            <record model="hr.job" id="hr_job_RESP_ACHAT">
+                <field name="name">RESPONSABLE ACHATS</field>
+            </record>
+            <record model="hr.job" id="hr_job_ASS_F">
+                <field name="name">ASSISTANTE F</field>
+            </record>
+            <record model="hr.job" id="hr_job_CSL">
+                <field name="name">CSL</field>
+            </record>
+            <record model="hr.job" id="hr_job_ASS_CGM">
+                <field name="name">ASSISTANTE CGM</field>
+            </record>
+            <record model="hr.job" id="hr_job_GEOTECHNICIEN">
+                <field name="name">GEOTECHNICIEN</field>
+            </record>
+            <record model="hr.job" id="hr_job_JEUNE_ING_GC">
+                <field name="name">JEUNE INGENIEUR GC</field>
+            </record>
+            <record model="hr.job" id="hr_job_TOPOGRAPHE">
+                <field name="name">TOPOGRAPHE</field>
+            </record>
+            <record model="hr.job" id="hr_job_TECH_GC">
+                <field name="name">TECHNICIEN DU GENIE CIVIL</field>
+            </record>
+            <record model="hr.job" id="hr_job_DESSINATEUR">
+                <field name="name">DESSINATEUR PROJETEUR</field>
+            </record>
+            <record model="hr.job" id="hr_job_ASSISTANT_C">
+                <field name="name">ASSISTANTE COMPTABLE</field>
+            </record>
+            <record model="hr.job" id="hr_job_ASSISTANT_CDC">
+                <field name="name">ASSISTANT CDC</field>
+            </record>
+
+
+            <record id="hr_employee_NKONO_E" model="hr.employee">
+                <field name="name">NKONO ERIC FLAVIEN</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_GERANT" />
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+
+            <record id="hr_employee1" model="hr.employee">
+                <field name="name">NTSOKO OSSOKO MATHIEU</field>
+                <field name="otherid">IME003</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DAFC" />
+                <field name="job_id" ref="hr_job_DAFC" />
+                <field name="ssnid">321-1017044-7</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+
+            <record id="hr_employee_ABBA_HASSANE" model="hr.employee">
+                <field name="name">ABBA HASSANE</field>
+                <field name="otherid">IME152</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+
+            <record id="hr_employee_ABIODO" model="hr.employee">
+                <field name="name">ABIOBO BIDIMBO</field>
+                <field name="otherid">IME098</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_MECANICIEN" />
+                <field name="ssnid">327-1019741-6</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_ABOUEM" model="hr.employee">
+                <field name="name">ABOUEM A NNOUCK</field>
+                <field name="otherid">IME079</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_ING_ASS" />
+                <field name="ssnid">327-1014381-6</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_ADAMOU" model="hr.employee">
+                <field name="name">ADAMOU HAMAN</field>
+                <field name="otherid">IME007</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">324-1006626-4</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_ADZABA" model="hr.employee">
+                <field name="name">ADZABA MANI Carole</field>
+                <field name="otherid">IME006</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_SECRETAIRE" />
+                <field name="ssnid">321-1027127-8</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_ALANG" model="hr.employee">
+                <field name="name">ALANG BOUDOMBO</field>
+                <field name="otherid">IME156</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_SECRETAIRE" />
+                <field name="ssnid"></field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_ALI" model="hr.employee">
+                <field name="name">ALI KANE</field>
+                <field name="otherid">IME105</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_ASSISTANT" />
+                <field name="ssnid">000-0510321-3</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_ATANGANA" model="hr.employee">
+                <field name="name">ATANGANA ATANGANA CELESTIN</field>
+                <field name="otherid">IME117</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">355-1022764-3</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_ABOUBAKAR" model="hr.employee">
+                <field name="name">ABOUBAKAR</field>
+                <field name="otherid"></field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid"></field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+
+            <record id="hr_employee_ATEBA" model="hr.employee">
+                <field name="name">ATEBA CYRILLE</field>
+                <field name="otherid">IME070</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_GARDIEN" />
+                <field name="ssnid">327-1013599-4</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_AYOMBA" model="hr.employee">
+                <field name="name">AYOMBA CELESTIN</field>
+                <field name="otherid">IME083</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">327-1015103-3</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_BAKIMEN" model="hr.employee">
+                <field name="name">BAKINIEN MAKANDA SEVERIN</field>
+                <field name="otherid">IME042</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">351-1033743-4</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_BALANA" model="hr.employee">
+                <field name="name">BALANA ROSALIE</field>
+                <field name="otherid">IME096</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_SECRETAIRE" />
+                <field name="ssnid">321-1028500-5</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_BALIABA" model="hr.employee">
+                <field name="name">BALIABA MARCEL THOMAS</field>
+                <field name="otherid">IME093</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">327-1016574-4</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+
+            <record id="hr_employee_BAYECK" model="hr.employee">
+                <field name="name">BAYECK BADJECK CELESTIN</field>
+                <field name="otherid">IME134</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">327-1011661-4</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_BELEBENIE" model="hr.employee">
+                <field name="name">BELEBENIE BOYOMO JEAN L</field>
+                <field name="otherid">IME078</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">327-1013600-0</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_BENEHOUNE" model="hr.employee">
+                <field name="name">BENEHOUNE NOBERT</field>
+                <field name="otherid">IME056</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">327-1013149-8</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_BITOUMA" model="hr.employee">
+                <field name="name">BITOUMA OBILOMA ALICE</field>
+                <field name="otherid">IME021</field>
+                <field name="gender">female</field>
+                <!--<field name="department_id" ref="hr_department_DEX" />-->
+                <field name="job_id" ref="hr_job_CRS" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+
+            <record id="hr_employee_BODIONG" model="hr.employee">
+                <field name="name">BODIONG CELESTIN</field>
+                <field name="otherid">IME130</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">324-1004639-9</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_BOLOGO" model="hr.employee">
+                <field name="name">BOLOGO BOLOBO JEAN</field>
+                <field name="otherid">IME075</field>
+                <field name="gender">male</field>
+                <!--<field name="department_id" ref="hr_department_DG" />-->
+                <field name="job_id" ref="hr_job_CDC" />
+                <field name="ssnid">327-1014513-4</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_BOMBOK" model="hr.employee">
+                <field name="name">BOMBOK MOLEMB FRANCOIS</field>
+                <field name="otherid">IME038</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">321-1012486-5</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_BOUBAKARY" model="hr.employee">
+                <field name="name">BOUBAKARY OUMAROU</field>
+                <field name="otherid">IME076</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">327-1015543-0</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_BOUNTSEBE" model="hr.employee">
+                <field name="name">BOUNTSEBE AMBASSA ISIDORE</field>
+                <field name="otherid">IME114</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">327-1020340-4</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_BOYOMO" model="hr.employee">
+                <field name="name">BOYOMO THIERRY MARTIAL</field>
+                <field name="otherid">IME167</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_BOSSOKO" model="hr.employee">
+                <field name="name">BOSSOKO MPOPO ERIC</field>
+                <field name="otherid">IME120</field>
+                <field name="gender">male</field>
+                <!--<field name="department_id" ref="hr_department_DG" />-->
+                <field name="job_id" ref="hr_job_ASS_R" />
+                <field name="ssnid">321-1065376-4</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+
+            <record id="hr_employee_DJOUFACK" model="hr.employee">
+                <field name="name">DJOUFACK LAURE VIRGINIE</field>
+                <!--<field name="otherid"></field>-->
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_SECRETAIRE" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+
+            <record id="hr_employee_ETEME" model="hr.employee">
+                <field name="name">ETEME NDJIE SIMON OLIVIER</field>
+                <field name="otherid">IME124</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DEX" />
+                <field name="job_id" ref="hr_job_RESP_ET" />
+                <field name="ssnid">327-1012011-1</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_ESSENGUE" model="hr.employee">
+                <field name="name">ESSENGUE ISIDORE</field>
+                <field name="otherid">IME128</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_AGENT_ENTRETIEN" />
+                <field name="ssnid">327-1028009-7</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_FEUNKEU" model="hr.employee">
+                <field name="name">FEUNKEU BOÏLONG LAURE</field>
+                <field name="otherid">IME039</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DAFC" />
+                <field name="job_id" ref="hr_job_RESP_ACHAT" />
+                <field name="ssnid">321-1025743-4</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+
+        <record id="hr_employee_HAMADOU_BOUBA" model="hr.employee">
+                <field name="name">HAMADOU BOUBA</field>
+                <field name="otherid">IME161</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_GARDIEN" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_HAMADOU" model="hr.employee">
+                <field name="name">HAMADOU</field>
+                <field name="otherid">IME023</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">000-0412869-0</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_HAROUNA" model="hr.employee">
+                <field name="name">HAROUNA ISSA</field>
+                <field name="otherid">IME081</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">360-1005278-5</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+
+            <record id="hr_employee_ISSA_MANA" model="hr.employee">
+                <field name="name">ISSA MANA</field>
+                <field name="otherid">IME109</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">327-1020005-3</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_GONFOU" model="hr.employee">
+                <field name="name">GONFOU TOUMBAROU</field>
+                <!--<field name="otherid"></field>-->
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_ISSHAGA" model="hr.employee">
+                <field name="name">ISSHAGA ADAMA</field>
+                <field name="otherid">IME008</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">327-1014306-3</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_ISSHAGA" model="hr.employee">
+                <field name="name">GOLDJAOUDA MOUROISSOU</field>
+                <field name="otherid">IME142</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_SECRETAIRE" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_KADA" model="hr.employee">
+                <field name="name">KADA BONO MADELEINE</field>
+                <field name="otherid">IME036</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">327-10114368-6</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_KENEMBENI" model="hr.employee">
+                <field name="name">KENEMBENI BERNADETTE</field>
+                <field name="otherid">IME010</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_SECRETAIRE" />
+                <field name="ssnid">327-1011632-5</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_KINYEMB" model="hr.employee">
+                <field name="name">KINYEMB NGO BONG CHRISTINE</field>
+                <field name="otherid">IME174</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DAFC" />
+                <field name="job_id" ref="hr_job_ASSISTANT_C" />
+                <field name="ssnid">354-1030837-7</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+
+            <record id="hr_employee_LAMI" model="hr.employee">
+                <field name="name">LAMI HALIYOU DZELAFEN</field>
+                <field name="otherid">IME138</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">327-1031427-6</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_LANING" model="hr.employee">
+                <field name="name">LANING NOBIEP NELIANE</field>
+                <field name="otherid">IME123</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DAFC" />
+                <field name="job_id" ref="hr_job_ASS_F" />
+                <field name="ssnid">327-1024509-0</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_MABOUM" model="hr.employee">
+                <field name="name">MABOUM ANDJONGO ROSE</field>
+                <field name="otherid">IME086</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_SECRETAIRE" />
+                <field name="ssnid">327-1015392-2</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_MAIMOUNATOU" model="hr.employee">
+                <field name="name">MAIMOUNATOU MAMOUDOU</field>
+                <field name="otherid">IME125</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_SECRETAIRE" />
+                <field name="ssnid">327-1025378-9</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_MANI" model="hr.employee">
+                <field name="name">MANI NORBERT</field>
+                <field name="otherid">IME049</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">327-1012279-4</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_MANI" model="hr.employee">
+                <field name="name">MBASSI NKOLO PROTAIS DESIRE</field>
+                <field name="otherid">IME103</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_MAYANGA" model="hr.employee">
+                <field name="name">MAYANGA ARMELLE LAURE</field>
+                <field name="otherid">IME054</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_SECRETAIRE" />
+                <field name="ssnid">327-1013886-5</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_MEYEH" model="hr.employee">
+                <field name="name">MEYEH CHARLES SUNJO</field>
+                <field name="otherid">IME004</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_MECANICIEN" />
+                <field name="ssnid">321-1027130-2</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_MEYIFI" model="hr.employee">
+                <field name="name">MEYIFI YVES</field>
+                <field name="otherid">IME104</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">327-1028014-7</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <!--<record id="hr_employee_MEYIFI" model="hr.employee">
+                <field name="name">MIRY SANDRINNE</field>
+                <field name="otherid">IME066</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_" />
+                <field name="ssnid">327-1000353-1</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>-->
+            <record id="hr_employee_MOUKA" model="hr.employee">
+                <field name="name">MOUKA EDMOND</field>
+                <field name="otherid">IME103</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">327-10161102-4</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_MOUKO" model="hr.employee">
+                <field name="name">MOUKO AYANGMA</field>
+                <field name="otherid">IME001</field>
+                <field name="gender">male</field>
+                <!--<field name="department_id" ref="hr_department_DG" />-->
+                <field name="job_id" ref="hr_job_CSL" />
+                <field name="ssnid">000-544395-7</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_MOUSSA" model="hr.employee">
+                <field name="name">MOUSSA DJALIGUE</field>
+                <field name="otherid">IME026</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_GARDIEN" />
+                <field name="ssnid">340-1000778-9</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_MOUYOMBON" model="hr.employee">
+                <field name="name">MOUYOMBON MANDESI HUGUETTE</field>
+                <field name="otherid">IME107</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_SECRETAIRE" />
+                <field name="ssnid">351-1028685-4</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+
+            <record id="hr_employee_NANGA" model="hr.employee">
+                <field name="name">NANGA EKOBENA SABINE HUGUETTE</field>
+                <field name="otherid">IME139</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DAFC" />
+                <field name="job_id" ref="hr_job_ASS_CGM" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_NGHDAMA" model="hr.employee">
+                <field name="name">NGHDAMA JACQUE</field>
+                <field name="otherid">IME135</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_GARDIEN" />
+                <field name="ssnid">327-1030224-8</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_NDJAMA" model="hr.employee">
+                <field name="name">NDJAMA SAMUEL</field>
+                <field name="otherid">IME092</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DEX" />
+                <field name="job_id" ref="hr_job_GEOTECHNICIEN" />
+                <field name="ssnid">000-0488504-2</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+
+            <record id="hr_employee_NGAROUAO" model="hr.employee">
+                <field name="name">NGAROUA DAVID</field>
+                <field name="otherid">IME009</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_GARDIEN" />
+                <field name="ssnid">324-1005649-7</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_NJI" model="hr.employee">
+                <field name="name">NJI MEH KENNETH</field>
+                <field name="otherid">IME019</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">327-1015098-5</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_NLAMWESSE" model="hr.employee">
+                <field name="name">NLAMWESSE DO TSOYI SABINE</field>
+                <field name="otherid">IME150</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_SECRETAIRE" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_NGO_BILLONG" model="hr.employee">
+                <field name="name">NGO BILLONG ROSELINE CHRISTELLE</field>
+                <field name="otherid">IME149</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_SECRETAIRE" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_NGOH_NKEM" model="hr.employee">
+                <field name="name">NGOH NKEM STEPHANIE ORNELLA</field>
+                <field name="otherid">IME171</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_SECRETAIRE" />
+                <field name="ssnid">327-1039761-0</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+
+            <record id="hr_employee_NKONO_N" model="hr.employee">
+                <field name="name">NKONO NISSOUGUE DIANA</field>
+                <field name="otherid">IME148</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DEX" />
+                <field name="job_id" ref="hr_job_JEUNE_ING_GC" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_ONOUGOU" model="hr.employee">
+                <field name="name">ONOUGOU DJACA DOMINIQUE F</field>
+                <field name="otherid">IME173</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DEX" />
+                <field name="job_id" ref="hr_job_JEUNE_ING_GC" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_NTAH" model="hr.employee">
+                <field name="name">NTAH ROBERT</field>
+                <field name="otherid">IME047</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">327-1013456-7</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_NTEME" model="hr.employee">
+                <field name="name">NTEME HENRI</field>
+                <field name="otherid">IME095</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DEX" />
+                <field name="job_id" ref="hr_job_TOPOGRAPHE" />
+                <field name="ssnid">000-0767049-0</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_RAMHANG" model="hr.employee">
+                <field name="name">RAMHANG PAULINE GRACE</field>
+                <field name="otherid">IME136</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_SECRETAIRE" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_NWAN" model="hr.employee">
+                <field name="name">NWAN MEH RITA</field>
+                <field name="otherid">IME040</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DEX" />
+                <field name="job_id" ref="hr_job_TECH_GC" />
+                <field name="ssnid">327-1011576-4</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_SADJO" model="hr.employee">
+                <field name="name">SADJO PAGORE</field>
+                <field name="otherid">IME069</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">000-0550173-9</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_SARAKANG" model="hr.employee">
+                <field name="name">SARAKANG RAISSA FON</field>
+                <field name="otherid">IME176</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_SECRETAIRE" />
+                <field name="ssnid">327-1040282-4</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_SAWALDA" model="hr.employee">
+                <field name="name">SAWALDA ABDIAS</field>
+                <field name="otherid">IME013</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_GARDIEN" />
+                <field name="ssnid">327-1011633-3</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_TALA" model="hr.employee">
+                <field name="name">TALA FOTSO ZEPHIRIN</field>
+                <field name="otherid">IME144</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_TITANGWA" model="hr.employee">
+                <field name="name">TITANGWA JONHSON</field>
+                <field name="otherid">IME108</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_DESSINATEUR" />
+                <field name="ssnid">327-1019753-1</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_ONGMANDJOM" model="hr.employee">
+                <field name="name">ONGMANDJOM MARIE CLARISSE</field>
+                <field name="otherid">IME147</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DAFC" />
+                <field name="job_id" ref="hr_job_ASSISTANT_C" />
+                <field name="ssnid">327-1037426-2</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_ONGUETOU" model="hr.employee">
+                <field name="name">ONGUETOU MARGUERITE EPSE NKONO</field>
+                <field name="otherid">IME077</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DAFC" />
+                <field name="job_id" ref="hr_job_ASS_F" />
+                <field name="ssnid">321-1016715-3</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_SOUME" model="hr.employee">
+                <field name="name">SOUME SERGE BERTRAND</field>
+                <field name="otherid">IME005</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">321-1015844-2</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_YAKANA" model="hr.employee">
+                <field name="name">YAKANA JEAN LEON</field>
+                <field name="otherid">IME103</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <field name="ssnid">327-1016102-4</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_YENOU" model="hr.employee">
+                <field name="name">YENOU RACHELLE EPSE NGUIENG</field>
+                <field name="otherid">IME106</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_SECRETAIRE" />
+                <field name="ssnid">327-1019796-0</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_YOUNOUSSA" model="hr.employee">
+                <field name="name">YOUNOUSSA HAMASSEO</field>
+                <field name="otherid">IME132</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_GARDIEN" />
+                <field name="ssnid">327-1038814-8</field>
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_WALBIGA" model="hr.employee">
+                <field name="name">WALBIGA</field>
+                <field name="otherid">IME107</field>
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_OSSONGO" model="hr.employee">
+                <field name="name">OSSONGO ANATOLE STEEVE</field>
+                <!--<field name="otherid"></field>-->
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DAFC" />
+                <field name="job_id" ref="hr_job_ASSISTANT_CDC" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_EFOUBA" model="hr.employee">
+                <field name="name">EFOUBA EMELINE</field>
+                <!--<field name="otherid"></field>-->
+                <field name="gender">male</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_CHAUFFEUR" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+            <record id="hr_employee_ZENABOU" model="hr.employee">
+                <field name="name">ZENABOU ALI</field>
+                <field name="otherid">IME155</field>
+                <field name="gender">female</field>
+                <field name="department_id" ref="hr_department_DG" />
+                <field name="job_id" ref="hr_job_SECRETAIRE" />
+                <!--<field name="ssnid"></field>-->
+                <field name="address_id" ref="base.main_partner" />
+            </record>
+
+
+
+
+
+    </data>
+</openerp>
