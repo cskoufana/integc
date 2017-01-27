@@ -117,7 +117,7 @@
                     <field name="working_hours" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}" />
                 </field>
                 <field name="employee_id" position="replace">
-                    <field name="employee_id" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}" />
+                    <field name="employee_id" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}" on_change="onchange_employee(employee_id)"/>
                 </field>
                 <field name="date_start" position="replace">
                     <field name="date_start" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}" />
@@ -149,16 +149,16 @@
                     <field name="date_signature_employee" readonly="1" />
                     <field name="date_cancel" readonly="1" attrs="{'invisible': [('state','!=','cancel')]}"/>
                 </xpath>
-                <xpath expr="//field[@name='job_id']" position="replace">
+                <!--<xpath expr="//field[@name='job_id']" position="replace">
                     <field name="job_id" readonly="1" />
-                </xpath>
-                <xpath expr="//field[@name='analytic_account_id']" position="replace">
+                </xpath>-->
+                <!--<xpath expr="//field[@name='analytic_account_id']" position="replace">
                     <field name="analytic_account_id" readonly="1" />
-                </xpath>
+                </xpath>-->
                 <xpath expr="//field[@name='advantages']" position="replace" />
-                <field name="journal_id" position="replace">
+                <!--<field name="journal_id" position="replace">
                     <field name="journal_id" readonly="1" />
-                </field>
+                </field>-->
             </data>
             </field>
         </record>
@@ -406,6 +406,7 @@
                     <field name="state" position="before">
                         <button string="Print Payslips" name="print_payslip" type="object" class="oe_highlight"/>
                         <button string="Print Journal" name="print_journal" type="object" class="oe_highlight"/>
+                        <button name="%(action_hr_payroll_export)d" string="Export DIPE" type="action"/>
                     </field>
                     <xpath expr="/form/sheet/group" position="after">
                     <!--<xpath expr="//field[@name='credit_note']" position="after">-->

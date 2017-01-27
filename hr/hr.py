@@ -456,6 +456,7 @@ class integc_hr_salary_grid(osv.osv):
         'grade_id': fields.many2one('integc.hr.grade', 'Grade', required=True),
         'wage_min': fields.float('Wage Minimal', digits=(16, 2), required=True, help="Basic Minimal Salary for this grid"),
         'wage_max': fields.float('Wage Maximal', digits=(16, 2), required=True, help="Basic Maximal Salary for this grid"),
+        #'wage': fields.float('Wage', digits=(16, 2), required=True, help="Basic Salary for this grid"),
         'structure_id': fields.related('category_id', 'structure_id', relation='hr.payroll.structure', type='many2one', store=False, readonly=True, string="Salary Structure"),
     }
 
@@ -667,7 +668,18 @@ class hr_contract(osv.osv):
                 return False
         return True
 
-    _constraints = [(_check_wage, _("Wage must be range in salary grid wage min and salary grid wage max."), [_('wage')])]
+    #_constraints = [(_check_wage, _("Wage must be range in salary grid wage min and salary grid wage max."), [_('wage')])]
+
+    def onchange_employee(self, cr, uid, ids, employee_id, context=None):
+        job_id = False
+        if employee_id:
+            employee = self.pool.get('hr.employee').browse(cr, uid, employee_id, context=context)
+            job_id = employee.job_id and employee.job_id.id or False
+        return {
+            'value': {
+                'job_id': job_id
+            }
+        }
 
     def onchange_category_grade(self, cr, uid, ids, category, grade, context=None):
         salary_grid = None
@@ -686,6 +698,7 @@ class hr_contract(osv.osv):
                 'salary_grid_id': salary_grid and salary_grid.id or False,
                 'wage_min': salary_grid and salary_grid.wage_min or 0.0,
                 'wage_max': salary_grid and salary_grid.wage_max or 0.0,
+                #'wage': salary_grid and salary_grid.wage or 0.0,
             }
         }
 
