@@ -3,7 +3,7 @@
 
 {
     'name' : 'INTEGC',
-    'version' : '0.1.5',
+    'version' : '0.1.6',
     'author' : 'Appacheur',
     'sequence': 20,
     'category': '',
@@ -22,10 +22,12 @@
     'data' : [
         'security/integc_security.xml',
         'security/ir.model.access.csv',
+        'account/wizard/transfer_order.xml',
         'tax_data.xml',
         'hr/hr_data.xml',
         'hr/hr_sequence.xml',
         'hr/wizard/hr_wizard.xml',
+        'hr/wizard/hr_payroll_export.xml',
         'hr/hr_view.xml',
         'hr/hr_workflow.xml',
         'hr/report/hr_report_view.xml',
@@ -48,6 +50,8 @@
         'market/market_sequence.xml',
         'market/wizard/market_wizard_view.xml',
         'market/market_view.xml',
+        'hr_employee_data.xml',
+        'hr_salary_grid_data.xml',
 
     ],
 
