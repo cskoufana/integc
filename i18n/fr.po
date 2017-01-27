@@ -401,6 +401,7 @@ msgstr "Cachet de l'employeur"
 
 #. module: integc
 #: selection:hr.contract,state:0
+#: view:hr.payroll.export:integc.hr_payroll_export_form
 #: view:hr.payslip.journal:integc.view_hr_payslip_journal
 #: view:integc.hr.contract:integc.view_integc_hr_contract_form
 #: selection:integc.hr.contract,decision:0
@@ -409,6 +410,7 @@ msgstr "Cachet de l'employeur"
 #: view:market.invoice:integc.market_invoice_form
 #: view:partner.contract:integc.partner_contract_form
 #: selection:partner.contract,decision:0
+#: view:transfer.order:integc.transfer_order_form
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -571,9 +573,12 @@ msgid "Configuration Error!"
 msgstr "Erreur de configuration!"
 
 #. module: integc
+#: view:hr.payroll.export:integc.hr_payroll_export_form
+#: view:hr.payslip:integc.view_hr_payslip_form_inherit
 #: view:integc.hr.contract:integc.view_integc_hr_contract_form
 #: view:market.invoice:integc.market_invoice_form
 #: view:partner.contract:integc.partner_contract_form
+#: view:transfer.order:integc.transfer_order_form
 msgid "Confirm"
 msgstr "Confirmer"
 
@@ -3102,10 +3107,12 @@ msgid "on order"
 msgstr "on order"
 
 #. module: integc
+#: view:hr.payroll.export:integc.hr_payroll_export_form
 #: view:hr.payslip.journal:integc.view_hr_payslip_journal
 #: view:integc.hr.contract:integc.view_integc_hr_contract_form
 #: view:market.invoice:integc.market_invoice_form
 #: view:partner.contract:integc.partner_contract_form
+#: view:transfer.order:integc.transfer_order_form
 msgid "or"
 msgstr "ou"
 
@@ -3264,4 +3271,97 @@ msgstr "Veuillez définir le journal des achats pour la société: \"%s\" (id:%d
 #: view:integc.hr.category:integc.view_integc_hr_category_form
 msgid "Advantages"
 msgstr "Avantages"
+
+#. module: integc
+#: view:transfer.order:integc.transfer_order_form
+msgid "The transfer order exportation will generate a CSV file for partners who have bank account configured"
+msgstr "Cette opération va générer un fichier au format CSV seulement avec les données des comptes bancaires configurés des partenaires"
+
+#. module: integc
+#: view:hr.payroll.export:integc.hr_payroll_export_form
+#: view:transfer.order:integc.transfer_order_form
+msgid "Would you want to confirm the exportation?"
+msgstr "Voulez vous confirmer l'opération?"
+
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Export"
+msgstr "Exporter"
+
+#. module: integc
+#: field:transfer.order,export_all:0
+msgid "Export all"
+msgstr "Exporter tout"
+
+#. module: integc
+#: view:transfer.order:integc.transfer_order_form
+#: view:hr.payroll.export:integc.hr_payroll_export_form
+msgid "Export Complete"
+msgstr "Opération terminée"
+
+#. module: integc
+#: view:hr.payroll.export:integc.hr_payroll_export_form
+#: view:transfer.order:integc.transfer_order_form
+msgid "Close"
+msgstr "Fermer"
+
+#. module: integc
+#: view:hr.payroll.export:integc.hr_payroll_export_form
+#: view:transfer.order:integc.transfer_order_form
+msgid "Here is the exported file:"
+msgstr "Voici le fichier genéré:"
+
+#. module: integc
+#: view:transfer.order:integc.transfer_order_form
+msgid "This file was generated using the universal"
+msgstr "Ce fichier a été généré en utilisant le format universel"
+
+#. module: integc
+#: view:transfer.order:integc.transfer_order_form
+msgid "file encoding, please be sure to view and edit\n"
+"                           using the same encoding."
+msgstr "encodage de fichier, assurez-vous de visualiser et d'éditer en utilisant le même type d'encodage."
+
+
+#. module: integc
+#: view:transfer.order:integc.transfer_order_form
+msgid "The file is generated on format"
+msgstr "Ce fichier est genéré sous le format"
+
+#. module: integc
+#: view:transfer.order:integc.transfer_order_form
+msgid "(separated by semi column) : you may edit it directly with your favorite spreadsheet software"
+msgstr "(separaré par un point virgule) : directement éditable dans un tableur"
+
+#. module: integc
+#: view:transfer.order:integc.transfer_order_form
+msgid "Transfer order exportation"
+msgstr "Export ordre de virement"
+
+#. module: integc
+#: model:ir.actions.act_window,name:integc.action_transfer_order
+msgid "Transfer order"
+msgstr "Ordre de virement"
+
+#. module: integc
+#: view:hr.payroll.export:integc.hr_payroll_export_form
+#: model:ir.actions.act_window,name:integc.action_hr_payroll_export
+msgid "DIPE Export"
+msgstr "Export de la DIPE"
+
+#. module: integc
+#: view:hr.payslip.run:integc.hr_payslip_run_form_inherit
+msgid "Export DIPE"
+msgstr "Exporter DIPE"
+
+#. module: integc
+#: view:transfer.order:integc.transfer_order_form
+msgid "However, you can integrate those who haven't bank account configured by checking here :"
+msgstr "Cependant, vous pouvent inclure les partenaires dont les comptes bancaires n'ont pas été configuré en cochant cette case :"
+
+#. module: integc
+#: view:hr.payroll.export:integc.hr_payroll_export_form
+msgid "This operation will generate a txt file compatible to DIPE format"
+msgstr "Cette opération genérera un fichier txt compatible au format DIPE"
 
