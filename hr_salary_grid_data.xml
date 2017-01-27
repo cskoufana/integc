@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+        <!-- Category 1-->
+        <record id="hr_salary_grid_1A" model="integc.hr.salary.grid">
+            <field name="name">1-A</field>
+            <field name="category_id" ref="category_val1" />
+            <field name="grade_id" ref="grade_val1" />
+            <field name="wage_min">0</field>
+            <field name="wage_max">38562</field>
+        </record>
+        <record id="hr_salary_grid_1B" model="integc.hr.salary.grid">
+            <field name="name">1-B</field>
+            <field name="category_id" ref="category_val1" />
+            <field name="grade_id" ref="grade_val2" />
+            <field name="wage_min">38563</field>
+            <field name="wage_max">40247</field>
+        </record>
+        <record id="hr_salary_grid_1C" model="integc.hr.salary.grid">
+            <field name="name">1-C</field>
+            <field name="category_id" ref="category_val1" />
+            <field name="grade_id" ref="grade_val3" />
+            <field name="wage_min">40248</field>
+            <field name="wage_max">42119</field>
+        </record>
+        <record id="hr_salary_grid_1D" model="integc.hr.salary.grid">
+            <field name="name">1-D</field>
+            <field name="category_id" ref="category_val1" />
+            <field name="grade_id" ref="grade_val4" />
+            <field name="wage_min">42120</field>
+            <field name="wage_max">43804</field>
+        </record>
+        <record id="hr_salary_grid_1E" model="integc.hr.salary.grid">
+            <field name="name">1-E</field>
+            <field name="category_id" ref="category_val1" />
+            <field name="grade_id" ref="grade_val5" />
+            <field name="wage_min">43805</field>
+            <field name="wage_max">45676</field>
+        </record>
+        <record id="hr_salary_grid_1F" model="integc.hr.salary.grid">
+            <field name="name">1-F</field>
+            <field name="category_id" ref="category_val1" />
+            <field name="grade_id" ref="grade_val6" />
+            <field name="wage_min">45677</field>
+            <field name="wage_max">47548</field>
+        </record>
+
+        <!-- Category 2-->
+        <record id="hr_salary_grid_2A" model="integc.hr.salary.grid">
+            <field name="name">2-A</field>
+            <field name="category_id" ref="category_val2" />
+            <field name="grade_id" ref="grade_val1" />
+            <field name="wage_min">0</field>
+            <field name="wage_max">47548</field>
+        </record>
+        <record id="hr_salary_grid_2B" model="integc.hr.salary.grid">
+            <field name="name">2-B</field>
+            <field name="category_id" ref="category_val2" />
+            <field name="grade_id" ref="grade_val2" />
+            <field name="wage_min">47549</field>
+            <field name="wage_max">49233</field>
+        </record>
+        <record id="hr_salary_grid_2C" model="integc.hr.salary.grid">
+            <field name="name">2-C</field>
+            <field name="category_id" ref="category_val2" />
+            <field name="grade_id" ref="grade_val3" />
+            <field name="wage_min">49234</field>
+            <field name="wage_max">51105</field>
+        </record>
+        <record id="hr_salary_grid_2D" model="integc.hr.salary.grid">
+            <field name="name">2-D</field>
+            <field name="category_id" ref="category_val2" />
+            <field name="grade_id" ref="grade_val4" />
+            <field name="wage_min">51206</field>
+            <field name="wage_max">52789</field>
+        </record>
+        <record id="hr_salary_grid_2E" model="integc.hr.salary.grid">
+            <field name="name">2-E</field>
+            <field name="category_id" ref="category_val2" />
+            <field name="grade_id" ref="grade_val5" />
+            <field name="wage_min">52790</field>
+            <field name="wage_max">54661</field>
+        </record>
+        <record id="hr_salary_grid_2F" model="integc.hr.salary.grid">
+            <field name="name">2-F</field>
+            <field name="category_id" ref="category_val2" />
+            <field name="grade_id" ref="grade_val6" />
+            <field name="wage_min">54662</field>
+            <field name="wage_max">56159</field>
+        </record>
+
+        <!-- Category 3-->
+        <record id="hr_salary_grid_3A" model="integc.hr.salary.grid">
+            <field name="name">3-A</field>
+            <field name="category_id" ref="category_val3" />
+            <field name="grade_id" ref="grade_val1" />
+            <field name="wage_min">0</field>
+            <field name="wage_max">55410</field>
+        </record>
+        <record id="hr_salary_grid_3B" model="integc.hr.salary.grid">
+            <field name="name">3-B</field>
+            <field name="category_id" ref="category_val3" />
+            <field name="grade_id" ref="grade_val2" />
+            <field name="wage_min">55411</field>
+            <field name="wage_max">58856</field>
+        </record>
+        <record id="hr_salary_grid_3C" model="integc.hr.salary.grid">
+            <field name="name">3-C</field>
+            <field name="category_id" ref="category_val3" />
+            <field name="grade_id" ref="grade_val3" />
+            <field name="wage_min">58857</field>
+            <field name="wage_max">63085</field>
+        </record>
+        <record id="hr_salary_grid_3D" model="integc.hr.salary.grid">
+            <field name="name">3-D</field>
+            <field name="category_id" ref="category_val3" />
+            <field name="grade_id" ref="grade_val4" />
+            <field name="wage_min">63086</field>
+            <field name="wage_max">67016</field>
+        </record>
+        <record id="hr_salary_grid_3E" model="integc.hr.salary.grid">
+            <field name="name">3-E</field>
+            <field name="category_id" ref="category_val3" />
+            <field name="grade_id" ref="grade_val5" />
+            <field name="wage_min">67017</field>
+            <field name="wage_max">70947</field>
+        </record>
+        <record id="hr_salary_grid_3F" model="integc.hr.salary.grid">
+            <field name="name">3-F</field>
+            <field name="category_id" ref="category_val3" />
+            <field name="grade_id" ref="grade_val6" />
+            <field name="wage_min">70948</field>
+            <field name="wage_max">74879</field>
+        </record>
+
+        <!-- Category 4-->
+        <record id="hr_salary_grid_4A" model="integc.hr.salary.grid">
+            <field name="name">4-A</field>
+            <field name="category_id" ref="category_val4" />
+            <field name="grade_id" ref="grade_val1" />
+            <field name="wage_min">55410</field>
+            <field name="wage_max">71134</field>
+        </record>
+        <record id="hr_salary_grid_4B" model="integc.hr.salary.grid">
+            <field name="name">4-B</field>
+            <field name="category_id" ref="category_val4" />
+            <field name="grade_id" ref="grade_val2" />
+            <field name="wage_min">71135</field>
+            <field name="wage_max">77125</field>
+        </record>
+        <record id="hr_salary_grid_4C" model="integc.hr.salary.grid">
+            <field name="name">4-C</field>
+            <field name="category_id" ref="category_val4" />
+            <field name="grade_id" ref="grade_val3" />
+            <field name="wage_min">77126</field>
+            <field name="wage_max">83303</field>
+        </record>
+        <record id="hr_salary_grid_4D" model="integc.hr.salary.grid">
+            <field name="name">4-D</field>
+            <field name="category_id" ref="category_val4" />
+            <field name="grade_id" ref="grade_val4" />
+            <field name="wage_min">83304</field>
+            <field name="wage_max">89667</field>
+        </record>
+        <record id="hr_salary_grid_4E" model="integc.hr.salary.grid">
+            <field name="name">4-E</field>
+            <field name="category_id" ref="category_val4" />
+            <field name="grade_id" ref="grade_val5" />
+            <field name="wage_min">89668</field>
+            <field name="wage_max">95845</field>
+        </record>
+        <record id="hr_salary_grid_4F" model="integc.hr.salary.grid">
+            <field name="name">4-F</field>
+            <field name="category_id" ref="category_val4" />
+            <field name="grade_id" ref="grade_val6" />
+            <field name="wage_min">95846</field>
+            <field name="wage_max">102002</field>
+        </record>
+
+        <!-- Category 5-->
+        <record id="hr_salary_grid_5A" model="integc.hr.salary.grid">
+            <field name="name">5-A</field>
+            <field name="category_id" ref="category_val5" />
+            <field name="grade_id" ref="grade_val1" />
+            <field name="wage_min">71134</field>
+            <field name="wage_max">96781</field>
+        </record>
+        <record id="hr_salary_grid_5B" model="integc.hr.salary.grid">
+            <field name="name">5-B</field>
+            <field name="category_id" ref="category_val5" />
+            <field name="grade_id" ref="grade_val2" />
+            <field name="wage_min">96782</field>
+            <field name="wage_max">102959</field>
+        </record>
+        <record id="hr_salary_grid_5C" model="integc.hr.salary.grid">
+            <field name="name">5-C</field>
+            <field name="category_id" ref="category_val5" />
+            <field name="grade_id" ref="grade_val3" />
+            <field name="wage_min">102960</field>
+            <field name="wage_max">109323</field>
+        </record>
+        <record id="hr_salary_grid_5D" model="integc.hr.salary.grid">
+            <field name="name">5-D</field>
+            <field name="category_id" ref="category_val5" />
+            <field name="grade_id" ref="grade_val4" />
+            <field name="wage_min">109324</field>
+            <field name="wage_max">115468</field>
+        </record>
+        <record id="hr_salary_grid_5E" model="integc.hr.salary.grid">
+            <field name="name">5-E</field>
+            <field name="category_id" ref="category_val5" />
+            <field name="grade_id" ref="grade_val5" />
+            <field name="wage_min">115469</field>
+            <field name="wage_max">121865</field>
+        </record>
+        <record id="hr_salary_grid_5F" model="integc.hr.salary.grid">
+            <field name="name">5-F</field>
+            <field name="category_id" ref="category_val5" />
+            <field name="grade_id" ref="grade_val6" />
+            <field name="wage_min">121866</field>
+            <field name="wage_max">128043</field>
+        </record>
+
+        <!-- Category 6-->
+        <record id="hr_salary_grid_6A" model="integc.hr.salary.grid">
+            <field name="name">6-A</field>
+            <field name="category_id" ref="category_val6" />
+            <field name="grade_id" ref="grade_val1" />
+            <field name="wage_min">96781</field>
+            <field name="wage_max">123737</field>
+        </record>
+        <record id="hr_salary_grid_6B" model="integc.hr.salary.grid">
+            <field name="name">6-B</field>
+            <field name="category_id" ref="category_val6" />
+            <field name="grade_id" ref="grade_val2" />
+            <field name="wage_min">123738</field>
+            <field name="wage_max">132348</field>
+        </record>
+        <record id="hr_salary_grid_6C" model="integc.hr.salary.grid">
+            <field name="name">6-C</field>
+            <field name="category_id" ref="category_val6" />
+            <field name="grade_id" ref="grade_val3" />
+            <field name="wage_min">132349</field>
+            <field name="wage_max">141146</field>
+        </record>
+        <record id="hr_salary_grid_6D" model="integc.hr.salary.grid">
+            <field name="name">6-D</field>
+            <field name="category_id" ref="category_val6" />
+            <field name="grade_id" ref="grade_val4" />
+            <field name="wage_min">141147</field>
+            <field name="wage_max">149757</field>
+        </record>
+        <record id="hr_salary_grid_6E" model="integc.hr.salary.grid">
+            <field name="name">6-E</field>
+            <field name="category_id" ref="category_val6" />
+            <field name="grade_id" ref="grade_val5" />
+            <field name="wage_min">149758</field>
+            <field name="wage_max">156309</field>
+        </record>
+        <record id="hr_salary_grid_1F" model="integc.hr.salary.grid">
+            <field name="name">6-F</field>
+            <field name="category_id" ref="category_val6" />
+            <field name="grade_id" ref="grade_val6" />
+            <field name="wage_min">156310</field>
+            <field name="wage_max">168354</field>
+        </record>
+
+        <!-- Category 7-->
+        <record id="hr_salary_grid_7A" model="integc.hr.salary.grid">
+            <field name="name">7-A</field>
+            <field name="category_id" ref="category_val7" />
+            <field name="grade_id" ref="grade_val1" />
+            <field name="wage_min">123737</field>
+            <field name="wage_max">131250</field>
+        </record>
+        <record id="hr_salary_grid_7B" model="integc.hr.salary.grid">
+            <field name="name">7-B</field>
+            <field name="category_id" ref="category_val7" />
+            <field name="grade_id" ref="grade_val2" />
+            <field name="wage_min">131251</field>
+            <field name="wage_max">141750</field>
+        </record>
+        <record id="hr_salary_grid_7C" model="integc.hr.salary.grid">
+            <field name="name">7-C</field>
+            <field name="category_id" ref="category_val7" />
+            <field name="grade_id" ref="grade_val3" />
+            <field name="wage_min">141751</field>
+            <field name="wage_max">152250</field>
+        </record>
+        <record id="hr_salary_grid_7D" model="integc.hr.salary.grid">
+            <field name="name">7-D</field>
+            <field name="category_id" ref="category_val7" />
+            <field name="grade_id" ref="grade_val4" />
+            <field name="wage_min">152251</field>
+            <field name="wage_max">163605</field>
+        </record>
+        <record id="hr_salary_grid_7E" model="integc.hr.salary.grid">
+            <field name="name">7-E</field>
+            <field name="category_id" ref="category_val7" />
+            <field name="grade_id" ref="grade_val5" />
+            <field name="wage_min">163606</field>
+            <field name="wage_max">175146</field>
+        </record>
+        <record id="hr_salary_grid_7F" model="integc.hr.salary.grid">
+            <field name="name">7-F</field>
+            <field name="category_id" ref="category_val7" />
+            <field name="grade_id" ref="grade_val6" />
+            <field name="wage_min">175147</field>
+            <field name="wage_max">186688</field>
+        </record>
+
+        <!-- Category 8-->
+        <record id="hr_salary_grid_8A" model="integc.hr.salary.grid">
+            <field name="name">8-A</field>
+            <field name="category_id" ref="category_val8" />
+            <field name="grade_id" ref="grade_val1" />
+            <field name="wage_min">131250</field>
+            <field name="wage_max">186688</field>
+        </record>
+        <record id="hr_salary_grid_8B" model="integc.hr.salary.grid">
+            <field name="name">8-B</field>
+            <field name="category_id" ref="category_val8" />
+            <field name="grade_id" ref="grade_val2" />
+            <field name="wage_min">186689</field>
+            <field name="wage_max">196881</field>
+        </record>
+        <record id="hr_salary_grid_8C" model="integc.hr.salary.grid">
+            <field name="name">8-C</field>
+            <field name="category_id" ref="category_val8" />
+            <field name="grade_id" ref="grade_val3" />
+            <field name="wage_min">196882</field>
+            <field name="wage_max">207049</field>
+        </record>
+        <record id="hr_salary_grid_8D" model="integc.hr.salary.grid">
+            <field name="name">8-D</field>
+            <field name="category_id" ref="category_val8" />
+            <field name="grade_id" ref="grade_val4" />
+            <field name="wage_min">207050</field>
+            <field name="wage_max">217237</field>
+        </record>
+        <record id="hr_salary_grid_8E" model="integc.hr.salary.grid">
+            <field name="name">8-E</field>
+            <field name="category_id" ref="category_val8" />
+            <field name="grade_id" ref="grade_val5" />
+            <field name="wage_min">217238</field>
+            <field name="wage_max">227430</field>
+        </record>
+        <record id="hr_salary_grid_8F" model="integc.hr.salary.grid">
+            <field name="name">8-F</field>
+            <field name="category_id" ref="category_val8" />
+            <field name="grade_id" ref="grade_val6" />
+            <field name="wage_min">227431</field>
+            <field name="wage_max">237611</field>
+        </record>
+
+        <!-- Category 9-->
+        <record id="hr_salary_grid_9A" model="integc.hr.salary.grid">
+            <field name="name">9-A</field>
+            <field name="category_id" ref="category_val9" />
+            <field name="grade_id" ref="grade_val1" />
+            <field name="wage_min">186688</field>
+            <field name="wage_max">225074</field>
+        </record>
+        <record id="hr_salary_grid_9B" model="integc.hr.salary.grid">
+            <field name="name">9-B</field>
+            <field name="category_id" ref="category_val9" />
+            <field name="grade_id" ref="grade_val2" />
+            <field name="wage_min">225075</field>
+            <field name="wage_max">244364</field>
+        </record>
+        <record id="hr_salary_grid_9C" model="integc.hr.salary.grid">
+            <field name="name">9-C</field>
+            <field name="category_id" ref="category_val9" />
+            <field name="grade_id" ref="grade_val3" />
+            <field name="wage_min">244365</field>
+            <field name="wage_max">263648</field>
+        </record>
+        <record id="hr_salary_grid_9D" model="integc.hr.salary.grid">
+            <field name="name">9-D</field>
+            <field name="category_id" ref="category_val9" />
+            <field name="grade_id" ref="grade_val4" />
+            <field name="wage_min">263649</field>
+            <field name="wage_max">282939</field>
+        </record>
+        <record id="hr_salary_grid_9E" model="integc.hr.salary.grid">
+            <field name="name">9-E</field>
+            <field name="category_id" ref="category_val9" />
+            <field name="grade_id" ref="grade_val5" />
+            <field name="wage_min">282940</field>
+            <field name="wage_max">302236</field>
+        </record>
+        <record id="hr_salary_grid_9F" model="integc.hr.salary.grid">
+            <field name="name">9-F</field>
+            <field name="category_id" ref="category_val9" />
+            <field name="grade_id" ref="grade_val6" />
+            <field name="wage_min">302237</field>
+            <field name="wage_max">321527</field>
+        </record>
+
+        <!-- Category 10-->
+        <record id="hr_salary_grid_10A" model="integc.hr.salary.grid">
+            <field name="name">10-A</field>
+            <field name="category_id" ref="category_val10" />
+            <field name="grade_id" ref="grade_val1" />
+            <field name="wage_min">225074</field>
+            <field name="wage_max">248680</field>
+        </record>
+        <record id="hr_salary_grid_10B" model="integc.hr.salary.grid">
+            <field name="name">10-B</field>
+            <field name="category_id" ref="category_val10" />
+            <field name="grade_id" ref="grade_val2" />
+            <field name="wage_min">248681</field>
+            <field name="wage_max">266086</field>
+        </record>
+        <record id="hr_salary_grid_10C" model="integc.hr.salary.grid">
+            <field name="name">10-C</field>
+            <field name="category_id" ref="category_val10" />
+            <field name="grade_id" ref="grade_val3" />
+            <field name="wage_min">266087</field>
+            <field name="wage_max">274342</field>
+        </record>
+        <record id="hr_salary_grid_10D" model="integc.hr.salary.grid">
+            <field name="name">10-D</field>
+            <field name="category_id" ref="category_val10" />
+            <field name="grade_id" ref="grade_val4" />
+            <field name="wage_min">274343</field>
+            <field name="wage_max">300893</field>
+        </record>
+        <record id="hr_salary_grid_10E" model="integc.hr.salary.grid">
+            <field name="name">10-E</field>
+            <field name="category_id" ref="category_val10" />
+            <field name="grade_id" ref="grade_val5" />
+            <field name="wage_min">300894</field>
+            <field name="wage_max">302236</field>
+        </record>
+        <record id="hr_salary_grid_10F" model="integc.hr.salary.grid">
+            <field name="name">10-F</field>
+            <field name="category_id" ref="category_val10" />
+            <field name="grade_id" ref="grade_val6" />
+            <field name="wage_min">302237</field>
+            <field name="wage_max">335711</field>
+        </record>
+
+        <!-- Category 11-->
+        <record id="hr_salary_grid_11A" model="integc.hr.salary.grid">
+            <field name="name">11-A</field>
+            <field name="category_id" ref="category_val11" />
+            <field name="grade_id" ref="grade_val1" />
+            <field name="wage_min">248680</field>
+            <field name="wage_max">335711</field>
+        </record>
+        <record id="hr_salary_grid_11B" model="integc.hr.salary.grid">
+            <field name="name">11-B</field>
+            <field name="category_id" ref="category_val11" />
+            <field name="grade_id" ref="grade_val2" />
+            <field name="wage_min">335711</field>
+            <field name="wage_max">350642</field>
+        </record>
+        <record id="hr_salary_grid_11C" model="integc.hr.salary.grid">
+            <field name="name">11-C</field>
+            <field name="category_id" ref="category_val11" />
+            <field name="grade_id" ref="grade_val3" />
+            <field name="wage_min">350643</field>
+            <field name="wage_max">365549</field>
+        </record>
+        <record id="hr_salary_grid_11D" model="integc.hr.salary.grid">
+            <field name="name">11-D</field>
+            <field name="category_id" ref="category_val11" />
+            <field name="grade_id" ref="grade_val4" />
+            <field name="wage_min">365550</field>
+            <field name="wage_max">380479</field>
+        </record>
+        <record id="hr_salary_grid_11E" model="integc.hr.salary.grid">
+            <field name="name">11-E</field>
+            <field name="category_id" ref="category_val11" />
+            <field name="grade_id" ref="grade_val5" />
+            <field name="wage_min">0</field>
+            <field name="wage_max">318316</field>
+        </record>
+        <record id="hr_salary_grid_11F" model="integc.hr.salary.grid">
+            <field name="name">11-F</field>
+            <field name="category_id" ref="category_val11" />
+            <field name="grade_id" ref="grade_val6" />
+            <field name="wage_min">318317</field>
+            <field name="wage_max">410317</field>
+        </record>
+
+        <!-- Category 12-->
+        <record id="hr_salary_grid_12A" model="integc.hr.salary.grid">
+            <field name="name">12-A</field>
+            <field name="category_id" ref="category_val12" />
+            <field name="grade_id" ref="grade_val1" />
+            <field name="wage_min">335711</field>
+            <field name="wage_max">410317</field>
+        </record>
+        <record id="hr_salary_grid_12B" model="integc.hr.salary.grid">
+            <field name="name">12-B</field>
+            <field name="category_id" ref="category_val12" />
+            <field name="grade_id" ref="grade_val2" />
+            <field name="wage_min">410318</field>
+            <field name="wage_max">425242</field>
+        </record>
+        <record id="hr_salary_grid_12C" model="integc.hr.salary.grid">
+            <field name="name">12-C</field>
+            <field name="category_id" ref="category_val12" />
+            <field name="grade_id" ref="grade_val3" />
+            <field name="wage_min">425243</field>
+            <field name="wage_max">440166</field>
+        </record>
+        <record id="hr_salary_grid_12D" model="integc.hr.salary.grid">
+            <field name="name">12-D</field>
+            <field name="category_id" ref="category_val12" />
+            <field name="grade_id" ref="grade_val4" />
+            <field name="wage_min">440167</field>
+            <field name="wage_max">455074</field>
+        </record>
+        <record id="hr_salary_grid_12E" model="integc.hr.salary.grid">
+            <field name="name">12-E</field>
+            <field name="category_id" ref="category_val12" />
+            <field name="grade_id" ref="grade_val5" />
+            <field name="wage_min">0</field>
+            <field name="wage_max">395404</field>
+        </record>
+        <record id="hr_salary_grid_12F" model="integc.hr.salary.grid">
+            <field name="name">12-F</field>
+            <field name="category_id" ref="category_val12" />
+            <field name="grade_id" ref="grade_val6" />
+            <field name="wage_min">395404</field>
+            <field name="wage_max">484911</field>
+        </record>
+    </data>
+</openerp>
