@@ -46,6 +46,7 @@
                     <button name="cancel_voucher" string="Cancel Voucher" states="draft,proforma" invisible="context.get('line_type', False)"/>
                     <button name="cancel_voucher" string="Unreconcile" type="object" states="posted" invisible="context.get('line_type', False)" confirm="Are you sure to unreconcile and cancel this record ?"/>
                     <button name="action_cancel_draft" type="object" states="cancel" string="Set to Draft" invisible="context.get('line_type', False)"/>
+                    <button name="%(action_transfer_order)d" string="Export" type="action"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,posted" statusbar_colors="{&quot;proforma&quot;:&quot;blue&quot;}"/>
                 </header>
                 <sheet>
@@ -59,6 +60,7 @@
                             <field name="currency_id" invisible="1"/>
                             <field name="amount" invisible="context.get('line_type', False)" on_change="onchange_amounts(amount, payment_rate, partner_id, partner_ids, journal_id, currency_id, type, date, payment_rate_currency_id, company_id, context)" class="oe_inline" widget="monetary" options="{&quot;currency_field&quot;: &quot;currency_id&quot;}"/>
                             <field name="journal_id" domain="[('type','in',['bank', 'cash'])]" invisible="context.get('line_type', False)" widget="selection" on_change="onchange_journals(journal_id, line_dr_ids, False, partner_id, partner_ids, date, amount, type, company_id, context)" string="Payment Method"/>
+                            <field name="bank_id" string="Banque"/>
                         </group>
                         <group>
                             <field name="date" invisible="context.get('line_type', False)" on_change="onchange_date(date, currency_id, payment_rate_currency_id, amount, company_id, context)"/>
