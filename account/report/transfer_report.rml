@@ -434,7 +434,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           </para>
         </td>
         <td>
-          <para style="P19">[[user.company_id.bank_ids[0].bank.name]]</para>
+          <para style="P19">[[o.bank_id.bank.name]]</para>
         </td>
       </tr>
     </blockTable>
@@ -493,16 +493,16 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
       </tr>
       <tr>
         <td>
-          <para style="P8">[[user.company_id.bank_ids and user.company_id.bank_ids[0].bank.bic]]</para>
+          <para style="P8">[[user.company_id.bank_ids and o.bank_id.bank.bic]]</para>
         </td>
         <td>
-          <para style="P8">[[user.company_id.bank_ids and user.company_id.bank_ids[0].pos]]</para>
+          <para style="P8">[[user.company_id.bank_ids and o.bank_id.pos]]</para>
         </td>
         <td>
-          <para style="P8">[[user.company_id.bank_ids and user.company_id.bank_ids[0].acc_number]]</para>
+          <para style="P8">[[user.company_id.bank_ids and o.bank_id.acc_number]]</para>
         </td>
         <td>
-          <para style="P8">[[user.company_id.bank_ids and user.company_id.bank_ids[0].key]]</para>
+          <para style="P8">[[user.company_id.bank_ids and o.bank_id.key]]</para>
         </td>
       </tr>
     </blockTable>
