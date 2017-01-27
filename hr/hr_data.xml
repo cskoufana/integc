@@ -240,7 +240,7 @@
             <field name="sequence">6</field>
             <field name="category_id" ref="BRUT_TAXABLE_INTERMEDIAIRE"/>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = categories.BASE + categories.HS + categories.PRIME</field>
+            <field name="amount_python_compute">result = categories.BASE + categories.HS + categories.PRIME + categories.INDM</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">SBTI = Sb + PRIME + HS</field>
         </record>
@@ -1284,13 +1284,13 @@
 
         <record id="hr_rule_INDMLOG_FISC" model="hr.salary.rule">
             <field name="name">Indemnite de logement dans la limite du fisc</field>
-            <field name="sequence">4</field>
+            <field name="sequence">7</field>
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMLOG_FISC</field>
               <field name="condition_select">python</field>
             <field name="condition_python">result = contract.category_id.housing_advantage > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = min(rules.INDMLOG, round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.15))</field>
+            <field name="amount_python_compute">result = min(INDMLOG, round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.15))</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">Indemnité de logement</field>
         </record>
@@ -1311,13 +1311,13 @@
 
         <record id="hr_rule_INDVEHICULE_FISC" model="hr.salary.rule">
             <field name="name">Indemnite véhicule dans la limite du fisc</field>
-            <field name="sequence">4</field>
+            <field name="sequence">7</field>
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMVEHICULE_FISC</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = contract.category_id.vehicle_advantage > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = min(rules.INDMVEHICULE,round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.1))</field>
+            <field name="amount_python_compute">result = min(INDMVEHICULE,round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.1))</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">Indemnité de véhicule fisc</field>
         </record>
@@ -1338,13 +1338,13 @@
 
         <record id="hr_rule_INDMDOMESTIQUE_FISC" model="hr.salary.rule">
             <field name="name">Indemnite domestique dans la limite du fisc</field>
-            <field name="sequence">4</field>
+            <field name="sequence">7</field>
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMDOMESTIQUE_FISC</field>
              <field name="condition_select">python</field>
             <field name="condition_python">result = contract.category_id.housewife_advantage > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = min(rules.INDMDOMESTIQUE, round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.05))</field>
+            <field name="amount_python_compute">result = min(INDMDOMESTIQUE, round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.05))</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">Indemnité domestique</field>
         </record>
@@ -1365,13 +1365,13 @@
 
         <record id="hr_rule_INDMELECTRICITE_FISC" model="hr.salary.rule">
             <field name="name">Indemnite d'électricité dans la limite du fisc</field>
-            <field name="sequence">4</field>
+            <field name="sequence">7</field>
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMELECTRICITE_FISC</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = contract.category_id.electricity_advantage > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = min(rules.INDMELECTRICITE, round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.04))</field>
+            <field name="amount_python_compute">result = min(INDMELECTRICITE, round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.04))</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">Indemnité d'électricité dans la limite du fisc</field>
         </record>
@@ -1392,13 +1392,13 @@
 
         <record id="hr_rule_INDMEAU_FISC" model="hr.salary.rule">
             <field name="name">Indemnite d'eau dans la limite du fisc</field>
-            <field name="sequence">4</field>
+            <field name="sequence">7</field>
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMEAU_FISC</field>
             <field name="condition_select">python</field>
             <field name="condition_python">result = contract.category_id.water_advantage > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = min(rules.INDMEAU, round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.02))</field>
+            <field name="amount_python_compute">result = min(INDMEAU, round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.02))</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">Indemnité d'eau dans la limite du fisc</field>
         </record>
@@ -1419,13 +1419,13 @@
 
     <record id="hr_rule_INDMNOURITURE_FISC" model="hr.salary.rule">
             <field name="name">Indemnite de nouriture dans la limite du fisc</field>
-            <field name="sequence">4</field>
+            <field name="sequence">7</field>
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMNOURITURE_FISC</field>
              <field name="condition_select">python</field>
             <field name="condition_python">result = contract.category_id.food_advantage > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = min(rules.INDMNOURITURE, round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.1))</field>
+            <field name="amount_python_compute">result = min(INDMNOURITURE, round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.1))</field>
             <field name="appears_on_payslip" eval="False"/>
             <field name="note">Indemnité de nouriture dans la limite du fisc</field>
         </record>
@@ -1578,7 +1578,7 @@
 	 <record id="hr_payroll_salary_structure_base" model="hr.payroll.structure">
         <field name="code">integc-base-structure</field>
         <field name="name">Structure de base des employés</field>
-        <field eval="[(6, 0, [ref('hr_rule_INDMNOURITURE_FISC'),ref('hr_rule_INDMNOURITURE'),ref('hr_rule_INDMEAU_FISC'),ref('hr_rule_INDMEAU'),ref('hr_rule_INDMELECTRICITE_FISC'),ref('hr_rule_INDMELECTRICITE'),ref('hr_rule_INDMDOMESTIQUE_FISC'),ref('hr_rule_INDMDOMESTIQUE'),ref('hr_rule_INDVEHICULE_FISC'),ref('hr_rule_INDVEHICULE'),ref('hr_rule_INDMLOG_FISC'),ref('hr_rule_INDMSHABILLEMENT'),ref('hr_rule_INDMOUTILLAGE'),ref('hr_rule_INDMOUTILLAGE'),ref('hr_rule_INDMBICYCLE'),ref('hr_rule_INDMMALADIE'),ref('hr_rule_INDMPANIER'),ref('hr_rule_INDMSALISSURE'),ref('hr_rule_INDMLICENCIEMENT'),ref('hr_rule_PRIMBILAN'),ref('hr_rule_PRIMRAPPEL'),ref('hr_rule_PRIMBONNESEPARATION'),ref('hr_rule_PRIMFINCARRIERE'),ref('hr_rule_PRIMASSIDUITE'),ref('hr_rule_PRIMTECHNICITE'),ref('hr_rule_PRIMINTERIM'),ref('hr_rule_PRIMREMPLACEMENT'),ref('hr_rule_PRIMRECONVERSION'),ref('hr_rule_PRIMRECEPTION'),ref('hr_rule_PRIMMENAGE'),ref('hr_rule_PRIMSEC'),ref('hr_rule_PRIMCAIS'),ref('hr_rule_PRIMFONCTION'),ref('hr_rule_HS'),ref('hr_payroll.hr_rule_taxable_intermediaire'),ref('hr_payroll_rule_total_retenue'),ref('hr_rule_pension_viellesse_totale'), ref('hr_rule_CONGE'), ref('hr_rule_total_charge_impot_employe'),ref('hr_rule_prestation_familiale'),ref('hr_rule_cfc_patronal'),ref('hr_rule_fne'),ref('hr_rule_total_impot'),ref('hr_rule_pension_viellesse'),ref('hr_rule_accident_travail'),ref('hr_rule_total_charge'),ref('hr_payroll.hr_rule_brut'),ref('hr_rule_INDMTRANSP'),ref('hr_rule_INDMLOG'), ref('hr_rule_INDMREPRESENTATION'), ref('hr_payroll.hr_rule_basic'), ref('hr_payroll.hr_rule_taxable'), ref('hr_rule_cotisable'), ref('hr_rule_total_charge_impot_patron'), ref('hr_payroll_rules_IRPP0'), ref('hr_payroll_rules_IRPP1'), ref('hr_payroll_rules_IRPP2'), ref('hr_payroll_rules_IRPP3'), ref('hr_payroll_rules_IRPP4'), ref('hr_rule_IRPP') , ref('hr_rule_CAC_10_per_cent_IRPP'), ref('hr_payroll_rules_TDL0'), ref('hr_payroll_rules_TDL1'), ref('hr_payroll_rules_TDL2'), ref('hr_payroll_rules_TDL3'), ref('hr_payroll_rules_TDL4'), ref('hr_payroll_rules_TDL5'), ref('hr_payroll_rules_TDL6'), ref('hr_payroll_rules_TDL7'), ref('hr_payroll_rules_TDL8'), ref('hr_rule_TDL'), ref('hr_payroll_rules_RAV0'), ref('hr_payroll_rules_RAV1'), ref('hr_payroll_rules_RAV2'), ref('hr_payroll_rules_RAV3'), ref('hr_payroll_rules_RAV4'),ref('hr_payroll_rules_RAV5'), ref('hr_payroll_rules_RAV6'), ref('hr_payroll_rules_RAV7'), ref('hr_payroll_rules_RAV8'), ref('hr_payroll_rules_RAV9'), ref('hr_payroll_rules_RAV10'), ref('hr_payroll_rules_RAV11'), ref('hr_rule_RAV'), ref('hr_payroll_rules_CFC0'), ref('hr_payroll_rules_CFC1'), ref('hr_rule_CFC'), ref('hr_payroll_rules_PENV0'), ref('hr_payroll_rules_PENV1'), ref('hr_rule_PENV'), ref('hr_rule_AVANSAL'), ref('hr_rule_REMBC'), ref('hr_payroll.hr_rule_net'), ref('hr_payroll_rules_PANC0'), ref('hr_payroll_rules_PANC1'), ref('hr_payroll_rules_PANC2'), ref('hr_rule_PANC'), ref('hr_rule_PRIMRESP'), ref('hr_rule_PRIMRISQ'), ref('hr_rule_PRIMREND'), ref('hr_rule_PRIMPROJ')])]" name="rule_ids"/>
+        <field eval="[(6, 0, [ref('hr_rule_PRIMTRANSP'),ref('hr_rule_INDMNOURITURE_FISC'),ref('hr_rule_INDMNOURITURE'),ref('hr_rule_INDMEAU_FISC'),ref('hr_rule_INDMEAU'),ref('hr_rule_INDMELECTRICITE_FISC'),ref('hr_rule_INDMELECTRICITE'),ref('hr_rule_INDMDOMESTIQUE_FISC'),ref('hr_rule_INDMDOMESTIQUE'),ref('hr_rule_INDVEHICULE_FISC'),ref('hr_rule_INDVEHICULE'),ref('hr_rule_INDMLOG_FISC'),ref('hr_rule_INDMSHABILLEMENT'),ref('hr_rule_INDMOUTILLAGE'),ref('hr_rule_INDMOUTILLAGE'),ref('hr_rule_INDMBICYCLE'),ref('hr_rule_INDMMALADIE'),ref('hr_rule_INDMPANIER'),ref('hr_rule_INDMSALISSURE'),ref('hr_rule_INDMLICENCIEMENT'),ref('hr_rule_PRIMBILAN'),ref('hr_rule_PRIMRAPPEL'),ref('hr_rule_PRIMBONNESEPARATION'),ref('hr_rule_PRIMFINCARRIERE'),ref('hr_rule_PRIMASSIDUITE'),ref('hr_rule_PRIMTECHNICITE'),ref('hr_rule_PRIMINTERIM'),ref('hr_rule_PRIMREMPLACEMENT'),ref('hr_rule_PRIMRECONVERSION'),ref('hr_rule_PRIMRECEPTION'),ref('hr_rule_PRIMMENAGE'),ref('hr_rule_PRIMSEC'),ref('hr_rule_PRIMCAIS'),ref('hr_rule_PRIMFONCTION'),ref('hr_rule_HS'),ref('hr_payroll.hr_rule_taxable_intermediaire'),ref('hr_payroll_rule_total_retenue'),ref('hr_rule_pension_viellesse_totale'), ref('hr_rule_CONGE'), ref('hr_rule_total_charge_impot_employe'),ref('hr_rule_prestation_familiale'),ref('hr_rule_cfc_patronal'),ref('hr_rule_fne'),ref('hr_rule_total_impot'),ref('hr_rule_pension_viellesse'),ref('hr_rule_accident_travail'),ref('hr_rule_total_charge'),ref('hr_payroll.hr_rule_brut'),ref('hr_rule_INDMTRANSP'),ref('hr_rule_INDMLOG'), ref('hr_rule_INDMREPRESENTATION'), ref('hr_payroll.hr_rule_basic'), ref('hr_payroll.hr_rule_taxable'), ref('hr_rule_cotisable'), ref('hr_rule_total_charge_impot_patron'), ref('hr_payroll_rules_IRPP0'), ref('hr_payroll_rules_IRPP1'), ref('hr_payroll_rules_IRPP2'), ref('hr_payroll_rules_IRPP3'), ref('hr_payroll_rules_IRPP4'), ref('hr_rule_IRPP') , ref('hr_rule_CAC_10_per_cent_IRPP'), ref('hr_payroll_rules_TDL0'), ref('hr_payroll_rules_TDL1'), ref('hr_payroll_rules_TDL2'), ref('hr_payroll_rules_TDL3'), ref('hr_payroll_rules_TDL4'), ref('hr_payroll_rules_TDL5'), ref('hr_payroll_rules_TDL6'), ref('hr_payroll_rules_TDL7'), ref('hr_payroll_rules_TDL8'), ref('hr_rule_TDL'), ref('hr_payroll_rules_RAV0'), ref('hr_payroll_rules_RAV1'), ref('hr_payroll_rules_RAV2'), ref('hr_payroll_rules_RAV3'), ref('hr_payroll_rules_RAV4'),ref('hr_payroll_rules_RAV5'), ref('hr_payroll_rules_RAV6'), ref('hr_payroll_rules_RAV7'), ref('hr_payroll_rules_RAV8'), ref('hr_payroll_rules_RAV9'), ref('hr_payroll_rules_RAV10'), ref('hr_payroll_rules_RAV11'), ref('hr_rule_RAV'), ref('hr_payroll_rules_CFC0'), ref('hr_payroll_rules_CFC1'), ref('hr_rule_CFC'), ref('hr_payroll_rules_PENV0'), ref('hr_payroll_rules_PENV1'), ref('hr_rule_PENV'), ref('hr_rule_AVANSAL'), ref('hr_rule_REMBC'), ref('hr_payroll.hr_rule_net'), ref('hr_payroll_rules_PANC0'), ref('hr_payroll_rules_PANC1'), ref('hr_payroll_rules_PANC2'), ref('hr_rule_PANC'), ref('hr_rule_PRIMRESP'), ref('hr_rule_PRIMRISQ'), ref('hr_rule_PRIMREND'), ref('hr_rule_PRIMPROJ')])]" name="rule_ids"/>
         <field name="company_id" ref="base.main_company"/>
         <field name="parent_id" ref="hr_payroll.structure_base"/>
 		<field name="note">Structure salariale des employés</field>
