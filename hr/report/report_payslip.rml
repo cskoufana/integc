@@ -470,7 +470,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
         </td>
         <td>
           <para style="P3">
-            <font color="white"> </font>
+            [[ o.date_to or '' ]]
           </para>
         </td>
       </tr>
@@ -501,7 +501,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           <para style="P3">[[o.employee_id.address_id.zip or '']] [[o.employee_id.address_id.city or '']] [[o.employee_id.address_id.street or '']]</para>
         </td>
         <td>
-          <para style="P23">[[o.employee_id.identification_id or '']]</para>
+          <para style="P23">[[o.employee_id.otherid or '']]</para>
         </td>
         <td>
           <para style="P4">[[o.contract_id.seniority or '']]</para>
