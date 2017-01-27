@@ -1,25 +1,21 @@
 <?xml version="1.0"?>
 <openerp>
     <data>
-         <record model="ir.ui.view" id="transfer_order_form">
-            <field name="name">transfer.order.form</field>
-            <field name="model">transfer.order</field>
+         <record model="ir.ui.view" id="hr_payroll_export_form">
+            <field name="name">hr.payroll.export.form</field>
+            <field name="model">hr.payroll.export</field>
             <field name="arch" type="xml">
-                <form string="Transfer Order" version="7.0">
+                <form string="DIPE Export" version="7.0">
                     <field name="state" invisible="1" />
                     <field name="name" invisible="1"/>
                     <div states="confirm">
-                        <h2>Transfer order exportation</h2>
-                        <p>The transfer order exportation will generate a CSV file for partners who have bank account configured</p>
-                        <p>However, you can integrate those who haven't bank account configured by checking here : <field name="export_all" nolabel="1"/> </p>
+                        <h2>DIPE Export</h2>
+                        <p>This operation will generate a txt file compatible to DIPE format</p>
                         <p>Would you want to confirm the exportation?</p>
                     </div>
                     <div states="get">
                         <h2>Export Complete</h2>
                         <p>Here is the exported file: <field name="data" readonly="1" filename="name"/></p>
-                        <p>This file was generated using the universal <strong>Unicode/UTF-8</strong> file encoding, please be sure to view and edit
-                           using the same encoding.</p>
-                        <p>The file is generated on format <strong>CSV</strong> (separated by semi column) : you may edit it directly with your favorite spreadsheet software </p>
                     </div>
                     <footer states="confirm">
                         <button name="act_getfile" string="Confirm" type="object" class="oe_highlight"/> or
@@ -31,10 +27,10 @@
                 </form>
             </field>
         </record>
-        <record id="action_transfer_order" model="ir.actions.act_window">
-            <field name="name">Transfer order</field>
+        <record id="action_hr_payroll_export" model="ir.actions.act_window">
+            <field name="name">DIPE Export</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">transfer.order</field>
+            <field name="res_model">hr.payroll.export</field>
             <field name="view_type">form</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>
