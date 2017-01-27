@@ -7,11 +7,11 @@
             <field name="inherit_id" ref="base.view_partner_form" />
             <field name="arch" type="xml">
                 <field name="parent_id" position="before">
-                    <group attrs="{'invisible': [('is_company','=', False)]}" col="1">
+                    <!--<group attrs="{'invisible': [('is_company','=', False)]}" col="1">-->
                         <group col="2">
                             <field name="niu" nolabel="1" placeholder="NIU"/>
                         </group>
-                    </group>
+                    <!--</group>-->
                 </field>
             </field>
         </record>
