@@ -2840,6 +2840,7 @@ msgid "Totalement facturé"
 msgstr "Totalement facturé"
 
 #. module: integc
+#: field:hr.contract,transport_allowance:0
 #: field:integc.hr.category,transport_allowance:0
 msgid "Transport Allowance"
 msgstr "Indemnité de Transport"
@@ -3192,6 +3193,7 @@ msgid "Vehicle count"
 msgstr "Nombre de véhicules"
 
 #. module: integc
+#: field:hr.contract,transport_prime:0
 #: field:integc.hr.category,transport_prime:0
 msgid "Transport Prime"
 msgstr "Prime de transport"
@@ -3348,12 +3350,12 @@ msgstr "Ordre de virement"
 #: view:hr.payroll.export:integc.hr_payroll_export_form
 #: model:ir.actions.act_window,name:integc.action_hr_payroll_export
 msgid "DIPE Export"
-msgstr "Export de la DIPE"
+msgstr "Export de la DIPE Magnétique"
 
 #. module: integc
 #: view:hr.payslip.run:integc.hr_payslip_run_form_inherit
 msgid "Export DIPE"
-msgstr "Exporter DIPE"
+msgstr "Exporter DIPE Magnetique"
 
 #. module: integc
 #: view:transfer.order:integc.transfer_order_form
@@ -3363,5 +3365,5 @@ msgstr "Cependant, vous pouvent inclure les partenaires dont les comptes bancair
 #. module: integc
 #: view:hr.payroll.export:integc.hr_payroll_export_form
 msgid "This operation will generate a txt file compatible to DIPE format"
-msgstr "Cette opération genérera un fichier txt compatible au format DIPE"
+msgstr "Cette opération genérera un fichier txt compatible au format DIPE Magnetique"
 

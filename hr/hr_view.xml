@@ -76,6 +76,8 @@
                 <xpath expr="//form/sheet/notebook/page[2]" position="replace">
                     <page string="Primes">
                         <group col="4">
+                            <field name="transport_allowance" />
+                            <field name="transport_prime" />
                             <field name="performance_prime" />
                             <field name="cash_prime" />
                             <field name="secretariat_prime" />

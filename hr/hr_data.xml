@@ -1162,9 +1162,9 @@
             <field name="category_id" ref="hr_payroll.ALW"/>
             <field name="code">INDMTRANSP</field>
              <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.transport_allowance > 0</field>
+            <field name="condition_python">result = contract.transport_allowance > 0 or contract.category_id.transport_allowance > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.transport_allowance</field>
+            <field name="amount_python_compute">result = contract.transport_allowance if contract.transport_allowance > 0 else contract.category_id.transport_allowance</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de transport</field>
             <field name="account_debit" ref="pcg_661211" />
@@ -1260,9 +1260,9 @@
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMTRANSP</field>
              <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.transport_prime > 0</field>
+            <field name="condition_python">result = contract.transport_prime > 0 or contract.category_id.transport_prime > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.transport_prime</field>
+            <field name="amount_python_compute">result = contract.transport_prime if contract.transport_prime > 0 else contract.category_id.transport_prime</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Prime de transport de transport</field>
             <field name="account_debit" ref="pcg_661210" />

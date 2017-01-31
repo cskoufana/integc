@@ -572,6 +572,8 @@ class hr_contract(osv.osv):
         'replacement_prime': fields.float('Replacement Prime', digits=(16, 2)),
         'interim_prime': fields.float('Interim Prime', digits=(16, 2)),
         'project_prime': fields.float('Project Prime', digits=(16, 2)),
+        'transport_allowance': fields.float('Transport Allowance', digits=(16, 2)),
+        'transport_prime': fields.float('Transport Prime', digits=(16, 2)),
     }
 
     _defaults = {
