@@ -17,7 +17,8 @@
         'hr_payroll_account',
         'project',
         'product',
-        'budget'
+        'budget',
+        'l10n_syscohada',
     ],
     'data' : [
         'security/integc_security.xml',
@@ -52,6 +53,9 @@
         'market/market_view.xml',
         'hr_employee_data.xml',
         'hr_salary_grid_data.xml',
+        'need/need_workflow.xml',
+        'need/wizard/need_payment_view.xml',
+        'need/need_view.xml',
 
     ],
 

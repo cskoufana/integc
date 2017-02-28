@@ -120,7 +120,7 @@
                                 </div>
                                 <field name="amount_total_market" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}" />
                             </group>
-                            <!--<div class="oe_clear"/>-->
+                            <div class="oe_clear"/>
                             <!--<field name="note" class="oe_inline" placeholder="Terms and conditions..."/>-->
                         </page>
                         <page string="Contrats" attrs="{'invisible': [('has_contracts', '!=', True)]}">

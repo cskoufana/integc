@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="need_payment_form">
+            <field name="name">need_payment_form</field>
+            <field name="model">integc.need.payment</field>
+            <field name="arch" type="xml">
+                <form string="Payment">
+                    <separator string="Select the box for the payment" colspan="4" />
+                    <group>
+                        <field name="bank_statement_id" class="oe_inline" on_change="onchange_bank_statement_id(bank_statement_id)" widget="selection"/>
+                        <field name="balance_end_real"  class="oe_inline"/>
+                    </group>
+                    <footer>
+                        <button name="run" string="Pay" type="object" class="oe_highlight"/>
+                         or
+                        <button special="cancel" string="Cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window
+            name="Pay need"
+            res_model="integc.need.payment"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            id="action_need_payment" />
+    </data>
+</openerp>

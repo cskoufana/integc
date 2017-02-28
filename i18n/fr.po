@@ -1,14 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* account_accountant
 #	* integc
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-02 22:42+0000\n"
-"PO-Revision-Date: 2016-11-02 22:42+0000\n"
+"POT-Creation-Date: 2017-02-28 06:35+0000\n"
+"PO-Revision-Date: 2017-02-28 06:35+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,43 +16,22 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: integc
-#: view:account.bank.statement:integc.view_bank_statement_form2_inherit
-msgid "Take Money Out"
-msgstr "Retrait d'argent"
-
-#. module: integc
-#: view:account.bank.statement:integc.view_bank_statement_form2_inherit
-msgid "Put Money In"
-msgstr "Entrée d'argent"
-
-#. module: integc
-#: view:account.bank.statement:integc.view_bank_statement_form2_inherit
-msgid "Print receipt"
-msgstr "Imprimer le reçu de caisse"
-
-#. module: integc
-#: code:addons/integc/hr/hr.py:407
+#: code:addons/integc/hr/hr.py:469
+#: constraint:integc.hr.salary.grid:0
 #, python-format
 msgid "'Wage Minimal' must be lower than 'Wage Maximal'."
 msgstr "La 'Base minimale' doit être inféreieur à la 'Base maximale'."
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:592
-#: constraint:hr.contract:0
-#, python-format
-msgid "Wage must be range in salary grid wage min and salary grid wage max."
-msgstr "Le salaire doit être compris entre le salaire maximal et le salaire minimal."
-
-#. module: integc
-#: code:addons/integc/hr/hr.py:592
-#, python-format
-msgid "wage"
-msgstr "Salaire"
+#: view:transfer.order:integc.transfer_order_form
+msgid "(separated by semi column) : you may edit it directly with your favorite spreadsheet software"
+msgstr "(separaré par un point virgule) : directement éditable dans un tableur"
 
 #. module: integc
 #: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
 #: view:integc.market:integc.view_integc_market_form
 #: view:integc.market.contract:integc.view_integc_market_contract_form
+#: view:integc.need:integc.view_integc_need_form
 msgid "(update)"
 msgstr "(Actualiser)"
 
@@ -100,9 +78,44 @@ msgid "ADRESSE"
 msgstr "ADRESSE"
 
 #. module: integc
+#: model:hr.job,name:integc.hr_job_AGENT_ENTRETIEN
+msgid "AGENT D'ENTRETIEN"
+msgstr "AGENT D'ENTRETIEN"
+
+#. module: integc
 #: report:integc.payslip:0
 msgid "ANCIENNETE"
 msgstr "ANCIENNETE"
+
+#. module: integc
+#: model:hr.job,name:integc.hr_job_ASSISTANT
+msgid "ASSISTANT"
+msgstr "ASSISTANT"
+
+#. module: integc
+#: model:hr.job,name:integc.hr_job_ASSISTANT_CDC
+msgid "ASSISTANT CDC"
+msgstr "ASSISTANT CDC"
+
+#. module: integc
+#: model:hr.job,name:integc.hr_job_ASS_R
+msgid "ASSISTANT R"
+msgstr "ASSISTANT R"
+
+#. module: integc
+#: model:hr.job,name:integc.hr_job_ASS_CGM
+msgid "ASSISTANTE CGM"
+msgstr "ASSISTANTE CGM"
+
+#. module: integc
+#: model:hr.job,name:integc.hr_job_ASSISTANT_C
+msgid "ASSISTANTE COMPTABLE"
+msgstr "ASSISTANTE COMPTABLE"
+
+#. module: integc
+#: model:hr.job,name:integc.hr_job_ASS_F
+msgid "ASSISTANTE F"
+msgstr "ASSISTANTE F"
 
 #. module: integc
 #: field:hr.payslip.run,acc_trav:0
@@ -125,16 +138,27 @@ msgid "Accounting validation level"
 msgstr "Niveau validation des écritures comptables"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:1030
-#: code:addons/integc/hr/hr.py:1046
+#: code:addons/integc/hr/hr.py:1128
+#: code:addons/integc/hr/hr.py:1144
 #, python-format
 msgid "Adjustment Entry"
 msgstr "Adjustment Entry"
 
 #. module: integc
+#: view:integc.hr.category:integc.view_integc_hr_category_form
+msgid "Advantages"
+msgstr "Avantages"
+
+#. module: integc
 #: model:res.groups,name:integc.group_agent_hr
 msgid "Agent RH"
 msgstr "Agent RH"
+
+#. module: integc
+#: code:addons/integc/account/account_bank_statement.py:77
+#, python-format
+msgid "All the account entries lines must be processed in order to close the statement."
+msgstr "All the account entries lines must be processed in order to close the statement."
 
 #. module: integc
 #: field:budget.line,allocation_id:0
@@ -150,13 +174,23 @@ msgstr "Lotissement partenaire"
 
 #. module: integc
 #: view:integc.hr.category:integc.view_integc_hr_category_form
-msgid "Allowance"
-msgstr "Indemnité"
+msgid "Allowances"
+msgstr "Indemnités"
 
 #. module: integc
 #: field:market.invoice,amount_total:0
 msgid "Amount total"
 msgstr "Montant total"
+
+#. module: integc
+#: view:account.analytic.account:integc.view_account_analytic_account_form_inherit_integc
+msgid "Analse Budget"
+msgstr "Analse Budget"
+
+#. module: integc
+#: view:integc.market:integc.view_integc_market_form
+msgid "Analyse Budget"
+msgstr "Analyse Budget"
 
 #. module: integc
 #: field:hr.department,analytic_account_id:0
@@ -171,6 +205,7 @@ msgstr "Compte analytique"
 #: field:integc.hr.partner.contract,analytic_account_id:0
 #: field:integc.market,analytic_account_id:0
 #: field:integc.market.contract,analytic_account_id:0
+#: field:integc.need,analytic_account_id:0
 msgid "Analytic account"
 msgstr "Compte analytique"
 
@@ -183,6 +218,7 @@ msgstr "Annuel"
 #: view:hr.contract:integc.hr_contract_form_inherit1
 #: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
 #: view:integc.hr.registration.request:integc.view_integc_registration_request_form
+#: view:integc.need:integc.view_integc_need_form
 msgid "Approve"
 msgstr "Approuver"
 
@@ -211,15 +247,25 @@ msgid "Attachments"
 msgstr "Pièces jointes"
 
 #. module: integc
+#: field:integc.hr.category,attendance_prime:0
+msgid "Attendance Prime"
+msgstr "Prime d'assiduité"
+
+#. module: integc
 #: selection:integc.market.contract,type:0
 msgid "Avenant"
 msgstr "Avenant"
 
 #. module: integc
-#: code:addons/integc/market/market.py:334
+#: code:addons/integc/market/market.py:343
 #, python-format
 msgid "Avenant Contract"
 msgstr "Contrat Avenant"
+
+#. module: integc
+#: report:pos.box:0
+msgid "B.P."
+msgstr "B.P."
 
 #. module: integc
 #: report:transfer.order:0
@@ -242,6 +288,7 @@ msgid "Balance"
 msgstr "Réliquat"
 
 #. module: integc
+#: field:account.voucher,bank_id:0
 #: field:hr.employee,bank:0
 msgid "Bank"
 msgstr "Banque"
@@ -262,6 +309,17 @@ msgid "Bank Accounts"
 msgstr "Comptes bancaires"
 
 #. module: integc
+#: model:ir.model,name:integc.model_account_bank_statement
+msgid "Bank Statement"
+msgstr "Relevé bancaire"
+
+#. module: integc
+#: model:ir.model,name:integc.model_account_bank_statement_line
+msgid "Bank Statement Line"
+msgstr "Ligne de relevé de banque"
+
+#. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
 #: view:hr.employee:integc.view_employee_filter_inherit1
 msgid "Banque"
 msgstr "Banque"
@@ -287,14 +345,37 @@ msgid "Basic Minimal Salary for this grid"
 msgstr "Salaire de base minimal pour cette grille"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:919
-#: code:addons/integc/market/market.py:455
-#: code:addons/integc/market/market.py:1454
+#: field:integc.hr.category,basket_allowance:0
+msgid "Basket Allowance"
+msgstr "Indeminté de panier"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:922
+#: code:addons/integc/market/market.py:464
+#: code:addons/integc/market/market.py:1463
 #, python-format
 msgid "Before choosing a product,\n"
 " select a customer in the sales form."
 msgstr "Avant de choisir un produit,\n"
 " sélectionner le partenaire dans le formulaire."
+
+#. module: integc
+#: code:addons/integc/need/need.py:180
+#, python-format
+msgid "Before choosing a product,\n"
+" select a supplier in the sales form."
+msgstr "Before choosing a product,\n"
+" select a supplier in the sales form."
+
+#. module: integc
+#: field:integc.hr.category,bicycle_allowance:0
+msgid "Bicycle Allowance"
+msgstr "Indemnité bicyclette"
+
+#. module: integc
+#: field:integc.need.payment,bank_statement_id:0
+msgid "Box"
+msgstr "Box"
 
 #. module: integc
 #: view:hr.contract:integc.hr_contract_view_search_inherit1
@@ -324,6 +405,11 @@ msgid "Buletin de paie"
 msgstr "Buletin de paie"
 
 #. module: integc
+#: report:pos.box:0
+msgid "Bénéficiaire"
+msgstr "Bénéficiaire"
+
+#. module: integc
 #: field:hr.payslip.run,cac:0
 #: report:payslip.run:0
 msgid "CAC"
@@ -335,6 +421,7 @@ msgid "CATEGORIE"
 msgstr "CATEGORIE"
 
 #. module: integc
+#: model:hr.job,name:integc.hr_job_CDC
 #: model:res.groups,name:integc.group_cdc
 msgid "CDC"
 msgstr "CDC"
@@ -375,6 +462,11 @@ msgid "CHARGES ET RETENUES SALARIALE"
 msgstr "CHARGES ET RETENUES SALARIALE"
 
 #. module: integc
+#: model:hr.job,name:integc.hr_job_CHAUFFEUR
+msgid "CHAUFFEUR"
+msgstr "CHAUFFEUR"
+
+#. module: integc
 #: report:transfer.order:0
 msgid "CLE"
 msgstr "CLE"
@@ -395,9 +487,29 @@ msgid "CODE GUICHET"
 msgstr "CODE GUICHET"
 
 #. module: integc
+#: model:hr.job,name:integc.hr_job_CRS
+msgid "CRS"
+msgstr "CRS"
+
+#. module: integc
+#: model:hr.job,name:integc.hr_job_CSL
+msgid "CSL"
+msgstr "CSL"
+
+#. module: integc
+#: view:transfer.order:integc.transfer_order_form
+msgid "CSV"
+msgstr "CSV"
+
+#. module: integc
 #: report:integc.payslip:0
 msgid "Cachet de l'employeur"
 msgstr "Cachet de l'employeur"
+
+#. module: integc
+#: model:res.groups,name:integc.group_caissier
+msgid "Caissier"
+msgstr "Caissier"
 
 #. module: integc
 #: selection:hr.contract,state:0
@@ -407,6 +519,8 @@ msgstr "Cachet de l'employeur"
 #: selection:integc.hr.contract,decision:0
 #: view:integc.hr.registration.request:integc.view_integc_registration_request_form
 #: selection:integc.market,state:0
+#: view:integc.need:integc.view_integc_need_form
+#: view:integc.need.payment:integc.need_payment_form
 #: view:market.invoice:integc.market_invoice_form
 #: view:partner.contract:integc.partner_contract_form
 #: selection:partner.contract,decision:0
@@ -421,7 +535,6 @@ msgstr "Annuler le bon"
 
 #. module: integc
 #: selection:integc.hr.registration.request,state:0
-#: selection:integc.hr.registration.request.line,state:0
 msgid "Canceled"
 msgstr "Annulé"
 
@@ -431,33 +544,41 @@ msgstr "Annulé"
 #: selection:integc.market.contract,state:0
 #: selection:integc.market.contract.line,state:0
 #: selection:integc.market.line,state:0
+#: selection:integc.need,state:0
+#: selection:integc.need.line,state:0
 msgid "Cancelled"
 msgstr "Annulé"
 
 #. module: integc
 #: code:addons/integc/hr/partner_contract.py:631
-#: code:addons/integc/market/market.py:1192
+#: code:addons/integc/market/market.py:1201
 #, python-format
 msgid "Cannot cancel this contract!"
 msgstr "Impossible de supprimer ce contract!"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:1037
-#: code:addons/integc/market/market.py:573
-#: code:addons/integc/market/market.py:1572
+#: code:addons/integc/hr/partner_contract.py:1040
+#: code:addons/integc/market/market.py:582
+#: code:addons/integc/market/market.py:1581
 #, python-format
 msgid "Cannot delete a contract line which is in state '%s'."
 msgstr "Impossible de supprimer une ligne de contrat à un état '%s'."
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:1006
-#: code:addons/integc/market/market.py:542
-#: code:addons/integc/market/market.py:1541
+#: code:addons/integc/hr/partner_contract.py:1009
+#: code:addons/integc/market/market.py:551
+#: code:addons/integc/market/market.py:1550
+#: code:addons/integc/need/need.py:267
 #, python-format
 msgid "Cannot find a pricelist line matching this product and quantity.\n"
 "You have to change either the product, the quantity or the pricelist."
 msgstr "Impossoble de trouver une ligne de liste de prix correspondant au produit et à la quantité.\n"
 "Vous devez changer le produit ou la quantité ou alors la liste de prix."
+
+#. module: integc
+#: field:hr.contract,cash_prime:0
+msgid "Cash Prime"
+msgstr "Prime de caisse"
 
 #. module: integc
 #: field:budget.line,parent_id:0
@@ -476,7 +597,8 @@ msgid "Category"
 msgstr "Catégorie"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:358
+#: code:addons/integc/hr/hr.py:405
+#: sql_constraint:integc.hr.category:0
 #, python-format
 msgid "Category name already exists"
 msgstr "Ce nom de catégorie existe déjà"
@@ -485,16 +607,6 @@ msgstr "Ce nom de catégorie existe déjà"
 #: view:hr.contract:integc.hr_contract_view_search_inherit1
 msgid "Catégorie"
 msgstr "Catégorie"
-
-#. module: integc
-#: sql_constraint:integc.hr.category:0
-msgid "Ce nom de catégorie existe déjà"
-msgstr "Ce nom de catégorie existe déjà"
-
-#. module: integc
-#: sql_constraint:integc.hr.salary.grid:0
-msgid "Cette grille salariale existe déjà"
-msgstr "Cette grille salariale existe déjà"
 
 #. module: integc
 #: view:budget.line:integc.view_budget_line_search_inherit_integc
@@ -522,6 +634,17 @@ msgid "City"
 msgstr "Ville"
 
 #. module: integc
+#: view:hr.payroll.export:integc.hr_payroll_export_form
+#: view:transfer.order:integc.transfer_order_form
+msgid "Close"
+msgstr "Fermer"
+
+#. module: integc
+#: field:integc.hr.category,clothing_allowance:0
+msgid "Clothing Allowance"
+msgstr "Indemnité habillement"
+
+#. module: integc
 #: view:hr.employee:integc.view_employee_form_inherit3
 msgid "Clé"
 msgstr "Clé"
@@ -538,6 +661,7 @@ msgstr "Code Guichet"
 #: field:integc.market,company_id:0
 #: field:integc.market.contract,company_id:0
 #: field:integc.market.line,company_id:0
+#: field:integc.need,company_id:0
 msgid "Company"
 msgstr "Structure"
 
@@ -556,6 +680,11 @@ msgid "Completed"
 msgstr "Terminé"
 
 #. module: integc
+#: report:pos.box:0
+msgid "Compte"
+msgstr "Compte"
+
+#. module: integc
 #: view:hr.contract:integc.hr_contract_view_search_inherit1
 #: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
 #: view:integc.market.contract:integc.view_integc_market_contract_search
@@ -563,11 +692,13 @@ msgid "Compte analytique"
 msgstr "Compte analytique"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:1028
-#: code:addons/integc/hr/hr.py:1044
-#: code:addons/integc/hr/partner_contract.py:1014
-#: code:addons/integc/market/market.py:550
-#: code:addons/integc/market/market.py:1549
+#: code:addons/integc/account/account_bank_statement.py:58
+#: code:addons/integc/hr/hr.py:1126
+#: code:addons/integc/hr/hr.py:1142
+#: code:addons/integc/hr/partner_contract.py:1017
+#: code:addons/integc/market/market.py:559
+#: code:addons/integc/market/market.py:1558
+#: code:addons/integc/need/need.py:275
 #, python-format
 msgid "Configuration Error!"
 msgstr "Erreur de configuration!"
@@ -591,6 +722,7 @@ msgstr "Date de confirmation"
 #: selection:integc.hr.partner.contract.line,state:0
 #: selection:integc.market.contract.line,state:0
 #: selection:integc.market.line,state:0
+#: selection:integc.need.line,state:0
 msgid "Confirmed"
 msgstr "Confirmé"
 
@@ -655,6 +787,11 @@ msgid "Contractualisés"
 msgstr "Contractualisés"
 
 #. module: integc
+#: view:integc.market:integc.view_integc_market_form
+msgid "Contrats"
+msgstr "Contrats"
+
+#. module: integc
 #: view:board.board:integc.board_integc_hr_form2
 msgid "Contrats prestataires en attente de signature par le DG"
 msgstr "Contrats prestataires en attente de signature par le DG"
@@ -703,6 +840,7 @@ msgid "Create Invoice"
 msgstr "Créer la facture"
 
 #. module: integc
+#: field:hr.payroll.export,create_uid:0
 #: field:hr.payslip.journal,create_uid:0
 #: field:integc.account.invoice.stage,create_uid:0
 #: field:integc.hr.category,create_uid:0
@@ -717,12 +855,17 @@ msgstr "Créer la facture"
 #: field:integc.market.contract,create_uid:0
 #: field:integc.market.contract.line,create_uid:0
 #: field:integc.market.line,create_uid:0
+#: field:integc.need,create_uid:0
+#: field:integc.need.line,create_uid:0
+#: field:integc.need.payment,create_uid:0
 #: field:market.invoice,create_uid:0
 #: field:partner.contract,create_uid:0
+#: field:transfer.order,create_uid:0
 msgid "Created by"
 msgstr "Créé by"
 
 #. module: integc
+#: field:hr.payroll.export,create_date:0
 #: field:hr.payslip.journal,create_date:0
 #: field:integc.account.invoice.stage,create_date:0
 #: field:integc.hr.category,create_date:0
@@ -734,8 +877,12 @@ msgstr "Créé by"
 #: field:integc.hr.salary.grid,create_date:0
 #: field:integc.market.contract.line,create_date:0
 #: field:integc.market.line,create_date:0
+#: field:integc.need,create_date:0
+#: field:integc.need.line,create_date:0
+#: field:integc.need.payment,create_date:0
 #: field:market.invoice,create_date:0
 #: field:partner.contract,create_date:0
+#: field:transfer.order,create_date:0
 msgid "Created on"
 msgstr "Créé le"
 
@@ -755,6 +902,7 @@ msgstr "Crédits"
 #: field:integc.hr.partner.contract,currency_id:0
 #: field:integc.market,currency_id:0
 #: field:integc.market.contract,currency_id:0
+#: field:integc.need,currency_id:0
 msgid "Currency"
 msgstr "Dévise"
 
@@ -762,6 +910,11 @@ msgstr "Dévise"
 #: view:account.voucher:integc.view_other_receipt_form
 msgid "Currency Options"
 msgstr "Options de la devise"
+
+#. module: integc
+#: field:integc.need.payment,balance_end_real:0
+msgid "Current balance"
+msgstr "Current balance"
 
 #. module: integc
 #: field:integc.hr.partner.contract.line,order_partner_id:0
@@ -772,7 +925,7 @@ msgstr "Client"
 
 #. module: integc
 #: code:addons/integc/hr/partner_contract.py:481
-#: code:addons/integc/market/market.py:1053
+#: code:addons/integc/market/market.py:1062
 #, python-format
 msgid "Customer Invoices"
 msgstr "Factures clients"
@@ -783,6 +936,7 @@ msgid "Customer invoice stage"
 msgstr "Etape de facture client"
 
 #. module: integc
+#: model:hr.job,name:integc.hr_job_DAFC
 #: model:res.groups,name:integc.group_dafc
 msgid "DAFC"
 msgstr "DAFC"
@@ -793,15 +947,33 @@ msgid "DE MONSIEUR LE DIRECTEUR DE"
 msgstr "DE MONSIEUR LE DIRECTEUR DE"
 
 #. module: integc
+#: model:hr.job,name:integc.hr_job_DESSINATEUR
+msgid "DESSINATEUR PROJETEUR"
+msgstr "DESSINATEUR PROJETEUR"
+
+#. module: integc
+#: model:hr.job,name:integc.hr_job_DEX
 #: model:res.groups,name:integc.group_dex
 msgid "DEX"
 msgstr "DEX"
+
+#. module: integc
+#: view:hr.payroll.export:integc.hr_payroll_export_form
+#: model:ir.actions.act_window,name:integc.action_hr_payroll_export
+msgid "DIPE Export"
+msgstr "Export de la DIPE Magnétique"
+
+#. module: integc
+#: report:pos.box:0
+msgid "DU"
+msgstr "DU"
 
 #. module: integc
 #: field:integc.hr.contract,date:0
 #: field:integc.hr.partner.contract,date:0
 #: field:integc.market,date:0
 #: field:integc.market.contract,date:0
+#: field:integc.need,date:0
 #: field:partner.contract,date:0
 msgid "Date"
 msgstr "Date"
@@ -905,6 +1077,16 @@ msgid "Date from"
 msgstr "Date début"
 
 #. module: integc
+#: report:pos.box:0
+msgid "Date impression"
+msgstr "Date impression"
+
+#. module: integc
+#: help:integc.need,message_last_post:0
+msgid "Date of the last message posted on the record."
+msgstr "Date of the last message posted on the record."
+
+#. module: integc
 #: help:integc.hr.partner.contract,date_confirm:0
 msgid "Date on which contract is confirmed."
 msgstr "Date à laquelle le contract est validé."
@@ -919,6 +1101,11 @@ msgstr "Date à laquelle le contrat a été créé ."
 #: help:integc.hr.partner.contract,date_signature:0
 msgid "Date on which contract is signed."
 msgstr "Date à laquelle le contrat est signé par le perstataire."
+
+#. module: integc
+#: report:pos.box:0
+msgid "Date opération"
+msgstr "Date opération"
 
 #. module: integc
 #: field:budget.line,paid_date:0
@@ -1017,11 +1204,14 @@ msgstr "Demandes d'immatriculation validées"
 #: view:integc.market:integc.view_integc_market_tree
 #: field:integc.market.contract.line,name:0
 #: field:integc.market.line,name:0
+#: view:integc.need:integc.view_integc_need_tree
+#: field:integc.need.line,name:0
 msgid "Description"
 msgstr "Description"
 
 #. module: integc
 #: view:integc.market:integc.view_integc_market_form
+#: view:integc.need:integc.view_integc_need_form
 msgid "Description ..."
 msgstr "Description ..."
 
@@ -1029,6 +1219,11 @@ msgstr "Description ..."
 #: view:hr.employee:integc.view_employee_form_inherit2
 msgid "Detail"
 msgstr "Détail"
+
+#. module: integc
+#: field:integc.hr.category,dirt_allowance:0
+msgid "Dirt Allowance"
+msgstr "Indemnité de salissure"
 
 #. module: integc
 #: field:integc.hr.partner.contract.line,discount:0
@@ -1043,6 +1238,8 @@ msgstr "Remise (%)"
 #: selection:integc.market.contract,state:0
 #: selection:integc.market.contract.line,state:0
 #: selection:integc.market.line,state:0
+#: selection:integc.need,state:0
+#: selection:integc.need.line,state:0
 msgid "Done"
 msgstr "Terminé"
 
@@ -1051,11 +1248,12 @@ msgstr "Terminé"
 #: selection:integc.hr.partner.contract,state:0
 #: selection:integc.hr.partner.contract.line,state:0
 #: selection:integc.hr.registration.request,state:0
-#: selection:integc.hr.registration.request.line,state:0
 #: selection:integc.market,state:0
 #: selection:integc.market.contract,state:0
 #: selection:integc.market.contract.line,state:0
 #: selection:integc.market.line,state:0
+#: selection:integc.need,state:0
+#: selection:integc.need.line,state:0
 msgid "Draft"
 msgstr "Bouillon"
 
@@ -1065,6 +1263,11 @@ msgstr "Bouillon"
 #: view:integc.market.contract:integc.view_integc_market_contract_form
 msgid "Duration"
 msgstr "Durée"
+
+#. module: integc
+#: report:pos.box:0
+msgid "Dépense"
+msgstr "Dépense"
 
 #. module: integc
 #: report:payslip.run:0
@@ -1077,6 +1280,11 @@ msgid "EMPLOI OCCUPE"
 msgstr "EMPLOI OCCUPE"
 
 #. module: integc
+#: field:integc.hr.category,electricity_advantage:0
+msgid "Electricity Allowance"
+msgstr "Indemnité d'électricité"
+
+#. module: integc
 #: model:ir.actions.act_window,name:integc.board_integc_hr_employee_action4
 #: model:ir.actions.act_window,name:integc.board_integc_hr_employee_action_graph_job
 msgid "Employe"
@@ -1086,6 +1294,8 @@ msgstr "Employé"
 #: view:hr.employee:integc.view_integc_hr_employee_graph1
 #: view:hr.employee:integc.view_integc_hr_employee_graph2
 #: field:integc.hr.registration.request.line,employee_id:0
+#: view:integc.need:integc.view_integc_need_form
+#: view:integc.need:integc.view_integc_need_tree
 #: model:ir.model,name:integc.model_hr_employee
 msgid "Employee"
 msgstr "Employé"
@@ -1147,22 +1357,27 @@ msgstr "Date fin"
 
 #. module: integc
 #: selection:account.invoice,validation_level:0
-#: selection:account.invoice,state:0
 #: selection:integc.account.invoice.stage,state:0
 msgid "Engineer market"
 msgstr "Ingénieur de marché"
 
 #. module: integc
+#: code:addons/integc/account/account_bank_statement.py:28
+#: code:addons/integc/account/account_bank_statement.py:33
+#: code:addons/integc/account/account_bank_statement.py:61
+#: code:addons/integc/account/account_bank_statement.py:77
+#: code:addons/integc/account/wizard/pos_box.py:44
 #: code:addons/integc/hr/partner_contract.py:419
 #: code:addons/integc/hr/partner_contract.py:544
 #: code:addons/integc/hr/partner_contract.py:655
-#: code:addons/integc/hr/partner_contract.py:817
-#: code:addons/integc/hr/partner_contract.py:834
-#: code:addons/integc/market/market.py:1004
-#: code:addons/integc/market/market.py:1116
-#: code:addons/integc/market/market.py:1206
-#: code:addons/integc/market/market.py:1352
-#: code:addons/integc/market/market.py:1369
+#: code:addons/integc/hr/partner_contract.py:820
+#: code:addons/integc/hr/partner_contract.py:837
+#: code:addons/integc/market/market.py:1013
+#: code:addons/integc/market/market.py:1125
+#: code:addons/integc/market/market.py:1215
+#: code:addons/integc/market/market.py:1361
+#: code:addons/integc/market/market.py:1378
+#: code:addons/integc/need/wizard/need_payment.py:39
 #, python-format
 msgid "Error!"
 msgstr "Erreur!"
@@ -1181,6 +1396,7 @@ msgstr "Etat Civil"
 #: selection:integc.hr.partner.contract.line,state:0
 #: selection:integc.market.contract.line,state:0
 #: selection:integc.market.line,state:0
+#: selection:integc.need.line,state:0
 msgid "Exception"
 msgstr "Exception"
 
@@ -1196,10 +1412,36 @@ msgid "Expert"
 msgstr "Expert"
 
 #. module: integc
+#: view:account.voucher:integc.view_other_receipt_form
+msgid "Export"
+msgstr "Exporter"
+
+#. module: integc
+#: view:hr.payroll.export:integc.hr_payroll_export_form
+#: view:transfer.order:integc.transfer_order_form
+msgid "Export Complete"
+msgstr "Opération terminée"
+
+#. module: integc
+#: view:hr.payslip.run:integc.hr_payslip_run_form_inherit
+msgid "Export DIPE"
+msgstr "Exporter DIPE Magnétique"
+
+#. module: integc
+#: field:transfer.order,export_all:0
+msgid "Export all"
+msgstr "Exporter tout"
+
+#. module: integc
 #: field:integc.hr.registration.request,external_reference:0
 #: field:integc.market,name:0
 msgid "External Reference"
 msgstr "Référence externe"
+
+#. module: integc
+#: report:pos.box:0
+msgid "FICHE DE DEPENSE"
+msgstr "FICHE DE DEPENSE"
 
 #. module: integc
 #: field:hr.payslip.run,fne:0
@@ -1219,13 +1461,29 @@ msgid "Fax"
 msgstr "Fax"
 
 #. module: integc
-#: view:integc.hr.category:integc.view_integc_hr_category_form
-msgid "Fees"
-msgstr "Frais"
+#: report:pos.box:0
+msgid "Fax :"
+msgstr "Fax :"
+
+#. module: integc
+#: field:hr.payroll.export,data:0
+#: field:transfer.order,data:0
+msgid "File"
+msgstr "File"
+
+#. module: integc
+#: field:transfer.order,name:0
+msgid "File Name"
+msgstr "File Name"
+
+#. module: integc
+#: field:hr.payroll.export,name:0
+msgid "File name"
+msgstr "File name"
 
 #. module: integc
 #: code:addons/integc/hr/partner_contract.py:632
-#: code:addons/integc/market/market.py:1193
+#: code:addons/integc/market/market.py:1202
 #, python-format
 msgid "First cancel all invoices attached to this contract."
 msgstr "Supprimer d'abord toutes les factuers associées à ce contract."
@@ -1237,13 +1495,44 @@ msgid "Fiscal Position"
 msgstr "Position Fiscale"
 
 #. module: integc
+#: field:integc.need,message_follower_ids:0
+msgid "Followers"
+msgstr "Followers"
+
+#. module: integc
+#: field:integc.hr.category,food_advantage:0
+msgid "Food Allowance"
+msgstr "Indemnité nouriture"
+
+#. module: integc
 #: help:integc.hr.partner.contract.line,type:0
 #: help:integc.market.contract.line,type:0
 #: help:integc.market.line,type:0
+#: help:integc.need.line,type:0
 msgid "From stock: When needed, the product is taken from the stock or we wait for replenishment.\n"
 "On order: When needed, the product is purchased or produced."
 msgstr "From stock: When needed, the product is taken from the stock or we wait for replenishment.\n"
 "On order: When needed, the product is purchased or produced."
+
+#. module: integc
+#: field:integc.hr.category,function_prime:0
+msgid "Function Prime"
+msgstr "Prime de fonction"
+
+#. module: integc
+#: model:hr.job,name:integc.hr_job_GARDIEN
+msgid "GARDIEN"
+msgstr "GARDIEN"
+
+#. module: integc
+#: model:hr.job,name:integc.hr_job_GEOTECHNICIEN
+msgid "GEOTECHNICIEN"
+msgstr "GEOTECHNICIEN"
+
+#. module: integc
+#: model:hr.job,name:integc.hr_job_GERANT
+msgid "GERANT"
+msgstr "GERANT"
 
 #. module: integc
 #: view:hr.employee:integc.view_employee_filter_inherit1
@@ -1254,6 +1543,7 @@ msgstr "Genre"
 #: help:integc.hr.partner.contract.line,sequence:0
 #: help:integc.market.contract.line,sequence:0
 #: help:integc.market.line,sequence:0
+#: help:integc.need.line,sequence:0
 msgid "Gives the sequence order when displaying a list of contract lines."
 msgstr "Gives the sequence order when displaying a list of contract lines."
 
@@ -1268,7 +1558,8 @@ msgid "Grade"
 msgstr "Echelon"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:379
+#: code:addons/integc/hr/hr.py:440
+#: sql_constraint:integc.hr.grade:0
 #, python-format
 msgid "Grade name already exists"
 msgstr "L'echelon existe déjà"
@@ -1306,6 +1597,43 @@ msgid "Has contracts"
 msgstr "A de contrats"
 
 #. module: integc
+#: view:hr.payroll.export:integc.hr_payroll_export_form
+#: view:transfer.order:integc.transfer_order_form
+msgid "Here is the exported file:"
+msgstr "Voici le fichier genéré:"
+
+#. module: integc
+#: report:pos.box:0
+msgid "Heure impression"
+msgstr "Heure impression"
+
+#. module: integc
+#: help:integc.need,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+
+#. module: integc
+#: field:hr.contract,household_prime:0
+msgid "Household Prime"
+msgstr "Prime de ménage"
+
+#. module: integc
+#: field:integc.hr.category,housewife_advantage:0
+msgid "Housewife Allowance"
+msgstr "Indemnité ménagère"
+
+#. module: integc
+#: field:hr.employee,housewife_count:0
+msgid "Housewife count"
+msgstr "Nombre de ménagères"
+
+#. module: integc
+#: view:transfer.order:integc.transfer_order_form
+msgid "However, you can integrate those who haven't bank account configured by checking here :"
+msgstr "Cependant, vous pouvent inclure les partenaires dont les comptes bancaires n'ont pas été configuré en cochant cette case :"
+
+#. module: integc
+#: field:hr.payroll.export,id:0
 #: field:hr.payslip.journal,id:0
 #: field:integc.account.invoice.stage,id:0
 #: field:integc.hr.category,id:0
@@ -1320,10 +1648,19 @@ msgstr "A de contrats"
 #: field:integc.market.contract,id:0
 #: field:integc.market.contract.line,id:0
 #: field:integc.market.line,id:0
+#: field:integc.need,id:0
+#: field:integc.need.line,id:0
+#: field:integc.need.payment,id:0
 #: field:market.invoice,id:0
 #: field:partner.contract,id:0
+#: field:transfer.order,id:0
 msgid "ID"
 msgstr "ID"
+
+#. module: integc
+#: model:hr.job,name:integc.hr_job_ING_ASS
+msgid "INGENIEUR ASSISTANT"
+msgstr "INGENIEUR ASSISTANT"
 
 #. module: integc
 #: model:ir.module.category,name:integc.integc_category_module
@@ -1343,13 +1680,23 @@ msgid "Identity Card Number"
 msgstr "N° CNI"
 
 #. module: integc
+#: help:integc.need,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "If checked new messages require your attention."
+
+#. module: integc
 #: view:hr.employee:integc.view_employee_filter_inherit1
 msgid "Immatriculés"
 msgstr "Immatriculés"
 
 #. module: integc
+#: report:pos.box:0
+msgid "Imprimé le"
+msgstr "Imprimé le"
+
+#. module: integc
 #: code:addons/integc/hr/partner_contract.py:342
-#: code:addons/integc/market/market.py:944
+#: code:addons/integc/market/market.py:953
 #, python-format
 msgid "In order to delete a confirmed contract, you must cancel it before!"
 msgstr "Pour supprimer un contract validé, vous devez d'abord l'annuler!"
@@ -1358,6 +1705,11 @@ msgstr "Pour supprimer un contract validé, vous devez d'abord l'annuler!"
 #: view:hr.payslip:integc.view_hr_payslip_form_inherit1
 msgid "Input Data"
 msgstr "Données d'entrée"
+
+#. module: integc
+#: field:hr.contract,interim_prime:0
+msgid "Interim Prime"
+msgstr "Prime d'intérim"
 
 #. module: integc
 #: view:account.voucher:integc.view_other_receipt_form
@@ -1376,12 +1728,12 @@ msgstr "Intitulé"
 
 #. module: integc
 #: code:addons/integc/hr/partner_contract.py:342
-#: code:addons/integc/hr/partner_contract.py:874
-#: code:addons/integc/hr/partner_contract.py:1037
-#: code:addons/integc/market/market.py:573
-#: code:addons/integc/market/market.py:944
-#: code:addons/integc/market/market.py:1409
-#: code:addons/integc/market/market.py:1572
+#: code:addons/integc/hr/partner_contract.py:877
+#: code:addons/integc/hr/partner_contract.py:1040
+#: code:addons/integc/market/market.py:582
+#: code:addons/integc/market/market.py:953
+#: code:addons/integc/market/market.py:1418
+#: code:addons/integc/market/market.py:1581
 #, python-format
 msgid "Invalid Action!"
 msgstr "Action invalide!"
@@ -1444,6 +1796,11 @@ msgid "Invoicing Mode"
 msgstr "Mode de facturation"
 
 #. module: integc
+#: field:integc.need,message_is_follower:0
+msgid "Is a Follower"
+msgstr "Is a Follower"
+
+#. module: integc
 #: field:hr.employee,is_registered:0
 msgid "Is registered to CNPS"
 msgstr "Est immatriculé à la CNPS"
@@ -1460,6 +1817,11 @@ msgstr "Indique si la facture a été payée."
 #: help:integc.market.contract,invoice_exists:0
 msgid "It indicates that contract has at least one invoice."
 msgstr "Indique si ce contrat a au moins une facture."
+
+#. module: integc
+#: model:hr.job,name:integc.hr_job_JEUNE_ING_GC
+msgid "JEUNE INGENIEUR GC"
+msgstr "JEUNE INGENIEUR GC"
 
 #. module: integc
 #: report:payslip.run:0
@@ -1483,16 +1845,12 @@ msgid "Key"
 msgstr "Clé"
 
 #. module: integc
-#: sql_constraint:integc.hr.grade:0
-msgid "L'echelon existe déjà"
-msgstr "L'echelon existe déjà"
+#: field:integc.need,message_last_post:0
+msgid "Last Message Date"
+msgstr "Last Message Date"
 
 #. module: integc
-#: constraint:integc.hr.salary.grid:0
-msgid "La 'Base minimale' doit être inféreieur à la 'Base maximale'."
-msgstr "La 'Base minimale' doit être inféreieur à la 'Base maximale'."
-
-#. module: integc
+#: field:hr.payroll.export,write_uid:0
 #: field:hr.payslip.journal,write_uid:0
 #: field:integc.account.invoice.stage,write_uid:0
 #: field:integc.hr.category,write_uid:0
@@ -1507,12 +1865,17 @@ msgstr "La 'Base minimale' doit être inféreieur à la 'Base maximale'."
 #: field:integc.market.contract,write_uid:0
 #: field:integc.market.contract.line,write_uid:0
 #: field:integc.market.line,write_uid:0
+#: field:integc.need,write_uid:0
+#: field:integc.need.line,write_uid:0
+#: field:integc.need.payment,write_uid:0
 #: field:market.invoice,write_uid:0
 #: field:partner.contract,write_uid:0
+#: field:transfer.order,write_uid:0
 msgid "Last Updated by"
 msgstr "Dernièrement modifié par"
 
 #. module: integc
+#: field:hr.payroll.export,write_date:0
 #: field:hr.payslip.journal,write_date:0
 #: field:integc.account.invoice.stage,write_date:0
 #: field:integc.hr.category,write_date:0
@@ -1527,8 +1890,12 @@ msgstr "Dernièrement modifié par"
 #: field:integc.market.contract,write_date:0
 #: field:integc.market.contract.line,write_date:0
 #: field:integc.market.line,write_date:0
+#: field:integc.need,write_date:0
+#: field:integc.need.line,write_date:0
+#: field:integc.need.payment,write_date:0
 #: field:market.invoice,write_date:0
 #: field:partner.contract,write_date:0
+#: field:transfer.order,write_date:0
 msgid "Last Updated on"
 msgstr "Dernièrement modifié le"
 
@@ -1549,12 +1916,14 @@ msgstr "Libelle"
 
 #. module: integc
 #: view:account.analytic.account:integc.view_account_analytic_account_form_inherit_integc
+#: view:integc.market:integc.view_integc_market_form
 msgid "Lignes Budget"
 msgstr "Lignes Budget"
 
 #. module: integc
 #: field:account.analytic.account,budget_line_count:0
 #: view:budget.line:integc.view_budget_line_graph_integc
+#: field:integc.market,budget_line_count:0
 msgid "Lignes de budget"
 msgstr "Lignes de budget"
 
@@ -1595,14 +1964,25 @@ msgid "Location"
 msgstr "Location"
 
 #. module: integc
+#: code:addons/integc/account/account_bank_statement.py:19
+#: code:addons/integc/account/account_bank_statement.py:26
+#, python-format
+msgid "Loss"
+msgstr "Loss"
+
+#. module: integc
 #: report:integc.payslip:0
 #: report:payslip.run:0
 msgid "MATRICULE"
 msgstr "MATRICULE"
 
 #. module: integc
+#: model:hr.job,name:integc.hr_job_MECANICIEN
+msgid "MECANICEN"
+msgstr "MECANICEN"
+
+#. module: integc
 #: selection:account.invoice,validation_level:0
-#: selection:account.invoice,state:0
 #: selection:integc.account.invoice.stage,state:0
 msgid "MINMAP"
 msgstr "MINMAP"
@@ -1627,6 +2007,11 @@ msgstr "MONTANT EN LETTRE"
 #: report:payslip.run:0
 msgid "MONTANTS"
 msgstr "MONTANTS"
+
+#. module: integc
+#: model:res.groups,name:integc.group_market_manager
+msgid "Marché"
+msgstr "Marché"
 
 #. module: integc
 #: view:integc.market:integc.view_integc_market_form
@@ -1688,6 +2073,26 @@ msgid "Markets"
 msgstr "Marchés"
 
 #. module: integc
+#: field:integc.need,message_ids:0
+msgid "Messages"
+msgstr "Messages"
+
+#. module: integc
+#: help:integc.need,message_ids:0
+msgid "Messages and communication history"
+msgstr "Messages and communication history"
+
+#. module: integc
+#: report:pos.box:0
+msgid "Mode règlement"
+msgstr "Mode règlement"
+
+#. module: integc
+#: report:pos.box:0
+msgid "Montant"
+msgstr "Montant"
+
+#. module: integc
 #: report:integc.payslip:0
 msgid "Montant +"
 msgstr "Montant +"
@@ -1706,6 +2111,11 @@ msgstr "Montant theorique"
 #: selection:integc.hr.partner.contract,invoicing_mode:0
 msgid "Monthly"
 msgstr "Mensuel"
+
+#. module: integc
+#: report:pos.box:0
+msgid "Motif"
+msgstr "Motif"
 
 #. module: integc
 #: report:transfer.order:0
@@ -1736,6 +2146,8 @@ msgstr "NET A PAYER"
 #. module: integc
 #: report:integc.payslip:0
 #: report:payslip.run:0
+#: view:res.partner:integc.view_inherit_res_partner_form
+#: field:res.partner,niu:0
 msgid "NIU"
 msgstr "NIU"
 
@@ -1773,37 +2185,71 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:255
+#: view:integc.need:integc.view_integc_need_form
+#: view:integc.need:integc.view_integc_need_tree
+#: field:integc.need.line,need_id:0
+#: model:ir.actions.act_window,name:integc.view_integc_need_act
+#: model:ir.ui.menu,name:integc.menu_view_integc_need_view
+msgid "Need"
+msgstr "Besoin"
+
+#. module: integc
+#: field:integc.need,need_line:0
+msgid "Need Lines"
+msgstr "Lignes de besoin"
+
+#. module: integc
+#: model:ir.model,name:integc.model_integc_need_line
+msgid "Need action line"
+msgstr "Need action line"
+
+#. module: integc
+#: view:integc.need:integc.view_integc_need_form
+msgid "Need lines"
+msgstr "Lignes de besoin"
+
+#. module: integc
+#: model:ir.model,name:integc.model_integc_need
+#: model:ir.ui.menu,name:integc.menu_need
+#: model:ir.ui.menu,name:integc.menu_need_root
+msgid "Needs"
+msgstr "Besoins"
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:275
 #, python-format
 msgid "Neither social security number or date registration is not defined for %s"
 msgstr "Le N° d'immatriculation ou la date n'est pas renseigné pour l'employé %s"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:919
-#: code:addons/integc/market/market.py:455
-#: code:addons/integc/market/market.py:1454
+#: code:addons/integc/hr/partner_contract.py:922
+#: code:addons/integc/market/market.py:464
+#: code:addons/integc/market/market.py:1463
+#: code:addons/integc/need/need.py:180
 #, python-format
 msgid "No Customer Defined!"
 msgstr "Aucun partenaire n'est définie!"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:998
-#: code:addons/integc/market/market.py:534
-#: code:addons/integc/market/market.py:1533
+#: code:addons/integc/hr/partner_contract.py:1001
+#: code:addons/integc/market/market.py:543
+#: code:addons/integc/market/market.py:1542
+#: code:addons/integc/need/need.py:259
 #, python-format
 msgid "No Pricelist ! : "
 msgstr "No Pricelist ! : "
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:248
+#: code:addons/integc/hr/hr.py:268
 #, python-format
 msgid "No employee registered. You must write at least one employee"
 msgstr "Aucun employé enregistré. Vous devez au moins en selectionner un"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:1009
-#: code:addons/integc/market/market.py:545
-#: code:addons/integc/market/market.py:1544
+#: code:addons/integc/hr/partner_contract.py:1012
+#: code:addons/integc/market/market.py:554
+#: code:addons/integc/market/market.py:1553
+#: code:addons/integc/need/need.py:270
 #, python-format
 msgid "No valid pricelist line found ! :"
 msgstr "Aucune ligne de tarif en vigueur trouvé ! :"
@@ -1833,6 +2279,7 @@ msgstr "Note"
 #. module: integc
 #: field:integc.hr.contract,note:0
 #: view:integc.hr.grade:integc.view_integc_hr_grade_form
+#: field:integc.need,note:0
 #: field:partner.contract,note:0
 msgid "Notes"
 msgstr "Notes"
@@ -1864,6 +2311,11 @@ msgid "N° Compte"
 msgstr "N° Compte"
 
 #. module: integc
+#: report:pos.box:0
+msgid "N° Contribuable"
+msgstr "N° Contribuable"
+
+#. module: integc
 #: report:transfer.order:0
 msgid "N° DE COMPTE"
 msgstr "N° DE COMPTE"
@@ -1873,11 +2325,6 @@ msgstr "N° DE COMPTE"
 msgid "ORDRE DE VIREMENT N°"
 msgstr "ORDRE DE VIREMENT N°"
 
-#. module: account_accountant
-#: model:ir.actions.client,name:account_accountant.action_client_account_menu
-msgid "Open Accounting Menu"
-msgstr "Ouvrez le menu Comptabilité"
-
 #. module: integc
 #: selection:integc.market,state:0
 #: selection:integc.market.contract,state:0
@@ -1885,18 +2332,30 @@ msgid "Opened"
 msgstr "Ouvert"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:255
-#: code:addons/integc/hr/hr.py:635
+#: view:account.bank.statement:integc.view_bank_statement_form2_inherit
+msgid "Opening Balance"
+msgstr "Solde d'ouverture"
+
+#. module: integc
+#: code:addons/integc/market/market.py:300
+#, python-format
+msgid "Operation non permise!"
+msgstr "Operation non permise!"
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:275
+#: code:addons/integc/hr/hr.py:730
 #, python-format
 msgid "Operation not allowed"
 msgstr "Opération non permise"
 
 #. module: integc
 #: code:addons/integc/account/account_invoice.py:74
-#: code:addons/integc/hr/hr.py:248
-#: code:addons/integc/hr/hr.py:892
+#: code:addons/integc/hr/hr.py:268
+#: code:addons/integc/hr/hr.py:990
 #: code:addons/integc/hr/partner_contract.py:527
-#: code:addons/integc/market/market.py:1099
+#: code:addons/integc/market/market.py:1108
+#: code:addons/integc/need/wizard/need_payment.py:30
 #, python-format
 msgid "Operation not allowed!"
 msgstr "Opération non permise!"
@@ -2022,9 +2481,20 @@ msgid "Partners Contracts"
 msgstr "Contrats prestataires"
 
 #. module: integc
+#: view:integc.need:integc.view_integc_need_form
+#: view:integc.need.payment:integc.need_payment_form
+msgid "Pay"
+msgstr "Payer"
+
+#. module: integc
 #: model:ir.model,name:integc.model_hr_payslip
 msgid "Pay Slip"
 msgstr "Feuille de paie"
+
+#. module: integc
+#: model:ir.actions.act_window,name:integc.action_need_payment
+msgid "Pay need"
+msgstr "Payer le besoin"
 
 #. module: integc
 #: model:ir.actions.act_window,name:integc.action_hr_payslip_journal
@@ -2035,6 +2505,12 @@ msgstr "Journal des bulettins"
 #: view:hr.payslip.journal:integc.view_hr_payslip_journal
 msgid "PaySlip journal"
 msgstr "Journal des bulletins"
+
+#. module: integc
+#: selection:integc.need,state:0
+#: view:integc.need.payment:integc.need_payment_form
+msgid "Payment"
+msgstr "Paiement"
 
 #. module: integc
 #: view:account.voucher:integc.view_other_receipt_form
@@ -2063,6 +2539,11 @@ msgid "Payment Term"
 msgstr "Termes de paiement"
 
 #. module: integc
+#: model:ir.model,name:integc.model_hr_payroll_export
+msgid "Payroll export to DIPE format"
+msgstr "Payroll export to DIPE format"
+
+#. module: integc
 #: model:ir.model,name:integc.model_hr_payslip_run
 msgid "Payslip Batches"
 msgstr "Lots de bulletins de paie"
@@ -2083,7 +2564,7 @@ msgid "Payslip journal"
 msgstr "Journal de bulletin"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:975
+#: code:addons/integc/hr/hr.py:1073
 #, python-format
 msgid "Payslip of %s"
 msgstr "Bulletin de %s"
@@ -2096,7 +2577,6 @@ msgstr "Payé"
 
 #. module: integc
 #: selection:account.invoice,validation_level:0
-#: selection:account.invoice,state:0
 msgid "Pending payment"
 msgstr "Attente de paiement"
 
@@ -2106,23 +2586,46 @@ msgid "Pension Vieillesse"
 msgstr "Pension Vieillesse"
 
 #. module: integc
+#: field:hr.contract,performance_prime:0
+msgid "Performance Prime"
+msgstr "Prime de rendement"
+
+#. module: integc
 #: field:hr.employee,phone:0
 msgid "Phone"
 msgstr "Téléphone"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:818
-#: code:addons/integc/market/market.py:1353
+#: code:addons/integc/account/wizard/pos_box.py:45
+#: code:addons/integc/need/wizard/need_payment.py:40
+#, python-format
+msgid "Please define expense account for this product: \"%s\" (id:%d)."
+msgstr "Please define expense account for this product: \"%s\" (id:%d)."
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:821
+#: code:addons/integc/market/market.py:1362
 #, python-format
 msgid "Please define income account for this product: \"%s\" (id:%d)."
 msgstr "Veuillez définir le compte crédit pour le produit: \"%s\" (id:%d)."
 
 #. module: integc
 #: code:addons/integc/hr/partner_contract.py:420
-#: code:addons/integc/market/market.py:1005
+#, python-format
+msgid "Please define purchase journal for this company: \"%s\" (id:%d)."
+msgstr "Veuillez définir le journal des achats pour la société: \"%s\" (id:%d)."
+
+#. module: integc
+#: code:addons/integc/market/market.py:1014
 #, python-format
 msgid "Please define sales journal for this company: \"%s\" (id:%d)."
-msgstr "Veuillez définir un journal pour la structure: \"%s\" (id:%d)."
+msgstr "Please define sales journal for this company: \"%s\" (id:%d)."
+
+#. module: integc
+#: code:addons/integc/account/account_bank_statement.py:58
+#, python-format
+msgid "Please verify that an account is defined in the journal."
+msgstr "Please verify that an account is defined in the journal."
 
 #. module: integc
 #: field:res.partner.bank,pos:0
@@ -2153,6 +2656,7 @@ msgstr "Prestations sociales"
 #: field:integc.hr.partner.contract,pricelist_id:0
 #: field:integc.market,pricelist_id:0
 #: field:integc.market.contract,pricelist_id:0
+#: field:integc.need,pricelist_id:0
 msgid "Pricelist"
 msgstr "Liste de prix"
 
@@ -2168,9 +2672,10 @@ msgid "Pricelist for current market."
 msgstr "Pricelist for current market."
 
 #. module: integc
+#: view:hr.contract:integc.hr_contract_form_inherit1
 #: view:integc.hr.category:integc.view_integc_hr_category_form
-msgid "Prime"
-msgstr "Prime"
+msgid "Primes"
+msgstr "Primes"
 
 #. module: integc
 #: view:account.invoice:integc.view_invoice_form_inherit1
@@ -2194,17 +2699,25 @@ msgid "Print Payslips"
 msgstr "Imprimer les bulletins"
 
 #. module: integc
+#: view:account.bank.statement:integc.view_bank_statement_form2_inherit
+msgid "Print receipt"
+msgstr "Imprimer le reçu de caisse"
+
+#. module: integc
 #: field:integc.hr.partner.contract.line,type:0
 #: field:integc.market.contract.line,type:0
 #: field:integc.market.line,type:0
+#: field:integc.need.line,type:0
 msgid "Procurement Method"
 msgstr "Méthode de passation"
 
 #. module: integc
-#: field:integc.hr.partner.contract.line,product_id:0
+#: field:account.bank.statement.line,product_id:0
 #: field:cash.box.out,product_id:0
+#: field:integc.hr.partner.contract.line,product_id:0
 #: field:integc.market.contract.line,product_id:0
 #: field:integc.market.line,product_id:0
+#: field:integc.need.line,product_id:0
 msgid "Product"
 msgstr "Produit"
 
@@ -2212,6 +2725,7 @@ msgstr "Produit"
 #: field:integc.hr.partner.contract.line,product_uos:0
 #: field:integc.market.contract.line,product_uos:0
 #: field:integc.market.line,product_uos:0
+#: field:integc.need.line,product_uos:0
 msgid "Product UoS"
 msgstr "Product UoS"
 
@@ -2219,6 +2733,13 @@ msgstr "Product UoS"
 #: view:budget.line:integc.view_budget_line_search_inherit_integc
 msgid "Produits"
 msgstr "Produits"
+
+#. module: integc
+#: code:addons/integc/account/account_bank_statement.py:19
+#: code:addons/integc/account/account_bank_statement.py:31
+#, python-format
+msgid "Profit"
+msgstr "Profit"
 
 #. module: integc
 #: selection:hr.contract,state:0
@@ -2241,23 +2762,36 @@ msgid "Project"
 msgstr "Projet"
 
 #. module: integc
+#: field:hr.contract,project_prime:0
+msgid "Project Prime"
+msgstr "Prime de projet"
+
+#. module: integc
 #: selection:account.invoice,validation_level:0
-#: selection:account.invoice,state:0
 #: selection:integc.account.invoice.stage,state:0
 msgid "Project leader"
 msgstr "Chef de projet"
 
 #. module: integc
 #: selection:account.invoice,validation_level:0
-#: selection:account.invoice,state:0
 #: selection:integc.account.invoice.stage,state:0
 msgid "Project manager"
 msgstr "Maître d'ouvrage"
 
 #. module: integc
+#: report:pos.box:0
+msgid "Projet"
+msgstr "Projet"
+
+#. module: integc
 #: view:budget.line:integc.view_budget_line_search_inherit_integc
 msgid "Projets"
 msgstr "Projets"
+
+#. module: integc
+#: view:account.bank.statement:integc.view_bank_statement_form2_inherit
+msgid "Put Money In"
+msgstr "Entrée d'argent"
 
 #. module: integc
 #: report:integc.payslip:0
@@ -2268,6 +2802,7 @@ msgstr "QUALIFICATION"
 #: field:integc.hr.partner.contract.line,product_uom_qty:0
 #: field:integc.market.contract.line,product_uom_qty:0
 #: field:integc.market.line,product_uom_qty:0
+#: field:integc.need.line,product_uom_qty:0
 msgid "Quantity"
 msgstr "Quantité"
 
@@ -2275,6 +2810,7 @@ msgstr "Quantité"
 #: field:integc.hr.partner.contract.line,product_uos_qty:0
 #: field:integc.market.contract.line,product_uos_qty:0
 #: field:integc.market.line,product_uos_qty:0
+#: field:integc.need.line,product_uos_qty:0
 msgid "Quantity (UoS)"
 msgstr "Quantité (UoS)"
 
@@ -2310,6 +2846,16 @@ msgid "REGIME CNPS"
 msgstr "REGIME CNPS"
 
 #. module: integc
+#: model:hr.job,name:integc.hr_job_RESP_ACHAT
+msgid "RESPONSABLE ACHATS"
+msgstr "RESPONSABLE ACHATS"
+
+#. module: integc
+#: model:hr.job,name:integc.hr_job_RESP_ET
+msgid "RESPONSABLE DES ETUDES"
+msgstr "RESPONSABLE DES ETUDES"
+
+#. module: integc
 #: report:payslip.run:0
 msgid "RET. FISCALES"
 msgstr "RET. FISCALES"
@@ -2318,6 +2864,43 @@ msgstr "RET. FISCALES"
 #: report:transfer.order:0
 msgid "RIB"
 msgstr "RIB"
+
+#. module: integc
+#: model:account.tax,name:integc.child_ret_2_2_purchase
+msgid "RT 2,2% (Achat)"
+msgstr "RT 2,2% (Achat)"
+
+#. module: integc
+#: model:account.tax,name:integc.child_ret_2_2_sale
+msgid "RT 2,2% (Vente)"
+msgstr "RT 2,2% (Vente)"
+
+#. module: integc
+#: model:account.tax,name:integc.child_ret_5_5_purchase
+msgid "RT 5,5% (Achat)"
+msgstr "RT 5,5% (Achat)"
+
+#. module: integc
+#: model:account.tax,name:integc.child_ret_5_5_sale
+msgid "RT 5,5% (Vente)"
+msgstr "RT 5,5% (Vente)"
+
+#. module: integc
+#: field:hr.contract,reception_prime:0
+msgid "Reception Prime"
+msgstr "Prime d'accueil"
+
+#. module: integc
+#: field:hr.contract,reconversion_prime:0
+msgid "Reconversion Prime"
+msgstr "Prime de reconversion"
+
+#. module: integc
+#: view:integc.need:integc.view_integc_need_form
+#: view:integc.need:integc.view_integc_need_tree
+#: field:integc.need,name:0
+msgid "Reference"
+msgstr "Reference"
 
 #. module: integc
 #: view:account.invoice:integc.view_invoice_customer_1
@@ -2365,9 +2948,14 @@ msgid "Registration request"
 msgstr "Demande d'immatriculation"
 
 #. module: integc
-#: field:integc.hr.category,representation_fees:0
-msgid "Representation Fees"
-msgstr "Frais de représentation"
+#: field:hr.contract,replacement_prime:0
+msgid "Replacement Prime"
+msgstr "Prime de remplacement"
+
+#. module: integc
+#: field:integc.hr.category,representation_allowance:0
+msgid "Representation Allowance"
+msgstr "Indemnité de représentation"
 
 #. module: integc
 #: field:integc.hr.registration.request,request_line_ids:0
@@ -2390,9 +2978,40 @@ msgid "Responsibility Prime"
 msgstr "Prime de responsabilité"
 
 #. module: integc
+#: model:account.tax,name:integc.ret_2_2_purchase
+msgid "Retenue 2,2% (Achat)"
+msgstr "Retenue 2,2% (Achat)"
+
+#. module: integc
+#: model:account.tax,name:integc.ret_2_2_sale
+msgid "Retenue 2,2% (Vente)"
+msgstr "Retenue 2,2% (Vente)"
+
+#. module: integc
+#: model:account.tax,name:integc.ret_5_5_purchase
+msgid "Retenue 5,5% (Achat)"
+msgstr "Retenue 5,5% (Achat)"
+
+#. module: integc
+#: model:account.tax,name:integc.ret_5_5_sale
+msgid "Retenue 5,5% (Vente)"
+msgstr "Retenue 5,5% (Vente)"
+
+#. module: integc
+#: model:ir.actions.report.xml,name:integc.pos_box_receipt
+msgid "Reçu caisse"
+msgstr "Reçu caisse"
+
+#. module: integc
 #: field:integc.hr.category,risk_prime:0
 msgid "Risk Prime"
 msgstr "Prime de Risque"
+
+#. module: integc
+#: view:integc.market:integc.view_integc_market_form
+#: view:integc.market:integc.view_integc_market_tree
+msgid "Référence"
+msgstr "Référence"
 
 #. module: integc
 #: report:payslip.run:0
@@ -2408,6 +3027,11 @@ msgstr "SAL. TAX"
 #: report:payslip.run:0
 msgid "SALAIRE BRUT"
 msgstr "SALAIRE BRUT"
+
+#. module: integc
+#: model:hr.job,name:integc.hr_job_SECRETAIRE
+msgid "SECRETAIRE"
+msgstr "SECRETAIRE"
 
 #. module: integc
 #: report:integc.payslip:0
@@ -2451,7 +3075,8 @@ msgid "Salary Structure"
 msgstr "Structure salariale"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:408
+#: code:addons/integc/hr/hr.py:470
+#: sql_constraint:integc.hr.salary.grid:0
 #, python-format
 msgid "Salary grid name already exists"
 msgstr "Cette grille salariale existe déjà"
@@ -2467,11 +3092,21 @@ msgid "Search"
 msgstr "Filtre"
 
 #. module: integc
+#: field:hr.contract,secretariat_prime:0
+msgid "Secretariat Prime"
+msgstr "Prime de sécrétariat"
+
+#. module: integc
 #: field:budget.item,section_id:0
 #: view:budget.line:integc.view_budget_line_search_inherit_integc
 #: field:budget.line,section_id:0
 msgid "Section"
 msgstr "Section"
+
+#. module: integc
+#: view:integc.need.payment:integc.need_payment_form
+msgid "Select the box for the payment"
+msgstr "Selectionner la caisse pour le paiement"
 
 #. module: integc
 #: field:hr.contract,seniority:0
@@ -2483,12 +3118,12 @@ msgstr "Ancienneté"
 #: field:integc.hr.partner.contract.line,sequence:0
 #: field:integc.market.contract.line,sequence:0
 #: field:integc.market.line,sequence:0
+#: field:integc.need.line,sequence:0
 msgid "Sequence"
 msgstr "Sequence"
 
 #. module: integc
 #: selection:account.invoice,validation_level:0
-#: selection:account.invoice,state:0
 #: selection:integc.account.invoice.stage,state:0
 msgid "Service manager"
 msgstr "Chef Service"
@@ -2504,6 +3139,7 @@ msgstr "Services"
 #: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
 #: view:integc.market:integc.view_integc_market_form
 #: view:integc.market.contract:integc.view_integc_market_contract_form
+#: view:integc.need:integc.view_integc_need_form
 msgid "Services Lines"
 msgstr "Lignes de service"
 
@@ -2513,9 +3149,24 @@ msgid "Set to Draft"
 msgstr "Mettre à l'état \"Brouillon\""
 
 #. module: integc
+#: field:integc.hr.category,sickness_allowance:0
+msgid "Sickness Allowance"
+msgstr "Indemnité maladie"
+
+#. module: integc
 #: view:hr.contract:integc.hr_contract_form_inherit1
 msgid "Sign"
 msgstr "Signer"
+
+#. module: integc
+#: report:pos.box:0
+msgid "Signature bénéficiaire"
+msgstr "Signature bénéficiaire"
+
+#. module: integc
+#: report:pos.box:0
+msgid "Signature caissier"
+msgstr "Signature caissier"
 
 #. module: integc
 #: report:integc.payslip:0
@@ -2529,8 +3180,14 @@ msgstr "Unique"
 
 #. module: integc
 #: field:integc.hr.registration.request.line,ssnid:0
+#: field:res.partner,ssnid:0
 msgid "Social Security Number"
 msgstr "N° CNPS"
+
+#. module: integc
+#: field:res.partner,ssregime:0
+msgid "Social Security Regime"
+msgstr "Social Security Regime"
 
 #. module: integc
 #: model:ir.model,name:integc.model_integc_hr_registration_request
@@ -2562,11 +3219,19 @@ msgid "State"
 msgstr "Statut"
 
 #. module: integc
+#: code:addons/integc/account/account_bank_statement.py:81
+#, python-format
+msgid "Statement %s confirmed, journal items were created."
+msgstr "Statement %s confirmed, journal items were created."
+
+#. module: integc
 #: field:integc.hr.partner.contract,state:0
 #: field:integc.hr.partner.contract.line,state:0
 #: field:integc.market.contract,state:0
 #: field:integc.market.contract.line,state:0
 #: field:integc.market.line,state:0
+#: field:integc.need,state:0
+#: field:integc.need.line,state:0
 msgid "Status"
 msgstr "Status"
 
@@ -2592,14 +3257,26 @@ msgid "Street2"
 msgstr "Rue 2"
 
 #. module: integc
+#: view:integc.need:integc.view_integc_need_form
+msgid "Submit"
+msgstr "Submit"
+
+#. module: integc
 #: field:integc.hr.partner.contract.line,price_subtotal:0
 #: field:integc.market.contract.line,price_subtotal:0
 #: field:integc.market.line,price_subtotal:0
+#: field:integc.need.line,price_subtotal:0
 msgid "Subtotal"
 msgstr "Sous-Total"
 
 #. module: integc
+#: field:integc.need,message_summary:0
+msgid "Summary"
+msgstr "Summary"
+
+#. module: integc
 #: view:account.voucher:integc.view_other_receipt_form
+#: field:integc.need,partner_id:0
 msgid "Supplier"
 msgstr "Fournisseur"
 
@@ -2620,6 +3297,11 @@ msgid "TDL"
 msgstr "TDL"
 
 #. module: integc
+#: model:hr.job,name:integc.hr_job_TECH_GC
+msgid "TECHNICIEN DU GENIE CIVIL"
+msgstr "TECHNICIEN DU GENIE CIVIL"
+
+#. module: integc
 #: report:payslip.run:0
 msgid "TEL"
 msgstr "TEL"
@@ -2630,9 +3312,74 @@ msgid "TEL:"
 msgstr "TEL:"
 
 #. module: integc
+#: model:hr.job,name:integc.hr_job_TOPOGRAPHE
+msgid "TOPOGRAPHE"
+msgstr "TOPOGRAPHE"
+
+#. module: integc
 #: report:payslip.run:0
 msgid "TOTAL"
 msgstr "TOTAL"
+
+#. module: integc
+#: model:account.tax,name:integc.vat_ret_2_2_purchase
+msgid "TVA + RET 2,2% (Achat)"
+msgstr "TVA + RET 2,2% (Achat)"
+
+#. module: integc
+#: model:account.tax,name:integc.vat_ret_2_2_sale
+msgid "TVA + RET 2,2% (Vente)"
+msgstr "TVA + RET 2,2% (Vente)"
+
+#. module: integc
+#: model:account.tax,name:integc.vat_ret_5_5_purchase
+msgid "TVA + RET 5,5% (Achat)"
+msgstr "TVA + RET 5,5% (Achat)"
+
+#. module: integc
+#: model:account.tax,name:integc.child_vat_19_25_ret_5_5_purchase
+msgid "TVA 19,25% Enfant (Achat)"
+msgstr "TVA 19,25% Enfant (Achat)"
+
+#. module: integc
+#: model:account.tax,name:integc.child_vat_19_25_ret_5_5_sale
+msgid "TVA 19,25% Enfant (Vente)"
+msgstr "TVA 19,25% Enfant (Vente)"
+
+#. module: integc
+#: model:account.tax,name:integc.child_vat_19_25_ret_2_2_purchase
+msgid "TVA 19,25% Enfant 1 (Achat)"
+msgstr "TVA 19,25% Enfant 1 (Achat)"
+
+#. module: integc
+#: model:account.tax,name:integc.child_vat_19_25_ret_2_2_sale
+msgid "TVA 19,25% Enfant 1 (Vente)"
+msgstr "TVA 19,25% Enfant 1 (Vente)"
+
+#. module: integc
+#: model:account.tax,name:integc.child_vat_on_invoice_19_25_ret_5_5_purchase
+msgid "TVA sur facture 19,25% Enfant (Achat)"
+msgstr "TVA sur facture 19,25% Enfant (Achat)"
+
+#. module: integc
+#: model:account.tax,name:integc.child_vat_on_invoice_19_25_ret_5_5_sale
+msgid "TVA sur facture 19,25% Enfant (Vente)"
+msgstr "TVA sur facture 19,25% Enfant (Vente)"
+
+#. module: integc
+#: model:account.tax,name:integc.child_vat_on_invoice_19_25_ret_2_2_purchase
+msgid "TVA sur facture 19,25% Enfant 1 (Achat)"
+msgstr "TVA sur facture 19,25% Enfant 1 (Achat)"
+
+#. module: integc
+#: model:account.tax,name:integc.child_vat_on_invoice_19_25_ret_2_2_sale
+msgid "TVA sur facture 19,25% Enfant 1 (Vente)"
+msgstr "TVA sur facture 19,25% Enfant 1 (Vente)"
+
+#. module: integc
+#: model:account.tax,name:integc.vat_ret_5_5_sale
+msgid "TVA+RET 5,5% (Vente)"
+msgstr "TVA+RET 5,5% (Vente)"
 
 #. module: integc
 #: model:ir.ui.menu,name:integc.menu_integc_hr_dashboard_main
@@ -2644,6 +3391,11 @@ msgstr "Tableau de Bord"
 #: model:ir.ui.menu,name:integc.menu_integc_hr_dashboard
 msgid "Tableau de bord"
 msgstr "Tableau de bord"
+
+#. module: integc
+#: view:account.bank.statement:integc.view_bank_statement_form2_inherit
+msgid "Take Money Out"
+msgstr "Retrait d'argent"
 
 #. module: integc
 #: report:integc.payslip:0
@@ -2659,6 +3411,11 @@ msgstr "Taux(%)"
 #: field:integc.market.line,tax_id:0
 msgid "Taxes"
 msgstr "Taxes"
+
+#. module: integc
+#: field:integc.hr.category,technical_prime:0
+msgid "Technical Prime"
+msgstr "Prime de technicité"
 
 #. module: integc
 #: report:transfer.order:0
@@ -2680,22 +3437,27 @@ msgstr "Termes et conditions"
 
 #. module: integc
 #: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
-#: view:integc.market:integc.view_integc_market_form
 #: view:integc.market.contract:integc.view_integc_market_contract_form
 msgid "Terms and conditions..."
 msgstr "Termes et conditions..."
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:1028
+#: code:addons/integc/hr/hr.py:1126
 #, python-format
 msgid "The Expense Journal \"%s\" has not properly configured the Credit Account!"
 msgstr "Le compte Crédit n'est pas proprement configuré pour le journal \"%s\" !"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:1044
+#: code:addons/integc/hr/hr.py:1142
 #, python-format
 msgid "The Expense Journal \"%s\" has not properly configured the Debit Account!"
 msgstr "Le compte Débit n'est pas proprement configuré pour le journal \"%s\" !"
+
+#. module: integc
+#: code:addons/integc/account/account_bank_statement.py:61
+#, python-format
+msgid "The account entries lines are not in valid state."
+msgstr "The account entries lines are not in valid state."
 
 #. module: integc
 #: help:integc.hr.partner.contract,amount_untaxed:0
@@ -2711,7 +3473,18 @@ msgid "The analytic account related to a contract."
 msgstr "Le compte analytique associé à ce contrat."
 
 #. module: integc
-#: code:addons/integc/account/account_voucher.py:273
+#: code:addons/integc/need/wizard/need_payment.py:30
+#, python-format
+msgid "The current balance in box is insufficient."
+msgstr "The current balance in box is insufficient."
+
+#. module: integc
+#: view:transfer.order:integc.transfer_order_form
+msgid "The file is generated on format"
+msgstr "Ce fichier est genéré sous le format"
+
+#. module: integc
+#: code:addons/integc/account/account_voucher.py:274
 #, python-format
 msgid "The invoice you are willing to pay is not valid anymore."
 msgstr "La facture pour laquelle vous voullez effectuer le paiement n'est plus valide."
@@ -2742,27 +3515,50 @@ msgstr "Montant total du marché."
 #: help:integc.hr.partner.contract,amount_total:0
 #: help:integc.market,amount_total:0
 #: help:integc.market.contract,amount_total:0
+#: help:integc.need,amount_total:0
 msgid "The total amount."
 msgstr "Le montant total."
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:835
-#: code:addons/integc/market/market.py:1370
+#: view:transfer.order:integc.transfer_order_form
+msgid "The transfer order exportation will generate a CSV file for partners who have bank account configured"
+msgstr "Cette opération va générer un fichier au format CSV avec les données des comptes bancaires des partenaires"
+
+#. module: integc
+#: code:addons/integc/hr/partner_contract.py:838
+#: code:addons/integc/market/market.py:1379
 #, python-format
 msgid "There is no Fiscal Position defined or Income category account defined for default properties of Product categories."
 msgstr "Il n'y a aucune position budgétaire définie ou de compte de revenu d'une catégorie défini pour les propriétés par défaut des catégories de produits."
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:892
+#: code:addons/integc/account/account_bank_statement.py:28
+#, python-format
+msgid "There is no Loss Account on the journal %s."
+msgstr "There is no Loss Account on the journal %s."
+
+#. module: integc
+#: code:addons/integc/account/account_bank_statement.py:33
+#, python-format
+msgid "There is no Profit Account on the journal %s."
+msgstr "There is no Profit Account on the journal %s."
+
+#. module: integc
+#: code:addons/integc/hr/hr.py:990
 #, python-format
 msgid "There is no payslip to print"
 msgstr "Aucun bulletin à imprimer"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:635
+#: code:addons/integc/hr/hr.py:730
 #, python-format
 msgid "There is not salary grid defined for this category and grade"
 msgstr "Aucune grille salariale n'est définie pour cette catégorie et cet échelon"
+
+#. module: integc
+#: view:transfer.order:integc.transfer_order_form
+msgid "This file was generated using the universal"
+msgstr "Ce fichier a été généré en utilisant le format universel"
 
 #. module: integc
 #: help:integc.hr.partner.contract,invoice_ids:0
@@ -2771,11 +3567,23 @@ msgid "This is the list of invoices that have been generated for this contract. 
 msgstr "Ceci est la liste des factures générées pour ce document. Le même contrat peut être facturé plusieurs fois (par exemple: par ligne )."
 
 #. module: integc
+#: view:hr.payroll.export:integc.hr_payroll_export_form
+msgid "This operation will generate a txt file compatible to DIPE format"
+msgstr "Cette opération genérera un fichier txt compatible au format DIPE Magnétique"
+
+#. module: integc
+#: field:integc.hr.category,tool_allowance:0
+msgid "Tool Allowance"
+msgstr "Indemnité d'outillage"
+
+#. module: integc
 #: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_tree1
 #: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_tree2
 #: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_tree3
 #: field:integc.hr.partner.contract,amount_total:0
 #: field:integc.market.contract,amount_total:0
+#: view:integc.need:integc.view_integc_need_tree
+#: field:integc.need,amount_total:0
 msgid "Total"
 msgstr "Total"
 
@@ -2840,10 +3648,31 @@ msgid "Totalement facturé"
 msgstr "Totalement facturé"
 
 #. module: integc
+#: view:transfer.order:integc.transfer_order_form
+msgid "Transfer Order"
+msgstr "Transfer Order"
+
+#. module: integc
+#: model:ir.actions.act_window,name:integc.action_transfer_order
+msgid "Transfer order"
+msgstr "Ordre de virement"
+
+#. module: integc
+#: view:transfer.order:integc.transfer_order_form
+msgid "Transfer order exportation"
+msgstr "Export ordre de virement"
+
+#. module: integc
 #: field:hr.contract,transport_allowance:0
 #: field:integc.hr.category,transport_allowance:0
 msgid "Transport Allowance"
 msgstr "Indemnité de Transport"
+
+#. module: integc
+#: field:hr.contract,transport_prime:0
+#: field:integc.hr.category,transport_prime:0
+msgid "Transport Prime"
+msgstr "Prime de transport"
 
 #. module: integc
 #: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_search
@@ -2853,6 +3682,11 @@ msgstr "Indemnité de Transport"
 #: field:market.invoice,contract_type:0
 msgid "Type"
 msgstr "Type"
+
+#. module: integc
+#: report:pos.box:0
+msgid "Tél :"
+msgstr "Tél :"
 
 #. module: integc
 #: view:integc.market.contract:integc.view_integc_market_contract_form
@@ -2866,9 +3700,15 @@ msgid "Unexpected count"
 msgstr "Décompte non escompté"
 
 #. module: integc
+#: view:transfer.order:integc.transfer_order_form
+msgid "Unicode/UTF-8"
+msgstr "Unicode/UTF-8"
+
+#. module: integc
 #: field:integc.hr.partner.contract.line,price_unit:0
 #: field:integc.market.contract.line,price_unit:0
 #: field:integc.market.line,price_unit:0
+#: field:integc.need.line,price_unit:0
 msgid "Unit Price"
 msgstr "Prix Unitaire"
 
@@ -2876,8 +3716,14 @@ msgstr "Prix Unitaire"
 #: field:integc.hr.partner.contract.line,product_uom:0
 #: field:integc.market.contract.line,product_uom:0
 #: field:integc.market.line,product_uom:0
+#: field:integc.need.line,product_uom:0
 msgid "Unit of Measure "
 msgstr "Unité de mesure "
+
+#. module: integc
+#: field:integc.need,message_unread:0
+msgid "Unread Messages"
+msgstr "Unread Messages"
 
 #. module: integc
 #: view:account.voucher:integc.view_other_receipt_form
@@ -2895,19 +3741,16 @@ msgstr "Montant hors taxes"
 #: view:integc.hr.partner.contract:integc.view_integc_hr_partner_contract_form
 #: view:integc.market:integc.view_integc_market_form
 #: view:integc.market.contract:integc.view_integc_market_contract_form
+#: view:integc.need:integc.view_integc_need_form
 msgid "UoS"
 msgstr "UoS"
-
-#. module: integc
-#: view:integc.market:integc.view_integc_market_form
-msgid "Update Contracts"
-msgstr "Avenants"
 
 #. module: integc
 #: field:integc.hr.partner.contract,user_id:0
 #: field:integc.hr.registration.request,user_id:0
 #: field:integc.market,user_id:0
 #: field:integc.market.contract,user_id:0
+#: field:integc.need,user_id:0
 msgid "User"
 msgstr "Utilisateur"
 
@@ -2924,9 +3767,38 @@ msgstr "Valider"
 
 #. module: integc
 #: selection:integc.hr.registration.request,state:0
-#: selection:integc.hr.registration.request.line,state:0
 msgid "Validated"
 msgstr "Validé"
+
+#. module: integc
+#: selection:integc.need,state:0
+msgid "Validation DAF"
+msgstr "Validation DAF"
+
+#. module: integc
+#: selection:integc.need,state:0
+msgid "Validation Department Head"
+msgstr "Validation chef département"
+
+#. module: integc
+#: selection:integc.need,state:0
+msgid "Validation Director"
+msgstr "Validation Directeur"
+
+#. module: integc
+#: selection:integc.need,state:0
+msgid "Validation Manager"
+msgstr "Validation Gérant"
+
+#. module: integc
+#: field:integc.hr.category,vehicle_advantage:0
+msgid "Vehicle Allowance"
+msgstr "Indemnité véhicule"
+
+#. module: integc
+#: field:hr.employee,vehicle_count:0
+msgid "Vehicle count"
+msgstr "Nombre de véhicules"
 
 #. module: integc
 #: report:transfer.order:0
@@ -2954,6 +3826,12 @@ msgid "Voucher Payment"
 msgstr "Règlement fournisseur"
 
 #. module: integc
+#: code:addons/integc/market/market.py:300
+#, python-format
+msgid "Vous ne pouvez pas valider un marche qui n a pas de lignes de produits"
+msgstr "Vous ne pouvez pas valider un marche qui n a pas de lignes de produits"
+
+#. module: integc
 #: field:hr.contract,wage_max:0
 #: field:integc.hr.salary.grid,wage_max:0
 msgid "Wage Maximal"
@@ -2972,7 +3850,6 @@ msgstr "Plage de salaire"
 
 #. module: integc
 #: selection:integc.hr.registration.request,state:0
-#: selection:integc.hr.registration.request.line,state:0
 msgid "Waiting"
 msgstr "Attente"
 
@@ -2993,6 +3870,11 @@ msgid "Waiting for signature of partner"
 msgstr "En attente de signature du prestataire"
 
 #. module: integc
+#: field:integc.hr.category,water_advantage:0
+msgid "Water Allowance"
+msgstr "Indemnité d'eau"
+
+#. module: integc
 #: field:integc.hr.partner.contract.line,th_weight:0
 #: field:integc.market.contract.line,th_weight:0
 #: field:integc.market.line,th_weight:0
@@ -3000,35 +3882,41 @@ msgid "Weight"
 msgstr "Poids"
 
 #. module: integc
-#: code:addons/integc/account/account_voucher.py:273
+#: view:hr.payroll.export:integc.hr_payroll_export_form
+#: view:transfer.order:integc.transfer_order_form
+msgid "Would you want to confirm the exportation?"
+msgstr "Voulez vous confirmer l'opération?"
+
+#. module: integc
+#: code:addons/integc/account/account_voucher.py:274
 #, python-format
 msgid "Wrong voucher line"
 msgstr "Wrong voucher line"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:874
-#: code:addons/integc/market/market.py:1409
+#: code:addons/integc/hr/partner_contract.py:877
+#: code:addons/integc/market/market.py:1418
 #, python-format
 msgid "You cannot cancel a contract line that has already been invoiced."
 msgstr "Vous ne pouvez pas annuler une ligne de contrat déja facturé."
 
 #. module: integc
 #: code:addons/integc/hr/partner_contract.py:655
-#: code:addons/integc/market/market.py:1206
+#: code:addons/integc/market/market.py:1215
 #, python-format
 msgid "You cannot confirm a contract which has no line."
 msgstr "Vous ne pouvez pas confirmer un contrat qui n'a pas de lignes"
 
 #. module: integc
 #: code:addons/integc/hr/partner_contract.py:527
-#: code:addons/integc/market/market.py:1099
+#: code:addons/integc/market/market.py:1108
 #, python-format
 msgid "You cannot create invoice for that contract with balance %s"
 msgstr "Vous ne pouvez pas créer une facture pour ce contrat avec pour réliquat %s"
 
 #. module: integc
 #: code:addons/integc/hr/partner_contract.py:545
-#: code:addons/integc/market/market.py:1117
+#: code:addons/integc/market/market.py:1126
 #, python-format
 msgid "You cannot group sales having different currencies for the same partner."
 msgstr "You cannot group sales having different currencies for the same partner."
@@ -3042,9 +3930,10 @@ msgstr "Vous ne pouvez pas valider cette facture avec le montant %s.\n"
 "Le contrat %s associé à cette facture a un décompte non escompté de %s"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:996
-#: code:addons/integc/market/market.py:532
-#: code:addons/integc/market/market.py:1531
+#: code:addons/integc/hr/partner_contract.py:999
+#: code:addons/integc/market/market.py:541
+#: code:addons/integc/market/market.py:1540
+#: code:addons/integc/need/need.py:257
 #, python-format
 msgid "You have to select a pricelist or a customer in the sales form !\n"
 "Please set one before choosing a product."
@@ -3062,10 +3951,16 @@ msgid "Zip"
 msgstr "B.P"
 
 #. module: integc
-#: code:addons/integc/account/account_voucher.py:345
+#: code:addons/integc/account/account_voucher.py:346
 #, python-format
 msgid "change"
 msgstr "change"
+
+#. module: integc
+#: selection:hr.payroll.export,state:0
+#: selection:transfer.order,state:0
+msgid "confirm"
+msgstr "confirm"
 
 #. module: integc
 #: view:integc.market:integc.view_integc_market_form
@@ -3088,14 +3983,27 @@ msgid "e.g. Invoice SAJ/0042"
 msgstr "Ex: Facture SAJ/0042"
 
 #. module: integc
+#: view:transfer.order:integc.transfer_order_form
+msgid "file encoding, please be sure to view and edit\n"
+"                           using the same encoding."
+msgstr "encodage de fichier, assurez-vous de visualiser et d'éditer en utilisant le même type d'encodage."
+
+#. module: integc
 #: selection:integc.hr.partner.contract.line,type:0
 #: selection:integc.market.contract.line,type:0
 #: selection:integc.market.line,type:0
+#: selection:integc.need.line,type:0
 msgid "from stock"
 msgstr "from stock"
 
 #. module: integc
-#: field:integc.hr.category,housing_allowance:0
+#: selection:hr.payroll.export,state:0
+#: selection:transfer.order,state:0
+msgid "get"
+msgstr "get"
+
+#. module: integc
+#: field:integc.hr.category,housing_advantage:0
 msgid "housing Allowance"
 msgstr "Indemnité de logement"
 
@@ -3104,6 +4012,7 @@ msgstr "Indemnité de logement"
 #: selection:integc.hr.partner.contract.line,type:0
 #: selection:integc.market.contract.line,type:0
 #: selection:integc.market.line,type:0
+#: selection:integc.need.line,type:0
 msgid "on order"
 msgstr "on order"
 
@@ -3111,6 +4020,7 @@ msgstr "on order"
 #: view:hr.payroll.export:integc.hr_payroll_export_form
 #: view:hr.payslip.journal:integc.view_hr_payslip_journal
 #: view:integc.hr.contract:integc.view_integc_hr_contract_form
+#: view:integc.need.payment:integc.need_payment_form
 #: view:market.invoice:integc.market_invoice_form
 #: view:partner.contract:integc.partner_contract_form
 #: view:transfer.order:integc.transfer_order_form
@@ -3118,252 +4028,7 @@ msgid "or"
 msgstr "ou"
 
 #. module: integc
-#: field:integc.hr.category,housing_advantage:0
-msgid "housing Allowance"
-msgstr "Indemnité de logement"
-
-#. module: integc
-#: view:integc.hr.category:integc.view_integc_hr_category_form
-msgid "Allowances"
-msgstr "Indemnités"
-
-#. module: integc
-#: field:integc.hr.category,basket_allowance:0
-msgid "Basket Allowance"
-msgstr "Indeminté de panier"
-
-#. module: integc
-#: field:integc.hr.category,bicycle_allowance:0
-msgid "Bicycle Allowance"
-msgstr "Indemnité bicyclette"
-
-#. module: integc
-#: field:integc.hr.category,clothing_allowance:0
-msgid "Clothing Allowance"
-msgstr "Indemnité habillement"
-
-#. module: integc
-#: field:integc.hr.category,dirt_allowance:0
-msgid "Dirt Allowance"
-msgstr "Indemnité de salissure"
-
-#. module: integc
-#: field:integc.hr.category,electricity_advantage:0
-msgid "Electricity Allowance"
-msgstr "Indemnité d'électricité"
-
-#. module: integc
-#: field:integc.hr.category,food_advantage:0
-msgid "Food Allowance"
-msgstr "Indemnité nouriture"
-
-#. module: integc
-#: field:integc.hr.category,housewife_advantage:0
-msgid "Housewife Allowance"
-msgstr "Indemnité ménagère"
-
-#. module: integc
-#: field:integc.hr.category,representation_allowance:0
-msgid "Representation Allowance"
-msgstr "Indemnité de représentation"
-
-#. module: integc
-#: field:integc.hr.category,sickness_allowance:0
-msgid "Sickness Allowance"
-msgstr "Indemnité maladie"
-
-#. module: integc
-#: field:integc.hr.category,tool_allowance:0
-msgid "Tool Allowance"
-msgstr "Indemnité d'outillage"
-
-#. module: integc
-#: field:integc.hr.category,vehicle_advantage:0
-msgid "Vehicle Allowance"
-msgstr "Indemnité véhicule"
-
-#. module: integc
-#: field:integc.hr.category,water_advantage:0
-msgid "Water Allowance"
-msgstr "Indemnité d'eau"
-
-#. module: integc
-#: field:hr.employee,vehicle_count:0
-msgid "Vehicle count"
-msgstr "Nombre de véhicules"
-
-#. module: integc
-#: field:hr.contract,transport_prime:0
-#: field:integc.hr.category,transport_prime:0
-msgid "Transport Prime"
-msgstr "Prime de transport"
-
-#. module: integc
-#: field:integc.hr.category,attendance_prime:0
-msgid "Attendance Prime"
-msgstr "Prime d'assiduité"
-
-#. module: integc
-#: field:hr.contract,cash_prime:0
-msgid "Cash Prime"
-msgstr "Prime de caisse"
-
-#. module: integc
-#: field:integc.hr.category,function_prime:0
-msgid "Function Prime"
-msgstr "Prime de fonction"
-
-#. module: integc
-#: field:hr.contract,household_prime:0
-msgid "Household Prime"
-msgstr "Prime de ménage"
-
-#. module: integc
-#: field:hr.contract,interim_prime:0
-msgid "Interim Prime"
-msgstr "Prime d'intérim"
-
-#. module: integc
-#: field:hr.contract,performance_prime:0
-msgid "Performance Prime"
-msgstr "Prime de rendement"
-
-#. module: integc
-#: field:hr.contract,project_prime:0
-msgid "Project Prime"
-msgstr "Prime de projet"
-
-#. module: integc
-#: field:hr.contract,reception_prime:0
-msgid "Reception Prime"
-msgstr "Prime d'accueil"
-
-#. module: integc
-#: field:hr.contract,reconversion_prime:0
-msgid "Reconversion Prime"
-msgstr "Prime de reconversion"
-
-#. module: integc
-#: field:hr.contract,replacement_prime:0
-msgid "Replacement Prime"
-msgstr "Prime de remplacement"
-
-#. module: integc
-#: field:hr.contract,secretariat_prime:0
-msgid "Secretariat Prime"
-msgstr "Prime de sécrétariat"
-
-#. module: integc
-#: field:integc.hr.category,technical_prime:0
-msgid "Technical Prime"
-msgstr "Prime de technicité"
-
-#. module: integc
-#: field:hr.employee,housewife_count:0
-msgid "Housewife count"
-msgstr "Nombre de ménagères"
-
-#. module: integc
-#: code:addons/integc/hr/partner_contract.py:420
-#, python-format
-msgid "Please define purchase journal for this company: \"%s\" (id:%d)."
-msgstr "Veuillez définir le journal des achats pour la société: \"%s\" (id:%d)."
-
-#. module: integc
-#: view:integc.hr.category:integc.view_integc_hr_category_form
-msgid "Advantages"
-msgstr "Avantages"
-
-#. module: integc
-#: view:transfer.order:integc.transfer_order_form
-msgid "The transfer order exportation will generate a CSV file for partners who have bank account configured"
-msgstr "Cette opération va générer un fichier au format CSV seulement avec les données des comptes bancaires configurés des partenaires"
-
-#. module: integc
-#: view:hr.payroll.export:integc.hr_payroll_export_form
-#: view:transfer.order:integc.transfer_order_form
-msgid "Would you want to confirm the exportation?"
-msgstr "Voulez vous confirmer l'opération?"
-
-
-#. module: integc
-#: view:account.voucher:integc.view_other_receipt_form
-msgid "Export"
-msgstr "Exporter"
-
-#. module: integc
-#: field:transfer.order,export_all:0
-msgid "Export all"
-msgstr "Exporter tout"
-
-#. module: integc
-#: view:transfer.order:integc.transfer_order_form
-#: view:hr.payroll.export:integc.hr_payroll_export_form
-msgid "Export Complete"
-msgstr "Opération terminée"
-
-#. module: integc
-#: view:hr.payroll.export:integc.hr_payroll_export_form
-#: view:transfer.order:integc.transfer_order_form
-msgid "Close"
-msgstr "Fermer"
-
-#. module: integc
-#: view:hr.payroll.export:integc.hr_payroll_export_form
-#: view:transfer.order:integc.transfer_order_form
-msgid "Here is the exported file:"
-msgstr "Voici le fichier genéré:"
-
-#. module: integc
-#: view:transfer.order:integc.transfer_order_form
-msgid "This file was generated using the universal"
-msgstr "Ce fichier a été généré en utilisant le format universel"
-
-#. module: integc
-#: view:transfer.order:integc.transfer_order_form
-msgid "file encoding, please be sure to view and edit\n"
-"                           using the same encoding."
-msgstr "encodage de fichier, assurez-vous de visualiser et d'éditer en utilisant le même type d'encodage."
-
-
-#. module: integc
-#: view:transfer.order:integc.transfer_order_form
-msgid "The file is generated on format"
-msgstr "Ce fichier est genéré sous le format"
-
-#. module: integc
-#: view:transfer.order:integc.transfer_order_form
-msgid "(separated by semi column) : you may edit it directly with your favorite spreadsheet software"
-msgstr "(separaré par un point virgule) : directement éditable dans un tableur"
-
-#. module: integc
-#: view:transfer.order:integc.transfer_order_form
-msgid "Transfer order exportation"
-msgstr "Export ordre de virement"
-
-#. module: integc
-#: model:ir.actions.act_window,name:integc.action_transfer_order
-msgid "Transfer order"
-msgstr "Ordre de virement"
-
-#. module: integc
-#: view:hr.payroll.export:integc.hr_payroll_export_form
-#: model:ir.actions.act_window,name:integc.action_hr_payroll_export
-msgid "DIPE Export"
-msgstr "Export de la DIPE Magnétique"
-
-#. module: integc
-#: view:hr.payslip.run:integc.hr_payslip_run_form_inherit
-msgid "Export DIPE"
-msgstr "Exporter DIPE Magnetique"
-
-#. module: integc
-#: view:transfer.order:integc.transfer_order_form
-msgid "However, you can integrate those who haven't bank account configured by checking here :"
-msgstr "Cependant, vous pouvent inclure les partenaires dont les comptes bancaires n'ont pas été configuré en cochant cette case :"
-
-#. module: integc
-#: view:hr.payroll.export:integc.hr_payroll_export_form
-msgid "This operation will generate a txt file compatible to DIPE format"
-msgstr "Cette opération genérera un fichier txt compatible au format DIPE Magnetique"
-
+#: field:hr.payroll.export,state:0
+#: field:transfer.order,state:0
+msgid "unknown"
+msgstr "unknown"

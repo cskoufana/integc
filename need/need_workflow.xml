@@ -1,0 +1,109 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+        <!--Workflow for need-->
+        <record model="workflow" id="integc_need_wkf">
+            <field name="name">integc.need.wkf</field>
+            <field name="osv">integc.need</field>
+            <field name="on_create" eval="1"/>
+        </record>
+
+        <!--Activity-->
+        <record model="workflow.activity" id="act_draft">
+            <field name="wkf_id" ref="integc_need_wkf"/>
+            <field name="flow_start" eval='True'/>
+            <field name="name">draft</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'draft'})</field>
+        </record>
+        <record model="workflow.activity" id="act_val_head_dep">
+            <field name="wkf_id" ref="integc_need_wkf"/>
+            <field name="name">validation_head_department</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'validation_head_department'})</field>
+        </record>
+        <record model="workflow.activity" id="act_val_director">
+            <field name="wkf_id" ref="integc_need_wkf"/>
+            <field name="name">validation_director</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'validation_director'})</field>
+        </record>
+        <record model="workflow.activity" id="act_val_daf">
+            <field name="wkf_id" ref="integc_need_wkf"/>
+            <field name="name">validation_daf</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'validation_daf'})</field>
+        </record>
+        <record model="workflow.activity" id="act_val_manager">
+            <field name="wkf_id" ref="integc_need_wkf"/>
+            <field name="name">validation_manager</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'validation_manager'})</field>
+        </record>
+        <record model="workflow.activity" id="act_cancel">
+            <field name="wkf_id" ref="integc_need_wkf"/>
+            <field name="name">cancel</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'cancel'})</field>
+        </record>
+        <record model="workflow.activity" id="act_payment">
+            <field name="wkf_id" ref="integc_need_wkf"/>
+            <field name="name">payment</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'payment'})</field>
+        </record>
+        <record id="act_done" model="workflow.activity">
+            <field name="wkf_id" ref="integc_need_wkf"/>
+            <field name="name">done</field>
+            <field name="flow_stop">True</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'done'})</field>
+        </record>
+        <!--Transition-->
+        <record id="wkft1" model="workflow.transition">
+            <field name="act_from" ref="act_draft"/>
+            <field name="act_to" ref="act_val_head_dep"/>
+            <field name="signal">btn_submit</field>
+        </record>
+        <record id="wkft2" model="workflow.transition">
+            <field name="act_from" ref="act_val_head_dep"/>
+            <field name="act_to" ref="act_val_director"/>
+            <field name="signal">btn_approve</field>
+        </record>
+        <record id="wkft3" model="workflow.transition">
+            <field name="act_from" ref="act_val_director"/>
+            <field name="act_to" ref="act_val_daf"/>
+            <field name="signal">btn_approve</field>
+        </record>
+        <record id="wkft4" model="workflow.transition">
+            <field name="act_from" ref="act_val_daf"/>
+            <field name="act_to" ref="act_val_manager"/>
+            <field name="signal">btn_approve</field>
+        </record>
+        <record id="wkft5" model="workflow.transition">
+            <field name="act_from" ref="act_val_manager"/>
+            <field name="act_to" ref="act_payment"/>
+            <field name="signal">btn_approve</field>
+        </record>
+        <record id="wkft6" model="workflow.transition">
+            <field name="act_from" ref="act_val_head_dep"/>
+            <field name="act_to" ref="act_cancel"/>
+            <field name="signal">btn_cancel</field>
+        </record>
+        <record id="wkft7" model="workflow.transition">
+            <field name="act_from" ref="act_val_director"/>
+            <field name="act_to" ref="act_cancel"/>
+            <field name="signal">btn_cancel</field>
+        </record>
+        <record id="wkft8" model="workflow.transition">
+            <field name="act_from" ref="act_val_daf"/>
+            <field name="act_to" ref="act_cancel"/>
+            <field name="signal">btn_cancel</field>
+        </record>
+        <record id="wkft9" model="workflow.transition">
+            <field name="act_from" ref="act_val_manager"/>
+            <field name="act_to" ref="act_cancel"/>
+            <field name="signal">btn_cancel</field>
+        </record>
+    </data>
+</openerp>

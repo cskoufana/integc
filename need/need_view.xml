@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <!--Sequence-->
+        <record id="seq_type_integc_need" model="ir.sequence.type">
+            <field name="name">Need</field>
+            <field name="code">integc.need</field>
+        </record>
+
+        <record id="seq_integc_need" model="ir.sequence">
+            <field name="name">Need</field>
+            <field name="code">integc.need</field>
+            <field name="prefix">BS/%(year)s</field>
+            <field name="padding">6</field>
+        </record>
+
+            <!--Menu-->
+             <menuitem name="Needs" id="menu_need_root" sequence="40"/>
+             <menuitem id="menu_need" parent="menu_need_root" name="Needs" sequence="40" />
+
+            <record id="view_integc_need_form" model="ir.ui.view">
+                <field name="name">integc.need.form</field>
+                <field name="model">integc.need</field>
+                <field name="arch" type="xml">
+                    <form string="Need" version="7.0">
+                        <header>
+                            <button name="btn_submit" states="draft" string="Submit" class="oe_highlight" type="work_flow"/>
+                            <button name="btn_approve" states="validation_head_department" string="Approve" class="oe_highlight" type="work_flow"/>
+                            <button name="btn_approve" states="validation_director" string="Approve" class="oe_highlight" type="work_flow"/>
+                            <button name="btn_approve" states="validation_daf" string="Approve" class="oe_highlight" type="work_flow"/>
+                            <button name="btn_approve" states="validation_manager" string="Approve" class="oe_highlight" type="work_flow"/>
+                            <button name="btn_cancel" states="validation_head_department,validation_director,validation_daf,validation_manager" string="Cancel" type="work_flow"/>
+                            <button name="%(action_need_payment)d" string="Pay" states="payment"
+                            class="oe_highlight" type="action"/>
+                            <field name="state" widget="statusbar" statusbar_visible="cancel"
+                                    states="cancel"/>
+                            <field name="state" widget="statusbar" statusbar_visible="draft,validation_head_department,validation_director,validation_daf,validation_manager,payment,done"
+                                    states="draft,validation_head_department,validation_director,validation_daf,validation_manager,payment,done"/>
+
+                    </header>
+                    <sheet>
+
+                        <group>
+                            <group>
+                                <field name="name" string="Reference" readonly="1"/>
+                                <field name="user_id" readonly="1"  string="Employee"/>
+                            </group>
+                            <group>
+                                <field name="note" colspan="2" nolabel="0" placeholder="Description ..." required="1"/>
+                            </group>
+                            <group>
+
+                                <field name="partner_id" on_change="onchange_partner_id(partner_id, context)" domain="[('supplier','=',True)]" context="{'search_default_supplier':1, 'show_address': 1}" options='{"always_reload": True}'
+                                    attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                               <field name="analytic_account_id" readonly="0"/>
+                                <field domain="[('type','=','sale')]" name="pricelist_id" groups="product.group_sale_pricelist" on_change="onchange_pricelist_id(pricelist_id,need_line)"/>
+                            </group>
+                            <group>
+                                <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="currency_id" invisible="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Need lines">
+                                <field name="need_line" attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                    <tree string="Services Lines" editable="bottom">
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="state" invisible="1"/>
+                                        <field name="product_id"
+                                            context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom}"
+                                            groups="base.group_user"
+                                            on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, False, product_uos_qty, False, name, parent.partner_id, False, True, parent.date, False, False, False, context)"/>
+                                        <field name="name"/>
+                                        <field name="product_uom_qty"
+                                            context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom}"
+                                            on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date, False, False, True, context)"/>
+                                        <field name="product_uom"
+                                            on_change="product_uom_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date, context)"
+                                            groups="product.group_uom" options='{"no_open": True}'/>
+                                        <field name="product_uos_qty" groups="product.group_uos" invisible="1"/>
+                                        <field name="product_uos" string="UoS" groups="product.group_uos" invisible="1"/>
+
+                                        <field name="price_unit"/>
+                                        <field name="price_subtotal"/>
+                                    </tree>
+                                </field>
+                                <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+
+                                    <div>
+                                        <label for="amount_total" />
+                                        <button name="button_dummy"
+                                            states="draft" string="(update)" type="object" class="oe_edit_only oe_link"/>
+                                    </div>
+                                    <field name="amount_total" nolabel="1"  class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+
+                                </group>
+                                <div class="oe_clear"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids" widget="mail_followers"/>
+                            <field name="message_ids" widget="mail_thread"/>
+                        </div>
+                    </form>
+                </field>
+            </record>
+
+        <record id="view_integc_need_tree" model="ir.ui.view">
+            <field name="name">integc.need.tree</field>
+            <field name="model">integc.need</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="Need" colors="grey:state=='cancel';">
+                    <field name="name" string="Reference"/>
+                    <field name="note" string="Description"/>
+                    <field name="date" />
+                    <field name="user_id" string="Employee"/>
+                    <field name="amount_total" sum="Total"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_integc_need_act" model="ir.actions.act_window">
+            <field name="name">Need</field>
+            <field name="res_model">integc.need</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="menu_view_integc_need_view"
+            action="view_integc_need_act"
+            parent="menu_need"
+            sequence="5"
+        />
+    </data>
+</openerp>
