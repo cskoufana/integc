@@ -375,7 +375,7 @@ msgstr "Indemnité bicyclette"
 #. module: integc
 #: field:integc.need.payment,bank_statement_id:0
 msgid "Box"
-msgstr "Box"
+msgstr "Caisse"
 
 #. module: integc
 #: view:hr.contract:integc.hr_contract_view_search_inherit1
@@ -914,7 +914,7 @@ msgstr "Options de la devise"
 #. module: integc
 #: field:integc.need.payment,balance_end_real:0
 msgid "Current balance"
-msgstr "Current balance"
+msgstr "Solde restant"
 
 #. module: integc
 #: field:integc.hr.partner.contract.line,order_partner_id:0
@@ -3259,7 +3259,7 @@ msgstr "Rue 2"
 #. module: integc
 #: view:integc.need:integc.view_integc_need_form
 msgid "Submit"
-msgstr "Submit"
+msgstr "Soummettre"
 
 #. module: integc
 #: field:integc.hr.partner.contract.line,price_subtotal:0
