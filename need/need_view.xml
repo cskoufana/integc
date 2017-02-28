@@ -47,13 +47,13 @@
                                 <field name="user_id" readonly="1"  string="Employee"/>
                             </group>
                             <group>
-                                <field name="note" colspan="2" nolabel="0" placeholder="Description ..." required="1"/>
+                                <field name="note" colspan="2" nolabel="0" placeholder="Description ..." required="1" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
                             </group>
                             <group>
 
                                 <field name="partner_id" on_change="onchange_partner_id(partner_id, context)" domain="[('supplier','=',True)]" context="{'search_default_supplier':1, 'show_address': 1}" options='{"always_reload": True}'
                                     attrs="{'readonly': [('state', '!=', 'draft')]}" />
-                               <field name="analytic_account_id" readonly="0"/>
+                               <field name="analytic_account_id" readonly="0" attrs="{'readonly': [('state', '=', 'done')]}"/>
                                 <field domain="[('type','=','sale')]" name="pricelist_id" groups="product.group_sale_pricelist" on_change="onchange_pricelist_id(pricelist_id,need_line)"/>
                             </group>
                             <group>
