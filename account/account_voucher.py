@@ -41,6 +41,7 @@ class account_voucher(osv.osv):
         ], string='Voucher Mode', select=True),
         'partner_ids': fields.many2many('res.partner', 'account_voucher_partner_rel', 'account_voucher_id', 'partner_id', 'Partners', readonly=True, states={'draft':[('readonly',False)]}),
         'bank_id': fields.many2one('res.partner.bank', 'Bank'),
+        'analytic_account_id': fields.many2one('account.analytic.account', 'Analytic account'),
     }
 
     _defaults = {
