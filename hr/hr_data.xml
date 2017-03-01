@@ -889,7 +889,7 @@
             <field name="condition_select">python</field>
             <field name="condition_python">result = employee.manager</field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.responsibility_prime</field>
+            <field name="amount_python_compute">result = contract.responsibility_prime if contract.responsibility_prime > 0 else contract.category_id.responsibility_prime</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Prime de responsabilité</field>
             <field name="account_debit" ref="pcg_661210" />
@@ -901,9 +901,9 @@
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMFONCTION</field>
             <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.function_prime</field>
+            <field name="condition_python">result = contract.function_prime > 0 or contract.category_id.function_prime > 0 </field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.function_prime</field>
+            <field name="amount_python_compute">result = contract.function_prime if contract.function_prime > 0 else contract.category_id.function_prime</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Prime de fonction</field>
             <field name="account_debit" ref="pcg_661210" />
@@ -915,9 +915,9 @@
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMRISQ</field>
             <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.risk_prime > 2 </field>
+            <field name="condition_python">result = contract.risk_prime > 0 or contract.category_id.risk_prime > 0 </field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.risk_prime</field>
+            <field name="amount_python_compute">result = contract.risk_prime if contract.risk_prime > 0 else contract.category_id.risk_prime</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Prime de risque</field>
             <field name="account_debit" ref="pcg_661210" />
@@ -1036,9 +1036,9 @@
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMTECHNICITE</field>
             <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.technical_prime > 0</field>
+            <field name="condition_python">result = contract.technical_prime > 0 or contract.category_id.technical_prime > 0</field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.technical_prime</field>
+            <field name="amount_python_compute">result = contract.technical_prime if contract.technical_prime > 0 else contract.category_id.technical_prime</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Prime de technicité</field>
             <field name="account_debit" ref="pcg_661210" />
@@ -1050,9 +1050,9 @@
             <field name="category_id" ref="PRIME"/>
             <field name="code">PRIMASSIDUITE</field>
             <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.attendance_prime > 0</field>
+            <field name="condition_python">result = contract.attendance_prime > 0 or contract.category_id.attendance_prime > 0</field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.attendance_prime</field>
+            <field name="amount_python_compute">result = contract.attendance_prime if contract.attendance_prime > 0 else contract.category_id.attendance_prime</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Prime d'assiduité</field>
             <field name="account_debit" ref="pcg_661210" />
@@ -1148,9 +1148,9 @@
             <field name="category_id" ref="hr_payroll.ALW"/>
             <field name="code">INDMREPRESENTATION</field>
             <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.representation_allowance > 0</field>
+            <field name="condition_python">result = contract.representation_allowance > 0 or contract.category_id.representation_allowance > 0</field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.representation_allowance</field>
+            <field name="amount_python_compute">result = contract.representation_allowance if contract.representation_allowance else contract.category_id.representation_allowance</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de représentation</field>
             <field name="account_debit" ref="pcg_661211" />
@@ -1176,9 +1176,9 @@
             <field name="category_id" ref="hr_payroll.ALW"/>
             <field name="code">INDMSALISSURE</field>
              <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.dirt_allowance > 0</field>
+            <field name="condition_python">result = contract.dirt_allowance > 0 or contract.category_id.dirt_allowance > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.dirt_allowance</field>
+            <field name="amount_python_compute">result = contract.dirt_allowance if contract.dirt_allowance > 0 else contract.category_id.dirt_allowance</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de salissure</field>
             <field name="account_debit" ref="pcg_661211" />
@@ -1190,9 +1190,9 @@
             <field name="category_id" ref="hr_payroll.ALW"/>
             <field name="code">INDMPANIER</field>
              <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.basket_allowance > 0</field>
+            <field name="condition_python">result = contract.basket_allowance > 0 or contract.category_id.basket_allowance > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.basket_allowance</field>
+            <field name="amount_python_compute">result = contract.basket_allowance if contract.basket_allowance > 0 else contract.category_id.basket_allowance</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de panier</field>
             <field name="account_debit" ref="pcg_661211" />
@@ -1204,9 +1204,9 @@
             <field name="category_id" ref="hr_payroll.ALW"/>
             <field name="code">INDMMALADIE</field>
              <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.sickness_allowance > 0</field>
+            <field name="condition_python">result = contract.sickness_allowance > 0 or contract.category_id.sickness_allowance > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.sickness_allowance</field>
+            <field name="amount_python_compute">result = contract.sickness_allowance if contract.sickness_allowance > 0 else contract.category_id.sickness_allowance</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de maladie</field>
             <field name="account_debit" search="[('code', 'like', '661500')]" />
@@ -1218,9 +1218,9 @@
             <field name="category_id" ref="hr_payroll.ALW"/>
             <field name="code">INDMBICYCLE</field>
              <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.bicycle_allowance > 0</field>
+            <field name="condition_python">result = contract.bicycle_allowance > 0 or contract.category_id.bicycle_allowance > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.bicycle_allowance</field>
+            <field name="amount_python_compute">result = contract.bicycle_allowance if contract.bicycle_allowance > 0 else contract.category_id.bicycle_allowance</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de bicyclette</field>
             <field name="account_debit" ref="pcg_661211" />
@@ -1232,9 +1232,9 @@
             <field name="category_id" ref="hr_payroll.ALW"/>
             <field name="code">INDMHABILLEMENT</field>
              <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.clothing_allowance > 0</field>
+            <field name="condition_python">result = contract.clothing_allowance > 0 or contract.category_id.clothing_allowance > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.clothing_allowance</field>
+            <field name="amount_python_compute">result = contract.clothing_allowance if contract.clothing_allowance > 0 else contract.category_id.clothing_allowance</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité d'habillement</field>
             <field name="account_debit" ref="pcg_661211" />
@@ -1246,9 +1246,9 @@
             <field name="category_id" ref="hr_payroll.ALW"/>
             <field name="code">INDMOUTILLAGE</field>
              <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.tool_allowance > 0</field>
+            <field name="condition_python">result = contract.tool_allowance > 0 or contract.category_id.tool_allowance > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.tool_allowance</field>
+            <field name="amount_python_compute">result = contract.tool_allowance if contract.tool_allowance > 0 else contract.category_id.tool_allowance</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité d'outillage</field>
             <field name="account_debit" ref="pcg_661211" />
@@ -1274,9 +1274,9 @@
             <field name="category_id" ref="ADVANTAGE"/>
             <field name="code">INDMLOG</field>
              <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.housing_advantage > 0</field>
+            <field name="condition_python">result = contract.housing_advantage > 0 or contract.category_id.housing_advantage > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.housing_advantage</field>
+            <field name="amount_python_compute">result = contract.housing_advantage if contract.housing_advantage > 0 else contract.category_id.housing_advantage</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de logement</field>
             <field name="account_debit" search="[('code', 'like', '661700')]" />
@@ -1288,7 +1288,7 @@
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMLOG_FISC</field>
               <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.housing_advantage > 0</field>
+            <field name="condition_python">result = contract.housing_advantage > 0 or contract.category_id.housing_advantage > 0</field>
              <field name="amount_select">code</field>
             <field name="amount_python_compute">result = min(INDMLOG, round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.15))</field>
             <field name="appears_on_payslip" eval="False"/>
@@ -1301,9 +1301,9 @@
             <field name="category_id" ref="ADVANTAGE"/>
             <field name="code">INDMVEHICULE</field>
              <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.vehicle_advantage > 0</field>
+            <field name="condition_python">result = contract.vehicle_advantage > 0 or contract.category_id.vehicle_advantage > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = round(contract.category_id.vehicle_advantage * contract.employee_id.vehicle_count)</field>
+            <field name="amount_python_compute">result = round(contract.vehicle_advantage * contract.employee_id.vehicle_count) if contract.vehicle_advantage > 0 else round(contract.category_id.vehicle_advantage * contract.employee_id.vehicle_count)</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de véhicule</field>
             <field name="account_debit" search="[('code', 'like', '661700')]" />
@@ -1315,7 +1315,7 @@
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMVEHICULE_FISC</field>
             <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.vehicle_advantage > 0</field>
+            <field name="condition_python">result = contract.vehicle_advantage > 0 or contract.category_id.vehicle_advantage > 0</field>
              <field name="amount_select">code</field>
             <field name="amount_python_compute">result = min(INDMVEHICULE,round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.1))</field>
             <field name="appears_on_payslip" eval="False"/>
@@ -1328,9 +1328,9 @@
             <field name="category_id" ref="ADVANTAGE"/>
             <field name="code">INDMDOMESTIQUE</field>
              <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.housewife_advantage > 0</field>
+            <field name="condition_python">result = contract.housewife_advantage > 0 or contract.category_id.housewife_advantage > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = round(contract.category_id.housewife_advantage * contract.employee_id.housewife_count)</field>
+            <field name="amount_python_compute">result = round(contract.housewife_advantage * contract.employee_id.housewife_count) if contract.housewife_advantage > 0 else round(contract.category_id.housewife_advantage * contract.employee_id.housewife_count)</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité domestique</field>
             <field name="account_debit" search="[('code', 'like', '661700')]" />
@@ -1342,7 +1342,7 @@
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMDOMESTIQUE_FISC</field>
              <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.housewife_advantage > 0</field>
+            <field name="condition_python">result = contract.housewife_advantage > 0 or contract.category_id.housewife_advantage > 0</field>
              <field name="amount_select">code</field>
             <field name="amount_python_compute">result = min(INDMDOMESTIQUE, round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.05))</field>
             <field name="appears_on_payslip" eval="False"/>
@@ -1355,9 +1355,9 @@
             <field name="category_id" ref="ADVANTAGE"/>
             <field name="code">INDMELECTRICITE</field>
              <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.electricity_advantage > 0</field>
+            <field name="condition_python">result = contract.electricity_advantage > 0 or contract.category_id.electricity_advantage > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.electricity_advantage</field>
+            <field name="amount_python_compute">result = contract.electricity_advantage if contract.electricity_advantage > 0 else contract.category_id.electricity_advantage</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité d'électricité</field>
             <field name="account_debit" search="[('code', 'like', '661700')]" />
@@ -1369,7 +1369,7 @@
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMELECTRICITE_FISC</field>
             <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.electricity_advantage > 0</field>
+            <field name="condition_python">result = contract.electricity_advantage > 0 or contract.category_id.electricity_advantage > 0</field>
              <field name="amount_select">code</field>
             <field name="amount_python_compute">result = min(INDMELECTRICITE, round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.04))</field>
             <field name="appears_on_payslip" eval="False"/>
@@ -1382,9 +1382,9 @@
             <field name="category_id" ref="ADVANTAGE"/>
             <field name="code">INDMEAU</field>
              <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.water_advantage > 0</field>
+            <field name="condition_python">result = contract.water_advantage > 0 or contract.category_id.water_advantage > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.water_advantage</field>
+            <field name="amount_python_compute">result = contract.water_advantage if contract.water_advantage > 0 else contract.category_id.water_advantage</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité d'eau</field>
             <field name="account_debit" search="[('code', 'like', '661700')]" />
@@ -1396,7 +1396,7 @@
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMEAU_FISC</field>
             <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.water_advantage > 0</field>
+            <field name="condition_python">result = contract.water_advantage > 0 or contract.category_id.water_advantage > 0</field>
              <field name="amount_select">code</field>
             <field name="amount_python_compute">result = min(INDMEAU, round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.02))</field>
             <field name="appears_on_payslip" eval="False"/>
@@ -1409,9 +1409,9 @@
             <field name="category_id" ref="ADVANTAGE"/>
             <field name="code">INDMNOURITURE</field>
              <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.food_advantage > 0</field>
+            <field name="condition_python">result = contract.food_advantage > 0 or contract.category_id.food_advantage > 0</field>
              <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = contract.category_id.food_advantage</field>
+            <field name="amount_python_compute">result = contract.food_advantage if contract.food_advantage > 0 else contract.category_id.food_advantage</field>
             <field name="appears_on_payslip" eval="True"/>
             <field name="note">Indemnité de nouriture</field>
             <field name="account_debit" search="[('code', 'like', '661700')]" />
@@ -1423,7 +1423,7 @@
             <field name="category_id" ref="ADVANTAGE_FISC"/>
             <field name="code">INDMNOURITURE_FISC</field>
              <field name="condition_select">python</field>
-            <field name="condition_python">result = contract.category_id.food_advantage > 0</field>
+            <field name="condition_python">result = contract.food_advantage > 0 or contract.category_id.food_advantage > 0</field>
              <field name="amount_select">code</field>
             <field name="amount_python_compute">result = min(INDMNOURITURE, round(categories.BRUT_TAXABLE_INTERMEDIAIRE * 0.1))</field>
             <field name="appears_on_payslip" eval="False"/>

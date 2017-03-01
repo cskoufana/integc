@@ -574,6 +574,27 @@ class hr_contract(osv.osv):
         'project_prime': fields.float('Project Prime', digits=(16, 2)),
         'transport_allowance': fields.float('Transport Allowance', digits=(16, 2)),
         'transport_prime': fields.float('Transport Prime', digits=(16, 2)),
+
+        'risk_prime': fields.float('Risk Prime', digits=(16, 2)),
+        'responsibility_prime': fields.float('Responsibility Prime', digits=(16, 2)),
+        'technical_prime': fields.float('Technical Prime', digits=(16, 2)),
+        'attendance_prime': fields.float('Attendance Prime', digits=(16, 2)),
+        'function_prime': fields.float('Function Prime', digits=(16, 2)),
+
+        'representation_allowance': fields.float('Representation Allowance', digits=(16, 2)),
+        'dirt_allowance': fields.float('Dirt Allowance', digits=(16, 2)),
+        'basket_allowance': fields.float('Basket Allowance', digits=(16, 2)),
+        'sickness_allowance': fields.float('Sickness Allowance', digits=(16, 2)),
+        'bicycle_allowance': fields.float('Bicycle Allowance', digits=(16, 2)),
+        'clothing_allowance': fields.float('Clothing Allowance', digits=(16, 2)),
+        'tool_allowance': fields.float('Tool Allowance', digits=(16, 2)),
+
+        'housing_advantage': fields.float('housing Allowance', digits=(16, 2)),
+        'vehicle_advantage': fields.float('Vehicle Allowance', digits=(16, 2)),
+        'housewife_advantage': fields.float('Housewife Allowance', digits=(16, 2)),
+        'electricity_advantage': fields.float('Electricity Allowance', digits=(16, 2)),
+        'water_advantage': fields.float('Water Allowance', digits=(16, 2)),
+        'food_advantage': fields.float('Food Allowance', digits=(16, 2)),
     }
 
     _defaults = {
@@ -588,6 +609,26 @@ class hr_contract(osv.osv):
         'replacement_prime': 0.0,
         'interim_prime': 0.0,
         'project_prime': 0.0,
+
+        'housing_advantage': 0.0,
+        'vehicle_advantage': 0.0,
+        'housewife_advantage': 0.0,
+        'electricity_advantage': 0.0,
+        'water_advantage': 0.0,
+        'food_advantage': 0.0,
+        'representation_allowance': 0.0,
+        'transport_allowance': 0.0,
+        'dirt_allowance': 0.0,
+        'basket_allowance': 0.0,
+        'sickness_allowance': 0.0,
+        'bicycle_allowance': 0.0,
+        'clothing_allowance': 0.0,
+        'tool_allowance': 0.0,
+        'risk_prime': 0.0,
+        'responsibility_prime': 0.0,
+        'technical_prime': 0.0,
+        'attendance_prime': 0.0,
+        'function_prime': 0.0,
     }
 
     def action_cancel(self, cr, uid, ids, context=None):

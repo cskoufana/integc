@@ -75,8 +75,7 @@
                 </xpath>
                 <xpath expr="//form/sheet/notebook/page[2]" position="replace">
                     <page string="Primes">
-                        <group col="4">
-                            <field name="transport_allowance" />
+                        <group col="4" string="Primes">
                             <field name="transport_prime" />
                             <field name="performance_prime" />
                             <field name="cash_prime" />
@@ -87,6 +86,29 @@
                             <field name="replacement_prime" />
                             <field name="interim_prime" />
                             <field name="project_prime" />
+                            <field name="responsibility_prime" />
+                            <field name="risk_prime" />
+                            <field name="technical_prime" />
+                            <field name="attendance_prime" />
+                            <field name="function_prime" />
+                        </group>
+                        <group col="4" string="Allowances">
+                            <field name="transport_allowance" />
+                            <field name="representation_allowance" />
+                            <field name="dirt_allowance" />
+                            <field name="basket_allowance" />
+                            <field name="sickness_allowance" />
+                            <field name="bicycle_allowance" />
+                            <field name="clothing_allowance" />
+                            <field name="tool_allowance" />
+                        </group>
+                        <group col="4" string="Advantages">
+                            <field name="housing_advantage" />
+                            <field name="vehicle_advantage" />
+                            <field name="housewife_advantage" />
+                            <field name="electricity_advantage" />
+                            <field name="water_advantage" />
+                            <field name="food_advantage" />
                         </group>
                     </page>
                     <page string="Attachments">
