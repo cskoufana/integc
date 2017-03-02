@@ -28,6 +28,16 @@
             <field name="category_id" ref="integc_category_module" />
         </record>
 
+        <record id="group_chef_departement" model="res.groups">
+            <field name="name">Chef Departement</field>
+            <field name="category_id" ref="integc_category_module" />
+        </record>
+
+        <record id="group_director" model="res.groups">
+            <field name="name">Directeur</field>
+            <field name="category_id" ref="integc_category_module" />
+        </record>
+
         <record id="group_chef_comptable" model="res.groups">
             <field name="name">Chef Comptable</field>
             <field name="category_id" ref="integc_category_module" />
