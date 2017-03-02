@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-28 06:35+0000\n"
-"PO-Revision-Date: 2017-02-28 06:35+0000\n"
+"POT-Creation-Date: 2017-03-02 00:36+0000\n"
+"PO-Revision-Date: 2017-03-02 00:36+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -138,13 +138,14 @@ msgid "Accounting validation level"
 msgstr "Niveau validation des écritures comptables"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:1128
-#: code:addons/integc/hr/hr.py:1144
+#: code:addons/integc/hr/hr.py:1169
+#: code:addons/integc/hr/hr.py:1185
 #, python-format
 msgid "Adjustment Entry"
 msgstr "Adjustment Entry"
 
 #. module: integc
+#: view:hr.contract:integc.hr_contract_form_inherit1
 #: view:integc.hr.category:integc.view_integc_hr_category_form
 msgid "Advantages"
 msgstr "Avantages"
@@ -173,6 +174,7 @@ msgid "Allotment Partner"
 msgstr "Lotissement partenaire"
 
 #. module: integc
+#: view:hr.contract:integc.hr_contract_form_inherit1
 #: view:integc.hr.category:integc.view_integc_hr_category_form
 msgid "Allowances"
 msgstr "Indemnités"
@@ -193,6 +195,9 @@ msgid "Analyse Budget"
 msgstr "Analyse Budget"
 
 #. module: integc
+#: view:account.voucher:integc.view_voucher_filter_customer_pay_inherit_1
+#: view:account.voucher:integc.view_voucher_filter_inherit_1
+#: view:account.voucher:integc.view_voucher_filter_vendor_pay_inherit_1
 #: field:hr.department,analytic_account_id:0
 #: model:ir.model,name:integc.model_account_analytic_account
 msgid "Analytic Account"
@@ -200,6 +205,7 @@ msgstr "Compte analytique"
 
 #. module: integc
 #: field:account.bank.statement.line,analytic_account_id:0
+#: field:account.voucher,analytic_account_id:0
 #: field:cash.box.in,analytic_account_id:0
 #: field:cash.box.out,analytic_account_id:0
 #: field:integc.hr.partner.contract,analytic_account_id:0
@@ -247,6 +253,7 @@ msgid "Attachments"
 msgstr "Pièces jointes"
 
 #. module: integc
+#: field:hr.contract,attendance_prime:0
 #: field:integc.hr.category,attendance_prime:0
 msgid "Attendance Prime"
 msgstr "Prime d'assiduité"
@@ -345,6 +352,7 @@ msgid "Basic Minimal Salary for this grid"
 msgstr "Salaire de base minimal pour cette grille"
 
 #. module: integc
+#: field:hr.contract,basket_allowance:0
 #: field:integc.hr.category,basket_allowance:0
 msgid "Basket Allowance"
 msgstr "Indeminté de panier"
@@ -368,6 +376,7 @@ msgstr "Before choosing a product,\n"
 " select a supplier in the sales form."
 
 #. module: integc
+#: field:hr.contract,bicycle_allowance:0
 #: field:integc.hr.category,bicycle_allowance:0
 msgid "Bicycle Allowance"
 msgstr "Indemnité bicyclette"
@@ -624,6 +633,11 @@ msgid "Chef Comptable"
 msgstr "Chef Comptable"
 
 #. module: integc
+#: model:res.groups,name:integc.group_chef_departement
+msgid "Chef Departement"
+msgstr "Chef Departement"
+
+#. module: integc
 #: model:res.groups,name:integc.group_chef_projet
 msgid "Chef de projets"
 msgstr "Chef de projets"
@@ -640,6 +654,7 @@ msgid "Close"
 msgstr "Fermer"
 
 #. module: integc
+#: field:hr.contract,clothing_allowance:0
 #: field:integc.hr.category,clothing_allowance:0
 msgid "Clothing Allowance"
 msgstr "Indemnité habillement"
@@ -693,8 +708,8 @@ msgstr "Compte analytique"
 
 #. module: integc
 #: code:addons/integc/account/account_bank_statement.py:58
-#: code:addons/integc/hr/hr.py:1126
-#: code:addons/integc/hr/hr.py:1142
+#: code:addons/integc/hr/hr.py:1167
+#: code:addons/integc/hr/hr.py:1183
 #: code:addons/integc/hr/partner_contract.py:1017
 #: code:addons/integc/market/market.py:559
 #: code:addons/integc/market/market.py:1558
@@ -1221,6 +1236,12 @@ msgid "Detail"
 msgstr "Détail"
 
 #. module: integc
+#: model:res.groups,name:integc.group_director
+msgid "Directeur"
+msgstr "Directeur"
+
+#. module: integc
+#: field:hr.contract,dirt_allowance:0
 #: field:integc.hr.category,dirt_allowance:0
 msgid "Dirt Allowance"
 msgstr "Indemnité de salissure"
@@ -1280,6 +1301,7 @@ msgid "EMPLOI OCCUPE"
 msgstr "EMPLOI OCCUPE"
 
 #. module: integc
+#: field:hr.contract,electricity_advantage:0
 #: field:integc.hr.category,electricity_advantage:0
 msgid "Electricity Allowance"
 msgstr "Indemnité d'électricité"
@@ -1377,7 +1399,7 @@ msgstr "Ingénieur de marché"
 #: code:addons/integc/market/market.py:1215
 #: code:addons/integc/market/market.py:1361
 #: code:addons/integc/market/market.py:1378
-#: code:addons/integc/need/wizard/need_payment.py:39
+#: code:addons/integc/need/wizard/need_payment.py:38
 #, python-format
 msgid "Error!"
 msgstr "Erreur!"
@@ -1500,6 +1522,7 @@ msgid "Followers"
 msgstr "Followers"
 
 #. module: integc
+#: field:hr.contract,food_advantage:0
 #: field:integc.hr.category,food_advantage:0
 msgid "Food Allowance"
 msgstr "Indemnité nouriture"
@@ -1515,6 +1538,7 @@ msgstr "From stock: When needed, the product is taken from the stock or we wait 
 "On order: When needed, the product is purchased or produced."
 
 #. module: integc
+#: field:hr.contract,function_prime:0
 #: field:integc.hr.category,function_prime:0
 msgid "Function Prime"
 msgstr "Prime de fonction"
@@ -1618,6 +1642,7 @@ msgid "Household Prime"
 msgstr "Prime de ménage"
 
 #. module: integc
+#: field:hr.contract,housewife_advantage:0
 #: field:integc.hr.category,housewife_advantage:0
 msgid "Housewife Allowance"
 msgstr "Indemnité ménagère"
@@ -2344,7 +2369,7 @@ msgstr "Operation non permise!"
 
 #. module: integc
 #: code:addons/integc/hr/hr.py:275
-#: code:addons/integc/hr/hr.py:730
+#: code:addons/integc/hr/hr.py:771
 #, python-format
 msgid "Operation not allowed"
 msgstr "Opération non permise"
@@ -2352,7 +2377,7 @@ msgstr "Opération non permise"
 #. module: integc
 #: code:addons/integc/account/account_invoice.py:74
 #: code:addons/integc/hr/hr.py:268
-#: code:addons/integc/hr/hr.py:990
+#: code:addons/integc/hr/hr.py:1031
 #: code:addons/integc/hr/partner_contract.py:527
 #: code:addons/integc/market/market.py:1108
 #: code:addons/integc/need/wizard/need_payment.py:30
@@ -2564,7 +2589,7 @@ msgid "Payslip journal"
 msgstr "Journal de bulletin"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:1073
+#: code:addons/integc/hr/hr.py:1114
 #, python-format
 msgid "Payslip of %s"
 msgstr "Bulletin de %s"
@@ -2597,7 +2622,7 @@ msgstr "Téléphone"
 
 #. module: integc
 #: code:addons/integc/account/wizard/pos_box.py:45
-#: code:addons/integc/need/wizard/need_payment.py:40
+#: code:addons/integc/need/wizard/need_payment.py:39
 #, python-format
 msgid "Please define expense account for this product: \"%s\" (id:%d)."
 msgstr "Please define expense account for this product: \"%s\" (id:%d)."
@@ -2953,6 +2978,7 @@ msgid "Replacement Prime"
 msgstr "Prime de remplacement"
 
 #. module: integc
+#: field:hr.contract,representation_allowance:0
 #: field:integc.hr.category,representation_allowance:0
 msgid "Representation Allowance"
 msgstr "Indemnité de représentation"
@@ -2973,6 +2999,7 @@ msgid "Responsable RH"
 msgstr "Responsable RH"
 
 #. module: integc
+#: field:hr.contract,responsibility_prime:0
 #: field:integc.hr.category,responsibility_prime:0
 msgid "Responsibility Prime"
 msgstr "Prime de responsabilité"
@@ -3003,6 +3030,7 @@ msgid "Reçu caisse"
 msgstr "Reçu caisse"
 
 #. module: integc
+#: field:hr.contract,risk_prime:0
 #: field:integc.hr.category,risk_prime:0
 msgid "Risk Prime"
 msgstr "Prime de Risque"
@@ -3149,6 +3177,7 @@ msgid "Set to Draft"
 msgstr "Mettre à l'état \"Brouillon\""
 
 #. module: integc
+#: field:hr.contract,sickness_allowance:0
 #: field:integc.hr.category,sickness_allowance:0
 msgid "Sickness Allowance"
 msgstr "Indemnité maladie"
@@ -3413,6 +3442,7 @@ msgid "Taxes"
 msgstr "Taxes"
 
 #. module: integc
+#: field:hr.contract,technical_prime:0
 #: field:integc.hr.category,technical_prime:0
 msgid "Technical Prime"
 msgstr "Prime de technicité"
@@ -3442,13 +3472,13 @@ msgid "Terms and conditions..."
 msgstr "Termes et conditions..."
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:1126
+#: code:addons/integc/hr/hr.py:1167
 #, python-format
 msgid "The Expense Journal \"%s\" has not properly configured the Credit Account!"
 msgstr "Le compte Crédit n'est pas proprement configuré pour le journal \"%s\" !"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:1142
+#: code:addons/integc/hr/hr.py:1183
 #, python-format
 msgid "The Expense Journal \"%s\" has not properly configured the Debit Account!"
 msgstr "Le compte Débit n'est pas proprement configuré pour le journal \"%s\" !"
@@ -3484,7 +3514,7 @@ msgid "The file is generated on format"
 msgstr "Ce fichier est genéré sous le format"
 
 #. module: integc
-#: code:addons/integc/account/account_voucher.py:274
+#: code:addons/integc/account/account_voucher.py:275
 #, python-format
 msgid "The invoice you are willing to pay is not valid anymore."
 msgstr "La facture pour laquelle vous voullez effectuer le paiement n'est plus valide."
@@ -3544,13 +3574,13 @@ msgid "There is no Profit Account on the journal %s."
 msgstr "There is no Profit Account on the journal %s."
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:990
+#: code:addons/integc/hr/hr.py:1031
 #, python-format
 msgid "There is no payslip to print"
 msgstr "Aucun bulletin à imprimer"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:730
+#: code:addons/integc/hr/hr.py:771
 #, python-format
 msgid "There is not salary grid defined for this category and grade"
 msgstr "Aucune grille salariale n'est définie pour cette catégorie et cet échelon"
@@ -3572,6 +3602,7 @@ msgid "This operation will generate a txt file compatible to DIPE format"
 msgstr "Cette opération genérera un fichier txt compatible au format DIPE Magnétique"
 
 #. module: integc
+#: field:hr.contract,tool_allowance:0
 #: field:integc.hr.category,tool_allowance:0
 msgid "Tool Allowance"
 msgstr "Indemnité d'outillage"
@@ -3791,6 +3822,7 @@ msgid "Validation Manager"
 msgstr "Validation Gérant"
 
 #. module: integc
+#: field:hr.contract,vehicle_advantage:0
 #: field:integc.hr.category,vehicle_advantage:0
 msgid "Vehicle Allowance"
 msgstr "Indemnité véhicule"
@@ -3870,6 +3902,7 @@ msgid "Waiting for signature of partner"
 msgstr "En attente de signature du prestataire"
 
 #. module: integc
+#: field:hr.contract,water_advantage:0
 #: field:integc.hr.category,water_advantage:0
 msgid "Water Allowance"
 msgstr "Indemnité d'eau"
@@ -3888,7 +3921,7 @@ msgid "Would you want to confirm the exportation?"
 msgstr "Voulez vous confirmer l'opération?"
 
 #. module: integc
-#: code:addons/integc/account/account_voucher.py:274
+#: code:addons/integc/account/account_voucher.py:275
 #, python-format
 msgid "Wrong voucher line"
 msgstr "Wrong voucher line"
@@ -3951,7 +3984,7 @@ msgid "Zip"
 msgstr "B.P"
 
 #. module: integc
-#: code:addons/integc/account/account_voucher.py:346
+#: code:addons/integc/account/account_voucher.py:347
 #, python-format
 msgid "change"
 msgstr "change"
@@ -4003,6 +4036,7 @@ msgid "get"
 msgstr "get"
 
 #. module: integc
+#: field:hr.contract,housing_advantage:0
 #: field:integc.hr.category,housing_advantage:0
 msgid "housing Allowance"
 msgstr "Indemnité de logement"
@@ -4032,3 +4066,4 @@ msgstr "ou"
 #: field:transfer.order,state:0
 msgid "unknown"
 msgstr "unknown"
+
