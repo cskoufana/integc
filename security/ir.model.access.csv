@@ -14,7 +14,8 @@ access_integc_market_contract,access_integc_market_contract,model_integc_market_
 access_integc_market_contract_line,access_integc_market_contract_line,model_integc_market_contract_line,base.group_user,1,1,1,0
 access_integc_account_invoice_stage,access_integc_account_invoice_stage,model_integc_account_invoice_stage,base.group_user,1,1,1,0
 
-access_integc_need_line,access_integc_need_line,model_integc_need_line,,1,0,0,0
+access_integc_need_line,access_integc_need_line,model_integc_need_line,base.group_user,1,1,1,0
+access_integc_need,access_integc_need,model_integc_need,base.group_user,1,1,1,0
 
 access_product_product_account_user,product.product.account.user,product.model_product_product,base.group_user,1,1,1,0
 access_account_payment_term,account.payment.term,account.model_account_payment_term,base.group_user,1,1,1,0
