@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data noupdate="0">
+    <data noupdate="1">
         <!-- Category 1-->
         <record id="hr_salary_grid_1A" model="integc.hr.salary.grid">
             <field name="name">1-A</field>

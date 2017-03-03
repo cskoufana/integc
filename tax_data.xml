@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data>
+    <data noupdate="1">
        <!--Sale tax-->
         <record model="account.tax" id="vat_ret_5_5_sale">
             <field name="name">TVA+RET 5,5% (Vente)</field>

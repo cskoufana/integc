@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data noupdate="0">
-
-        <!--Account account-->
+    <data noupdate="1">
+         <!--Account account-->
         <record id="pcg_661210" model="account.account"><field name="name">Primes</field><field name="code">661210</field><field name="type">other</field><field name="user_type" ref="l10n_syscohada.account_type_expense" /><field name="parent_id" search="[('code', 'like', '6612')]" /></record>
         <record id="pcg_661211" model="account.account"><field name="name">Indemnités</field><field name="code">661211</field><field name="type">other</field><field name="user_type" ref="l10n_syscohada.account_type_expense" /><field name="parent_id" search="[('code', 'like', '6612')]" /></record>
 
-
-
-        <!-- HR SALARY RULE CATEGORIES-->
+    </data>
+    <data noupdate="0">
+            <!-- HR SALARY RULE CATEGORIES-->
         <record id="hr_payroll.NET" model="hr.salary.rule.category">
             <field name="name">Salaire Net</field>
             <field name="code">NET</field>
