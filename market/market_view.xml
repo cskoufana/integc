@@ -75,6 +75,11 @@
                             <field name="currency_id" invisible="1"/>
                             <field name="has_contracts" invisible="1" />
                         </group>
+                        <group string="Initial Account">
+                            <!--<field name="initial_balance" />-->
+                            <field name="initial_count_paid" />
+                            <field name="initial_expected_count" />
+                        </group>
                     </group>
                     <notebook>
                         <page string="Services">
@@ -229,6 +234,11 @@
                             <!--<field name="company_id" groups="base.group_no_one" widget="selection" readonly="1" invisible="1"/>-->
 
                             <field name="currency_id" invisible="1"/>
+
+                            <!--<field name="initial_balance" />-->
+                            <field name="initial_count_paid" />
+                            <field name="initial_expected_count" />
+
 
                         </group>
                     </group>

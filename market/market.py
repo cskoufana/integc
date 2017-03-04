@@ -222,6 +222,9 @@ class integc_market(osv.osv):
                 'integc.market.contract': (_get_market_from_contract, ['contract_line'], 10),
             },
             multi='sums', help="The total amount for the market."),
+        'initial_count_paid': fields.float('Initial Count Paid', digits=(16,2)),
+        'initial_expected_count': fields.float('Initial Expected Count', digits=(16,2)),
+        'initial_balance': fields.float('Initial Unexpected Count', digits=(16,2)),
 
         'company_id': fields.many2one('res.company', 'Company', readonly=True),
         'invoice_count': fields.function(_invoice_count, type='integer', string="Invoices",),
@@ -234,6 +237,9 @@ class integc_market(osv.osv):
         'state': 'draft',
         'user_id': lambda obj, cr, uid, context: uid,
         'company_id': _get_default_company,
+        'initial_count_paid': 0.0,
+        'initial_expected_count': 0.0,
+        'initial_balance': 0.0,
     }
     _sql_constraints = [
         ('name_uniq', 'unique(name, company_id)', 'Contract Reference must be unique per Company!'),
@@ -322,6 +328,9 @@ class integc_market(osv.osv):
                 'contract_line': sub_line,
                 'date_start': record.date_start,
                 'date_end': record.date_end,
+                'initial_balance': record.initial_balance,
+                'initial_expected_count': record.initial_expected_count,
+                'initial_count_paid': record.initial_count_paid,
             }
             market_contract_id = self.pool.get('integc.market.contract').create(cr, uid, vals, context=context)
             return self.write(cr, uid, ids, {'state': 'open', 'date_open': time.strftime('%Y-%m-%d'), 'contract_id': market_contract_id})
@@ -715,7 +724,7 @@ class integc_market_contract(osv.osv):
             if invoice.state not in ['draft', 'cancel']:
                 balance += invoice.amount_total
         for record in self.browse(cr, uid, ids, context=context):
-            res[record.id] = record.amount_total - balance
+            res[record.id] = (record.amount_total - balance) - record.initial_count_paid - record.initial_expected_count
         return res
 
     def _get_expected_count(self, cr, uid, ids, field_name, args, context=None):
@@ -735,7 +744,7 @@ class integc_market_contract(osv.osv):
             if invoice.state not in ['draft', 'cancel','paid']:
                 balance += invoice.amount_total
         for record in self.browse(cr, uid, ids, context=context):
-            res[record.id] = balance
+            res[record.id] = balance + record.initial_expected_count
         return res
 
     def _get_count_paid(self, cr, uid, ids, field_name, args, context=None):
@@ -755,7 +764,7 @@ class integc_market_contract(osv.osv):
             if invoice.state == 'paid':
                 balance += invoice.amount_total
         for record in self.browse(cr, uid, ids, context=context):
-            res[record.id] = balance
+            res[record.id] = balance + record.initial_count_paid
         return res
 
     def _set_amount_balance(self, cr, uid, ids, name, args, context=None):
@@ -911,6 +920,9 @@ class integc_market_contract(osv.osv):
                 'integc.market.contract.line': (_get_contract, ['price_unit', 'tax_id', 'discount', 'product_uom_qty'], 10),
                 'account.invoice': (_get_contract_from_invoice, ['state'], 10),
             }),
+        'initial_count_paid': fields.float('Initial Count Paid', digits=(16,2)),
+        'initial_expected_count': fields.float('Initial Expected Count', digits=(16,2)),
+        'initial_balance': fields.float('Initial Unexpected Count', digits=(16,2)),
 
 
         'payment_term': fields.many2one('account.payment.term', 'Payment Term'),
@@ -927,6 +939,9 @@ class integc_market_contract(osv.osv):
     }
 
     _defaults = {
+        'initial_count_paid': 0.0,
+        'initial_expected_count': 0.0,
+        'initial_balance': 0.0,
         'date': fields.date.context_today,
         #'date_start': fields.date.context_today,
         'state': 'draft',
@@ -1027,7 +1042,8 @@ class integc_market_contract(osv.osv):
             'date_invoice': context.get('date_invoice', False),
             'company_id': contract.company_id.id,
             'user_id': uid,
-            'count': len(contract.invoice_ids) + 1
+            'count': len(contract.invoice_ids) + 1,
+            'analytic_account_id': contract.analytic_account_id.id if contract.analytic_account_id else None,
         }
 
         #invoice_vals.update(self._inv_get(cr, uid, contract, context=context))
@@ -1382,7 +1398,7 @@ class integc_market_contract_line(osv.osv):
             'sequence': line.sequence,
             'origin': line.contract_id.name,
             'account_id': account_id,
-            'price_unit': pu,
+            'price_unit': 0.0,
             'quantity': uosqty,
             'discount': line.discount,
             'uos_id': uos_id,
