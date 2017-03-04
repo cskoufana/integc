@@ -432,7 +432,8 @@ class integc_hr_partner_contract(osv.osv):
             'fiscal_position': contract.fiscal_position.id or contract.partner_id.property_account_position.id,
             'date_invoice': context.get('date_invoice', False),
             'company_id': contract.company_id.id,
-            'user_id': uid
+            'user_id': uid,
+            'analytic_account_id': contract.analytic_account_id.id if contract.analytic_account_id else None,
         }
 
         #invoice_vals.update(self._inv_get(cr, uid, contract, context=context))
