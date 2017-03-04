@@ -47,6 +47,7 @@ class account_invoice(osv.osv):
             ('open5', 'Pending payment'),
         ], 'Accounting validation level'),
         'count': fields.integer('Count Number'),
+        'analytic_account_id': fields.many2one('account.analytic.account', 'Analytic account'),
     }
 
     _defaults = {
