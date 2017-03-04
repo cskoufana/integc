@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-02 00:36+0000\n"
-"PO-Revision-Date: 2017-03-02 00:36+0000\n"
+"POT-Creation-Date: 2017-03-03 18:56+0000\n"
+"PO-Revision-Date: 2017-03-03 18:56+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -205,6 +205,7 @@ msgstr "Compte analytique"
 
 #. module: integc
 #: field:account.bank.statement.line,analytic_account_id:0
+#: field:account.invoice,analytic_account_id:0
 #: field:account.voucher,analytic_account_id:0
 #: field:cash.box.in,analytic_account_id:0
 #: field:cash.box.out,analytic_account_id:0
@@ -264,7 +265,7 @@ msgid "Avenant"
 msgstr "Avenant"
 
 #. module: integc
-#: code:addons/integc/market/market.py:343
+#: code:addons/integc/market/market.py:352
 #, python-format
 msgid "Avenant Contract"
 msgstr "Contrat Avenant"
@@ -358,9 +359,9 @@ msgid "Basket Allowance"
 msgstr "Indeminté de panier"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:922
-#: code:addons/integc/market/market.py:464
-#: code:addons/integc/market/market.py:1463
+#: code:addons/integc/hr/partner_contract.py:923
+#: code:addons/integc/market/market.py:473
+#: code:addons/integc/market/market.py:1479
 #, python-format
 msgid "Before choosing a product,\n"
 " select a customer in the sales form."
@@ -384,7 +385,7 @@ msgstr "Indemnité bicyclette"
 #. module: integc
 #: field:integc.need.payment,bank_statement_id:0
 msgid "Box"
-msgstr "Caisse"
+msgstr "Box"
 
 #. module: integc
 #: view:hr.contract:integc.hr_contract_view_search_inherit1
@@ -559,24 +560,24 @@ msgid "Cancelled"
 msgstr "Annulé"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:631
-#: code:addons/integc/market/market.py:1201
+#: code:addons/integc/hr/partner_contract.py:632
+#: code:addons/integc/market/market.py:1217
 #, python-format
 msgid "Cannot cancel this contract!"
 msgstr "Impossible de supprimer ce contract!"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:1040
-#: code:addons/integc/market/market.py:582
-#: code:addons/integc/market/market.py:1581
+#: code:addons/integc/hr/partner_contract.py:1041
+#: code:addons/integc/market/market.py:591
+#: code:addons/integc/market/market.py:1597
 #, python-format
 msgid "Cannot delete a contract line which is in state '%s'."
 msgstr "Impossible de supprimer une ligne de contrat à un état '%s'."
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:1009
-#: code:addons/integc/market/market.py:551
-#: code:addons/integc/market/market.py:1550
+#: code:addons/integc/hr/partner_contract.py:1010
+#: code:addons/integc/market/market.py:560
+#: code:addons/integc/market/market.py:1566
 #: code:addons/integc/need/need.py:267
 #, python-format
 msgid "Cannot find a pricelist line matching this product and quantity.\n"
@@ -710,9 +711,9 @@ msgstr "Compte analytique"
 #: code:addons/integc/account/account_bank_statement.py:58
 #: code:addons/integc/hr/hr.py:1167
 #: code:addons/integc/hr/hr.py:1183
-#: code:addons/integc/hr/partner_contract.py:1017
-#: code:addons/integc/market/market.py:559
-#: code:addons/integc/market/market.py:1558
+#: code:addons/integc/hr/partner_contract.py:1018
+#: code:addons/integc/market/market.py:568
+#: code:addons/integc/market/market.py:1574
 #: code:addons/integc/need/need.py:275
 #, python-format
 msgid "Configuration Error!"
@@ -929,7 +930,7 @@ msgstr "Options de la devise"
 #. module: integc
 #: field:integc.need.payment,balance_end_real:0
 msgid "Current balance"
-msgstr "Solde restant"
+msgstr "Current balance"
 
 #. module: integc
 #: field:integc.hr.partner.contract.line,order_partner_id:0
@@ -939,8 +940,8 @@ msgid "Customer"
 msgstr "Client"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:481
-#: code:addons/integc/market/market.py:1062
+#: code:addons/integc/hr/partner_contract.py:482
+#: code:addons/integc/market/market.py:1078
 #, python-format
 msgid "Customer Invoices"
 msgstr "Factures clients"
@@ -976,7 +977,7 @@ msgstr "DEX"
 #: view:hr.payroll.export:integc.hr_payroll_export_form
 #: model:ir.actions.act_window,name:integc.action_hr_payroll_export
 msgid "DIPE Export"
-msgstr "Export de la DIPE Magnétique"
+msgstr "Export de la DIPE"
 
 #. module: integc
 #: report:pos.box:0
@@ -1390,15 +1391,15 @@ msgstr "Ingénieur de marché"
 #: code:addons/integc/account/account_bank_statement.py:77
 #: code:addons/integc/account/wizard/pos_box.py:44
 #: code:addons/integc/hr/partner_contract.py:419
-#: code:addons/integc/hr/partner_contract.py:544
-#: code:addons/integc/hr/partner_contract.py:655
-#: code:addons/integc/hr/partner_contract.py:820
-#: code:addons/integc/hr/partner_contract.py:837
-#: code:addons/integc/market/market.py:1013
-#: code:addons/integc/market/market.py:1125
-#: code:addons/integc/market/market.py:1215
-#: code:addons/integc/market/market.py:1361
-#: code:addons/integc/market/market.py:1378
+#: code:addons/integc/hr/partner_contract.py:545
+#: code:addons/integc/hr/partner_contract.py:656
+#: code:addons/integc/hr/partner_contract.py:821
+#: code:addons/integc/hr/partner_contract.py:838
+#: code:addons/integc/market/market.py:1028
+#: code:addons/integc/market/market.py:1141
+#: code:addons/integc/market/market.py:1231
+#: code:addons/integc/market/market.py:1377
+#: code:addons/integc/market/market.py:1394
 #: code:addons/integc/need/wizard/need_payment.py:38
 #, python-format
 msgid "Error!"
@@ -1447,7 +1448,7 @@ msgstr "Opération terminée"
 #. module: integc
 #: view:hr.payslip.run:integc.hr_payslip_run_form_inherit
 msgid "Export DIPE"
-msgstr "Exporter DIPE Magnétique"
+msgstr "Exporter DIPE"
 
 #. module: integc
 #: field:transfer.order,export_all:0
@@ -1504,8 +1505,8 @@ msgid "File name"
 msgstr "File name"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:632
-#: code:addons/integc/market/market.py:1202
+#: code:addons/integc/hr/partner_contract.py:633
+#: code:addons/integc/market/market.py:1218
 #, python-format
 msgid "First cancel all invoices attached to this contract."
 msgstr "Supprimer d'abord toutes les factuers associées à ce contract."
@@ -1721,10 +1722,33 @@ msgstr "Imprimé le"
 
 #. module: integc
 #: code:addons/integc/hr/partner_contract.py:342
-#: code:addons/integc/market/market.py:953
+#: code:addons/integc/market/market.py:968
 #, python-format
 msgid "In order to delete a confirmed contract, you must cancel it before!"
 msgstr "Pour supprimer un contract validé, vous devez d'abord l'annuler!"
+
+#. module: integc
+#: view:integc.market:integc.view_integc_market_form
+msgid "Initial Account"
+msgstr "Décomptes initiaux"
+
+#. module: integc
+#: field:integc.market,initial_count_paid:0
+#: field:integc.market.contract,initial_count_paid:0
+msgid "Initial Count Paid"
+msgstr "Décompte payé initial"
+
+#. module: integc
+#: field:integc.market,initial_expected_count:0
+#: field:integc.market.contract,initial_expected_count:0
+msgid "Initial Expected Count"
+msgstr "Décompte escompté initial"
+
+#. module: integc
+#: field:integc.market,initial_balance:0
+#: field:integc.market.contract,initial_balance:0
+msgid "Initial Unexpected Count"
+msgstr "Décompte non escompté initial"
 
 #. module: integc
 #: view:hr.payslip:integc.view_hr_payslip_form_inherit1
@@ -1753,12 +1777,12 @@ msgstr "Intitulé"
 
 #. module: integc
 #: code:addons/integc/hr/partner_contract.py:342
-#: code:addons/integc/hr/partner_contract.py:877
-#: code:addons/integc/hr/partner_contract.py:1040
-#: code:addons/integc/market/market.py:582
-#: code:addons/integc/market/market.py:953
-#: code:addons/integc/market/market.py:1418
-#: code:addons/integc/market/market.py:1581
+#: code:addons/integc/hr/partner_contract.py:878
+#: code:addons/integc/hr/partner_contract.py:1041
+#: code:addons/integc/market/market.py:591
+#: code:addons/integc/market/market.py:968
+#: code:addons/integc/market/market.py:1434
+#: code:addons/integc/market/market.py:1597
 #, python-format
 msgid "Invalid Action!"
 msgstr "Action invalide!"
@@ -2247,18 +2271,18 @@ msgid "Neither social security number or date registration is not defined for %s
 msgstr "Le N° d'immatriculation ou la date n'est pas renseigné pour l'employé %s"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:922
-#: code:addons/integc/market/market.py:464
-#: code:addons/integc/market/market.py:1463
+#: code:addons/integc/hr/partner_contract.py:923
+#: code:addons/integc/market/market.py:473
+#: code:addons/integc/market/market.py:1479
 #: code:addons/integc/need/need.py:180
 #, python-format
 msgid "No Customer Defined!"
 msgstr "Aucun partenaire n'est définie!"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:1001
-#: code:addons/integc/market/market.py:543
-#: code:addons/integc/market/market.py:1542
+#: code:addons/integc/hr/partner_contract.py:1002
+#: code:addons/integc/market/market.py:552
+#: code:addons/integc/market/market.py:1558
 #: code:addons/integc/need/need.py:259
 #, python-format
 msgid "No Pricelist ! : "
@@ -2271,9 +2295,9 @@ msgid "No employee registered. You must write at least one employee"
 msgstr "Aucun employé enregistré. Vous devez au moins en selectionner un"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:1012
-#: code:addons/integc/market/market.py:554
-#: code:addons/integc/market/market.py:1553
+#: code:addons/integc/hr/partner_contract.py:1013
+#: code:addons/integc/market/market.py:563
+#: code:addons/integc/market/market.py:1569
 #: code:addons/integc/need/need.py:270
 #, python-format
 msgid "No valid pricelist line found ! :"
@@ -2362,7 +2386,7 @@ msgid "Opening Balance"
 msgstr "Solde d'ouverture"
 
 #. module: integc
-#: code:addons/integc/market/market.py:300
+#: code:addons/integc/market/market.py:306
 #, python-format
 msgid "Operation non permise!"
 msgstr "Operation non permise!"
@@ -2375,11 +2399,11 @@ msgid "Operation not allowed"
 msgstr "Opération non permise"
 
 #. module: integc
-#: code:addons/integc/account/account_invoice.py:74
+#: code:addons/integc/account/account_invoice.py:75
 #: code:addons/integc/hr/hr.py:268
 #: code:addons/integc/hr/hr.py:1031
-#: code:addons/integc/hr/partner_contract.py:527
-#: code:addons/integc/market/market.py:1108
+#: code:addons/integc/hr/partner_contract.py:528
+#: code:addons/integc/market/market.py:1124
 #: code:addons/integc/need/wizard/need_payment.py:30
 #, python-format
 msgid "Operation not allowed!"
@@ -2509,7 +2533,7 @@ msgstr "Contrats prestataires"
 #: view:integc.need:integc.view_integc_need_form
 #: view:integc.need.payment:integc.need_payment_form
 msgid "Pay"
-msgstr "Payer"
+msgstr "Pay"
 
 #. module: integc
 #: model:ir.model,name:integc.model_hr_payslip
@@ -2519,7 +2543,7 @@ msgstr "Feuille de paie"
 #. module: integc
 #: model:ir.actions.act_window,name:integc.action_need_payment
 msgid "Pay need"
-msgstr "Payer le besoin"
+msgstr "Pay need"
 
 #. module: integc
 #: model:ir.actions.act_window,name:integc.action_hr_payslip_journal
@@ -2535,7 +2559,7 @@ msgstr "Journal des bulletins"
 #: selection:integc.need,state:0
 #: view:integc.need.payment:integc.need_payment_form
 msgid "Payment"
-msgstr "Paiement"
+msgstr "Payment"
 
 #. module: integc
 #: view:account.voucher:integc.view_other_receipt_form
@@ -2628,8 +2652,8 @@ msgid "Please define expense account for this product: \"%s\" (id:%d)."
 msgstr "Please define expense account for this product: \"%s\" (id:%d)."
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:821
-#: code:addons/integc/market/market.py:1362
+#: code:addons/integc/hr/partner_contract.py:822
+#: code:addons/integc/market/market.py:1378
 #, python-format
 msgid "Please define income account for this product: \"%s\" (id:%d)."
 msgstr "Veuillez définir le compte crédit pour le produit: \"%s\" (id:%d)."
@@ -2641,7 +2665,7 @@ msgid "Please define purchase journal for this company: \"%s\" (id:%d)."
 msgstr "Veuillez définir le journal des achats pour la société: \"%s\" (id:%d)."
 
 #. module: integc
-#: code:addons/integc/market/market.py:1014
+#: code:addons/integc/market/market.py:1029
 #, python-format
 msgid "Please define sales journal for this company: \"%s\" (id:%d)."
 msgstr "Please define sales journal for this company: \"%s\" (id:%d)."
@@ -3265,7 +3289,7 @@ msgid "Status"
 msgstr "Status"
 
 #. module: integc
-#: code:addons/integc/account/account_invoice.py:182
+#: code:addons/integc/account/account_invoice.py:183
 #, python-format
 msgid "Step %s of the invoice %s has exceeded the time limit."
 msgstr "L'étape %s de la facture %s a dépassé le délai imparti."
@@ -3288,7 +3312,7 @@ msgstr "Rue 2"
 #. module: integc
 #: view:integc.need:integc.view_integc_need_form
 msgid "Submit"
-msgstr "Soummettre"
+msgstr "Submit"
 
 #. module: integc
 #: field:integc.hr.partner.contract.line,price_subtotal:0
@@ -3555,8 +3579,8 @@ msgid "The transfer order exportation will generate a CSV file for partners who 
 msgstr "Cette opération va générer un fichier au format CSV avec les données des comptes bancaires des partenaires"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:838
-#: code:addons/integc/market/market.py:1379
+#: code:addons/integc/hr/partner_contract.py:839
+#: code:addons/integc/market/market.py:1395
 #, python-format
 msgid "There is no Fiscal Position defined or Income category account defined for default properties of Product categories."
 msgstr "Il n'y a aucune position budgétaire définie ou de compte de revenu d'une catégorie défini pour les propriétés par défaut des catégories de produits."
@@ -3599,7 +3623,7 @@ msgstr "Ceci est la liste des factures générées pour ce document. Le même co
 #. module: integc
 #: view:hr.payroll.export:integc.hr_payroll_export_form
 msgid "This operation will generate a txt file compatible to DIPE format"
-msgstr "Cette opération genérera un fichier txt compatible au format DIPE Magnétique"
+msgstr "Cette opération genérera un fichier txt compatible au format DIPE"
 
 #. module: integc
 #: field:hr.contract,tool_allowance:0
@@ -3665,7 +3689,7 @@ msgstr "Total Taxes Incluses"
 #. module: integc
 #: field:integc.market,amount_total_market:0
 msgid "Total amount market"
-msgstr "Montant total marché"
+msgstr "Net à mandater"
 
 #. module: integc
 #: report:integc.payslip:0
@@ -3858,7 +3882,7 @@ msgid "Voucher Payment"
 msgstr "Règlement fournisseur"
 
 #. module: integc
-#: code:addons/integc/market/market.py:300
+#: code:addons/integc/market/market.py:306
 #, python-format
 msgid "Vous ne pouvez pas valider un marche qui n a pas de lignes de produits"
 msgstr "Vous ne pouvez pas valider un marche qui n a pas de lignes de produits"
@@ -3927,35 +3951,35 @@ msgid "Wrong voucher line"
 msgstr "Wrong voucher line"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:877
-#: code:addons/integc/market/market.py:1418
+#: code:addons/integc/hr/partner_contract.py:878
+#: code:addons/integc/market/market.py:1434
 #, python-format
 msgid "You cannot cancel a contract line that has already been invoiced."
 msgstr "Vous ne pouvez pas annuler une ligne de contrat déja facturé."
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:655
-#: code:addons/integc/market/market.py:1215
+#: code:addons/integc/hr/partner_contract.py:656
+#: code:addons/integc/market/market.py:1231
 #, python-format
 msgid "You cannot confirm a contract which has no line."
 msgstr "Vous ne pouvez pas confirmer un contrat qui n'a pas de lignes"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:527
-#: code:addons/integc/market/market.py:1108
+#: code:addons/integc/hr/partner_contract.py:528
+#: code:addons/integc/market/market.py:1124
 #, python-format
 msgid "You cannot create invoice for that contract with balance %s"
 msgstr "Vous ne pouvez pas créer une facture pour ce contrat avec pour réliquat %s"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:545
-#: code:addons/integc/market/market.py:1126
+#: code:addons/integc/hr/partner_contract.py:546
+#: code:addons/integc/market/market.py:1142
 #, python-format
 msgid "You cannot group sales having different currencies for the same partner."
 msgstr "You cannot group sales having different currencies for the same partner."
 
 #. module: integc
-#: code:addons/integc/account/account_invoice.py:75
+#: code:addons/integc/account/account_invoice.py:76
 #, python-format
 msgid "You cant not validate that invoice with the amount %s.\n"
 "The contract %s related to that invoice has balance %s"
@@ -3963,9 +3987,9 @@ msgstr "Vous ne pouvez pas valider cette facture avec le montant %s.\n"
 "Le contrat %s associé à cette facture a un décompte non escompté de %s"
 
 #. module: integc
-#: code:addons/integc/hr/partner_contract.py:999
-#: code:addons/integc/market/market.py:541
-#: code:addons/integc/market/market.py:1540
+#: code:addons/integc/hr/partner_contract.py:1000
+#: code:addons/integc/market/market.py:550
+#: code:addons/integc/market/market.py:1556
 #: code:addons/integc/need/need.py:257
 #, python-format
 msgid "You have to select a pricelist or a customer in the sales form !\n"
