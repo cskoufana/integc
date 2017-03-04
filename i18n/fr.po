@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-03 18:56+0000\n"
-"PO-Revision-Date: 2017-03-03 18:56+0000\n"
+"POT-Creation-Date: 2017-03-04 20:50+0000\n"
+"PO-Revision-Date: 2017-03-04 20:50+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:469
+#: code:addons/integc/hr/hr.py:482
 #: constraint:integc.hr.salary.grid:0
 #, python-format
 msgid "'Wage Minimal' must be lower than 'Wage Maximal'."
@@ -138,8 +138,8 @@ msgid "Accounting validation level"
 msgstr "Niveau validation des écritures comptables"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:1169
-#: code:addons/integc/hr/hr.py:1185
+#: code:addons/integc/hr/hr.py:1202
+#: code:addons/integc/hr/hr.py:1218
 #, python-format
 msgid "Adjustment Entry"
 msgstr "Adjustment Entry"
@@ -607,7 +607,7 @@ msgid "Category"
 msgstr "Catégorie"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:405
+#: code:addons/integc/hr/hr.py:418
 #: sql_constraint:integc.hr.category:0
 #, python-format
 msgid "Category name already exists"
@@ -709,8 +709,8 @@ msgstr "Compte analytique"
 
 #. module: integc
 #: code:addons/integc/account/account_bank_statement.py:58
-#: code:addons/integc/hr/hr.py:1167
-#: code:addons/integc/hr/hr.py:1183
+#: code:addons/integc/hr/hr.py:1200
+#: code:addons/integc/hr/hr.py:1216
 #: code:addons/integc/hr/partner_contract.py:1018
 #: code:addons/integc/market/market.py:568
 #: code:addons/integc/market/market.py:1574
@@ -741,6 +741,11 @@ msgstr "Date de confirmation"
 #: selection:integc.need.line,state:0
 msgid "Confirmed"
 msgstr "Confirmé"
+
+#. module: integc
+#: field:hr.payslip,consider_hours:0
+msgid "Consider worked hours"
+msgstr "Considérer les heures travaillés"
 
 #. module: integc
 #: view:hr.contract:integc.view_integc_hr_contract_tree1
@@ -1583,7 +1588,7 @@ msgid "Grade"
 msgstr "Echelon"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:440
+#: code:addons/integc/hr/hr.py:453
 #: sql_constraint:integc.hr.grade:0
 #, python-format
 msgid "Grade name already exists"
@@ -1636,6 +1641,11 @@ msgstr "Heure impression"
 #: help:integc.need,message_summary:0
 msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
 msgstr "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+
+#. module: integc
+#: field:hr.contract,hourly_wage:0
+msgid "Hourly wage"
+msgstr "Salaire horaire"
 
 #. module: integc
 #: field:hr.contract,household_prime:0
@@ -2265,7 +2275,7 @@ msgid "Needs"
 msgstr "Besoins"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:275
+#: code:addons/integc/hr/hr.py:288
 #, python-format
 msgid "Neither social security number or date registration is not defined for %s"
 msgstr "Le N° d'immatriculation ou la date n'est pas renseigné pour l'employé %s"
@@ -2289,7 +2299,7 @@ msgid "No Pricelist ! : "
 msgstr "No Pricelist ! : "
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:268
+#: code:addons/integc/hr/hr.py:281
 #, python-format
 msgid "No employee registered. You must write at least one employee"
 msgstr "Aucun employé enregistré. Vous devez au moins en selectionner un"
@@ -2392,16 +2402,16 @@ msgid "Operation non permise!"
 msgstr "Operation non permise!"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:275
-#: code:addons/integc/hr/hr.py:771
+#: code:addons/integc/hr/hr.py:288
+#: code:addons/integc/hr/hr.py:792
 #, python-format
 msgid "Operation not allowed"
 msgstr "Opération non permise"
 
 #. module: integc
 #: code:addons/integc/account/account_invoice.py:75
-#: code:addons/integc/hr/hr.py:268
-#: code:addons/integc/hr/hr.py:1031
+#: code:addons/integc/hr/hr.py:281
+#: code:addons/integc/hr/hr.py:1052
 #: code:addons/integc/hr/partner_contract.py:528
 #: code:addons/integc/market/market.py:1124
 #: code:addons/integc/need/wizard/need_payment.py:30
@@ -2613,7 +2623,7 @@ msgid "Payslip journal"
 msgstr "Journal de bulletin"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:1114
+#: code:addons/integc/hr/hr.py:1147
 #, python-format
 msgid "Payslip of %s"
 msgstr "Bulletin de %s"
@@ -3127,7 +3137,7 @@ msgid "Salary Structure"
 msgstr "Structure salariale"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:470
+#: code:addons/integc/hr/hr.py:483
 #: sql_constraint:integc.hr.salary.grid:0
 #, python-format
 msgid "Salary grid name already exists"
@@ -3496,13 +3506,13 @@ msgid "Terms and conditions..."
 msgstr "Termes et conditions..."
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:1167
+#: code:addons/integc/hr/hr.py:1200
 #, python-format
 msgid "The Expense Journal \"%s\" has not properly configured the Credit Account!"
 msgstr "Le compte Crédit n'est pas proprement configuré pour le journal \"%s\" !"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:1183
+#: code:addons/integc/hr/hr.py:1216
 #, python-format
 msgid "The Expense Journal \"%s\" has not properly configured the Debit Account!"
 msgstr "Le compte Débit n'est pas proprement configuré pour le journal \"%s\" !"
@@ -3598,13 +3608,13 @@ msgid "There is no Profit Account on the journal %s."
 msgstr "There is no Profit Account on the journal %s."
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:1031
+#: code:addons/integc/hr/hr.py:1052
 #, python-format
 msgid "There is no payslip to print"
 msgstr "Aucun bulletin à imprimer"
 
 #. module: integc
-#: code:addons/integc/hr/hr.py:771
+#: code:addons/integc/hr/hr.py:792
 #, python-format
 msgid "There is not salary grid defined for this category and grade"
 msgstr "Aucune grille salariale n'est définie pour cette catégorie et cet échelon"
@@ -3689,7 +3699,7 @@ msgstr "Total Taxes Incluses"
 #. module: integc
 #: field:integc.market,amount_total_market:0
 msgid "Total amount market"
-msgstr "Net à mandater"
+msgstr "Montant total marché"
 
 #. module: integc
 #: report:integc.payslip:0
@@ -3939,6 +3949,16 @@ msgid "Weight"
 msgstr "Poids"
 
 #. module: integc
+#: field:hr.payslip,worked_days:0
+msgid "Worked days"
+msgstr "Jours travaillés"
+
+#. module: integc
+#: field:hr.payslip,worked_hours:0
+msgid "Worked hours"
+msgstr "Heures travaillées"
+
+#. module: integc
 #: view:hr.payroll.export:integc.hr_payroll_export_form
 #: view:transfer.order:integc.transfer_order_form
 msgid "Would you want to confirm the exportation?"
@@ -4064,7 +4084,6 @@ msgstr "get"
 #: field:integc.hr.category,housing_advantage:0
 msgid "housing Allowance"
 msgstr "Indemnité de logement"
-
 
 #. module: integc
 #: selection:integc.hr.partner.contract.line,type:0
