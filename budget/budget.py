@@ -51,3 +51,19 @@ class budget_budget(orm.Model):
                  "It enables you to connect projects with budgets, planning, cost and revenue analysis, timesheets on projects, etc.",
             ),
     }
+    def on_change_start_date(self, cr, uid, ids, start_date_str, context=None):
+        if start_date_str : 
+            start_date = datetime.strptime(start_date_str, DATE_FORMAT)
+    
+            last_day_of_month = calendar.monthrange(start_date.year,
+                                                    start_date.month)[1]
+    
+            end_date = datetime(
+                year=start_date.year,
+                month=start_date.month,
+                day=last_day_of_month)
+    
+            end_date_str = date.strftime(end_date, DATE_FORMAT)
+    
+            return {'value': {'end_date': end_date_str}}
+        return {'value' : {}}

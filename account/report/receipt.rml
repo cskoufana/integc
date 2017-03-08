@@ -138,6 +138,7 @@
     <paraStyle name="P20" fontName="Helvetica" fontSize="12.0" leading="15"/>
     <paraStyle name="P21" fontName="Helvetica" fontSize="12.0" leading="15" alignment="CENTER"/>
     <paraStyle name="P22" fontName="Helvetica" fontSize="6.0" leading="8"/>
+    <paraStyle name="P23" fontName="Helvetica-Bold" fontSize="8.0" leading="11"/>
     <paraStyle name="Standard" fontName="Helvetica"/>
     <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
     <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
@@ -363,7 +364,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           <para style="P1">Motif</para>
         </td>
         <td>
-          <para style="P3">[[o.name]]</para>
+          <para style="P23">[[o.product_id and o.product_id.name or o.name]]</para>
         </td>
       </tr>
       <tr>
@@ -379,7 +380,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           <para style="P1">Dépense</para>
         </td>
         <td>
-          <para style="P3">[[o.name]] DU [[o.date]]</para>
+          <para style="P23">[[o.name]]</para>
         </td>
       </tr>
     </blockTable>
@@ -459,9 +460,6 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           <para style="P1">
             <font color="white"> </font>
           </para>
-          <para style="P1">
-            <font color="white"> </font>
-          </para>
         </td>
         <td>
           <para style="P1">
@@ -515,7 +513,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           <para style="P1">Motif</para>
         </td>
         <td>
-          <para style="P3">[[o.name]]</para>
+          <para style="P23">[[o.product_id and o.product_id.name or o.name]]</para>
         </td>
       </tr>
       <tr>
@@ -531,7 +529,7 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
           <para style="P1">Dépense</para>
         </td>
         <td>
-          <para style="P3">[[o.name]] DU [[o.date]]</para>
+          <para style="P23">[[o.name]]</para>
         </td>
       </tr>
     </blockTable>
@@ -605,9 +603,6 @@ DYuKq9n8pB7/NTB01KSJa2D/KMxpuHLUox6VqB+t1CMm6pWjHjFRrxz1iIl65ahHTNQrRz1i4v8A
       </tr>
       <tr>
         <td>
-          <para style="P1">
-            <font color="white"> </font>
-          </para>
           <para style="P1">
             <font color="white"> </font>
           </para>
