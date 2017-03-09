@@ -19,6 +19,7 @@
         'product',
         'budget',
         'l10n_syscohada',
+        'purchase',
     ],
     'data' : [
         'security/integc_security.xml',
