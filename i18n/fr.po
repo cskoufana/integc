@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-04 20:50+0000\n"
-"PO-Revision-Date: 2017-03-04 20:50+0000\n"
+"POT-Creation-Date: 2017-03-09 01:07+0000\n"
+"PO-Revision-Date: 2017-03-09 01:07+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -369,7 +369,7 @@ msgstr "Avant de choisir un produit,\n"
 " sélectionner le partenaire dans le formulaire."
 
 #. module: integc
-#: code:addons/integc/need/need.py:180
+#: code:addons/integc/need/need.py:275
 #, python-format
 msgid "Before choosing a product,\n"
 " select a supplier in the sales form."
@@ -578,7 +578,7 @@ msgstr "Impossible de supprimer une ligne de contrat à un état '%s'."
 #: code:addons/integc/hr/partner_contract.py:1010
 #: code:addons/integc/market/market.py:560
 #: code:addons/integc/market/market.py:1566
-#: code:addons/integc/need/need.py:267
+#: code:addons/integc/need/need.py:362
 #, python-format
 msgid "Cannot find a pricelist line matching this product and quantity.\n"
 "You have to change either the product, the quantity or the pricelist."
@@ -714,7 +714,7 @@ msgstr "Compte analytique"
 #: code:addons/integc/hr/partner_contract.py:1018
 #: code:addons/integc/market/market.py:568
 #: code:addons/integc/market/market.py:1574
-#: code:addons/integc/need/need.py:275
+#: code:addons/integc/need/need.py:370
 #, python-format
 msgid "Configuration Error!"
 msgstr "Erreur de configuration!"
@@ -1405,6 +1405,8 @@ msgstr "Ingénieur de marché"
 #: code:addons/integc/market/market.py:1231
 #: code:addons/integc/market/market.py:1377
 #: code:addons/integc/market/market.py:1394
+#: code:addons/integc/need/need.py:151
+#: code:addons/integc/need/need.py:160
 #: code:addons/integc/need/wizard/need_payment.py:38
 #, python-format
 msgid "Error!"
@@ -2284,7 +2286,7 @@ msgstr "Le N° d'immatriculation ou la date n'est pas renseigné pour l'employé
 #: code:addons/integc/hr/partner_contract.py:923
 #: code:addons/integc/market/market.py:473
 #: code:addons/integc/market/market.py:1479
-#: code:addons/integc/need/need.py:180
+#: code:addons/integc/need/need.py:275
 #, python-format
 msgid "No Customer Defined!"
 msgstr "Aucun partenaire n'est définie!"
@@ -2293,7 +2295,7 @@ msgstr "Aucun partenaire n'est définie!"
 #: code:addons/integc/hr/partner_contract.py:1002
 #: code:addons/integc/market/market.py:552
 #: code:addons/integc/market/market.py:1558
-#: code:addons/integc/need/need.py:259
+#: code:addons/integc/need/need.py:354
 #, python-format
 msgid "No Pricelist ! : "
 msgstr "No Pricelist ! : "
@@ -2308,7 +2310,7 @@ msgstr "Aucun employé enregistré. Vous devez au moins en selectionner un"
 #: code:addons/integc/hr/partner_contract.py:1013
 #: code:addons/integc/market/market.py:563
 #: code:addons/integc/market/market.py:1569
-#: code:addons/integc/need/need.py:270
+#: code:addons/integc/need/need.py:365
 #, python-format
 msgid "No valid pricelist line found ! :"
 msgstr "Aucune ligne de tarif en vigueur trouvé ! :"
@@ -2664,6 +2666,7 @@ msgstr "Please define expense account for this product: \"%s\" (id:%d)."
 #. module: integc
 #: code:addons/integc/hr/partner_contract.py:822
 #: code:addons/integc/market/market.py:1378
+#: code:addons/integc/need/need.py:152
 #, python-format
 msgid "Please define income account for this product: \"%s\" (id:%d)."
 msgstr "Veuillez définir le compte crédit pour le produit: \"%s\" (id:%d)."
@@ -2846,6 +2849,16 @@ msgstr "Projet"
 #: view:budget.line:integc.view_budget_line_search_inherit_integc
 msgid "Projets"
 msgstr "Projets"
+
+#. module: integc
+#: view:integc.need:integc.view_integc_need_form
+msgid "Purchase"
+msgstr "Créer bon de commande"
+
+#. module: integc
+#: field:integc.need,purchase_order_id:0
+msgid "Purchase Order"
+msgstr "Bon de commande"
 
 #. module: integc
 #: view:account.bank.statement:integc.view_bank_statement_form2_inherit
@@ -3591,6 +3604,7 @@ msgstr "Cette opération va générer un fichier au format CSV avec les données
 #. module: integc
 #: code:addons/integc/hr/partner_contract.py:839
 #: code:addons/integc/market/market.py:1395
+#: code:addons/integc/need/need.py:161
 #, python-format
 msgid "There is no Fiscal Position defined or Income category account defined for default properties of Product categories."
 msgstr "Il n'y a aucune position budgétaire définie ou de compte de revenu d'une catégorie défini pour les propriétés par défaut des catégories de produits."
@@ -4010,7 +4024,7 @@ msgstr "Vous ne pouvez pas valider cette facture avec le montant %s.\n"
 #: code:addons/integc/hr/partner_contract.py:1000
 #: code:addons/integc/market/market.py:550
 #: code:addons/integc/market/market.py:1556
-#: code:addons/integc/need/need.py:257
+#: code:addons/integc/need/need.py:352
 #, python-format
 msgid "You have to select a pricelist or a customer in the sales form !\n"
 "Please set one before choosing a product."
@@ -4052,7 +4066,7 @@ msgstr "determine si le bulletin est payé"
 #. module: integc
 #: view:account.voucher:integc.view_other_receipt_form
 msgid "e.g. 003/10"
-msgstr "e.g. 003/10"
+msgstr "par exemple: 003/10"
 
 #. module: integc
 #: view:account.voucher:integc.view_other_receipt_form
@@ -4085,6 +4099,7 @@ msgstr "get"
 msgid "housing Allowance"
 msgstr "Indemnité de logement"
 
+
 #. module: integc
 #: selection:integc.hr.partner.contract.line,type:0
 #: selection:integc.market.contract.line,type:0
@@ -4103,6 +4118,11 @@ msgstr "on order"
 #: view:transfer.order:integc.transfer_order_form
 msgid "or"
 msgstr "ou"
+
+#. module: integc
+#: field:integc.need,purchase_order_exists:0
+msgid "purchased"
+msgstr "Commandé"
 
 #. module: integc
 #: field:hr.payroll.export,state:0
