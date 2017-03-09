@@ -41,6 +41,14 @@ class integc_need(osv.osv):
         company_id = self.pool.get('res.users').browse(cr, uid, uid, context=context).company_id.id
         return company_id
 
+    def _purchase_order_exists(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for need in self.browse(cursor, user, ids, context=context):
+            res[need.id] = False
+            if need.purchase_order_id:
+                res[need.id] = True
+        return res
+
 
     _name = 'integc.need'
     _description = 'Needs'
@@ -82,6 +90,8 @@ class integc_need(osv.osv):
             },
             multi='sums', help="The total amount."),
         'company_id': fields.many2one('res.company', 'Company', readonly=True),
+        'purchase_order_id': fields.many2one('purchase.order', 'Purchase Order'),
+        'purchase_order_exists': fields.function(_purchase_order_exists, string='purchased', type='boolean'),
 
     }
     _order = 'id desc'
@@ -92,7 +102,7 @@ class integc_need(osv.osv):
         'company_id': _get_default_company,
     }
 
-    def onchange_pricelist_id(self, cr, uid, ids, pricelist_id, contract_lines, context=None):
+    def onchange_pricelist_id(self, cr, uid, ids, pricelist_id, need_lines, context=None):
         context = context or {}
         if not pricelist_id:
             return {}
@@ -115,6 +125,91 @@ class integc_need(osv.osv):
     def create(self, cr, uid, values, context=None):
         values['name'] = self.pool.get('ir.sequence').get(cr, uid, 'integc.need')
         return super(integc_need, self).create(cr, uid, values, context=context)
+
+    def action_view_purchase_order(self, cr, uid, ids, context=None):
+        mod_obj = self.pool.get('ir.model.data')
+        act_obj = self.pool.get('ir.actions.act_window')
+
+        result = mod_obj.get_object_reference(cr, uid, 'purchase', 'purchase_form_action')
+        id = result and result[1] or False
+        result = act_obj.read(cr, uid, [id], context=context)[0]
+
+        for need in self.browse(cr, uid, ids, context=context):
+            res = mod_obj.get_object_reference(cr, uid, 'purchase', 'purchase_order_form')
+            result['views'] = [(res and res[1] or False, 'form')]
+            result['res_id'] = need.purchase_order_id and need.purchase_order_id.id or False
+        return result
+
+    def _prepare_purchase_line(self, cr, uid, order_id, line, account_id=False, context=None):
+        res = {}
+        if not account_id:
+            if line.product_id:
+                account_id = line.product_id.property_account_income.id
+                if not account_id:
+                    account_id = line.product_id.categ_id.property_account_income_categ.id
+                if not account_id:
+                    raise osv.except_osv(_('Error!'),
+                            _('Please define income account for this product: "%s" (id:%d).') % \
+                                (line.product_id.name, line.product_id.id,))
+            else:
+                prop = self.pool.get('ir.property').get(cr, uid,
+                        'property_account_income_categ', 'product.category',
+                        context=context)
+                account_id = prop and prop.id or False
+        if not account_id:
+            raise osv.except_osv(_('Error!'),
+                        _('There is no Fiscal Position defined or Income category account defined for default properties of Product categories.'))
+        res = {
+            'name': line.name,
+            'sequence': line.sequence,
+            'origin': line.need_id.name,
+            'account_id': account_id,
+            'price_unit': 0.0,
+            'quantity': line.product_uom_qty,
+            'product_id': line.product_id.id or False,
+            'account_analytic_id': line.need_id.analytic_account_id and line.need_id.analytic_account_id.id or False,
+            'order_id': order_id,
+            'date_planned': time.strftime('%Y-%m-%d'),
+        }
+        return res
+
+    def purchase_line_create(self, cr, uid, ids, order_id, context=None):
+        if context is None:
+            context = {}
+        create_ids = []
+        for need in self.browse(cr, uid, ids, context=context):
+            for line in need.need_line:
+                vals = self._prepare_purchase_line(cr, uid, order_id, line, False, context)
+                if vals:
+                    inv_id = self.pool.get('purchase.order.line').create(cr, uid, vals, context=context)
+                    create_ids.append(inv_id)
+        return create_ids
+
+    def create_purchase(self, cr, uid, ids, context=None):
+        purchase_obj = self.pool.get('purchase.order')
+
+        for record in self.browse(cr, uid, ids, context=context):
+            values = {
+                'origin': record.name,
+                'partner_id': record.partner_id.id if record.partner_id else None,
+                'location_id': record.partner_id.property_stock_supplier.id,
+                'pricelist_id': record.partner_id.property_product_pricelist_purchase.id,
+            }
+        purchase_id = purchase_obj.create(cr, uid, values, context=context)
+        created_lines = self.purchase_line_create(cr, uid, ids, purchase_id, context=context)
+        purchase_obj.write(cr, uid, purchase_id, {'order_line': [(6, 0, created_lines)]}, context=context)
+        self.write(cr, uid, ids, {'purchase_order_id': purchase_id}, context=context)
+
+        mod_obj = self.pool.get('ir.model.data')
+        act_obj = self.pool.get('ir.actions.act_window')
+
+        result = mod_obj.get_object_reference(cr, uid, 'purchase', 'purchase_form_action')
+        id = result and result[1] or False
+        result = act_obj.read(cr, uid, [id], context=context)[0]
+        res_ = mod_obj.get_object_reference(cr, uid, 'purchase', 'purchase_order_form')
+        result['views'] = [(res_ and res_[1] or False, 'form')]
+        result['res_id'] = purchase_id or False
+        return result
 
 integc_need()
 

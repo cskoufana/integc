@@ -34,6 +34,8 @@
                             <button name="btn_cancel" states="validation_director" string="Cancel" type="work_flow" groups="integc.group_director"/>
                             <button name="btn_cancel" states="validation_daf" string="Cancel" type="work_flow" groups="integc.group_dafc"/>
                             <button name="btn_cancel" states="validation_manager" string="Cancel" type="work_flow" groups="integc.group_gerant"/>
+                            <button name="create_purchase" states="payment" type="object" string="Purchase" groups="integc.group_responsable_achat"
+                                    attrs="{'invisible': ['|',('state', 'not in', ('payment','done')),('purchase_order_exists', '=', True)]}"/>
                             <button name="%(action_need_payment)d" string="Pay" states="payment"
                             class="oe_highlight" type="action" groups="integc.group_assistant_comptable"/>
                             <field name="state" widget="statusbar" statusbar_visible="cancel"
@@ -62,6 +64,8 @@
                             <group>
                                 <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
                                 <field name="currency_id" invisible="1"/>
+                                <field name="purchase_order_exists" invisible="1" />
+                                <field name="purchase_order_id" readonly="1" attrs="{'invisible': [('purchase_order_exists', '=', False)]}"/>
                             </group>
                         </group>
                         <notebook>
