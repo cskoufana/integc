@@ -557,7 +557,7 @@ class hr_contract(osv.osv):
         'grade_id': fields.many2one('integc.hr.grade', 'Grade'),
         'wage_min': fields.related('salary_grid_id', 'wage_min', type='float', string='Wage Minimal', readonly=True),
         'wage_max': fields.related('salary_grid_id', 'wage_max', type='float', string='Wage Maximal', readonly=True),
-        'hourly_wage': fields.float('Hourly wage', digits=(16, 2)),
+        #'hourly_wage': fields.float('Hourly wage', digits=(16, 2)),
         'seniority': fields.function(_get_seniority, fnct_inv=_set_seniority, string='Seniority', type='integer'),
         'job_id': fields.related('employee_id', 'job_id', type='many2one', relation='hr.job', string="Job Title", readonly=True),
         'project_id': fields.many2one('project.project', 'Project'),
@@ -613,7 +613,7 @@ class hr_contract(osv.osv):
 
     _defaults = {
         'state': 'draft',
-        'hourly_wage': 0.0,
+        #'hourly_wage': 0.0,
         'journal_id': lambda self, cr, uid, context: self.pool.get('ir.model.data').get_object_reference(cr, uid, 'integc', 'account_journal_payroll')[1],
         'performance_prime': 0.0,
         'cash_prime': 0.0,
@@ -739,11 +739,11 @@ class hr_contract(osv.osv):
             }
         }
 
-    def onchange_wage(self, cr, uid, ids, wage, context=None):
-        hourly_wage = 0.0
-        if wage:
-            hourly_wage = wage / 160
-        return {'value': {'hourly_wage': hourly_wage}}
+    #def onchange_wage(self, cr, uid, ids, wage, context=None):
+    #    hourly_wage = 0.0
+    #    if wage:
+    #        hourly_wage = wage / 160
+    #    return {'value': {'hourly_wage': hourly_wage}}
 
     def onchange_category_grade(self, cr, uid, ids, category, grade, context=None):
         salary_grid = None
@@ -1091,22 +1091,22 @@ class hr_payslip(osv.osv):
         'is_paid': fields.boolean('Paid', help='determines if the payslip is paid'),
         'date_payment': fields.datetime('Date Payment'),
         'worked_days': fields.integer('Worked days'),
-        'worked_hours': fields.integer('Worked hours'),
-        'consider_hours': fields.boolean('Consider worked hours'),
+        #'worked_hours': fields.integer('Worked hours'),
+        #'consider_hours': fields.boolean('Consider worked hours'),
     }
 
     _defaults = {
         'is_paid': False,
-        'worked_days': 0,
-        'worked_hours': 0,
-        'consider_hours': False,
+        'worked_days': 30,
+        #'worked_hours': 0,
+        #'consider_hours': False,
     }
 
-    def onchange_worked_days(self, cr, uid, ids, worked_days, context=None):
-        worked_hours = 0
-        if worked_days:
-            worked_hours = worked_days * 8
-        return {'value': {'worked_hours': worked_hours}}
+    #def onchange_worked_days(self, cr, uid, ids, worked_days, context=None):
+    #    worked_hours = 0
+    #    if worked_days:
+    #        worked_hours = worked_days * 8
+    #    return {'value': {'worked_hours': worked_hours}}
 
     def action_paid(self, cr, uid, ids, context=None):
         self.write(cr, uid, ids, {'is_paid': True, 'date_payment': time.strftime('%Y-%m-%d %H:%M:%S')}, context=context)

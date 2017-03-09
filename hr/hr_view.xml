@@ -129,7 +129,7 @@
                     <field name="wage_min" />
                 </xpath>
                 <field name="wage" position="replace">
-                    <field name="wage" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}" on_change="onchange_wage(wage)"/>
+                    <field name="wage" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}"/>
                 </field>
                 <field name="schedule_pay" position="replace">
                     <field name="schedule_pay" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}" />
@@ -160,7 +160,7 @@
                 </field>
                 <xpath expr="//field[@name='wage']" position="after">
                     <field name="wage_max"/>
-                    <field name="hourly_wage" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}"/>
+                    <!--<field name="hourly_wage" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}"/>-->
                 </xpath>
                 <xpath expr="//field[@name='struct_id']" position="replace">
                     <field name="struct_id" readonly="1" />
@@ -487,9 +487,9 @@
                     <field name="credit_note" position="after">
                         <field name="is_paid" readonly="1" />
                         <field name="date_payment" readonly="1" attrs="{'invisible': [('is_paid', '=', False)]}" />
-                        <field name="consider_hours" />
-                        <!--<field name="worked_days" on_change="onchange_worked_days(worked_days)"/>-->
-                        <field name="worked_hours" attrs="{'readonly': [('consider_hours','!=',True)]}"/>
+                        <!--<field name="consider_hours" />-->
+                        <field name="worked_days"/>
+                        <!--<field name="worked_hours" attrs="{'readonly': [('consider_hours','!=',True)]}"/>-->
                     </field>
                 </data>
             </field>
