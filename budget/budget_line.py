@@ -333,6 +333,28 @@ class integc_budget_line(orm.Model):
     _defaults = {
         'frequency': 1
     }
+    def _sum_columns(self, cr, uid, res, orderby, context=None):
+        """ Compute sum of columns showed by the group by
+
+        :param res: standard group by result
+        :param orderby: order by string sent by webclient
+        :returns: updated dict with missing sums of int and float
+
+        """
+        # We want to sum float and int only
+        if '__domain' in res:
+            cols_to_sum = self._get_applicable_cols()
+            r_ids = self.search(cr, uid, res['__domain'], context=context)
+            lines = self.read(cr, uid, r_ids, cols_to_sum, context=context)
+            if lines:
+                # Summing list of dict For details:
+                # http://stackoverflow.com/questions/974678/
+                # faster implementation as mine even if less readable
+                tmp_res = dict((key, sum(imap(itemgetter(key), lines)))
+                               for key in cols_to_sum)
+                res.update(tmp_res)
+        return res
+    
     def read_group(self, cr, uid, domain, fields, groupby, offset=0, limit=None, context=None, orderby=False, lazy=True):
         
         if 'frequency' in fields:
