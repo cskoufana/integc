@@ -76,8 +76,9 @@ class account_bank_statement(osv.osv):
                 elif not st_line.journal_entry_id.id:
                     raise osv.except_osv(_('Error!'), _('All the account entries lines must be processed in order to close the statement.'))
                 move_ids.append(st_line.journal_entry_id.id)
-            if move_ids:
-                self.pool.get('account.move').post(cr, uid, move_ids, context=context)
+            
+            #if move_ids:
+            #    self.pool.get('account.move').post(cr, uid, move_ids, context=context)
             self.message_post(cr, uid, [st.id], body=_('Statement %s confirmed, journal items were created.') % (st.name,), context=context)
         self.link_bank_to_partner(cr, uid, ids, context=context)
         return self.write(cr, uid, ids, {'state': 'confirm', 'closing_date': time.strftime("%Y-%m-%d %H:%M:%S")}, context=context)
