@@ -1090,14 +1090,14 @@ class hr_payslip(osv.osv):
         'input_line_ids': fields.one2many('hr.payslip.input', 'payslip_id', 'Payslip Inputs', required=False, readonly=True, states={'draft': [('readonly', False)]}),
         'is_paid': fields.boolean('Paid', help='determines if the payslip is paid'),
         'date_payment': fields.datetime('Date Payment'),
-        'worked_days': fields.integer('Worked days'),
+        'worked_days': fields.float('Worked days', digits=(16, 2)),
         #'worked_hours': fields.integer('Worked hours'),
         #'consider_hours': fields.boolean('Consider worked hours'),
     }
 
     _defaults = {
         'is_paid': False,
-        'worked_days': 30,
+        'worked_days': 30.0,
         #'worked_hours': 0,
         #'consider_hours': False,
     }
