@@ -45,6 +45,7 @@
         'account/account_invoice_workflow.xml',
         'account/account_invoice_view.xml',
         'account/report/account_report_view.xml',
+        'account/report/account_voucher_report_view.xml',
         'account/account_voucher_view.xml',
         'account/account_bank_statement_view.xml',
         'account/account_menuitem.xml',

@@ -73,6 +73,9 @@
                         <!--<field name="state" widget="statusbar" statusbar_visible="cancel" />-->
                     </header>
                 </xpath>
+                <field name="wage" position="after">
+                	<field name="sup_wage" />
+                </field>
                 <xpath expr="//form/sheet/notebook/page[2]" position="replace">
                     <page string="Primes">
                         <group col="4" string="Primes">
