@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <record id="view_account_voucher_report_tree" model="ir.ui.view">
+        <field name="name">account.voucher.report.tree</field>
+        <field name="model">account.voucher.report</field>
+        <field name="arch" type="xml">
+            <tree colors="blue:move_state == 'draft';black:move_state == 'posted'" create="false" string="Voucher Analysis">
+                <field name="date" invisible="1"/>
+                <field name="ref" invisible="1"/>
+                <field name="nbr" sum="# of Entries "/>
+                <field name="amount" />
+                <field name="partner_id" invisible="1"/>
+                <field name="product_id" invisible="1"/>
+                <field name="company_id" invisible="1" groups="base.group_multi_company"/>
+                <field name="journal_id" invisible="1"/>
+                <field name="account_id" invisible="1"/>
+                <field name="fiscalyear_id" invisible="1"/>
+                <field name="analytic_account_id" invisible="1"/>
+                <field name="period_id" invisible="1"/>
+                <field name="user_id" invisible="1"/>
+                <field name="name" invisible="1"/>
+           </tree>
+        </field>
+    </record>
+    <record id="view_account_voucher_report_graph" model="ir.ui.view">
+         <field name="name">account.voucher.report.graph</field>
+         <field name="model">account.voucher.report</field>
+         <field name="arch" type="xml">
+             <graph string="Voucher Analysis" type="pivot">
+                <field name="product_id" type="row"/>
+                <field name="period_id" type="col"/>
+                <field name="nbr" type="measure"/>
+                <field name="amount" type="measure"/>
+             </graph>
+         </field>
+    </record>
+    <record id="view_account_voucher_report_search" model="ir.ui.view">
+        <field name="name">account.voucher.report.search</field>
+        <field name="model">account.voucher.report</field>
+        <field name="arch" type="xml">
+            <search string="Voucher Analysis">
+                <field name="date"/>
+                <filter string="This F.Year" name="thisyear" domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',time.strftime('%%Y-01-01'))]" help="Journal Voucher with period in current year"/>
+                <filter string="This Period" name="period" domain="[('period_id', '=','current_period')]" 
+                	context="{'period':'current_period'}" help="Journal Voucher with period in current period"/>
+                <separator/>
+                <field name="journal_type"/>
+                <field name="product_type"/>
+                <filter string="Consomable" name="conso" domain="[('product_type', '=','consu')]"  />
+                <filter string="Stockable" name="product" domain="[('product_type', '=','product')]"  />
+                <separator/>
+                <filter string="Bank" name="journal_type_bank" domain="[('journal_type', '=','bank')]"  />
+                <filter string="Cash" name="journal_type_cash" domain="[('journal_type', '=','cash')]"  />
+                	
+                <field name="account_id"/>
+                <field name="journal_id"/>
+                <field name="period_id"/>
+                <field name="user_id"/>
+                <group expand="0" string="Extended Filters...">
+                    <field name="fiscalyear_id"/>
+                    <field name="product_id"/>
+                    <field name="partner_id"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </group>
+                <group expand="1" string="Group By">
+                    <filter string="Partner" context="{'group_by':'partner_id'}"/>
+                    <filter string="Journal" name="group_journal" context="{'group_by':'journal_id'}"/>
+                    <filter string="Responsable" context="{'group_by':'user_id'}" name="user_id"/>
+                    <filter string="Payment type" context="{'group_by':'journal_type'}" name="journal_type"/>
+                    <filter string="Product type" context="{'group_by':'product_type'}" name="product_type"/>
+                    <filter string="Projet" context="{'group_by':'analytic_account_id'}" name="analytic_account_id"/>
+                    <filter string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                    <separator/>
+                    <filter string="Voucher Month" context="{'group_by':'date:month'}" help="Voucher Date by Month"/>
+                 </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_account_voucher_report_all" model="ir.actions.act_window">
+        <field name="name">Voucher Analysis</field>
+        <field name="res_model">account.voucher.report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">graph</field>
+        <field name="search_view_id" ref="view_account_voucher_report_search"/>
+        <field name="view_id" ref="view_account_voucher_report_graph"/>
+        <field name="context">{'group_by':[],'search_default_thisyear':1, 'group_by_no_leaf':1}</field>
+        <field name="help">From this view, have an analysis of your different financial accounts. The document shows your debit and credit taking in consideration some criteria you can choose by using the search tool.</field>
+    </record>
+    <menuitem action="action_account_voucher_report_all" id="menu_action_account_voucher_appacheur_report_all"
+        parent="account.menu_finance_reporting"
+        groups="account.group_account_manager,purchase.group_purchase_manager"
+        sequence="5"/>
+</data>
+</openerp>

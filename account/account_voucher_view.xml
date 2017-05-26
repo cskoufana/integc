@@ -23,9 +23,11 @@
                 <data>
                     <field name="journal_id" position="before">
                         <field name="analytic_account_id" widget="selection" context="{'analytic_account_id': self, 'set_visible':False}"/>
+                        <field name="product_id" widget="selection" context="{'product_id': self, 'set_visible':False}"/>
                     </field>
                     <xpath expr="//search/group/filter[1]" position="after">
                         <filter string="Analytic Account" icon="terp-folder-orange" domain="[]" context="{'group_by':'analytic_account_id'}"/>
+                        <filter string="Product" icon="terp-folder-orange" domain="[]" context="{'group_by':'product_id'}"/>
                     </xpath>
                 </data>
             </field>
@@ -38,7 +40,8 @@
             <field name="arch" type="xml">
                 <data>
                     <field name="journal_id" position="after">
-                        <field name="analytic_account_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="analytic_account_id" required="1" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="product_id" required="1" />
                     </field>
                 </data>
             </field>
@@ -52,9 +55,11 @@
                 <data>
                     <field name="journal_id" position="before">
                         <field name="analytic_account_id" widget="selection" context="{'analytic_account_id': self, 'set_visible':False}"/>
+                        <field name="product_id" widget="selection" context="{'product_id': self, 'set_visible':False}"/>
                     </field>
                     <xpath expr="//search/group/filter[1]" position="after">
                         <filter string="Analytic Account" icon="terp-folder-orange" domain="[]" context="{'group_by':'analytic_account_id'}"/>
+                        <filter string="Product" icon="terp-folder-orange" domain="[]" context="{'group_by':'product_id'}"/>
                     </xpath>
                 </data>
             </field>
@@ -112,6 +117,7 @@
                                        placeholder="e.g. Invoice SAJ/0042"/>
                                 <field name="company_id" widget="selection" groups="base.group_multi_company"/>
                                 <field name="analytic_account_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="product_id" />
                             </group>
                         </group>
                         <separator string="Suppliers" attrs="{'invisible': [('voucher_mode', '!=', 'multiple')]}"/>

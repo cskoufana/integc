@@ -577,6 +577,7 @@ class hr_contract(osv.osv):
         'date_to': fields.function(lambda *a, **k:{}, method=True, type='date', string="Date to"),
         'attachment_ids': fields.many2many("ir.attachment", "hr_partner_contract_attachment_rel",
                                            "attachment_id", "contract_id", "Attachments"),
+        'sup_wage': fields.float('Sursalaire', digits=(16, 2)),
         'performance_prime': fields.float('Performance Prime', digits=(16, 2)),
         'cash_prime': fields.float('Cash Prime', digits=(16, 2)),
         'secretariat_prime': fields.float('Secretariat Prime', digits=(16, 2)),
@@ -1090,7 +1091,7 @@ class hr_payslip(osv.osv):
         'input_line_ids': fields.one2many('hr.payslip.input', 'payslip_id', 'Payslip Inputs', required=False, readonly=True, states={'draft': [('readonly', False)]}),
         'is_paid': fields.boolean('Paid', help='determines if the payslip is paid'),
         'date_payment': fields.datetime('Date Payment'),
-        'worked_days': fields.float('Worked days', digits=(16, 2)),
+        'worked_days': fields.float('Worked days'),
         #'worked_hours': fields.integer('Worked hours'),
         #'consider_hours': fields.boolean('Consider worked hours'),
     }
