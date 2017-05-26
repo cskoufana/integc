@@ -61,9 +61,9 @@
             <data>
                 <xpath expr="/form/sheet" position="before">
                     <header>
-                        <button name="btn_validate" class="oe_highlight" states="draft" string="Validate" groups="integc.group_responsable_hr"/>
-                        <button name="btn_approve" class="oe_highlight" states="signature_director" string="Approve" groups="integc.group_responsable_hr"/>
-                        <button name="btn_approve" class="oe_highlight" states="signature_employee" string="Sign" groups="integc.group_responsable_hr"/>
+                        <button name="btn_validate" class="oe_highlight" states="draft" string="Validate" groups="integc.group_responsable_hr" confirm="Voulez vous valider ce contrat?" type="workflow"/>
+                        <button name="btn_approve" class="oe_highlight" states="signature_director" string="Approve" groups="integc.group_responsable_hr" type="workflow"/>
+                        <button name="btn_approve" class="oe_highlight" states="signature_employee" string="Sign" groups="integc.group_responsable_hr" type="workflow"/>
                         <!--<button name="btn_cancel"  states="progress" string="Cancel"/>-->
                         <!--<button name="btn_complete"  class="oe_highlight" states="progress" string="Complete"/>-->
                         <button name="%(integc_hr_contract_act)d" string="Complete" states="progress" groups="integc.group_responsable_hr"
