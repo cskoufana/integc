@@ -173,8 +173,8 @@
                 </xpath>
                 <xpath expr="//field[@name='type_id']" position="after">
                     <field name="project_id" attrs="{'readonly': [('state', 'not in', ['draft', 'signature_director'])]}"/>
-                    <field name="date_signature_director" readonly="1"/>
-                    <field name="date_signature_employee" readonly="1" />
+                    <field name="date_signature_director" readonly="0"/>
+                    <field name="date_signature_employee" readonly="0" />
                     <field name="date_cancel" readonly="1" attrs="{'invisible': [('state','!=','cancel')]}"/>
                 </xpath>
                 <!--<xpath expr="//field[@name='job_id']" position="replace">

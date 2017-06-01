@@ -666,7 +666,7 @@ class hr_contract(osv.osv):
         return True
 
     def action_signature_employee(self, cr, uid, ids, context=None):
-        self.write(cr, uid, ids, {'state': 'signature_employee', 'date_signature_employee': time.strftime('%Y-%m-%d %H:%M:%S')}, context=context)
+        self.write(cr, uid, ids, {'state': 'signature_employee', 'date_signature_director': time.strftime('%Y-%m-%d %H:%M:%S')}, context=context)
         return True
 
     def action_done(self, cr, uid, ids, context=None):
